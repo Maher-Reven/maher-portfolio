@@ -102,7 +102,12 @@ const fragment = /* glsl */ `
   }
 `;
 
-function ShaderPlane() {
+/**
+ * The hero background quad. Exported so it can be composed into a shared
+ * Canvas alongside other objects (see HeroScene) — its vertex shader writes
+ * clip space directly, so it fills the screen under any camera.
+ */
+export function ShaderPlane() {
   const mat = useRef<THREE.ShaderMaterial>(null);
   const { size, viewport } = useThree();
   const mouse = useRef(new THREE.Vector2(0.5, 0.5));
@@ -140,7 +145,7 @@ function ShaderPlane() {
   });
 
   return (
-    <mesh frustumCulled={false}>
+    <mesh frustumCulled={false} renderOrder={-1}>
       <planeGeometry args={[2, 2]} />
       <shaderMaterial
         ref={mat}

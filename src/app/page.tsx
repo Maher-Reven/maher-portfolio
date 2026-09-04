@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FluidShader } from "@/components/three/FluidShader";
+import { HeroScene } from "@/components/three/HeroScene";
 import { TextScramble } from "@/components/motion/TextScramble";
 import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
@@ -17,7 +17,7 @@ export default function Home() {
       {/* ───────────── HERO ───────────── */}
       {/* `isolate` creates a stacking context so the -z-10 shader sits behind the copy but above the body background */}
       <section className="relative isolate flex min-h-svh flex-col justify-end overflow-hidden px-[var(--gutter)] pb-16 pt-32">
-        <FluidShader className="absolute inset-0 -z-10" />
+        <HeroScene className="absolute inset-0 -z-10" />
         <div className="grid-overlay pointer-events-none absolute inset-0 -z-10 opacity-60" />
 
         {/* HUD corner data */}
