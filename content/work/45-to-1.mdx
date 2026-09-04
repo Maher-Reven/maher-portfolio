@@ -1,0 +1,75 @@
+---
+title: "45 → 1"
+summary: "Consolidating a fragmented healthcare product ecosystem into a single platform — without missing a release for the hospitals running on it."
+year: 2025
+role: "Engineering Manager"
+tags: ["Platform strategy", "Monorepo", "Healthcare", "Change management"]
+color: "#a855f7"
+featured: true
+order: 1
+---
+
+## Context
+
+LOGEX Patient Engagement builds patient-facing products for hospitals and clinics — apps people use to prepare for treatment and to manage recovery afterwards. Each healthcare organisation gets its own branded application, on iOS and Android, configured to its own care pathways.
+
+By the time I took over engineering, that promise had been paid for in structure. The estate had grown to roughly **45 repositories** across several mobile technologies, with a separate build and release path for practically every customer.
+
+## The problem
+
+Every customer variant had become a fork in everything but name.
+
+A change to shared behaviour was never one change. It was *n* implementations, *n* reviews, *n* release trains, and *n* chances to get it subtly wrong for one hospital and not the others. A bug fixed for one customer could sit unfixed for the rest for months, not because anyone deprioritised it, but because nobody had a way to see it was still open elsewhere.
+
+Cost was the visible symptom — hosting, CI minutes, tooling seats, all multiplied by a number nobody had chosen deliberately. The expensive part was quieter: onboarding an engineer meant onboarding them to *a repository*, not to the product. Knowledge stayed local, ownership was ambiguous at exactly the boundaries where it mattered, and the org couldn't add people faster than it could add context.
+
+## The constraints
+
+This is the part that shapes every decision that follows:
+
+- **The products were live, in hospitals, in front of patients.** There was no migration window in which things could be allowed to break, and no cohort of users it was acceptable to break them for.
+- **Regulated environment.** Annual ISO and NEN 7510 audits meant traceability of change could not regress *during* the migration — the transition itself had to stay auditable.
+- **No consolidation quarter.** Customer commitments continued throughout. This ran alongside roadmap delivery, not instead of it.
+
+## The strategy
+
+Three decisions did most of the work.
+
+**Consolidate the operating model, not just the code.** A monorepo that teams route around is strictly worse than honest fragmentation — you get the coupling without the leverage. So the target was never "one repository." It was one pipeline, one release train, one definition of done, and explicit ownership boundaries *inside* the repo. The directory structure was the easy half.
+
+**Make white-label a runtime concern instead of a build-time one.** This is the decision the whole thing rested on. As long as per-customer difference lived in forked code, consolidation just relocated the forks. Moving that variation into configuration and server-driven UI is what made one codebase serving many hospitals a real proposition rather than a naming exercise.
+
+**Migrate incrementally, never big-bang.** Repositories moved in sequence, highest-duplication first, with the estate fully releasable at every step. A migration that requires a freeze to land is a migration that gets cancelled the first time a customer commitment moves.
+
+## Execution
+
+The work itself was unglamorous and mostly about sequencing:
+
+- Repositories migrated in dependency order, each one leaving behind a decommissioning task — the savings only land when the old infrastructure is actually switched off, and that step is the one everybody skips.
+- One shared CI/CD path (Bitrise, Fastlane, App Store Connect, Google Play) replacing per-repository pipelines, so release behaviour stopped being a property of which repo you happened to be in.
+- Automated verification gates on shared code, so a change made for one customer couldn't quietly regress another — the specific failure mode that consolidation *introduces* if you don't design against it.
+- Domain observability and blameless retrospectives running throughout, which is how a migration this long stays honest about what it's costing.
+
+## Leading through it
+
+The technical plan was not the hard part. The hard part was that every team had been optimising locally — for their own repository, their own customer, their own cadence — and each of them was, in isolation, right to. Consolidation asked them to accept a shared standard that made them measurably less autonomous in the short term in exchange for leverage that would arrive later, to somebody else's team first.
+
+What actually moved it: making the duplicated cost visible in terms teams recognised, migrating *with* teams rather than handing them a target architecture, and being clear about ownership before the first repository moved rather than letting it settle by accident. Stakeholder alignment here wasn't a communications exercise — it was the deliverable.
+
+## Results
+
+```txt
+codebases   ~45 repos → 1 monorepo
+hosting     ~65% lower
+CI / SCM    ~45% lower
+releases    per-customer → one train
+audits      ISO / NEN 7510, zero delay
+```
+
+The number that mattered most isn't in that block. A fix now reaches every hospital at once, an engineer onboards to the product rather than to a repository, and adding the next customer is a configuration problem instead of a codebase.
+
+## What I'd do differently
+
+I'd have set the ownership model before the first repository moved, instead of letting it emerge two or three migrations in. We got there, but for a stretch the code was consolidated while accountability still wasn't, and that gap is where the ambiguity — and the slowest reviews — lived.
+
+I'd also fund decommissioning explicitly from day one. It is genuinely tedious work with no visible product outcome, it is where the entire cost case is realised, and it will lose every prioritisation conversation it is not protected from.

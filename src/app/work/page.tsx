@@ -20,6 +20,9 @@ export default function WorkPage() {
         {entries.map((e, i) => (
           <div key={e.slug} data-reveal className="bg-bg"><EntryCard entry={e} index={i} /></div>
         ))}
+        {/* The grid's hairline separators come from bg-line showing through the gap,
+            so an odd entry count would leave a bare line-coloured cell. */}
+        {entries.length % 2 === 1 && <div aria-hidden className="hidden bg-bg md:block" />}
       </Reveal>
     </>
   );
