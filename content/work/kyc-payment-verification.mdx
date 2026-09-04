@@ -1,0 +1,105 @@
+---
+title: "Scaling KYC & Payment Verification"
+summary: "A payment integration that turned out to be an identity problem — reframed into a compliance-first market entry across the US and three Asian markets."
+year: 2022
+role: "Engineering Manager & Tech Lead"
+tags: ["Compliance", "Fintech", "Mobile platform", "Architecture"]
+color: "#ec4899"
+featured: true
+order: 2
+---
+
+## Context
+
+BOTS ran an automated investment platform, and was preparing to expand into the US and Asia. The initiative arrived scoped as a single sentence: **add payment integrations for the new markets.**
+
+I led it across Mobile, Backend, Compliance, Legal and Product.
+
+## The problem was not payments
+
+Breaking the requirements down with Legal and Compliance, it became clear that payments were only the visible part.
+
+The existing KYC implementation had been built around a single region. Document types, identity handling and address parsing were hard-coded — while each new market required materially different identity artifacts. The US wanted an SSN; the Asian markets wanted their own local documents entirely.
+
+> The headline was payments. The underlying problem was identity.
+
+The roadmap concealed a dependency chain that ran the other way from how the work had been scoped:
+
+```txt
+payment integration
+ └─ KYC / identity requirements
+     └─ legal eligibility
+         └─ ability to launch
+```
+
+Shipping a payment surface without resolving KYC first wouldn't have been a late feature. It would have been a regulatory exposure. So rather than let engineering start against assumptions, I ran a working session with Legal to define the regional compliance states **before any code was written**, and reframed the initiative from a payment integration into a compliance-first market entry.
+
+## The state problem underneath it
+
+There was a second, quieter issue. KYC verification is asynchronous, and the architecture didn't respect that.
+
+A provider could mark a user approved while our system still had them pending. Webhooks arrived late or not at all, retries failed silently, and a user could reach checkout while their internal compliance state hadn't caught up. It was a distributed-state problem with no single source of truth — and the thing it put at risk was a regulatory boundary.
+
+The fix was to invert the order and make compliance a gate rather than a check:
+
+```txt
+before  user → payment → KYC
+after   user → KYC → cleared → payment
+```
+
+The payment module simply would not initialise until the orchestrator emitted a cleared state.
+
+## Region-aware by architecture, not by branching
+
+Rather than encoding each country's rules into the mobile app, we put an event-driven **KYC orchestrator** between the app and the provider, and split the three concerns cleanly.
+
+The app collects information, presents region-specific requirements, and handles interruption and recovery. The orchestrator decides what a user needs based on geography, owns the verification state, absorbs asynchronous provider events, retries and webhooks, stays auditable, and enforces the gate. The provider does identity, document and liveness checks.
+
+The decision that mattered:
+
+> The provider performs verification; we own the state.
+
+That kept one consistent internal model while leaving the provider and the regional rules free to change underneath it. The state machine made `Pending → Cleared → EDD` explicit, with payments locked until the right state was reached.
+
+## Shipping it without over-building it
+
+A fully automated global compliance engine was months of work and would have missed the market window. Rushing it would have created legal exposure. So the rollout was phased.
+
+Phase one was the minimum architecture needed to enter the markets safely: dynamic orchestration, US and Asian identity requirements, region-aware document requests, a hard payment gate, reliable webhook and state handling, end-to-end validation. Complex automated edge cases were deferred on purpose.
+
+Phase two would be decided by production telemetry once the funnel was actually observable, rather than by imagined problems. Ship a safe foundation, measure reality, then optimise.
+
+## Treating failure as the normal case
+
+Mobile verification does not happen in a clean environment. Apps get killed, networks vanish, users switch away mid-flow, documents come out blurry, provider responses land whenever they land. We treated all of that as ordinary operating states rather than edge cases.
+
+Verification state lived in the orchestrator, not in the app's memory, so a user returning after an interruption resumed at the right point. State-driven UI behind feature flags meant the US and Asian flows could be switched on without an app-store release. And sensitive information was requested progressively — the SSN only at the point it was legally required, not up front.
+
+Payments sat behind all of it. We validated across providers in sandbox against insufficient funds, expired cards, network and provider failures, then ran controlled real-money verification to prove the settlement path end to end. Every transaction was idempotent and retried, so flaky mobile connectivity couldn't produce a duplicate charge. The rule was enforced by the architecture rather than by the interface: payment was programmatically unreachable until KYC had succeeded.
+
+## Leading it across six functions
+
+Mobile, Backend, Product, Compliance, Legal and Design all had a stake, and my job was to be the join between them — keeping engineers pointed at execution while I handled the dependencies outside their control.
+
+Stand-ups stayed on blockers. Leadership got progress translated into business risk, dependencies, mitigation and launch readiness. RFCs and architecture reviews put Mobile and Backend on the same compliance-state model, and I worked between Product, Design and Legal on the real trade-off: legal requirement against user experience against delivery speed.
+
+The point was never more meetings. It was making sure one function's decision didn't silently invalidate another team's work.
+
+## Results
+
+```txt
+markets live    2 → 4
+onboarding      +25%
+payment volume  +35%
+support load    −30%
+```
+
+The payment volume lift in the quarter after the US and Asia launch unlocked further global revenue. But the outcome I'd point at is architectural: KYC stopped being a single-region onboarding feature and became a reusable compliance layer with seams cut for the next provider, market and rule.
+
+The business had asked *"how do we add payments in Asia?"* The more useful question, which took a working session with Legal to surface, was *"what has to be true for us to legally and safely operate payments in Asia?"* That one distinction changed the scope, the stakeholder map, the architecture, the delivery sequence, the risk model, and the definition of done.
+
+## What I'd do differently
+
+I'd have gone looking for the dependency at roadmap time instead of finding it during breakdown. It was discoverable earlier — the single-region assumptions were already in the code — and finding it a stage sooner would have cost the organisation nothing, where finding it a stage later would have cost a launch.
+
+I'd also have treated observability as a deliverable rather than a by-product. The old onboarding flow was a black box: users could fail verification without anyone being able to say where or why. We only got the telemetry to answer that as a consequence of rebuilding the funnel, and it turned out to be the thing Product and Support wanted most. That was worth scoping deliberately, not inheriting by accident.
