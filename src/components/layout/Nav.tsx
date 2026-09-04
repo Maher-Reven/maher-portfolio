@@ -7,9 +7,11 @@ import { site } from "@/lib/site";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Clock } from "@/components/layout/Clock";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { NavMenu } from "@/components/layout/NavMenu";
 
 export function Nav() {
   const path = usePathname();
+  const city = site.location.split(",")[0];
 
   return (
     <header className="nav-blend fixed inset-x-0 top-0 z-50">
@@ -21,15 +23,14 @@ export function Nav() {
               <span className="mono text-xs font-medium">{site.handle}</span>
               <span className="absolute -inset-px border border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </span>
-            {/* Decorative, and long enough to squeeze the nav links into a
-                clipped scroller. Only shown once there's genuinely room. */}
-            <span className="label hidden lg:block">{site.role}</span>
+            {/* Decorative and wide — the last thing to earn its space. */}
+            <span className="label hidden xl:block">{site.role}</span>
           </Link>
         </Magnetic>
 
-        {/* links — scrollable on narrow screens so the row can shrink instead
-            of pushing the theme toggle off the edge */}
-        <nav className="no-scrollbar flex min-w-0 items-center gap-4 overflow-x-auto sm:gap-8">
+        {/* links — inline only where the full row fits; below lg they collapse
+            into NavMenu rather than a clipped horizontal scroller */}
+        <nav className="hidden items-center gap-8 lg:flex">
           {site.nav.map((item) => {
             const active = path === item.href || path.startsWith(item.href + "/");
             return (
@@ -55,17 +56,24 @@ export function Nav() {
           })}
         </nav>
 
-        {/* status + theme */}
+        {/* status + theme + collapsed menu */}
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
-          <div className="label hidden items-center gap-3 xl:flex">
-            <span className="relative flex h-1.5 w-1.5">
+          {/* Location stays visible at every width — it's the one bit of status
+              worth keeping. Only the city below sm, where the full string and
+              the clock would crowd out the menu button. */}
+          <div className="label flex items-center gap-3">
+            <span className="relative flex h-1.5 w-1.5 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
             </span>
-            <span>{site.location}</span>
-            <Clock />
+            <span className="whitespace-nowrap sm:hidden">{city}</span>
+            <span className="hidden whitespace-nowrap sm:inline">{site.location}</span>
+            <span className="hidden md:inline">
+              <Clock />
+            </span>
           </div>
           <ThemeToggle />
+          <NavMenu />
         </div>
       </div>
     </header>

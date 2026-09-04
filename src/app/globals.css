@@ -128,15 +128,6 @@ body {
   background: var(--line);
 }
 
-/* Overflow without a visible scrollbar — used by the nav on narrow screens. */
-.no-scrollbar {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
 /* subtle grid overlay used on panels & hero */
 .grid-overlay {
   background-image:
@@ -197,17 +188,25 @@ body {
 /* The nav floats over the hero shader. Difference blending is what keeps it
    legible against the moving dark background — but on light it would invert
    the accent hues to acid green, so there it blends normally over a light hero. */
+/* Default: a real bar with a backdrop. Needed below lg because the collapsed
+   menu renders a solid panel inside the header, and difference blending would
+   invert it — mix-blend-mode groups the whole subtree, so a child can't opt out.
+   Light stays this way at every width; its accents would blend to acid green. */
 .nav-blend {
-  mix-blend-mode: difference;
-}
-[data-theme="light"] .nav-blend {
-  mix-blend-mode: normal;
-  /* Difference blending doubled as a legibility guarantee wherever the fixed
-     nav crossed scrolling content. Without it the nav needs a real backdrop,
-     or it collides with body text. */
   background: color-mix(in oklab, var(--bg) 78%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
+}
+
+/* Dark, wide: back to the floating difference-blended HUD, which is also what
+   keeps it legible over the moving hero. No dropdown exists at this width. */
+@media (min-width: 1024px) {
+  :root:not([data-theme="light"]) .nav-blend {
+    mix-blend-mode: difference;
+    background: none;
+    backdrop-filter: none;
+    border-bottom: 0;
+  }
 }
 
 /* A glow behind violet text turns to mud on a light ground. */
