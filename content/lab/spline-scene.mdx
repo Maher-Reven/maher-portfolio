@@ -1,0 +1,38 @@
+---
+title: "Spline scene embed"
+summary: "A 3D scene authored in Spline, embedded in React with a cursor-tracking spotlight over it — and the bundler problem that decided how. Live below."
+year: 2026
+tags: ["Spline", "React", "3D"]
+color: "#ec4899"
+order: 3
+---
+
+## What it is
+
+A scene built in [Spline](https://spline.design) and mounted as a React component, with a spring-driven spotlight tracking the cursor across it. Drag the scene to orbit.
+
+<SplineSceneDemo />
+
+## The thing that didn't work
+
+The obvious integration is `@splinetool/react-spline`, and it doesn't build here.
+
+The runtime locates its Draco decoders with `new URL("../libs/draco/draco_decoder.js", import.meta.url)`. Bundlers read that pattern as an asset reference and try to resolve the file — and the file isn't in the published package, because Spline fetches it from their CDN at runtime. Turbopack honours the pattern, fails to resolve, and the production build stops. Six modules, same cause.
+
+So this uses Spline's `<spline-viewer>` web component instead, loaded from a CDN and registered via `customElements.whenDefined`. No bundler involvement, which also means it survives `output: "export"`. Nothing loads until the component mounts.
+
+The trade is honest: a third-party script fetched at runtime, and an embed that depends on someone else's CDN staying up. Fine for an experiment. Not something I'd put behind a hero.
+
+## The spotlight
+
+The spotlight is not a CSS `:hover` effect. It reads the pointer against the parent's bounding box and feeds the coordinates through two springs, so the light lags the cursor slightly instead of snapping to it — the detail that makes it feel like a light rather than a div following the mouse.
+
+It measures its own parent on mount and pins `position: relative` and `overflow: hidden` onto it, which is neat but means the component quietly mutates the element above it. Worth knowing before dropping it into a layout that cares.
+
+## Notes
+
+The stage stays dark in both themes. The spotlight is white and the headline is a light gradient, and both need a dark ground — against the light theme's paper they'd disappear entirely. Reading it as a viewport rather than a page surface makes that deliberate.
+
+## Source
+
+`src/components/three/SplineSceneDemo.tsx` · `src/components/ui/splite.tsx` · `src/components/ui/spotlight.tsx`

@@ -73,6 +73,12 @@
   --color-accent-2: var(--accent-2);
   --font-sans: var(--font-grotesk);
   --font-mono: var(--font-mono);
+
+  /* shadcn-compatible aliases mapped onto this site's tokens, so components
+     pasted from that ecosystem (ui/card.tsx) pick up the theme instead of
+     referencing colours that don't exist here. */
+  --color-card: var(--bg-elev);
+  --color-card-foreground: var(--fg);
 }
 
 /* ───────────────────────── base ───────────────────────── */
@@ -164,6 +170,22 @@ body {
 /* accent glow text */
 .glow {
   text-shadow: 0 0 24px var(--accent-glow);
+}
+
+/* Spinner for lazily-loaded 3D scenes — ui/splite.tsx renders `.loader` as its
+   Suspense fallback, which would otherwise be an invisible empty span. */
+.loader {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line-strong);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: loader-spin 0.8s linear infinite;
+}
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* scanline / noise texture (very subtle) */
