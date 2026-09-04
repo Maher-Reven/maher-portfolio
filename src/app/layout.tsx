@@ -29,12 +29,17 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  // No `h-full` on <html>: Lenis observes the documentElement to derive its
+  // scroll limit, and pinning it to 100% means that box never changes size when
+  // a client-side route swaps in taller content — the limit goes stale and
+  // scrolling dies partway down. Body uses dvh for the sticky footer so it
+  // doesn't depend on a fixed html height.
   return (
     <html
       lang="en"
-      className={`${grotesk.variable} ${mono.variable} h-full antialiased`}
+      className={`${grotesk.variable} ${mono.variable} antialiased`}
     >
-      <body className="noise min-h-full flex flex-col">
+      <body className="noise min-h-dvh flex flex-col">
         <SmoothScroll>
           <Nav />
           <main className="flex-1">{children}</main>
