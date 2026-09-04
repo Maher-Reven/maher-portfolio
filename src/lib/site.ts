@@ -12,8 +12,8 @@ export const site = {
   location: "Belgium",
   email: "moesi88@icloud.com",
   socials: [
-    { label: "GitHub", href: "https://github.com/maherkurdi" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/maherkurdi" },
+    { label: "GitHub", href: "https://github.com/Maher-Reven" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/maherskrde/" },
     { label: "X", href: "https://x.com/maherkurdi" },
   ],
   nav: [
