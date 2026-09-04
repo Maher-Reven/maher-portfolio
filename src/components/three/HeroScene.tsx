@@ -25,8 +25,9 @@ export function HeroScene({ className }: { className?: string }) {
         className={className}
         aria-hidden
         style={{
+          // Built from tokens so it follows the theme instead of staying dark.
           background:
-            "radial-gradient(60% 50% at 50% 60%, rgba(168,85,247,.28), transparent 70%), radial-gradient(40% 40% at 70% 30%, rgba(236,72,153,.18), transparent 70%), var(--bg)",
+            "radial-gradient(60% 50% at 50% 60%, color-mix(in oklab, var(--accent) 28%, transparent), transparent 70%), radial-gradient(40% 40% at 70% 30%, color-mix(in oklab, var(--accent-2) 18%, transparent), transparent 70%), var(--bg)",
         }}
       />
     );

@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
+import { useTheme } from "@/lib/use-theme";
+import { readSceneColors } from "@/lib/scene-colors";
 
 /* ────────────────────────────────────────────────────────────────
    Procedural brain — no model file, an icosphere reshaped in GLSL.
@@ -14,14 +16,14 @@ import * as THREE from "three";
      · a cerebellum at the lower rear, with its own much finer folia
      · frontal and occipital tapering, flat underside
 
-   Sulci are the *zero contours* of a noise field rather than ridged
-   fbm: |noise| ≈ 0 traces long meandering curves over the surface,
-   which is what real furrows look like. Ridged fbm gives crumpled
-   paper. The domain is stretched front-to-back so gyri elongate the
-   way they do on the lateral surface.
+   Sulci come from contour banding — see sulciField below. The domain
+   is stretched front-to-back so gyri elongate the way they do on the
+   lateral surface.
 
-   Shaded to sit in the hero, not on top of it: unlit areas go
-   transparent so the fluid shader behind shows through.
+   Shading is per-theme: on dark it's emissive and unlit areas go
+   transparent so the fluid shader shows through; on light that would
+   erase the shadowed side against paper, so it becomes a solid object
+   with occlusion and a darkened contact rim instead.
    ──────────────────────────────────────────────────────────────── */
 
 /** Simplex noise 3D (Ashima / Stefan Gustavson) — shared by both stages. */
@@ -194,6 +196,7 @@ const fragment = /* glsl */ `
   uniform vec3  uColorA;   // violet
   uniform vec3  uColorB;   // magenta
   uniform float uOpacity;
+  uniform float uLight;    // 1.0 in the light theme
 
   ${NOISE}
   ${FIELD}
@@ -216,26 +219,42 @@ const fragment = /* glsl */ `
     vec3 L1 = normalize(vec3(-0.55, 0.75, 0.60));
     vec3 L2 = normalize(vec3( 0.75, -0.25, 0.35));
 
-    vec3 col = uColorA * pow(max(dot(N, L1), 0.0), 1.30) * 0.66
-             + uColorB * pow(max(dot(N, L2), 0.0), 1.85) * 0.36;
-
-    // Ambient floor, or the shadowed side vanishes and it reads as a shell.
-    col += mix(uColorA, uColorB, 0.4) * 0.08;
-
-    // Occlusion in the furrows. This is what actually makes folds visible.
-    col *= 1.0 - g * 0.85;
-
-    // Rim light — fuses the silhouette into the background.
+    float d1 = max(dot(N, L1), 0.0);
+    float d2 = max(dot(N, L2), 0.0);
     float fres = pow(1.0 - max(dot(N, V), 0.0), 2.7);
-    col += mix(uColorA, uColorB, 0.5) * fres * 0.90;
+    vec3  H = normalize(L1 + V);
+    float spec = pow(max(dot(N, H), 0.0), 46.0) * (1.0 - g * 0.8);
+    float base = smoothstep(-0.95, -0.15, vLocal.y);  // melt the base into the page
 
-    // Tight specular: brain tissue is wet.
-    vec3 H = normalize(L1 + V);
-    col += vec3(1.0) * pow(max(dot(N, H), 0.0), 46.0) * 0.14 * (1.0 - g * 0.8);
+    vec3 col;
+    float a;
 
-    float luma = dot(col, vec3(0.299, 0.587, 0.114));
-    float a = clamp(0.30 + luma * 2.2 + fres * 0.7, 0.0, 1.0);
-    a *= smoothstep(-0.95, -0.15, vLocal.y);   // melt the base into the page
+    if (uLight > 0.5) {
+      // Light: a solid, opaque object sitting on paper. The dark theme's trick
+      // of driving alpha from luminance would erase the whole shadowed side
+      // against white, and an additive rim glow would be invisible — so here
+      // it's pigment, occlusion, and a *darkened* contact rim instead.
+      vec3 lit    = mix(uColorA, uColorB, 0.35);
+      vec3 tissue = mix(vec3(0.95, 0.93, 0.97), lit, 0.45);
+      col = mix(tissue * 0.58, tissue, d1 * 0.78 + d2 * 0.22);
+      col *= 1.0 - g * 0.45;
+      col = mix(col, col * 0.62, fres * 0.6);
+      col += vec3(1.0) * spec * 0.30;
+      // Barely fade the base here. The dark theme melts it into black; doing
+      // that against paper just cuts a bright notch out of the underside.
+      a = 0.97 * mix(1.0, base, 0.35);
+    } else {
+      // Dark: emissive, and unlit areas go transparent so the fluid shader
+      // behind shows through and the brain reads as the same material.
+      col = uColorA * pow(d1, 1.30) * 0.66
+          + uColorB * pow(d2, 1.85) * 0.36;
+      col += mix(uColorA, uColorB, 0.4) * 0.08;   // ambient, or it reads as a shell
+      col *= 1.0 - g * 0.85;                      // occlusion in the furrows
+      col += mix(uColorA, uColorB, 0.5) * fres * 0.90;
+      col += vec3(1.0) * spec * 0.14;
+      float luma = dot(col, vec3(0.299, 0.587, 0.114));
+      a = clamp(0.30 + luma * 2.2 + fres * 0.7, 0.0, 1.0) * base;
+    }
 
     gl_FragColor = vec4(col, a * uOpacity);
   }
@@ -243,8 +262,10 @@ const fragment = /* glsl */ `
 
 export function Brain() {
   const group = useRef<THREE.Group>(null);
+  const mat = useRef<THREE.ShaderMaterial>(null);
   const scrollRef = useRef(0);
   const { size, viewport } = useThree();
+  const { theme } = useTheme();
 
   const isNarrow = size.width < 768;
   // The fragment stage carries the fine fold detail, so the mesh only has to
@@ -266,9 +287,23 @@ export function Brain() {
       uColorA: { value: new THREE.Color("#a855f7") },
       uColorB: { value: new THREE.Color("#ec4899") },
       uOpacity: { value: 0.92 },
+      uLight: { value: 0 },
     }),
     []
   );
+
+  // Re-read the palette from CSS whenever the theme flips. Written through the
+  // material ref rather than the memoised uniforms object, which React treats
+  // as immutable once it has been handed to a hook.
+  useEffect(() => {
+    const u = mat.current?.uniforms;
+    if (!u) return;
+    const c = readSceneColors(theme);
+    u.uColorA.value.copy(c.a);
+    u.uColorB.value.copy(c.b);
+    u.uLight.value = theme === "light" ? 1 : 0;
+    u.uOpacity.value = theme === "light" ? 1 : 0.92;
+  }, [theme]);
 
   useFrame((state, dt) => {
     const g = group.current;
@@ -299,6 +334,7 @@ export function Brain() {
       <mesh renderOrder={1}>
         <icosahedronGeometry args={[1, detail]} />
         <shaderMaterial
+          ref={mat}
           vertexShader={vertex}
           fragmentShader={fragment}
           uniforms={uniforms}

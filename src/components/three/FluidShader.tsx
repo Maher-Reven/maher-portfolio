@@ -1,9 +1,11 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 import { useReducedMotion } from "@/lib/motion";
+import { useTheme } from "@/lib/use-theme";
+import { readSceneColors } from "@/lib/scene-colors";
 
 /* ────────────────────────────────────────────────────────────────
    Full-screen fragment shader: layered domain-warped simplex noise
@@ -30,6 +32,8 @@ const fragment = /* glsl */ `
   uniform vec3  uColorA;
   uniform vec3  uColorB;
   uniform float uIntensity;
+  uniform vec3  uBg;         // page background, so the canvas edge is invisible
+  uniform float uLight;      // 1.0 in the light theme
 
   // ---- simplex noise (Ashima / Stefan Gustavson) ----
   vec3 mod289(vec3 x){return x - floor(x*(1.0/289.0))*289.0;}
@@ -81,22 +85,30 @@ const fragment = /* glsl */ `
 
     // shape → colour
     float n = smoothstep(-0.45, 0.75, f);
-    vec3 col = mix(uColorA, uColorB, clamp(n*0.8 + push*0.6, 0.0, 1.0));
+    vec3 tint = mix(uColorA, uColorB, clamp(n*0.8 + push*0.6, 0.0, 1.0));
 
-    // keep it dark: mostly deep space with soft glowing currents
-    float glow = pow(n, 2.6) * uIntensity;
-    col *= glow;
+    float vig  = smoothstep(1.2, 0.3, length(p));
+    // ease the currents off toward the bottom so the headline stays legible
+    float clear = smoothstep(-0.55, 0.15, p.y) * 0.75 + 0.25;
 
-    // darken the lower third so the headline stays legible
-    col *= smoothstep(-0.55, 0.15, p.y) * 0.75 + 0.25;
-
-    // faint scanlines (HUD)
-    float scan = 0.94 + 0.06*sin(uv.y*uRes.y*1.5);
-    col *= scan;
-
-    // vignette
-    float vig = smoothstep(1.2, 0.3, length(p));
-    col *= vig;
+    vec3 col;
+    if (uLight > 0.5) {
+      // Light: pigment bleeding into paper. The same flow field, but used as a
+      // mix amount from the page background toward the tint instead of as
+      // emitted light — multiplying colour by a glow only works on black.
+      // Higher exponent than the dark branch: ink has to stay sparse or the
+      // marbling turns into noise the headline has to fight through.
+      float ink = pow(n, 3.2) * uIntensity * vig * clear;
+      col = mix(uBg, tint, clamp(ink * 0.62, 0.0, 1.0));
+      // grain rather than scanlines; a dark scanline reads as banding on paper
+      col *= 0.995 + 0.005*sin(uv.y*uRes.y*1.5);
+    } else {
+      // Dark: mostly deep space with soft glowing currents.
+      float glow = pow(n, 2.6) * uIntensity;
+      col = tint * glow * clear;
+      col *= 0.94 + 0.06*sin(uv.y*uRes.y*1.5);   // faint scanlines (HUD)
+      col *= vig;
+    }
 
     gl_FragColor = vec4(col, 1.0);
   }
@@ -110,6 +122,7 @@ const fragment = /* glsl */ `
 export function ShaderPlane() {
   const mat = useRef<THREE.ShaderMaterial>(null);
   const { size, viewport } = useThree();
+  const { theme } = useTheme();
   const mouse = useRef(new THREE.Vector2(0.5, 0.5));
   const target = useRef(new THREE.Vector2(0.5, 0.5));
   const vel = useRef(0);
@@ -123,9 +136,25 @@ export function ShaderPlane() {
       uColorA: { value: new THREE.Color("#a855f7") }, // violet
       uColorB: { value: new THREE.Color("#ec4899") }, // magenta
       uIntensity: { value: 0.55 },
+      uBg: { value: new THREE.Color("#050507") },
+      uLight: { value: 0 },
     }),
     []
   );
+
+  // Re-read the palette from CSS whenever the theme flips. Written through the
+  // material ref rather than the memoised uniforms object, which React treats
+  // as immutable once it has been handed to a hook.
+  useEffect(() => {
+    const u = mat.current?.uniforms;
+    if (!u) return;
+    const c = readSceneColors(theme);
+    u.uColorA.value.copy(c.a);
+    u.uColorB.value.copy(c.b);
+    u.uBg.value.copy(c.bg);
+    u.uLight.value = theme === "light" ? 1 : 0;
+    u.uIntensity.value = theme === "light" ? 0.5 : 0.55;
+  }, [theme]);
 
   useFrame((state, dt) => {
     if (!mat.current) return;
@@ -173,7 +202,7 @@ export function FluidShader({ className }: { className?: string }) {
         aria-hidden
         style={{
           background:
-            "radial-gradient(60% 50% at 50% 60%, rgba(168,85,247,.28), transparent 70%), radial-gradient(40% 40% at 70% 30%, rgba(236,72,153,.18), transparent 70%), var(--bg)",
+            "radial-gradient(60% 50% at 50% 60%, color-mix(in oklab, var(--accent) 28%, transparent), transparent 70%), radial-gradient(40% 40% at 70% 30%, color-mix(in oklab, var(--accent-2) 18%, transparent), transparent 70%), var(--bg)",
         }}
       />
     );

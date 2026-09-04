@@ -6,6 +6,7 @@ import { Cursor } from "@/components/motion/Cursor";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/lib/site";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 // Self-hosted variable fonts (no runtime request to Google).
 const grotesk = localFont({
@@ -37,9 +38,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${grotesk.variable} ${mono.variable} antialiased`}
     >
       <body className="noise min-h-dvh flex flex-col">
+        {/* Parser-blocking and first in <body>, so the stored theme lands on
+            <html> before anything paints. suppressHydrationWarning above is
+            because this script legitimately changes the attribute React
+            rendered on the server. */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <SmoothScroll>
           <Nav />
           <main className="flex-1">{children}</main>
