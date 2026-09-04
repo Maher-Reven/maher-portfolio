@@ -9,7 +9,7 @@ export const site = {
   tagline:
     "Engineering manager exploring the edge of design, motion and emerging tech.",
   url: "https://maherkurdi.com", // TODO: real domain
-  location: "Belgium",
+  location: "Amsterdam, Netherlands",
   email: "moesi88@icloud.com",
   socials: [
     { label: "GitHub", href: "https://github.com/Maher-Reven" },
@@ -18,8 +18,9 @@ export const site = {
   ],
   nav: [
     { label: "Work", href: "/work", code: "01" },
-    { label: "Lab", href: "/lab", code: "02" },
-    { label: "About", href: "/about", code: "03" },
-    { label: "Contact", href: "/contact", code: "04" },
+    { label: "Experience", href: "/experience", code: "02" },
+    { label: "Lab", href: "/lab", code: "03" },
+    { label: "About", href: "/about", code: "04" },
+    { label: "Contact", href: "/contact", code: "05" },
   ],
 } as const;

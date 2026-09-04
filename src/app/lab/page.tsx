@@ -12,7 +12,7 @@ export default function LabPage() {
   return (
     <>
       <PageHeader
-        code="02"
+        code="03"
         label="lab"
         title="Experiment log"
         intro="Shaders, motion studies and interface ideas. Everything here runs live in this site and is open source."
