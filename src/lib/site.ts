@@ -10,7 +10,7 @@ export const site = {
     "Engineering manager exploring the edge of design, motion and emerging tech.",
   url: "https://maherkurdi.com", // TODO: real domain
   location: "Belgium",
-  email: "hello@maherkurdi.com", // TODO
+  email: "moesi88@icloud.com",
   socials: [
     { label: "GitHub", href: "https://github.com/maherkurdi" },
     { label: "LinkedIn", href: "https://linkedin.com/in/maherkurdi" },
