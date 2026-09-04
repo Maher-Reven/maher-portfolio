@@ -21,7 +21,9 @@ export function Nav() {
               <span className="mono text-xs font-medium">{site.handle}</span>
               <span className="absolute -inset-px border border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </span>
-            <span className="label hidden sm:block">{site.role}</span>
+            {/* Decorative, and long enough to squeeze the nav links into a
+                clipped scroller. Only shown once there's genuinely room. */}
+            <span className="label hidden lg:block">{site.role}</span>
           </Link>
         </Magnetic>
 
@@ -55,7 +57,7 @@ export function Nav() {
 
         {/* status + theme */}
         <div className="flex shrink-0 items-center gap-3 sm:gap-4">
-          <div className="label hidden items-center gap-3 md:flex">
+          <div className="label hidden items-center gap-3 xl:flex">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
