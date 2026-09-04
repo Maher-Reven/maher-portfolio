@@ -1,0 +1,16 @@
+---
+title: "Text decode"
+summary: "Characters resolve left→right from random HUD glyphs. Used on every heading."
+year: 2026
+tags: ["Motion", "React", "Typography"]
+color: "#e6e6ec"
+order: 2
+---
+
+## What it is
+
+A `requestAnimationFrame` loop that reveals characters proportionally to elapsed time, filling the unresolved tail with glyphs from a block-drawing set. Spaces are preserved so words keep their rhythm during the scramble.
+
+## Source
+
+`src/components/motion/TextScramble.tsx`

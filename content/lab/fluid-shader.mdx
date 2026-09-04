@@ -1,0 +1,20 @@
+---
+title: "Fluid shader hero"
+summary: "Domain-warped simplex noise, cursor-driven flow field, violet→magenta palette. The background of this site."
+year: 2026
+tags: ["GLSL", "R3F", "Shader"]
+color: "#a855f7"
+order: 1
+---
+
+## What it is
+
+Four octaves of simplex noise, warped twice (`fbm(p + fbm(p + fbm(p)))`) to get the liquid look. The cursor injects a Gaussian "push" into the warp offsets, scaled by pointer velocity, so fast movement creates visible turbulence.
+
+## Performance notes
+
+Single full-screen quad, DPR capped at 1.5, no post-processing. Renders comfortably at 60fps on integrated GPUs; reduced-motion users get a static radial gradient instead.
+
+## Source
+
+`src/components/three/FluidShader.tsx`
