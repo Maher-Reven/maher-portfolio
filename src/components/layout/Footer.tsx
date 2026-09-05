@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { useLocale } from "@/lib/use-locale";
 
 export function Footer() {
+  const { t } = useLocale();
   return (
     <footer className="relative border-t border-line px-[var(--gutter)] py-10">
       <div className="grid gap-8 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="label mb-3">{"// contact"}</p>
+          <p className="label mb-3">{"// "}{t("footer.contact")}</p>
           <a
             href={`mailto:${site.email}`}
             className="text-2xl tracking-tight hover:text-accent transition-colors"
@@ -16,7 +20,7 @@ export function Footer() {
           </a>
         </div>
         <div>
-          <p className="label mb-3">{"// elsewhere"}</p>
+          <p className="label mb-3">{"// "}{t("footer.elsewhere")}</p>
           <ul className="space-y-1.5">
             {site.socials.map((s) => (
               <li key={s.href}>
@@ -33,11 +37,11 @@ export function Footer() {
           </ul>
         </div>
         <div>
-          <p className="label mb-3">{"// system"}</p>
+          <p className="label mb-3">{"// "}{t("footer.system")}</p>
           <ul className="space-y-1.5 text-fg-muted">
             <li>
               <Link href="/colophon" className="hover:text-fg transition-colors">
-                How this site is built
+                {t("footer.colophon")}
               </Link>
             </li>
             <li className="label !text-fg-dim pt-2">

@@ -7,11 +7,15 @@ import { site } from "@/lib/site";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { Clock } from "@/components/layout/Clock";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { LocaleToggle } from "@/components/layout/LocaleToggle";
+import { useLocale } from "@/lib/use-locale";
+import type { TKey } from "@/lib/i18n";
 import { NavMenu } from "@/components/layout/NavMenu";
 
 export function Nav() {
   const path = usePathname();
   const city = site.location.split(",")[0];
+  const { t } = useLocale();
 
   return (
     <header className="nav-blend fixed inset-x-0 top-0 z-50">
@@ -24,7 +28,7 @@ export function Nav() {
               <span className="absolute -inset-px border border-accent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </span>
             {/* Decorative and wide — the last thing to earn its space. */}
-            <span className="label hidden xl:block">{site.role}</span>
+            <span className="label hidden xl:block">{t("site.role")}</span>
           </Link>
         </Magnetic>
 
@@ -43,7 +47,7 @@ export function Nav() {
                   )}
                 >
                   <span className="text-accent">{item.code}</span>
-                  <span>{item.label}</span>
+                  <span>{t(`nav.${item.key}` as TKey)}</span>
                   <span
                     className={clsx(
                       "absolute -bottom-0.5 left-0 h-px bg-accent transition-all duration-500 [transition-timing-function:var(--ease-out-expo)]",
@@ -73,6 +77,7 @@ export function Nav() {
             </span>
           </div>
           <ThemeToggle />
+          <LocaleToggle />
           <NavMenu />
         </div>
       </div>

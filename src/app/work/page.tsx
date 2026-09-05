@@ -10,12 +10,7 @@ export default function WorkPage() {
   const entries = getEntries("work");
   return (
     <>
-      <PageHeader
-        code="01"
-        label="work"
-        title="Selected work"
-        intro="Team outcomes and personal projects, framed the same way: problem, approach, result, and what I'd change."
-      />
+      <PageHeader code="01" tk="work" />
       <Reveal className="mx-[var(--gutter)] mb-32 grid gap-px bg-line md:grid-cols-2" stagger={0.1}>
         {entries.map((e, i) => (
           <div key={e.slug} data-reveal className="bg-bg"><EntryCard entry={e} index={i} /></div>

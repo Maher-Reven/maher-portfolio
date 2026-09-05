@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Tr } from "@/components/i18n/Tr";
 import { HudFrame } from "@/components/ui/HudFrame";
 import { Reveal } from "@/components/motion/Reveal";
 
@@ -68,12 +69,7 @@ const education = {
 export default function ExperiencePage() {
   return (
     <>
-      <PageHeader
-        code="02"
-        label="experience"
-        title="Ten years building, five leading"
-        intro="Engineering management across fintech, healthcare and edtech — always staying close to the code, the incidents, and the people shipping both."
-      />
+      <PageHeader code="02" tk="experience" />
       <Reveal className="mx-[var(--gutter)] mb-16 flex flex-col gap-4" stagger={0.08}>
         {roles.map((r) => (
           <HudFrame key={r.org + r.period} data-reveal className="p-6 md:p-8">
@@ -97,7 +93,7 @@ export default function ExperiencePage() {
       </Reveal>
       <Reveal className="mx-[var(--gutter)] mb-32">
         <HudFrame data-reveal className="p-6 md:p-8">
-          <p className="label mb-2 text-accent">Education</p>
+          <p className="label mb-2 text-accent"><Tr k="page.experience.education" /></p>
           <div className="flex flex-col justify-between gap-2 md:flex-row md:items-baseline">
             <h3 className="text-xl md:text-2xl">
               {education.degree} <span className="text-fg-dim">· {education.org}</span>

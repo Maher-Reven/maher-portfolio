@@ -19,7 +19,7 @@ const stack = [
 export default function ColophonPage() {
   return (
     <>
-      <PageHeader code="SYS" label="colophon" title="How this site is built" intro="The engineering behind the motion — every effect, its cost, and why it's there." />
+      <PageHeader code="SYS" tk="colophon" />
       <Reveal className="mx-[var(--gutter)] mb-32 grid gap-px bg-line md:grid-cols-2" stagger={0.06}>
         {stack.map(([k, v]) => (
           <HudFrame key={k} data-reveal className="!border-0 bg-bg p-6">

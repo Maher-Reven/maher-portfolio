@@ -16,5 +16,5 @@ export default async function WorkEntry({ params }: PageProps<"/work/[slug]">) {
   const { slug } = await params;
   const entry = getEntry("work", slug);
   if (!entry) notFound();
-  return <EntryPage entry={entry} code="01" label="work" backHref="/work" backLabel="All work" />;
+  return <EntryPage entry={entry} code="01" label="work" backHref="/work" backKey="entry.allWork" />;
 }

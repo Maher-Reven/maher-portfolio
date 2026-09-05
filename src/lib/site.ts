@@ -16,11 +16,13 @@ export const site = {
     { label: "LinkedIn", href: "https://www.linkedin.com/in/maherskrde/" },
     { label: "X", href: "https://x.com/maherkurdi" },
   ],
+  // `key` is the stable translation key; `label` is the English fallback used
+  // wherever a raw string is needed (metadata, non-client contexts).
   nav: [
-    { label: "Work", href: "/work", code: "01" },
-    { label: "Experience", href: "/experience", code: "02" },
-    { label: "Lab", href: "/lab", code: "03" },
-    { label: "About", href: "/about", code: "04" },
-    { label: "Contact", href: "/contact", code: "05" },
+    { key: "work", label: "Work", href: "/work", code: "01" },
+    { key: "experience", label: "Experience", href: "/experience", code: "02" },
+    { key: "lab", label: "Lab", href: "/lab", code: "03" },
+    { key: "about", label: "About", href: "/about", code: "04" },
+    { key: "contact", label: "Contact", href: "/contact", code: "05" },
   ],
 } as const;

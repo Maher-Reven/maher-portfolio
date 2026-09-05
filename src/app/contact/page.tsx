@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "Contact" };
 export default function ContactPage() {
   return (
     <>
-      <PageHeader code="05" label="contact" title="Let's talk" intro="Open to conversations about engineering leadership, creative tech, and ambitious side quests." />
+      <PageHeader code="05" tk="contact" />
       <div className="px-[var(--gutter)] pb-32">
         <Magnetic>
           <a

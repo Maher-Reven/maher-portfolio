@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { HeroScene } from "@/components/three/HeroScene";
-import { TextScramble } from "@/components/motion/TextScramble";
+import { Tr, ScrambleT } from "@/components/i18n/Tr";
 import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EntryCard } from "@/components/ui/EntryCard";
@@ -31,18 +31,12 @@ export default function Home() {
         </div>
 
         <h1 className="max-w-[16ch] text-[clamp(2.75rem,9vw,8.5rem)] font-medium leading-[0.92] tracking-[-0.04em]">
-          <TextScramble text="Engineering" as="span" className="block" speed={40} />
-          <TextScramble
-            text="that moves."
-            as="span"
-            className="glow block text-accent"
-            speed={40}
-            delay={450}
-          />
+          <ScrambleT k="hero.line1" as="span" className="block" speed={40} />
+          <ScrambleT k="hero.line2" as="span" className="glow block text-accent" speed={40} delay={450} />
         </h1>
 
         <div className="mt-10 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-[44ch] text-lg text-fg-muted">{site.tagline}</p>
+          <p className="max-w-[44ch] text-lg text-fg-muted"><Tr k="site.tagline" /></p>
           <div className="flex gap-3">
             <Magnetic>
               <Link
@@ -50,7 +44,7 @@ export default function Home() {
                 className="bracket mono inline-flex items-center gap-2 border border-line-strong px-5 py-3 text-xs transition-colors hover:border-accent hover:text-accent"
                 data-cursor-label="Open"
               >
-                Selected work <span aria-hidden>→</span>
+                <Tr k="hero.ctaWork" /> <span aria-hidden>→</span>
               </Link>
             </Magnetic>
             <Magnetic>
@@ -58,7 +52,7 @@ export default function Home() {
                 href="/lab"
                 className="mono inline-flex items-center gap-2 px-5 py-3 text-xs text-fg-muted transition-colors hover:text-fg"
               >
-                Enter the lab
+                <Tr k="hero.ctaLab" />
               </Link>
             </Magnetic>
           </div>
@@ -69,11 +63,11 @@ export default function Home() {
       <section className="px-[var(--gutter)] py-28">
         <Reveal className="mb-12 flex items-end justify-between">
           <div data-reveal>
-            <p className="label mb-3">{"01 // selected work"}</p>
-            <h2 className="text-4xl tracking-tight md:text-5xl">Outcomes, not deliverables.</h2>
+            <p className="label mb-3">{"01 // "}<Tr k="home.workLabel" /></p>
+            <h2 className="text-4xl tracking-tight md:text-5xl"><Tr k="home.workTitle" /></h2>
           </div>
           <Link data-reveal href="/work" className="label hover:text-fg">
-            All work →
+            <Tr k="home.allWork" /> →
           </Link>
         </Reveal>
         <Reveal className="grid gap-px bg-line md:grid-cols-2" stagger={0.12}>
@@ -88,9 +82,9 @@ export default function Home() {
       {/* ───────────── LAB ───────────── */}
       <section className="border-t border-line px-[var(--gutter)] py-28">
         <Reveal className="mb-12">
-          <p data-reveal className="label mb-3">{"02 // lab"}</p>
+          <p data-reveal className="label mb-3">{"02 // "}<Tr k="home.labLabel" /></p>
           <h2 data-reveal className="text-4xl tracking-tight md:text-5xl">
-            Experiments in motion, shaders and interface.
+            <Tr k="home.labTitle" />
           </h2>
         </Reveal>
         <Reveal className="grid gap-4 md:grid-cols-3" stagger={0.1}>
@@ -113,7 +107,7 @@ export default function Home() {
       <section className="border-t border-line px-[var(--gutter)] py-28">
         <Reveal className="grid gap-10 md:grid-cols-12">
           <p data-reveal className="label md:col-span-3">
-            {"03 // about"}
+            {"03 // "}<Tr k="home.aboutLabel" />
           </p>
           <div data-reveal className="md:col-span-7">
             <p className="text-2xl leading-snug tracking-tight md:text-3xl">
@@ -122,7 +116,7 @@ export default function Home() {
               portfolio and a lab notebook — every effect here is open source.
             </p>
             <Link href="/about" className="label mt-8 inline-block hover:text-fg">
-              More about me →
+              <Tr k="home.aboutMore" /> →
             </Link>
           </div>
         </Reveal>

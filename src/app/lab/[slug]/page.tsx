@@ -16,5 +16,5 @@ export default async function LabEntry({ params }: PageProps<"/lab/[slug]">) {
   const { slug } = await params;
   const entry = getEntry("lab", slug);
   if (!entry) notFound();
-  return <EntryPage entry={entry} code="02" label="lab" backHref="/lab" backLabel="All experiments" />;
+  return <EntryPage entry={entry} code="03" label="lab" backHref="/lab" backKey="entry.allExperiments" />;
 }

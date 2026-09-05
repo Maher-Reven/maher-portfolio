@@ -11,12 +11,7 @@ export default function LabPage() {
   const entries = getEntries("lab");
   return (
     <>
-      <PageHeader
-        code="03"
-        label="lab"
-        title="Experiment log"
-        intro="Shaders, motion studies and interface ideas. Everything here runs live in this site and is open source."
-      />
+      <PageHeader code="03" tk="lab" />
       <Reveal className="mx-[var(--gutter)] mb-32 grid gap-4 md:grid-cols-3" stagger={0.08}>
         {entries.map((e, i) => (
           <HudFrame key={e.slug} data-reveal>

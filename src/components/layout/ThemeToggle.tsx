@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "@/lib/use-theme";
+import { useLocale } from "@/lib/use-locale";
 
 /**
  * Theme switch, drawn as a HUD readout rather than a pill: the two states sit
@@ -12,14 +13,15 @@ import { useTheme } from "@/lib/use-theme";
  */
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const { t } = useLocale();
   const isDark = theme === "dark";
 
   return (
     <button
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
-      title={`Switch to ${isDark ? "light" : "dark"} theme`}
+      aria-label={t(isDark ? "nav.themeToLight" : "nav.themeToDark")}
+      title={t(isDark ? "nav.themeToLight" : "nav.themeToDark")}
       data-cursor-label="Theme"
       className="label group flex items-center gap-1.5 border border-line px-2 py-1.5 transition-colors hover:border-line-strong"
     >

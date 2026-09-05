@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import { site } from "@/lib/site";
 import { useFinePointer } from "@/lib/motion";
+import { useLocale } from "@/lib/use-locale";
+import type { TKey } from "@/lib/i18n";
 
 /**
  * The nav collapsed into a dropdown, used below `lg` where the links no longer
@@ -20,6 +22,7 @@ export function NavMenu() {
   const [open, setOpen] = useState(false);
   const path = usePathname();
   const fine = useFinePointer();
+  const { t } = useLocale();
   const wrap = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -75,8 +78,8 @@ export function NavMenu() {
         }}
         aria-expanded={open}
         aria-controls="nav-menu"
-        aria-label="Menu"
-        data-cursor-label="Menu"
+        aria-label={t("nav.menu")}
+        data-cursor-label={t("nav.menu")}
         className="label flex items-center gap-2 border border-line px-2.5 py-1.5 transition-colors hover:border-line-strong"
       >
         <span className="grid gap-[3px]">
@@ -99,7 +102,7 @@ export function NavMenu() {
             )}
           />
         </span>
-        <span className="hidden sm:inline">{open ? "Close" : "Menu"}</span>
+        <span className="hidden sm:inline">{open ? t("nav.close") : t("nav.menu")}</span>
       </button>
 
       <div
@@ -143,7 +146,7 @@ export function NavMenu() {
                 )}
               />
               <span className="text-accent">{item.code}</span>
-              <span>{item.label}</span>
+              <span>{t(`nav.${item.key}` as TKey)}</span>
             </Link>
           );
         })}

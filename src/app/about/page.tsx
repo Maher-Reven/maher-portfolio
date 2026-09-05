@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Tr } from "@/components/i18n/Tr";
 import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/lib/site";
 
@@ -8,7 +9,7 @@ export const metadata: Metadata = { title: "About" };
 export default function AboutPage() {
   return (
     <>
-      <PageHeader code="04" label="about" title="I build the platform underneath the platform" />
+      <PageHeader code="04" tk="about" />
       <Reveal className="grid gap-12 px-[var(--gutter)] pb-32 md:grid-cols-12">
         <div data-reveal className="prose md:col-span-7">
           <p>
@@ -47,9 +48,9 @@ export default function AboutPage() {
         </div>
         <aside data-reveal className="md:col-span-4 md:col-start-9">
           <dl className="label space-y-4 border-t border-line pt-4">
-            <div><dt className="text-fg-dim">based in</dt><dd className="text-fg">{site.location}</dd></div>
-            <div><dt className="text-fg-dim">role</dt><dd className="text-fg">Senior Engineering Manager, Mobile Platform</dd></div>
-            <div><dt className="text-fg-dim">interests</dt><dd className="text-fg">Motion · Shaders · AI · Developer Experience</dd></div>
+            <div><dt className="text-fg-dim"><Tr k="page.about.basedIn" /></dt><dd className="text-fg">{site.location}</dd></div>
+            <div><dt className="text-fg-dim"><Tr k="page.about.role" /></dt><dd className="text-fg">Senior Engineering Manager, Mobile Platform</dd></div>
+            <div><dt className="text-fg-dim"><Tr k="page.about.interests" /></dt><dd className="text-fg">Motion · Shaders · AI · Developer Experience</dd></div>
           </dl>
         </aside>
       </Reveal>
