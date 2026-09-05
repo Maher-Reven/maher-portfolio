@@ -1,4 +1,4 @@
-export const LOCALES = ["en", "fr", "nl", "ru"] as const;
+export const LOCALES = ["en", "fr", "nl", "fy", "ru"] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const LOCALE_KEY = "mk-locale";
@@ -8,12 +8,14 @@ export const LOCALE_LABEL: Record<Locale, string> = {
   en: "EN",
   fr: "FR",
   nl: "NL",
+  fy: "FY",
   ru: "RU",
 };
 export const LOCALE_NAME: Record<Locale, string> = {
   en: "English",
   fr: "Français",
   nl: "Nederlands",
+  fy: "Frysk",
   ru: "Русский",
 };
 
@@ -25,7 +27,7 @@ export const LOCALE_NAME: Record<Locale, string> = {
  * Constants only in this module — no React import — because the root layout is
  * a server component and needs the script string from here.
  */
-export const LOCALE_INIT_SCRIPT = `(function(){try{var l=localStorage.getItem("${LOCALE_KEY}");if(["en","fr","nl","ru"].indexOf(l)<0)l="en";document.documentElement.dataset.locale=l;document.documentElement.lang=l;}catch(e){document.documentElement.dataset.locale="en";document.documentElement.lang="en";}})();`;
+export const LOCALE_INIT_SCRIPT = `(function(){try{var l=localStorage.getItem("${LOCALE_KEY}");if(["en","fr","nl","fy","ru"].indexOf(l)<0)l="en";document.documentElement.dataset.locale=l;document.documentElement.lang=l;}catch(e){document.documentElement.dataset.locale="en";document.documentElement.lang="en";}})();`;
 
 const en = {
   "site.role": "Engineering Manager · Creative Technologist",
@@ -248,6 +250,79 @@ const nl: Record<TKey, string> = {
   "footer.colophon": "Hoe deze site is gebouwd",
 };
 
+const fy: Record<TKey, string> = {
+  "site.role": "Engineering Manager · Kreatyf technolooch",
+  "site.tagline":
+    "Engineering manager dy't de grinzen fan design, motion en opkommende technology ferkent.",
+
+  "nav.work": "Wurk",
+  "nav.experience": "Ûnderfining",
+  "nav.lab": "Lab",
+  "nav.about": "Oer my",
+  "nav.contact": "Kontakt",
+  "nav.menu": "Menu",
+  "nav.close": "Slute",
+  "nav.language": "Taal",
+  "nav.themeToLight": "Nei it ljochte tema",
+  "nav.themeToDark": "Nei it tsjustere tema",
+
+  "hero.line1": "Engineering",
+  "hero.line2": "dy't beweecht.",
+  "hero.ctaWork": "Selektearre wurk",
+  "hero.ctaLab": "Nei it lab",
+
+  "home.workLabel": "selektearre wurk",
+  "home.workTitle": "Útkomsten, gjin oplevering.",
+  "home.allWork": "Al it wurk",
+  "home.labLabel": "lab",
+  "home.labTitle": "Eksperiminten yn motion, shaders en ynterface.",
+  "home.aboutLabel": "oer my",
+  "home.aboutMore": "Mear oer my",
+
+  "page.work.label": "wurk",
+  "page.work.title": "Selektearre wurk",
+  "page.work.intro":
+    "Teamresultaten en persoanlike projekten, hieltyd op deselde wize opboud: probleem, oanpak, resultaat, en wat ik oars dwaan soe.",
+
+  "page.experience.label": "ûnderfining",
+  "page.experience.title": "Tsien jier bouwe, fiif jier liede",
+  "page.experience.intro":
+    "Engineering management yn fintech, soarch en edtech — altyd tichtby de koade, de ynsidinten en de minsken dy't beide oplevere.",
+  "page.experience.education": "Oplieding",
+
+  "page.lab.label": "lab",
+  "page.lab.title": "Logboek fan eksperiminten",
+  "page.lab.intro":
+    "Shaders, motion studies en ynterface-ideeën. Alles hjir draait live op dizze side en is iepen boarne.",
+
+  "page.about.label": "oer my",
+  "page.about.title": "Ik bou it platfoarm ûnder it platfoarm",
+  "page.about.basedIn": "festige yn",
+  "page.about.role": "rol",
+  "page.about.interests": "ynteresses",
+
+  "page.contact.label": "kontakt",
+  "page.contact.title": "Litte wy prate",
+  "page.contact.intro":
+    "Iepen foar petearen oer engineering leadership, kreative tech en ambisjeuze sideprojekten.",
+
+  "page.colophon.label": "kolofon",
+  "page.colophon.title": "Hoe't dizze side boud is",
+  "page.colophon.intro":
+    "De engineering achter de motion — elk effekt, wat it kostet, en wêrom't it der is.",
+
+  "entry.year": "jier",
+  "entry.role": "rol",
+  "entry.tags": "stack / tags",
+  "entry.allWork": "Al it wurk",
+  "entry.allExperiments": "Alle eksperiminten",
+
+  "footer.contact": "kontakt",
+  "footer.elsewhere": "earne oars",
+  "footer.system": "systeem",
+  "footer.colophon": "Hoe't dizze side boud is",
+};
+
 const ru: Record<TKey, string> = {
   "site.role": "Инженерный менеджер · Креативный технолог",
   "site.tagline":
@@ -321,7 +396,7 @@ const ru: Record<TKey, string> = {
   "footer.colophon": "Как устроен этот сайт",
 };
 
-const DICT: Record<Locale, Record<TKey, string>> = { en, fr, nl, ru };
+const DICT: Record<Locale, Record<TKey, string>> = { en, fr, nl, fy, ru };
 
 /** Falls back to English for any key a locale hasn't covered. */
 export function translate(locale: Locale, key: TKey): string {

@@ -1,0 +1,17 @@
+---
+title: "Fluid shader hero"
+summary: "Domain-warped simplex noise, in stromingsfjild oanstjoerd troch de cursor, palet fan fiolet nei magenta. De eftergrûn fan dizze side."
+tags: ["GLSL", "R3F", "Shader"]
+---
+
+## Wat it is
+
+Fjouwer oktaven simplex noise, twaris ferfoarme (`fbm(p + fbm(p + fbm(p)))`) foar dat floeibere uterlik. De cursor bringt in Gaussyske "triuw" yn de ferfoarmingsoffsets, skaald nei de snelheid fan de oanwizer, sadat rappe beweging sichtbere turbulinsje jout.
+
+## Prestaasjes
+
+Ien skermfoljende quad, DPR ôftopt op 1,5, gjin neiferwurking. Draait maklik op 60 fps op yntegrearre GPU's; wa't animaasjes beheind hat, krijt in statysk radiaal ferrin.
+
+## Boarne
+
+`src/components/three/FluidShader.tsx`

@@ -1,0 +1,35 @@
+---
+title: "Spline-sêne ynbêde"
+summary: "In 3D-sêne makke yn Spline, ynbêde yn React mei in spotlight dy't de cursor folget — en it bundlerprobleem dat bepaalde hoe. Hjirûnder live."
+tags: ["Spline", "React", "3D"]
+---
+
+## Wat it is
+
+In sêne boud yn [Spline](https://spline.design) en monteare as React-komponint, mei in spotlight op fearren dy't de cursor folget. Sleep de sêne om te draaien.
+
+<SplineSceneDemo />
+
+## Wat net wurke
+
+De foar de hân lizzende yntegraasje is `@splinetool/react-spline`, en dy bout hjir net.
+
+De runtime lokalisearret syn Draco-dekoders mei `new URL("../libs/draco/draco_decoder.js", import.meta.url)`. Bundlers lêze dat patroan as in ferwizing nei in asset en besykje it bestân te finen — mar it sit net yn it publisearre pakket, om't Spline it ûnder it draaien fan har CDN hellet. Turbopack respektearret it patroan, kin it net oplosse, en de produksjebuild stoppet. Seis modules, deselde oarsaak.
+
+Dêrom brûkt dit Spline har `<spline-viewer>` webkomponint, laden fan in CDN en registrearre fia `customElements.whenDefined`. Gjin bundler yn it spul, wêrtroch't it ek `output: "export"` oerlibbet. Der wurdt neat laden foardat it komponint monteart.
+
+De ruil is earlik: in skript fan tredden dat ûnder it draaien ophelle wurdt, en in ynbêding dy't ôfhinget fan it CDN fan in oar. Prima foar in eksperimint. Net wat ik achter in hero sette soe.
+
+## De spotlight
+
+De spotlight is gjin CSS `:hover`-effekt. Hy lêst de oanwizer ôf tsjin it ramt fan de âlder en stjoert de koördinaten troch twa fearren, sadat it ljocht wat achterrint op de cursor ynstee fan deroan fêst te klikken — krekt dat detail lit it as ljocht oanfiele en net as in div dy't de mûs folget.
+
+It komponint mjit by it montearjen syn eigen âlder en set dêr `position: relative` en `overflow: hidden` op. Tûk, mar it betsjut wol dat it stikem it elemint derboppe oanpast. Goed om te witten foardat je it yn in opmaak sette dy't dêr gefoelich foar is.
+
+## Notysjes
+
+It poadium bliuwt tsjuster yn beide tema's. De spotlight is wyt en de kop is in ljocht ferrin; beide hawwe in tsjustere ûndergrûn nedich en soene tsjin it papier fan it ljochte tema ferdwine. It lêze as viewport ynstee fan as sideflak makket dy kar bewust.
+
+## Boarne
+
+`src/components/three/SplineSceneDemo.tsx` · `src/components/ui/splite.tsx` · `src/components/ui/spotlight.tsx`

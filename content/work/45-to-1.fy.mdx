@@ -1,0 +1,71 @@
+---
+title: "45 → 1"
+summary: "In fersnippere lânskip fan soarchprodukten gearbringe ta ien platfoarm — sûnder ien release te missen foar de sikehûzen dy't deryn draaie."
+role: "Engineering Manager"
+tags: ["Platfoarmstrategy", "Monorepo", "Soarch", "Feroarmanagement"]
+---
+
+## Kontekst
+
+LOGEX Patient Engagement bout produkten foar pasjinten fan sikehûzen en klinyken — apps dêr't minsken har mei tariede op in behanneling en har hersteltocht mei byhâlde. Elke soarchorganisaasje krijt in eigen app, op iOS en Android, ynrjochte op har eigen soarchpaden.
+
+Tsjin de tiid dat ik de engineering oernaam, wie dy tasizzing betelle yn struktuer. It lânskip wie groeid nei sa'n **45 repository's** oer ferskate mobile technologyen, mei foar hast elke klant in eigen build- en releasepaad.
+
+## It probleem
+
+Elke klantfariant wie yn alles útsein namme in fork wurden.
+
+In wiziging yn dield gedrach wie noait ien wiziging. It wiene *n* ymplemintaasjes, *n* reviews, *n* releasetreinen en *n* kânsen om it krekt ferkeard te dwaan foar ien sikehûs en net foar de rest. In bug dy't foar ien klant oplost wie, koe moannenlang by de oaren stean bliuwe — net om't immen him leger prioritearre, mar om't nimmen sjen koe dat er earne oars noch iepen stie.
+
+Kosten wiene it sichtbere symptoom: hosting, CI-minuten, lisinsjes, alles fermannichfâldige mei in getal dat nimmen bewust keazen hie. It djoere diel wie stiller: in ingenieur ynwurkje betsjutte him ynwurkje op *in repository*, net op it produkt. Kennis bleau lokaal, eigenerskip wie krekt ûndúdlik op de grinzen dy't derta dienen, en de organisaasje koe gjin minsken flugger tafoegje as kontekst.
+
+## De betingsten
+
+Dit is it diel dat elk folgjend beslút bepaalt:
+
+- **De produkten draaiden live, yn sikehûzen, foar pasjinten.** Der wie gjin migraasjefinster wêryn't wat stikken mocht, en gjin groep brûkers foar wa't dat akseptabel wie.
+- **Regulearre omjouwing.** Jierlikse ISO- en NEN 7510-audits betsjutten dat de neigongberens fan wizigings *ûnder* de migraasje net efterútgean mocht — de oergong sels moast auditearber bliuwe.
+- **Gjin kwartaal foar konsolidaasje.** Klantôfspraken rûnen troch. Dit barde neist de roadmap, net ynstee dêrfan.
+
+## De strategy
+
+Trije besluten dienen it measte wurk.
+
+**Konsolidearje it operating model, net allinnich de koade.** In monorepo dêr't teams omhinne wurkje is strikt minder goed as earlike fersnippering: je krije de keppeling sûnder de hefboom. It doel wie dus noait "ien repository". It wie ien pipeline, ien releasetrein, ien definysje fan klear, en eksplisite grinzen fan eigenerskip *binnen* de repo. De mappestruktuer wie de maklike helte.
+
+**Meitsje white-label in runtime-kwestje ynstee fan in buildkwestje.** Hjirop rêste it gehiel. Sa lang as klantferskillen yn forkte koade libben, ferpleatste konsolidaasje allinnich de forks. Dy fariaasje ferhúzje nei konfiguraasje en troch de server oanstjoerde UI makke ien koadebasis foar in protte sikehûzen pas echt helber.
+
+**Migrearje ynkrementeel, noait yn ien kear.** Repository's ferhuzen op folchoarder, de meast dûbele earst, wêrby't it lânskip by elke stap releasber bleau. In migraasje dy't in freeze nedich hat om te lânjen, is in migraasje dy't sneuvelt sa gau't de earste klantôfspraak ferskoot.
+
+## Utfiering
+
+It wurk sels wie ûnglamoereus en foaral in kwestje fan folchoarder:
+
+- Repository's migrearren op folchoarder fan ôfhinklikheden, elk mei in taak foar it útskeakeljen as sturt — de besparring lânet pas as de âlde ynfrastruktuer echt út giet, en dat is de stap dy't elkenien oerslacht.
+- Ien dield CI/CD-paad (Bitrise, Fastlane, App Store Connect, Google Play) ynstee fan pipelines per repo, sadat releasegedrach net langer in eigenskip wie fan de repo dêr't je tafallich yn sieten.
+- Automatyske ferifikaasjepoarten op dielde koade, sadat in wiziging foar de iene klant net stikem in oare brekke koe — krekt it faalsenario dat konsolidaasje *ynfiert* as je der net tsjin ûntwerpe.
+- Domeinobservabiliteit en blameless retrospektiven it hiele trajekt troch; sa bliuwt in migraasje fan dizze lingte earlik oer wat se kostet.
+
+## Lieding jaan ûnderweis
+
+It technyske plan wie net it dreechste diel. It dreechste wie dat elk team lokaal optimalisearre — foar de eigen repo, de eigen klant, it eigen ritme — en dat elk dêryn op himsels gelyk hie. Konsolidaasje frege har in dielde standert te akseptearjen dy't har op koarte termyn mjitber minder autonoom makke, yn ruil foar in hefboom dy't letter komme soe, en earst by it team dernjonken.
+
+Wat it echt yn beweging brocht: de dûbele kosten sichtber meitsje yn taal dy't teams werkenden, *tegearre* mei teams migrearje ynstee fan har in doelarsjitektuer te oerhandigjen, en eigenerskip helder meitsje foardat de earste repository ferhuze ynstee fan it by ûngelok yndale te litten. Ofstimming mei belanghawwenden wie hjir gjin kommunikaasje-oefening — it wie it resultaat.
+
+## Resultaten
+
+```txt
+koadebasis   ~45 repo's → 1 monorepo
+hosting      ~65% leger
+CI / SCM     ~45% leger
+releases     per klant → ien trein
+audits       ISO / NEN 7510, sûnder fertraging
+```
+
+It wichtichste getal stiet net yn dat blok. In fix berikt no alle sikehûzen tagelyk, in ingenieur wurket him yn op it produkt ynstee fan op in repository, en de folgjende klant tafoegje is in konfiguraasjefraachstik ynstee fan in koadebasis.
+
+## Wat ik oars dwaan soe
+
+Ik soe it model fan eigenerskip fêstlein hawwe foardat de earste repository ferhuze, ynstee fan it pas twa of trije migraasjes letter ûntstean te litten. Wy kamen der wol, mar in skoft lang wie de koade konsolidearre wylst de ferantwurdlikheid dat noch net wie — en yn dat gat sieten de ûndúdlikheid en de traachste reviews.
+
+Ik soe it útskeakeljen fan âlde ynfrastruktuer ek fan dei ien ôf eksplisyt finansiere hawwe. It is werklik saai wurk sûnder sichtber produktresultaat, it is dêr't de hiele businesscase te jilde makke wurdt, en it ferliest elk petear oer prioriteiten dêr't je it net tsjin beskermje.

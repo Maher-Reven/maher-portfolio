@@ -1,0 +1,99 @@
+---
+title: "KYC en betelferifikaasje opskale"
+summary: "In betelyntegraasje dy't eins in identiteitsfraachstik bliek — omfoarme ta in merkyntroduksje dêr't neilibbing foarop stiet, yn de FS en trije Aziatyske merken."
+role: "Engineering Manager & Tech Lead"
+tags: ["Neilibbing", "Fintech", "Mobyl platfoarm", "Arsjitektuer"]
+---
+
+## Kontekst
+
+BOTS eksploitearre in automatisearre beleggingsplatfoarm en tariede útwreiding nei de FS en Azië ta. It inisjatyf kaam binnen yn ien sin: **foegje betelyntegraasjes ta foar de nije merken.**
+
+Ik late it oer Mobile, Backend, Compliance, Legal en Product hinne.
+
+## It probleem wiene net de betellings
+
+By it útwurkjen fan de easken mei Legal en Compliance waard dúdlik dat betellings mar it sichtbere diel wiene.
+
+De besteande KYC-ymplemintaasje wie boud om ien regio hinne. Dokuminttypes, identiteitsôfhanneling en adresparsing sieten hurd yn de koade — wylst elke nije merk wêzentlik oare identiteitsbewizen frege. De FS woe in SSN; de Aziatyske merken woene har eigen lokale dokuminten.
+
+> De kop gie oer betellings. It ûnderlizzende probleem wie identiteit.
+
+De roadmap ferstoppe in keten fan ôfhinklikheden dy't krekt oarsom rûn as hoe't it wurk opset wie:
+
+```txt
+betelyntegraasje
+ └─ KYC- / identiteitseasken
+     └─ juridyske talitberens
+         └─ überhaupt lansearje kinne
+```
+
+In betelfunksje opleverje sûnder earst KYC op te lossen wie gjin lette funksje west. It wie in tafersjochrisiko west. Ynstee fan engineering op oannames begjinne te litten, hold ik in wurksesje mei Legal om de regionale neilibbingssteaten fêst te lizzen **foardat der koade skreaun waard**, en foarme ik it inisjatyf om: fan betelyntegraasje nei merkyntroduksje mei neilibbing foarop.
+
+## It steateprobleem dêrûnder
+
+Der spile noch wat, stiller. KYC-ferifikaasje is asynchroan, en de arsjitektuer respektearre dat net.
+
+In provider koe in brûker as goedkard markearje wylst ús systeem him noch op "yn behanneling" hie. Webhooks kamen let of net, retries stoarten stil yn, en in brûker koe de checkout berikke wylst syn ynterne neilibbingssteat efterrûn. It wie in ferspraat steateprobleem sûnder ien boarne fan wierheid — en wat it op it spul sette, wie in tafersjochsgrins.
+
+De oplossing wie de folchoarder omdraaie en neilibbing in poarte meitsje ynstee fan in kontrôle:
+
+```txt
+foar  brûker → betelling → KYC
+nei   brûker → KYC → frijjûn → betelling
+```
+
+De betelmodule inisjalisearre gewoanwei net oant de orkestrator in frijjûne steat útstjoerde.
+
+## Regiobewust fia arsjitektuer, net fia branches
+
+Ynstee fan de regels fan elk lân yn de mobile app te koadearjen, sette wy in event-driven **KYC-orkestrator** tusken de app en de provider, en splitsten wy de trije ferantwurdlikheden netjes.
+
+De app sammelet ynformaasje, toant regiospesifike easken en hannelet ûnderbrekking en herstel ôf. De orkestrator bepaalt wat in brûker nedich hat op basis fan geografy, is eigener fan de ferifikaasjesteat, fangt asynkroane providerevents, retries en webhooks op, bliuwt auditearber en hanthavet de poarte. De provider docht identiteits-, dokumint- en livenesskontrôles.
+
+> De provider fiert de ferifikaasje út; de steat is fan ús.
+
+Dat hold ien konsistint yntern model oerein wylst provider en regionale regels dêrûnder feroarje koene. De steatemasine makke `Pending → Cleared → EDD` eksplisyt, mei betellings op slot oant de goede steat berikt wie.
+
+## Opleverje sûnder it te oerbouwen
+
+In folslein automatisearre wrâldwide neilibbingsmotor wie moannen wurk en hie it merkfinster mist. Hastigens hie juridysk risiko oplevere. De útrol gie dus yn faze's.
+
+Faze ien wie de minimale arsjitektuer om de merken feilich te betreden: dynamyske orkestraasje, Amerikaanske en Aziatyske identiteitseasken, regiobewuste dokumintoanfragen, in hurde betelpoarte, betroubere webhook- en steateôfhanneling, end-to-end falidaasje. Komplekse automatisearre rângefallen waarden bewust útsteld.
+
+Faze twa soe bepaald wurde troch produksjetelemetry sa gau't de trechter echt observearber wie, ynstee fan troch betochte problemen. Lever in feilich fûnemint, mjit de werklikheid, optimalisearje dêrnei.
+
+## Falen as it gewoane gefal behannelje
+
+Mobile ferifikaasje bart net yn in skjinne omjouwing. Apps wurde ôfsletten, netwurken falle wei, minsken skeakelje healwei oer, dokuminten komme wazich derút, providerreaksjes komme wannear't se komme. Wy behannelen dat allegear as gewoane bedriuwstastannen, net as rângefallen.
+
+De ferifikaasjesteat libbe yn de orkestrator, net yn it ûnthâld fan de app, sadat in brûker dy't nei in ûnderbrekking weromkaam op it goede punt fierdergie. Steategestjoerde UI achter feature flags makke it mooglik de Amerikaanske en Aziatyske streamen oan te setten sûnder appstore-release. En gefoelige gegevens waarden stapsgewiis frege — it SSN pas op it stuit dat it wetlik fereaske wie, net foarôf.
+
+Betellings sieten achter dat alles. Wy falidearren by meardere providers yn sandbox op ûnfoldwaande saldo, ferrûne kaarten, netwurk- en providersteuringen, en dienen dêrnei in kontrolearre ferifikaasje mei echt jild om it ôfwikkelingspaad end-to-end te bewizen. Elke transaksje wie idempotint en waard opnij besocht, sadat in wifelige mobile ferbining gjin dûbele ôfskriuwing feroarsaakje koe. De regel waard ôftwongen troch de arsjitektuer en net troch de ynterface: betelje wie programmatysk ûnberikber oant KYC slagge wie.
+
+## Lieding jaan oer seis funksjes hinne
+
+Mobile, Backend, Product, Compliance, Legal en Design hiene allegear in belang, en myn rol wie de ferbining dertusken wêze — ingenieurs op útfiering rjochte hâlde wylst ik de ôfhinklikheden bûten har ynfloed behearde.
+
+Stand-ups bleaunen oer blokkades gean. It management krige foarútgong oerset nei bedriuwsrisiko, ôfhinklikheden, mitigaasje en lansearrebeurens. RFC's en arsjitektuerreviews brochten Mobile en Backend op itselde model fan neilibbingssteat, en ik wurke tusken Product, Design en Legal oan de echte ôfwaging: wetlike easke tsjin brûkersûnderfining tsjin opleveringssnelheid.
+
+It doel wie noait mear gearkomsten. It wie foarkomme dat it beslút fan de iene funksje stil it wurk fan in oar team ûnjildich makke.
+
+## Resultaten
+
+```txt
+merken live    2 → 4
+onboarding     +25%
+betelfolume    +35%
+supportlêst    −30%
+```
+
+De stiging fan it betelfolume yn it kwartaal nei de lansearring yn de FS en Azië makke ekstra wrâldwide omset frij. Mar it resultaat dêr't ik nei wize soe is arsjitektoanysk: KYC wie net langer in onboardingfunksje foar ien regio, mar in werbrûkbere neilibbingslaach mei naden foar de folgjende provider, merk en regel.
+
+It bedriuw frege *"hoe foegje wy betellings ta yn Azië?"*. De nuttiger fraach, dêr't in wurksesje mei Legal foar nedich wie om him boppe tafel te krijen, wie *"wat moat wier wêze om yn Azië legaal en feilich betellings dwaan te kinnen?"*. Dat iene ûnderskied feroare de skoep, de kaart fan belanghawwenden, de arsjitektuer, de folchoarder fan oplevering, it risikomodel en de definysje fan klear.
+
+## Wat ik oars dwaan soe
+
+Ik soe de ôfhinklikheid al by it opstellen fan de roadmap socht hawwe ynstee fan him ûnder it útwurkjen tsjin te kommen. Hy wie earder te finen — de oannames foar ien regio sieten al yn de koade — en him in faze earder fine hie de organisaasje neat koste, wylst him in faze letter fine in lansearring koste hie.
+
+Ik soe observabiliteit ek as opleverprodukt behannele hawwe ynstee fan as byfangst. De âlde onboardingstream wie in swarte doaze: brûkers koene ferifikaasje net helje sûnder dat immen sizze koe wêr of wêrom. Wy krigen de telemetry om dat te beantwurdzjen pas as gefolch fan it opnij bouwen fan de trechter, en dat bliek krekt wat Product en Support it leafst woene. Dat fertsjinne bewuste skoep, net tafallige erfenis.

@@ -299,6 +299,99 @@ const nl: PageContent = {
   ],
 };
 
+const fy: PageContent = {
+  about: {
+    intro: [
+      "Tsien jier software skriuwe, de lêste fiif dêrfan bestege oan oare ingenieurs flugger meitsje ynstee fan allinnich mysels. Earne tusken in master ynformatika en in rige teams op hiel ferskillende skaal — in platfoarm foar psychologyske assessments, in regulearre beleggings-app yn 37 merken, in soarchanalytysk bedriuw dat fyftjin âlde systemen ûntwaarde — bin ik “engineering management” net langer sjen gien as in stap fuort fan bouwen. It is in oare ienheid fan bouwen: ynstee fan in funksje leverest de betingsten dêr't in oare ingenieur goed mei leverje kin.",
+      "Dat is de reade tried troch alles hjirûnder, dizze side dêrby. It is in portfolio, mar ek in lyts bewiis fan itselde ynstinkt — in shader, in scrollsysteem, in ynhâldspipeline, mei de hân boud en oanslúten, om't it ark om wat hinne noait los stiet fan dat wat sels.",
+    ],
+    workHeading: "Hoe't ik wurkje",
+    work: "Behannelje ynterne platfoarms as produkten — mei oanname, brûkberens en in eigener, net allinnich in plakje yn it organigram. Bou dúdlikens foar snelheid: teams leverje foarsisber as prioriteiten en ôfhinklikheden sichtber binne, net as har ferteld wurdt dat it flugger moat. Coach fia weromkeppeling en tegearre programmearjen ynstee fan proses om it proses. En bliuw ticht genôch by de koade en de ynsidinten dat de kaders dy't ik set kaders binne dêr't ik sels yn wurkje wolle soe.",
+    nowHeading: "Op dit stuit",
+    now: "Ik lied it mobile platfoarm by StuDocu — React Native/Expo, autentikaasje, monetisaasje en learfunksjes op basis fan AI — en ik triuw AI-native engineering fierder as autocomplete: repo-kontekstregels oer GitHub, Linear en Sentry, LangGraph-aginten yn produksje, Kestra-pipelines dy't op skaal ynhâld generearje, mei echte kaders om wat in ark oanroppe en opleverje mei. Dêrbûten deselde nijsgjirrigens as altyd: shaders, motion en ynterfaces dy't it brûken wurdich binne.",
+  },
+  aboutMeta: {
+    role: "Senior Engineering Manager, mobyl platfoarm",
+    interests: "Motion · Shaders · AI · Developer Experience",
+  },
+  homeTeaser:
+    "Oerdeis jou ik lieding oan engineeringteams, jûns bou ik dingen dy't eins net yn in browser kinne soene. Dizze side is tagelyk portfolio en labsjoernaal — elk effekt hjir is iepen boarne.",
+  roles: [
+    {
+      period: "07/2025 — no",
+      title: "Senior Engineering Manager, mobyl platfoarm",
+      org: "StuDocu",
+      place: "Amsterdam, Nederlân",
+      points: [
+        "Ferantwurdlik foar de oplevering fan it mobile produktplatfoarm, mei Product, Design en Platform op deselde OKR's om autentikaasje, monetisaasje, AI-learfunksjes en it React Native/Expo-fûnemint hinne.",
+        "De mobile engineeringfunksje oernommen midden yn in wiksel fan lieding, en prestaasjekalibraasje, loopbaanûntwikkeling en it wurkritme fan it team opnij opboud.",
+        "AI-native engineering ynfierd — MCP-yntegraasjes en repo-kontekstregels oer GitHub, Linear en Sentry — wêrtroch ynwurkjen fan moannen nei wiken gie.",
+        "AI-inisjativen yn produksje foarby koadehelp: LangGraph-aginten foar mobile AI-funksjes, troch Kestra oanstjoerde ynhâldspipelines, mei kaders om ark-oanroppen en evaluaasje.",
+        "Automatyske ferifikaasjepoarten yn CI/CD ynfierd by in yngripende V1–V2 API-herzjenning, mei oplevering ôfstimd oer 6 mission owners en sûnder regressies.",
+      ],
+    },
+    {
+      period: "11/2022 — 06/2025",
+      title: "Engineering Manager",
+      org: "LOGEX Patient Engagement",
+      place: "Amsterdam, Nederlân",
+      points: [
+        "Lieding jûn oan multydissiplinêre teams op backend- en klientplatfoarms yn in komplekse soarchomjouwing, mei ôfstimming tusken design, ûntwikkeling, juridysk, klanteservice en ferkeap.",
+        "Platfoarmstrategy bepaald en arsjitektuerynvestearrings ôfstimd op bedriuwsprioriteiten, wêrby't 15 fersnippere âlde systemen ta ien gearhingjend platfoarm brocht binne.",
+        "Domeinobservabiliteit en blameless retrospektiven ynfierd, mei hieltyd tydlike neilibbing fan de jierlikse ISO- en NEN 7510-audits.",
+        "Balâns hâlden tusken snelheid, wjerberens en neilibbing oer produkten en partneryntegraasjes dy't soarchfâldich behear fan ôfhinklikheden fregen.",
+      ],
+    },
+    {
+      period: "11/2020 — 11/2022",
+      title: "Engineering Manager / Senior Software Developer",
+      org: "BOTS",
+      place: "Haarlem, Nederlân",
+      points: [
+        "Lieding jûn oan de engineering fan fakturaasje- en transaksjesystemen op in automatisearre beleggingsplatfoarm mei mear as 150.000 klanten yn 37 regulearre merken.",
+        "Gearwurke mei Product, Finance en Security om ôfwagings yn de roadmap te meitsjen dêr't wjerberens, neilibbing en bedriuwsresultaat tegearre bewege moasten.",
+        "Foarsisbere twawyklikse releasesyklusen en automatyske CI/CD-kontrôles foar de fakturaasjemotoren ynfierd, wat transaksje-yntegriteit en beskikberens beskerme.",
+        "Ûntwikkelders begelaat fia koade-review en tegearre programmearjen, wêrmei't it technyske nivo fan it team omheech gie.",
+      ],
+    },
+    {
+      period: "07/2018 — 07/2020",
+      title: "Lead Developer",
+      org: "LTP Business Psychologists",
+      place: "Amsterdam, Nederlân",
+      points: [
+        "Lieding jûn oan de frontendfernijing fan it wichtichste assessmentplatfoarm, mei technyske rjochting foar in browserprodukt dat troch 120+ konsulinten brûkt waard.",
+        "Âlde frontends omboud ta modulêre micro-frontends, wat ûnderhâldberens, testdissipline en betrouberens fan oplevering ferbettere.",
+        "Gearwurke mei R&D om komplekse psychologyske modellen te fertalen nei yntuïtive, datarike assessmentûnderfiningen.",
+        "Junior ûntwikkelders begelaat fia deistige koade-review en tegearre programmearjen.",
+      ],
+    },
+  ],
+  education: {
+    degree: "MSc Ynformatika (rjochting tapaste wittenskippen)",
+    org: "Universiteit Leiden",
+    period: "09/2020 — 10/2021",
+    place: "Leiden, Nederlân",
+    detail: "Gemiddelde 8,8 / 10",
+  },
+  colophon: [
+    ["Framework", "Next.js 16 · App Router · React 19 · TypeScript strict"],
+    ["Styling", "Tailwind v4 mei design tokens yn CSS-fariabelen (globals.css)"],
+    ["WebGL", "React Three Fiber · eigen GLSL-fluidshader op ien quad"],
+    ["Scrollen", "Lenis inersjescroll lykop set mei GSAP ScrollTrigger"],
+    ["UI-motion", "GSAP foar scroll en cursor, Motion (framer) foar side-oergongen"],
+    [
+      "Ynhâld",
+      "MDX-bestannen yn /content, parsed mei gray-matter, rendere fia next-mdx-remote",
+    ],
+    ["Typografy", "Space Grotesk (display) · JetBrains Mono (HUD-labels)"],
+    [
+      "Tagonklikheid",
+      "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
+    ],
+  ],
+};
+
 const ru: PageContent = {
   about: {
     intro: [
@@ -392,7 +485,7 @@ const ru: PageContent = {
   ],
 };
 
-const CONTENT: Record<Locale, PageContent> = { en, fr, nl, ru };
+const CONTENT: Record<Locale, PageContent> = { en, fr, nl, fy, ru };
 
 export function pageContent(locale: Locale): PageContent {
   return CONTENT[locale] ?? en;
