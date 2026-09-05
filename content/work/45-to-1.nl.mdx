@@ -1,0 +1,71 @@
+---
+title: "45 → 1"
+summary: "Een versnipperd healthcare-productlandschap samenbrengen tot één platform — zonder één release te missen voor de ziekenhuizen die erop draaien."
+role: "Engineering Manager"
+tags: ["Platformstrategie", "Monorepo", "Zorg", "Verandermanagement"]
+---
+
+## Context
+
+LOGEX Patient Engagement bouwt producten voor patiënten van ziekenhuizen en klinieken — apps waarmee mensen zich op een behandeling voorbereiden en hun herstel bijhouden. Elke zorgorganisatie krijgt een eigen app, op iOS en Android, ingericht op haar eigen zorgpaden.
+
+Tegen de tijd dat ik de engineering overnam, was die belofte betaald in structuur. Het landschap was gegroeid naar ongeveer **45 repository's** verspreid over meerdere mobiele technologieën, met voor vrijwel elke klant een eigen build- en releasepad.
+
+## Het probleem
+
+Elke klantvariant was in alles behalve naam een fork geworden.
+
+Een wijziging in gedeeld gedrag was nooit één wijziging. Het waren *n* implementaties, *n* reviews, *n* releasetreinen en *n* kansen om het net verkeerd te doen voor één ziekenhuis en niet voor de rest. Een bug die voor één klant was opgelost, kon maandenlang bij de andere blijven staan — niet omdat iemand hem lager prioriteerde, maar omdat niemand kon zien dat hij elders nog openstond.
+
+Kosten waren het zichtbare symptoom: hosting, CI-minuten, licenties, alles vermenigvuldigd met een getal dat niemand bewust had gekozen. Het dure deel was stiller: een engineer inwerken betekende hem inwerken op *een repository*, niet op het product. Kennis bleef lokaal, eigenaarschap was juist onduidelijk op de grenzen die ertoe deden, en de organisatie kon geen mensen sneller toevoegen dan context.
+
+## De randvoorwaarden
+
+Dit is het deel dat elke volgende beslissing bepaalt:
+
+- **De producten draaiden live, in ziekenhuizen, voor patiënten.** Er was geen migratievenster waarin iets kapot mocht, en geen groep gebruikers voor wie dat acceptabel was.
+- **Gereguleerde omgeving.** Jaarlijkse ISO- en NEN 7510-audits betekenden dat de traceerbaarheid van wijzigingen *tijdens* de migratie niet mocht verslechteren — de overgang zelf moest auditeerbaar blijven.
+- **Geen consolidatiekwartaal.** Klantafspraken liepen door. Dit gebeurde naast de roadmap, niet in plaats daarvan.
+
+## De strategie
+
+Drie beslissingen deden het meeste werk.
+
+**Consolideer het operating model, niet alleen de code.** Een monorepo waar teams omheen werken is strikt slechter dan eerlijke versnippering: je krijgt de koppeling zonder de hefboom. Het doel was dus nooit "één repository". Het was één pipeline, één releasetrein, één definition of done en expliciete eigenaarsgrenzen *binnen* de repo. De mappenstructuur was de makkelijke helft.
+
+**Maak white-label een runtime-kwestie in plaats van een build-kwestie.** Hierop rustte het geheel. Zolang klantverschillen in geforkte code leefden, verplaatste consolidatie de forks alleen maar. Die variatie verhuizen naar configuratie en server-gestuurde UI maakte één codebase voor veel ziekenhuizen pas echt haalbaar.
+
+**Migreer incrementeel, nooit big bang.** Repository's verhuisden op volgorde, de meest gedupliceerde eerst, waarbij het landschap bij elke stap releasebaar bleef. Een migratie die een freeze nodig heeft om te landen, is een migratie die sneuvelt zodra de eerste klantafspraak verschuift.
+
+## Uitvoering
+
+Het werk zelf was onglamoureus en vooral een kwestie van volgorde:
+
+- Repository's migreerden op afhankelijkheidsvolgorde, elk met een decommissioning-taak als staart — de besparing landt pas als de oude infrastructuur echt uit gaat, en dat is de stap die iedereen overslaat.
+- Eén gedeeld CI/CD-pad (Bitrise, Fastlane, App Store Connect, Google Play) ter vervanging van pipelines per repo, zodat releasegedrag niet langer een eigenschap was van de repo waar je toevallig in zat.
+- Geautomatiseerde verificatiepoorten op gedeelde code, zodat een wijziging voor de ene klant niet stilletjes een andere kon breken — precies het faalscenario dat consolidatie *introduceert* als je er niet tegen ontwerpt.
+- Domeinobservability en blameless retrospectives gedurende het hele traject; zo blijft een migratie van deze lengte eerlijk over wat ze kost.
+
+## Leidinggeven gedurende het traject
+
+Het technische plan was niet het moeilijke deel. Het moeilijke was dat elk team lokaal optimaliseerde — voor de eigen repo, de eigen klant, het eigen ritme — en dat elk daarin op zichzelf gelijk had. Consolidatie vroeg hen een gedeelde standaard te accepteren die hen op korte termijn meetbaar minder autonoom maakte, in ruil voor een hefboom die later zou komen, en eerst bij het team ernaast.
+
+Wat het werkelijk in beweging bracht: de gedupliceerde kosten zichtbaar maken in termen die teams herkenden, *samen* met teams migreren in plaats van hun een doelarchitectuur overhandigen, en eigenaarschap helder maken vóórdat de eerste repository verhuisde in plaats van het per ongeluk te laten indalen. Stakeholderafstemming was hier geen communicatieoefening — het was het resultaat.
+
+## Resultaten
+
+```txt
+codebases    ~45 repo's → 1 monorepo
+hosting      ~65% lager
+CI / SCM     ~45% lager
+releases     per klant → één trein
+audits       ISO / NEN 7510, zonder vertraging
+```
+
+Het belangrijkste getal staat niet in dat blok. Een fix bereikt nu alle ziekenhuizen tegelijk, een engineer werkt zich in op het product in plaats van op een repository, en de volgende klant toevoegen is een configuratievraagstuk in plaats van een codebase.
+
+## Wat ik anders zou doen
+
+Ik zou het eigenaarschapsmodel hebben vastgelegd vóórdat de eerste repository verhuisde, in plaats van het pas twee of drie migraties later te laten ontstaan. We kwamen er wel, maar een tijdlang was de code geconsolideerd terwijl de verantwoordelijkheid dat nog niet was — en in dat gat zaten de onduidelijkheid en de traagste reviews.
+
+Ik zou decommissioning ook vanaf dag één expliciet hebben gefinancierd. Het is werkelijk saai werk zonder zichtbaar productresultaat, het is waar de hele businesscase wordt verzilverd, en het verliest elk prioriteringsgesprek waartegen je het niet beschermt.

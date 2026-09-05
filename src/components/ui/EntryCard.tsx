@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import type { Entry } from "@/lib/content";
+import { useLocale } from "@/lib/use-locale";
 
 /** Large work card: index, title, tags, with an accent sweep on hover. */
 export function EntryCard({ entry, index }: { entry: Entry; index: number }) {
+  const { locale } = useLocale();
+  const text = entry.text[locale] ?? entry.text.en;
   return (
     <Link
       href={`/${entry.collection}/${entry.slug}`}
@@ -23,19 +28,19 @@ export function EntryCard({ entry, index }: { entry: Entry; index: number }) {
         </p>
 
         <h3 className="mb-3 text-3xl tracking-tight transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-2 md:text-4xl">
-          {entry.title}
+          {text.title}
         </h3>
-        <p className="mb-8 max-w-[48ch] text-fg-muted">{entry.summary}</p>
+        <p className="mb-8 max-w-[48ch] text-fg-muted">{text.summary}</p>
 
         <div className="flex flex-wrap items-center justify-between gap-4">
           <ul className="flex flex-wrap gap-2">
-            {entry.tags.map((t) => (
+            {text.tags.map((t) => (
               <li key={t} className="label border border-line px-2 py-1">
                 {t}
               </li>
             ))}
           </ul>
-          {entry.role && <span className="label">{entry.role}</span>}
+          {text.role && <span className="label">{text.role}</span>}
         </div>
       </div>
     </Link>

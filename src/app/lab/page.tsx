@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHeader } from "@/components/ui/PageHeader";
-import { HudFrame } from "@/components/ui/HudFrame";
+import { LabCard } from "@/components/ui/LabCard";
 import { Reveal } from "@/components/motion/Reveal";
 import { getEntries } from "@/lib/content";
 
@@ -14,17 +13,12 @@ export default function LabPage() {
       <PageHeader code="03" tk="lab" />
       <Reveal className="mx-[var(--gutter)] mb-32 grid gap-4 md:grid-cols-3" stagger={0.08}>
         {entries.map((e, i) => (
-          <HudFrame key={e.slug} data-reveal>
-            <Link href={`/lab/${e.slug}`} className="block p-6" data-cursor-label="Open">
-              <p className="label mb-6 flex justify-between">
-                <span>EXP-{String(i + 1).padStart(3, "0")}</span>
-                <span className="text-fg-dim">{e.year}</span>
-              </p>
-              <h3 className="mb-2 text-xl">{e.title}</h3>
-              <p className="text-sm text-fg-muted">{e.summary}</p>
-              <p className="label mt-6 text-fg-dim">{e.tags.join(" · ")}</p>
-            </Link>
-          </HudFrame>
+          <LabCard
+            key={e.slug}
+            entry={e}
+            badge={`EXP-${String(i + 1).padStart(3, "0")}`}
+            showTags
+          />
         ))}
       </Reveal>
     </>

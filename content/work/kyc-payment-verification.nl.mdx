@@ -1,0 +1,99 @@
+---
+title: "KYC en betaalverificatie opschalen"
+summary: "Een betaalintegratie die eigenlijk een identiteitsvraagstuk bleek — geherformuleerd tot een compliance-first marktintroductie in de VS en drie Aziatische markten."
+role: "Engineering Manager & Tech Lead"
+tags: ["Compliance", "Fintech", "Mobiel platform", "Architectuur"]
+---
+
+## Context
+
+BOTS exploiteerde een geautomatiseerd beleggingsplatform en bereidde uitbreiding naar de VS en Azië voor. Het initiatief kwam binnen in één zin: **voeg betaalintegraties toe voor de nieuwe markten.**
+
+Ik leidde het over Mobile, Backend, Compliance, Legal en Product heen.
+
+## Het probleem waren niet de betalingen
+
+Bij het uitwerken van de eisen met Legal en Compliance werd duidelijk dat betalingen slechts het zichtbare deel waren.
+
+De bestaande KYC-implementatie was gebouwd rond één regio. Documenttypes, identiteitsafhandeling en adresparsing zaten hard-coded — terwijl elke nieuwe markt wezenlijk andere identiteitsbewijzen vroeg. De VS wilde een SSN; de Aziatische markten wilden hun eigen lokale documenten.
+
+> De kop ging over betalingen. Het onderliggende probleem was identiteit.
+
+De roadmap verborg een afhankelijkheidsketen die precies andersom liep dan hoe het werk was ingestoken:
+
+```txt
+betaalintegratie
+ └─ KYC- / identiteitseisen
+     └─ juridische toelaatbaarheid
+         └─ überhaupt kunnen lanceren
+```
+
+Een betaalfunctie opleveren zonder eerst KYC op te lossen was geen late feature geweest. Het was een toezichtrisico geweest. In plaats van engineering op aannames te laten beginnen, hield ik een werksessie met Legal om de regionale compliancestatussen te definiëren **voordat er code werd geschreven**, en herformuleerde ik het initiatief van betaalintegratie naar compliance-first marktintroductie.
+
+## Het statusprobleem eronder
+
+Er speelde nog iets, stiller. KYC-verificatie is asynchroon, en de architectuur respecteerde dat niet.
+
+Een provider kon een gebruiker als goedgekeurd markeren terwijl ons systeem hem nog op "in behandeling" had staan. Webhooks kwamen laat of niet, retries faalden geruisloos, en een gebruiker kon de checkout bereiken terwijl zijn interne compliancestatus achterliep. Het was een gedistribueerd statusprobleem zonder één bron van waarheid — en wat het op het spel zette, was een toezichtgrens.
+
+De oplossing was de volgorde omdraaien en compliance een poort maken in plaats van een controle:
+
+```txt
+voor  gebruiker → betaling → KYC
+na    gebruiker → KYC → vrijgegeven → betaling
+```
+
+De betaalmodule initialiseerde eenvoudigweg niet totdat de orchestrator een vrijgegeven status uitzond.
+
+## Regiobewust via architectuur, niet via branches
+
+In plaats van de regels van elk land in de mobiele app te coderen, zetten we een event-driven **KYC-orchestrator** tussen de app en de provider, en splitsten we de drie verantwoordelijkheden netjes.
+
+De app verzamelt informatie, toont regiospecifieke eisen en handelt onderbreking en herstel af. De orchestrator bepaalt wat een gebruiker nodig heeft op basis van geografie, is eigenaar van de verificatiestatus, vangt asynchrone providerevents, retries en webhooks op, blijft auditeerbaar en handhaaft de poort. De provider doet identiteits-, document- en liveness-controles.
+
+> De provider voert de verificatie uit; de status is van ons.
+
+Dat hield één consistent intern model in stand terwijl provider en regionale regels eronder konden veranderen. De statemachine maakte `Pending → Cleared → EDD` expliciet, met betalingen op slot tot de juiste status bereikt was.
+
+## Opleveren zonder het te overbouwen
+
+Een volledig geautomatiseerde wereldwijde compliance-engine was maanden werk en had het marktvenster gemist. Overhaasten had juridisch risico gecreëerd. De uitrol ging dus gefaseerd.
+
+Fase één was de minimale architectuur om de markten veilig te betreden: dynamische orchestratie, Amerikaanse en Aziatische identiteitseisen, regiobewuste documentaanvragen, een harde betaalpoort, betrouwbare webhook- en statusafhandeling, end-to-end validatie. Complexe geautomatiseerde randgevallen werden bewust uitgesteld.
+
+Fase twee zou worden bepaald door productietelemetrie zodra de funnel echt observeerbaar was, in plaats van door bedachte problemen. Lever een veilige basis, meet de werkelijkheid, optimaliseer daarna.
+
+## Falen als het normale geval behandelen
+
+Mobiele verificatie gebeurt niet in een schone omgeving. Apps worden afgesloten, netwerken vallen weg, mensen schakelen halverwege over, documenten komen er wazig uit, providerreacties komen wanneer ze komen. We behandelden dat allemaal als gewone bedrijfstoestanden, niet als randgevallen.
+
+De verificatiestatus leefde in de orchestrator, niet in het geheugen van de app, zodat een gebruiker die na een onderbreking terugkwam op het juiste punt verderging. Statusgestuurde UI achter feature flags maakte het mogelijk de Amerikaanse en Aziatische flows aan te zetten zonder appstore-release. En gevoelige gegevens werden geleidelijk gevraagd — het SSN pas op het moment dat het wettelijk vereist was, niet vooraf.
+
+Betalingen zaten achter dat alles. We valideerden bij meerdere providers in sandbox op ontoereikend saldo, verlopen kaarten, netwerk- en providerstoringen, en deden daarna een gecontroleerde verificatie met echt geld om het afwikkelingspad end-to-end te bewijzen. Elke transactie was idempotent en werd opnieuw geprobeerd, zodat een wisselvallige mobiele verbinding geen dubbele afschrijving kon veroorzaken. De regel werd afgedwongen door de architectuur en niet door de interface: betalen was programmatisch onbereikbaar tot KYC was geslaagd.
+
+## Leidinggeven over zes functies heen
+
+Mobile, Backend, Product, Compliance, Legal en Design hadden allemaal een belang, en mijn rol was de verbinding ertussen zijn — engineers op uitvoering gericht houden terwijl ik de afhankelijkheden buiten hun invloed beheerde.
+
+Stand-ups bleven over blokkades gaan. Het management kreeg voortgang vertaald naar bedrijfsrisico, afhankelijkheden, mitigatie en lanceerbereidheid. RFC's en architectuurreviews brachten Mobile en Backend op hetzelfde compliancestatusmodel, en ik werkte tussen Product, Design en Legal aan de echte afweging: wettelijke eis versus gebruikerservaring versus opleversnelheid.
+
+Het doel was nooit meer vergaderingen. Het was voorkomen dat de beslissing van de ene functie stilletjes het werk van een ander team ongeldig maakte.
+
+## Resultaten
+
+```txt
+markten live    2 → 4
+onboarding      +25%
+betaalvolume    +35%
+supportlast     −30%
+```
+
+De stijging van het betaalvolume in het kwartaal na de VS/Azië-lancering maakte extra wereldwijde omzet vrij. Maar het resultaat waar ik naar zou wijzen is architectonisch: KYC was niet langer een onboardingfunctie voor één regio, maar een herbruikbare compliancelaag met naden voor de volgende provider, markt en regel.
+
+Het bedrijf vroeg *"hoe voegen we betalingen toe in Azië?"*. De nuttiger vraag, waarvoor een werksessie met Legal nodig was om hem boven tafel te krijgen, was *"wat moet er waar zijn om in Azië legaal en veilig betalingen te kunnen doen?"*. Dat ene onderscheid veranderde de scope, de stakeholderkaart, de architectuur, de opleveringsvolgorde, het risicomodel en de definition of done.
+
+## Wat ik anders zou doen
+
+Ik zou de afhankelijkheid al bij het opstellen van de roadmap hebben gezocht in plaats van hem tijdens het uitwerken tegen te komen. Hij was eerder vindbaar — de aannames voor één regio zaten al in de code — en hem een fase eerder vinden had de organisatie niets gekost, terwijl hem een fase later vinden een lancering had gekost.
+
+Ik zou observability ook als opleverproduct hebben behandeld in plaats van als bijvangst. De oude onboardingflow was een black box: gebruikers konden verificatie niet halen zonder dat iemand kon zeggen waar of waarom. We kregen de telemetrie om dat te beantwoorden pas als gevolg van het herbouwen van de funnel, en dat bleek precies wat Product en Support het liefst wilden. Dat verdiende bewuste scope, niet toevallige erfenis.

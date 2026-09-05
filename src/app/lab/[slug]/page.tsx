@@ -9,12 +9,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/lab/[slug]">) {
   const { slug } = await params;
   const entry = getEntry("lab", slug);
-  return { title: entry?.title ?? "Lab", description: entry?.summary };
+  return { title: entry?.text.en.title ?? "Lab", description: entry?.text.en.summary };
 }
 
 export default async function LabEntry({ params }: PageProps<"/lab/[slug]">) {
   const { slug } = await params;
   const entry = getEntry("lab", slug);
   if (!entry) notFound();
-  return <EntryPage entry={entry} code="03" label="lab" backHref="/lab" backKey="entry.allExperiments" />;
+  return <EntryPage entry={entry} code="03" labelKey="page.lab.label" backHref="/lab" backKey="entry.allExperiments" />;
 }

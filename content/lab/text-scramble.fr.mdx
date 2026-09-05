@@ -1,0 +1,13 @@
+---
+title: "Décodage de texte"
+summary: "Les caractères se résolvent de gauche à droite depuis des glyphes HUD aléatoires. Utilisé sur chaque titre."
+tags: ["Mouvement", "React", "Typographie"]
+---
+
+## Ce que c'est
+
+Une boucle `requestAnimationFrame` qui révèle les caractères proportionnellement au temps écoulé, en remplissant la partie non résolue avec des glyphes issus d'un jeu de caractères semi-graphiques. Les espaces sont préservés pour que les mots gardent leur rythme pendant le brouillage.
+
+## Source
+
+`src/components/motion/TextScramble.tsx`

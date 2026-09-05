@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { HeroScene } from "@/components/three/HeroScene";
 import { Tr, ScrambleT } from "@/components/i18n/Tr";
+import { HomeTeaser } from "@/components/i18n/HomeTeaser";
 import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EntryCard } from "@/components/ui/EntryCard";
-import { HudFrame } from "@/components/ui/HudFrame";
+import { LabCard } from "@/components/ui/LabCard";
 import { getEntries } from "@/lib/content";
 import { site } from "@/lib/site";
 
@@ -89,16 +90,7 @@ export default function Home() {
         </Reveal>
         <Reveal className="grid gap-4 md:grid-cols-3" stagger={0.1}>
           {lab.map((e) => (
-            <HudFrame key={e.slug} data-reveal>
-              <Link href={`/lab/${e.slug}`} className="block p-6" data-cursor-label="Open">
-                <p className="label mb-6 flex justify-between">
-                  <span>{e.tags[0]}</span>
-                  <span className="text-fg-dim">{e.year}</span>
-                </p>
-                <h3 className="mb-2 text-xl">{e.title}</h3>
-                <p className="text-sm text-fg-muted">{e.summary}</p>
-              </Link>
-            </HudFrame>
+            <LabCard key={e.slug} entry={e} />
           ))}
         </Reveal>
       </section>
@@ -110,11 +102,7 @@ export default function Home() {
             {"03 // "}<Tr k="home.aboutLabel" />
           </p>
           <div data-reveal className="md:col-span-7">
-            <p className="text-2xl leading-snug tracking-tight md:text-3xl">
-              I lead engineering teams by day and build things that shouldn&apos;t
-              quite be possible in a browser by night. This site is both a
-              portfolio and a lab notebook — every effect here is open source.
-            </p>
+            <HomeTeaser />
             <Link href="/about" className="label mt-8 inline-block hover:text-fg">
               <Tr k="home.aboutMore" /> →
             </Link>

@@ -1,0 +1,17 @@
+---
+title: "Hero en shader fluide"
+summary: "Bruit simplex à domaine déformé, champ de flux piloté par le curseur, palette violet→magenta. C'est le fond de ce site."
+tags: ["GLSL", "R3F", "Shader"]
+---
+
+## Ce que c'est
+
+Quatre octaves de bruit simplex, déformées deux fois (`fbm(p + fbm(p + fbm(p)))`) pour obtenir cet aspect liquide. Le curseur injecte une « poussée » gaussienne dans les décalages de déformation, proportionnelle à la vitesse du pointeur : un mouvement rapide crée donc une turbulence visible.
+
+## Notes de performance
+
+Un seul quad plein écran, DPR plafonné à 1,5, aucun post-traitement. Tourne confortablement à 60 fps sur GPU intégré ; les personnes ayant activé la réduction des animations obtiennent un dégradé radial statique.
+
+## Source
+
+`src/components/three/FluidShader.tsx`

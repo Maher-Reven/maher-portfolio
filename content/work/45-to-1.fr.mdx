@@ -1,0 +1,71 @@
+---
+title: "45 → 1"
+summary: "Consolider un écosystème produit de santé fragmenté en une seule plateforme — sans manquer une release pour les hôpitaux qui en dépendent."
+role: "Engineering Manager"
+tags: ["Stratégie plateforme", "Monorepo", "Santé", "Conduite du changement"]
+---
+
+## Contexte
+
+LOGEX Patient Engagement développe des produits destinés aux patients pour des hôpitaux et des cliniques — des applications utilisées pour préparer un traitement et gérer la convalescence. Chaque établissement reçoit sa propre application, sur iOS et Android, configurée selon ses parcours de soins.
+
+Au moment où j'ai repris l'ingénierie, cette promesse avait été payée en structure. Le parc avait atteint environ **45 dépôts** répartis sur plusieurs technologies mobiles, avec une chaîne de build et de release distincte pour pratiquement chaque client.
+
+## Le problème
+
+Chaque variante client était devenue un fork, à tout sauf au nom.
+
+Un changement de comportement partagé n'était jamais un seul changement. C'était *n* implémentations, *n* revues, *n* trains de release, et *n* occasions de se tromper subtilement pour un hôpital et pas pour les autres. Un bug corrigé pour un client pouvait rester ouvert ailleurs pendant des mois — non par arbitrage, mais parce que personne n'avait le moyen de voir qu'il était encore là.
+
+Le coût était le symptôme visible : hébergement, minutes de CI, licences, le tout multiplié par un nombre que personne n'avait choisi délibérément. La part coûteuse était plus silencieuse : intégrer un ingénieur, c'était l'intégrer à *un dépôt*, pas au produit. La connaissance restait locale, la propriété était ambiguë précisément aux frontières qui comptaient, et l'organisation ne pouvait pas ajouter des personnes plus vite qu'elle n'ajoutait du contexte.
+
+## Les contraintes
+
+C'est la partie qui conditionne toutes les décisions qui suivent :
+
+- **Les produits étaient en production, dans des hôpitaux, devant des patients.** Il n'existait aucune fenêtre de migration où casser quelque chose était acceptable, ni de cohorte d'utilisateurs qu'il était acceptable de casser.
+- **Environnement régulé.** Les audits annuels ISO et NEN 7510 imposaient que la traçabilité des changements ne régresse pas *pendant* la migration — la transition elle-même devait rester auditable.
+- **Pas de trimestre dédié.** Les engagements clients continuaient. Ce chantier avançait en parallèle de la roadmap, pas à sa place.
+
+## La stratégie
+
+Trois décisions ont fait l'essentiel du travail.
+
+**Consolider le modèle opérationnel, pas seulement le code.** Un monorepo que les équipes contournent est strictement pire qu'une fragmentation assumée : on obtient le couplage sans le levier. La cible n'a donc jamais été « un dépôt ». C'était un pipeline, un train de release, une définition du « terminé », et des frontières de propriété explicites *à l'intérieur* du dépôt. L'arborescence, c'était la moitié facile.
+
+**Faire du white-label une affaire d'exécution plutôt que de build.** C'est la décision sur laquelle tout reposait. Tant que la différence entre clients vivait dans du code forké, la consolidation ne faisait que déplacer les forks. Déporter cette variation dans de la configuration et une UI pilotée par le serveur est ce qui a rendu réelle l'idée d'une base de code unique servant de nombreux hôpitaux.
+
+**Migrer de façon incrémentale, jamais d'un bloc.** Les dépôts ont été déplacés en séquence, du plus dupliqué au moins, en gardant le parc livrable à chaque étape. Une migration qui exige un gel pour aboutir est une migration annulée dès le premier engagement client qui bouge.
+
+## Exécution
+
+Le travail lui-même était ingrat et surtout affaire de séquencement :
+
+- Les dépôts ont migré dans l'ordre des dépendances, chacun laissant derrière lui une tâche de décommissionnement — les économies n'arrivent que lorsque l'ancienne infrastructure est réellement éteinte, et c'est l'étape que tout le monde saute.
+- Un chemin CI/CD partagé (Bitrise, Fastlane, App Store Connect, Google Play) remplaçant les pipelines par dépôt, afin que le comportement de release cesse d'être une propriété du dépôt dans lequel on se trouve.
+- Des contrôles de vérification automatisés sur le code partagé, pour qu'un changement fait pour un client ne puisse pas silencieusement en casser un autre — le mode de défaillance que la consolidation *introduit* si on ne conçoit pas contre lui.
+- De l'observabilité par domaine et des rétrospectives sans blâme tout du long : c'est ainsi qu'une migration aussi longue reste honnête sur ce qu'elle coûte.
+
+## Diriger pendant ce temps
+
+Le plan technique n'était pas le plus dur. Le plus dur, c'est que chaque équipe optimisait localement — pour son dépôt, son client, sa cadence — et que chacune avait raison, isolément. La consolidation leur demandait d'accepter un standard partagé qui les rendait mesurablement moins autonomes à court terme, en échange d'un levier qui arriverait plus tard, et d'abord pour l'équipe d'à côté.
+
+Ce qui a réellement fait bouger les choses : rendre le coût de la duplication visible dans des termes que les équipes reconnaissaient, migrer *avec* elles plutôt que leur remettre une architecture cible, et clarifier la propriété avant le déplacement du premier dépôt plutôt que de la laisser se fixer par accident. L'alignement des parties prenantes n'était pas ici un exercice de communication — c'était le livrable.
+
+## Résultats
+
+```txt
+bases de code  ~45 dépôts → 1 monorepo
+hébergement    ~65 % de moins
+CI / SCM       ~45 % de moins
+releases       par client → un seul train
+audits         ISO / NEN 7510, sans retard
+```
+
+Le chiffre le plus important n'est pas dans ce bloc. Un correctif atteint désormais tous les hôpitaux d'un coup, un ingénieur s'intègre au produit plutôt qu'à un dépôt, et ajouter le client suivant est un problème de configuration, plus une base de code.
+
+## Ce que je ferais autrement
+
+J'aurais fixé le modèle de propriété avant le déplacement du premier dépôt, au lieu de le laisser émerger deux ou trois migrations plus tard. On y est arrivés, mais pendant un temps le code était consolidé alors que la responsabilité ne l'était pas — et c'est dans cet écart que vivaient l'ambiguïté et les revues les plus lentes.
+
+J'aurais aussi financé le décommissionnement explicitement dès le premier jour. C'est un travail franchement ingrat, sans résultat produit visible, c'est là que se réalise tout l'argumentaire économique, et il perdra tous les arbitrages de priorisation dont on ne le protège pas.

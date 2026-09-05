@@ -1,0 +1,99 @@
+---
+title: "Mettre le KYC et la vérification des paiements à l'échelle"
+summary: "Une intégration de paiement qui s'est révélée être un problème d'identité — reformulée en une entrée sur le marché pilotée par la conformité, aux États-Unis et sur trois marchés asiatiques."
+role: "Engineering Manager & Tech Lead"
+tags: ["Conformité", "Fintech", "Plateforme mobile", "Architecture"]
+---
+
+## Contexte
+
+BOTS opérait une plateforme d'investissement automatisée et préparait son expansion aux États-Unis et en Asie. L'initiative est arrivée cadrée en une seule phrase : **ajouter les intégrations de paiement pour les nouveaux marchés.**
+
+Je l'ai pilotée entre Mobile, Backend, Conformité, Juridique et Produit.
+
+## Le problème n'était pas les paiements
+
+En décomposant les exigences avec le Juridique et la Conformité, il est devenu clair que les paiements n'étaient que la partie visible.
+
+L'implémentation KYC existante avait été construite pour une seule région. Types de documents, gestion de l'identité et analyse des adresses étaient codés en dur — alors que chaque nouveau marché exigeait des justificatifs d'identité matériellement différents. Les États-Unis voulaient un SSN ; les marchés asiatiques voulaient leurs propres documents locaux.
+
+> Le titre parlait de paiements. Le problème de fond, c'était l'identité.
+
+La roadmap dissimulait une chaîne de dépendances qui allait dans le sens inverse du cadrage initial :
+
+```txt
+intégration de paiement
+ └─ exigences KYC / identité
+     └─ éligibilité juridique
+         └─ capacité à lancer
+```
+
+Livrer une surface de paiement sans résoudre d'abord le KYC n'aurait pas été une fonctionnalité en retard. C'aurait été une exposition réglementaire. Plutôt que de laisser l'ingénierie démarrer sur des hypothèses, j'ai organisé une session de travail avec le Juridique pour définir les états de conformité par région **avant qu'une ligne de code ne soit écrite**, et j'ai reformulé l'initiative : d'une intégration de paiement vers une entrée sur le marché pilotée par la conformité.
+
+## Le problème d'état, en dessous
+
+Il y avait un second problème, plus discret. La vérification KYC est asynchrone, et l'architecture ne le respectait pas.
+
+Un prestataire pouvait marquer un utilisateur comme approuvé alors que notre système le considérait encore en attente. Les webhooks arrivaient en retard ou pas du tout, les reprises échouaient en silence, et un utilisateur pouvait atteindre le paiement alors que son état de conformité interne n'avait pas suivi. C'était un problème d'état distribué sans source de vérité unique — et ce qu'il mettait en jeu, c'était une frontière réglementaire.
+
+Le correctif : inverser l'ordre et faire de la conformité une porte plutôt qu'un contrôle.
+
+```txt
+avant  utilisateur → paiement → KYC
+après  utilisateur → KYC → validé → paiement
+```
+
+Le module de paiement ne s'initialisait tout simplement pas tant que l'orchestrateur n'avait pas émis un état validé.
+
+## Régionalisé par l'architecture, pas par des branches
+
+Plutôt que d'encoder les règles de chaque pays dans l'application mobile, nous avons placé un **orchestrateur KYC** événementiel entre l'application et le prestataire, et séparé proprement les trois responsabilités.
+
+L'application collecte les informations, présente les exigences propres à la région et gère l'interruption et la reprise. L'orchestrateur décide de ce dont un utilisateur a besoin selon sa géographie, détient l'état de vérification, absorbe les événements asynchrones du prestataire, les reprises et les webhooks, reste auditable et applique la porte. Le prestataire fait les contrôles d'identité, de document et de vivacité.
+
+> Le prestataire réalise la vérification ; l'état nous appartient.
+
+Cela a préservé un modèle interne unique tout en laissant le prestataire et les règles régionales évoluer en dessous. La machine à états rendait explicite `Pending → Cleared → EDD`, les paiements restant verrouillés jusqu'au bon état.
+
+## Le livrer sans le sur-construire
+
+Un moteur de conformité mondial entièrement automatisé, c'était des mois de travail et la fenêtre de marché manquée. Le précipiter aurait créé une exposition juridique. Le déploiement a donc été progressif.
+
+La phase un, c'était l'architecture minimale nécessaire pour entrer sur les marchés en sécurité : orchestration dynamique, exigences d'identité américaines et asiatiques, demandes de documents adaptées à la région, une porte de paiement stricte, une gestion fiable des webhooks et de l'état, une validation de bout en bout. Les cas limites automatisés complexes ont été reportés volontairement.
+
+La phase deux serait décidée par la télémétrie de production une fois l'entonnoir réellement observable, plutôt que par des problèmes imaginés. Livrer une base sûre, mesurer la réalité, puis optimiser.
+
+## Traiter l'échec comme le cas normal
+
+La vérification mobile ne se passe pas dans un environnement propre. Les applications sont tuées, le réseau disparaît, les gens changent d'application en cours de route, les documents sortent flous, les réponses du prestataire arrivent quand elles arrivent. Nous avons traité tout cela comme des états de fonctionnement ordinaires, pas comme des cas limites.
+
+L'état de vérification vivait dans l'orchestrateur, pas dans la mémoire de l'application : un utilisateur revenant après une interruption reprenait au bon endroit. Une UI pilotée par l'état derrière des feature flags permettait d'activer les parcours américains et asiatiques sans passer par une release sur les stores. Et les informations sensibles étaient demandées progressivement — le SSN seulement au moment où il était légalement requis, pas d'emblée.
+
+Les paiements étaient derrière tout cela. Nous avons validé chez plusieurs prestataires en bac à sable les fonds insuffisants, les cartes expirées, les pannes réseau et prestataire, puis mené une vérification contrôlée en argent réel pour prouver le chemin de règlement de bout en bout. Chaque transaction était idempotente et rejouable, pour qu'une connexion mobile capricieuse ne produise pas de double débit. La règle était appliquée par l'architecture et non par l'interface : le paiement était programmatiquement inatteignable tant que le KYC n'avait pas abouti.
+
+## Le piloter entre six fonctions
+
+Mobile, Backend, Produit, Conformité, Juridique et Design avaient tous un intérêt en jeu, et mon rôle était d'être la jointure entre eux — garder les ingénieurs concentrés sur l'exécution pendant que je gérais les dépendances hors de leur contrôle.
+
+Les stand-ups restaient sur les blocages. La direction recevait l'avancement traduit en risque métier, dépendances, mitigation et préparation au lancement. Les RFC et les revues d'architecture ont mis Mobile et Backend sur le même modèle d'état de conformité, et j'ai travaillé entre Produit, Design et Juridique sur le vrai arbitrage : exigence légale contre expérience utilisateur contre vitesse de livraison.
+
+Le but n'a jamais été plus de réunions. C'était de s'assurer que la décision d'une fonction n'invalide pas silencieusement le travail d'une autre équipe.
+
+## Résultats
+
+```txt
+marchés actifs  2 → 4
+onboarding      +25 %
+volume paiement +35 %
+charge support  −30 %
+```
+
+La hausse du volume de paiements au trimestre suivant le lancement US/Asie a débloqué du revenu mondial supplémentaire. Mais le résultat que je mettrais en avant est architectural : le KYC a cessé d'être une fonctionnalité d'onboarding mono-région pour devenir une couche de conformité réutilisable, avec des points d'articulation prévus pour le prestataire, le marché et la règle suivants.
+
+L'entreprise demandait *« comment ajoute-t-on les paiements en Asie ? »*. La question plus utile, qu'il a fallu une session avec le Juridique pour faire émerger, était *« que doit-il être vrai pour que nous puissions opérer légalement et sûrement des paiements en Asie ? »*. Cette seule distinction a changé le périmètre, la cartographie des parties prenantes, l'architecture, la séquence de livraison, le modèle de risque et la définition du « terminé ».
+
+## Ce que je ferais autrement
+
+Je serais allé chercher la dépendance au moment de la roadmap plutôt que de la découvrir pendant le découpage. Elle était détectable plus tôt — les hypothèses mono-région étaient déjà dans le code — et la trouver une étape plus tôt n'aurait rien coûté à l'organisation, là où la trouver une étape plus tard aurait coûté un lancement.
+
+J'aurais aussi traité l'observabilité comme un livrable et non comme un sous-produit. L'ancien parcours d'onboarding était une boîte noire : des utilisateurs pouvaient échouer à la vérification sans que personne puisse dire où ni pourquoi. Nous n'avons obtenu la télémétrie pour y répondre qu'en conséquence de la reconstruction de l'entonnoir, et il s'est avéré que c'était ce que Produit et Support voulaient le plus. Cela méritait d'être cadré délibérément, pas hérité par accident.

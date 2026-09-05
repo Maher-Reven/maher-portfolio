@@ -1,0 +1,35 @@
+---
+title: "Scène Spline intégrée"
+summary: "Une scène 3D créée dans Spline, intégrée à React avec un projecteur qui suit le curseur — et le problème de bundler qui a décidé du comment. En direct ci-dessous."
+tags: ["Spline", "React", "3D"]
+---
+
+## Ce que c'est
+
+Une scène construite dans [Spline](https://spline.design) et montée comme un composant React, avec un projecteur piloté par ressort qui suit le curseur. Faites glisser la scène pour l'orbiter.
+
+<SplineSceneDemo />
+
+## Ce qui n'a pas marché
+
+L'intégration évidente, c'est `@splinetool/react-spline`, et elle ne se construit pas ici.
+
+Le runtime localise ses décodeurs Draco avec `new URL("../libs/draco/draco_decoder.js", import.meta.url)`. Les bundlers lisent ce motif comme une référence d'asset et tentent de résoudre le fichier — or il n'est pas dans le paquet publié, parce que Spline le récupère depuis son CDN à l'exécution. Turbopack respecte ce motif, échoue à résoudre, et le build de production s'arrête. Six modules, une seule et même cause.
+
+D'où l'utilisation du composant web `<spline-viewer>` de Spline, chargé depuis un CDN et enregistré via `customElements.whenDefined`. Aucun bundler impliqué, ce qui lui permet aussi de survivre à `output: "export"`. Rien ne se charge avant le montage du composant.
+
+Le compromis est assumé : un script tiers récupéré à l'exécution, et une intégration qui dépend du CDN de quelqu'un d'autre. Acceptable pour une expérience. Pas pour un hero.
+
+## Le projecteur
+
+Le projecteur n'est pas un effet CSS `:hover`. Il lit la position du pointeur par rapport au cadre du parent et fait passer les coordonnées par deux ressorts, si bien que la lumière traîne légèrement derrière le curseur au lieu de s'y coller — c'est ce détail qui la fait ressembler à une lumière plutôt qu'à une div qui suit la souris.
+
+Il mesure son propre parent au montage et lui impose `position: relative` et `overflow: hidden`, ce qui est astucieux mais signifie que le composant modifie discrètement l'élément au-dessus de lui. Bon à savoir avant de le poser dans une mise en page qui y tient.
+
+## Notes
+
+La scène reste sombre dans les deux thèmes. Le projecteur est blanc et le titre est un dégradé clair : les deux ont besoin d'un fond sombre, et sur le papier du thème clair ils disparaîtraient. La lire comme un viewport plutôt que comme une surface de page rend ce choix délibéré.
+
+## Source
+
+`src/components/three/SplineSceneDemo.tsx` · `src/components/ui/splite.tsx` · `src/components/ui/spotlight.tsx`

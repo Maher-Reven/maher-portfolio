@@ -1,0 +1,35 @@
+---
+title: "Spline-scène ingebed"
+summary: "Een 3D-scène gemaakt in Spline, ingebed in React met een spotlight die de cursor volgt — en het bundlerprobleem dat bepaalde hoe. Hieronder live."
+tags: ["Spline", "React", "3D"]
+---
+
+## Wat het is
+
+Een scène gebouwd in [Spline](https://spline.design) en gemonteerd als React-component, met een spotlight op veren die de cursor volgt. Sleep de scène om te draaien.
+
+<SplineSceneDemo />
+
+## Wat niet werkte
+
+De voor de hand liggende integratie is `@splinetool/react-spline`, en die bouwt hier niet.
+
+De runtime lokaliseert zijn Draco-decoders met `new URL("../libs/draco/draco_decoder.js", import.meta.url)`. Bundlers lezen dat patroon als een assetverwijzing en proberen het bestand te vinden — maar het zit niet in het gepubliceerde pakket, omdat Spline het tijdens runtime van hun CDN haalt. Turbopack respecteert het patroon, kan niet resolven, en de productiebuild stopt. Zes modules, dezelfde oorzaak.
+
+Daarom gebruikt dit Splines `<spline-viewer>` webcomponent, geladen vanaf een CDN en geregistreerd via `customElements.whenDefined`. Geen bundler in het spel, waardoor het ook `output: "export"` overleeft. Er wordt niets geladen voordat het component mount.
+
+De ruil is eerlijk: een script van derden dat tijdens runtime wordt opgehaald, en een embed die afhangt van andermans CDN. Prima voor een experiment. Niet iets wat ik achter een hero zou zetten.
+
+## De spotlight
+
+De spotlight is geen CSS `:hover`-effect. Hij leest de aanwijzer af tegen de bounding box van de ouder en voert de coördinaten door twee veren, zodat het licht licht achterloopt op de cursor in plaats van eraan vast te klikken — juist dat detail laat het als licht aanvoelen en niet als een div die de muis volgt.
+
+Het component meet bij het mounten zijn eigen ouder en zet daar `position: relative` en `overflow: hidden` op. Slim, maar het betekent wel dat het stilletjes het element erboven aanpast. Goed om te weten voordat je het in een layout zet die daar gevoelig voor is.
+
+## Notities
+
+Het podium blijft donker in beide thema's. De spotlight is wit en de kop is een licht verloop; beide hebben een donkere ondergrond nodig en zouden tegen het papier van het lichte thema verdwijnen. Het lezen als viewport in plaats van als paginavlak maakt die keuze bewust.
+
+## Bron
+
+`src/components/three/SplineSceneDemo.tsx` · `src/components/ui/splite.tsx` · `src/components/ui/spotlight.tsx`
