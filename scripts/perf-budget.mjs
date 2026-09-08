@@ -14,6 +14,7 @@ const OUT_DIR = "out";
 // failure here means "explain the regression," not "raise the number."
 const BUDGETS = {
   "/": { file: "index.html", kb: 2048 },
+  "/work/beyond-autocomplete": { file: "work/beyond-autocomplete.html", kb: 2048 },
   "/work/45-to-1": { file: "work/45-to-1.html", kb: 2048 },
 };
 

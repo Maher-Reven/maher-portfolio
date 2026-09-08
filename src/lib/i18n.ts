@@ -125,6 +125,8 @@ const en = {
   "camera.stop": "Stop",
   "camera.privacy": "Reduced to brightness only, locally, in your browser — no color, no image is kept, nothing is sent anywhere.",
 
+  "ladder.escalation": "Anything outside these bounds escalates to a person.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -229,6 +231,8 @@ const fr: Record<TKey, string> = {
   "camera.stop": "Arrêter",
   "camera.privacy": "Réduit à la seule luminosité, localement, dans votre navigateur — aucune couleur, aucune image conservée, rien n'est envoyé.",
 
+  "ladder.escalation": "Tout ce qui sort de ces limites remonte à une personne.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -330,6 +334,8 @@ const nl: Record<TKey, string> = {
   "camera.unsupported": "Je browser ondersteunt dit niet",
   "camera.stop": "Stoppen",
   "camera.privacy": "Teruggebracht tot alleen helderheid, lokaal, in je browser — geen kleur, geen bewaard beeld, er wordt niets verzonden.",
+
+  "ladder.escalation": "Alles buiten deze grenzen gaat naar een mens.",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -433,6 +439,8 @@ const fy: Record<TKey, string> = {
   "camera.stop": "Stopje",
   "camera.privacy": "Omset ta allinnich helderheid, lokaal, yn dyn browser — gjin kleur, gjin bewarre byld, der wurdt neat ferstjoerd.",
 
+  "ladder.escalation": "Alles bûten dizze grinzen giet nei in minske.",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -534,6 +542,8 @@ const ru: Record<TKey, string> = {
   "camera.unsupported": "Ваш браузер это не поддерживает",
   "camera.stop": "Остановить",
   "camera.privacy": "Сведено только к яркости, локально, в браузере — без цвета, без сохранённого изображения, ничего не отправляется.",
+
+  "ladder.escalation": "Всё, что выходит за эти границы, передаётся человеку.",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

@@ -1,0 +1,95 @@
+---
+title: "Beyond autocomplete"
+summary: "Taking a mobile engineering org from AI as a typing aid to AI as a production teammate — with real guardrails on what it's allowed to call and ship."
+year: 2026
+role: "Senior Engineering Manager"
+tags: ["AI-native engineering", "Agents", "Governance", "Developer experience"]
+color: "#3b82f6"
+featured: true
+order: 0
+---
+
+## Context
+
+StuDocu's mobile platform covers authentication, monetisation, and a growing set of AI-powered learning features, built on React Native and Expo. I took over the function mid leadership-transition — performance calibration, career development and team operating cadence all needed rebuilding at the same time the roadmap kept moving.
+
+## AI was already in the building, ungoverned
+
+Individually, engineers were already using AI coding assistants — inconsistently, without shared context, and without anyone having answered the question that actually mattered: what happens when the assistant stops assisting and starts *acting*? Opening a pull request. Calling an API. Shipping content on its own.
+
+The organisation had opinions about autocomplete. It had none about an agent.
+
+## The constraints
+
+- **Trust came before tooling.** The team was mid transition. Nobody was going to accept a new way of working — let alone one involving autonomous systems — from someone who hadn't first re-established the basics: clear calibration, real career conversations, a cadence people could rely on.
+- **Mobile ships continuously.** Auth and monetisation are not the parts of the app where "the agent seemed confident" is an acceptable bar.
+- **Context was fragmented.** GitHub, Linear and Sentry each held part of the picture. Every session — human or otherwise — was reconstructing that picture from scratch, every time.
+
+## The strategy
+
+Three moves did the work.
+
+**Fix shared context before autonomy.** Repo-context rules connected GitHub, Linear and Sentry, so any tool — a new hire or an agent — saw the same picture instead of starting from zero. Unglamorous, and the precondition for everything after it.
+
+**Treat "agent" as a scoped role, not an open-ended feature.** LangGraph agents were built for specific jobs inside mobile AI features, and Kestra pipelines for content generation at scale — never given a general mandate to "help." A job description, not a feature flag.
+
+**Make autonomy a ladder, not a switch.** Every tool-calling surface sits at an explicit tier: read-only, propose-for-review, or gated-automatic. Moving a capability up a tier is a decision someone makes on purpose, not a default it arrives with.
+
+<Tradeoff
+  chosen="Shared context layer + per-team tool-calling policy (chosen)"
+  cost="This is infrastructure, not a feature — it shipped nothing a user could see on its own. The actual leadership work was defending the time for it before the ramp-up gains were visible to anyone outside the team."
+>
+  <TradeoffOption label="Let every engineer configure their own AI tooling">
+    Fastest to start, and free of a central decision. Every engineer ends up with a different context, a different set of permissions, and no way for anyone else to reason about what a given tool is allowed to do.
+  </TradeoffOption>
+  <TradeoffOption label="Mandate one fully-managed agent platform">
+    Consistent by construction, but a single vendor's roadmap now decides what the team can and can't do — adoption becomes a compliance exercise instead of an engineering one.
+  </TradeoffOption>
+  <TradeoffOption label="Shared context layer + per-team tool-calling policy (chosen)">
+    One context layer everyone draws from, with each team deciding — explicitly, in writing — which tier its own tools operate at.
+  </TradeoffOption>
+</Tradeoff>
+
+## Execution
+
+- Repo-context rules deployed across the mobile org, so GitHub, Linear and Sentry read as one picture instead of three.
+- LangGraph agents shipped for specific AI learning features, each behind an evaluation gate before anything reached a user.
+- Kestra pipelines generating content at scale, held to the same tiering as everything else — scale was never a reason to skip the gate.
+- Every tool-calling surface was assigned a tier before it went live, not audited into one after an incident.
+
+<AutonomyLadder>
+  <AutonomyTier label="Read-only">
+    Sees GitHub, Linear and Sentry context. Cannot write anything, anywhere.
+  </AutonomyTier>
+  <AutonomyTier label="Propose">
+    Drafts pull requests, content, and changes. Nothing ships without a human reviewing it first.
+  </AutonomyTier>
+  <AutonomyTier label="Gated automatic">
+    Acts within CI-verified, reversible bounds, behind an evaluation gate that runs before anything reaches a user.
+  </AutonomyTier>
+</AutonomyLadder>
+
+## Leading through it
+
+The technical model was the easy part to write down. The harder part was that "guardrails" sounds like a constraint to an engineer and like due diligence to leadership — and it needed to actually be both, explained in each audience's own terms, or it would be quietly worked around by one side and quietly distrusted by the other.
+
+What moved it: shipping the boring context layer first and letting engineers feel the ramp-up difference themselves, rather than trying to sell the idea of it in the abstract before anyone had felt it.
+
+## Results
+
+```txt
+ramp-up            months → weeks
+API migration      V1 → V2, 6 mission owners, zero regressions
+AI initiatives     prototype → production
+tool governance    ungoverned → tiered by design
+```
+
+The metric I'd point at first isn't in that block: every AI tool running in production now has a written answer to "what tier is this, and who decided." That sentence didn't exist a year ago.
+
+## What I'd do differently
+
+<Retro>
+The tiering model existed in conversation and in my head before it existed in writing, and that worked — right up until two teams needed to agree on where a new capability sat, and an unwritten model stopped being enough.
+
+I'd write it down before the first agent shipped, not after the second. It costs an afternoon early, and it costs a week of cross-team disagreement later.
+</Retro>

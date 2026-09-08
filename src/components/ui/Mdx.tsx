@@ -6,6 +6,7 @@ import { Retro } from "@/components/ui/Retro";
 import { GenerativeMark } from "@/components/lab/GenerativeMark";
 import { AudioVisualizer } from "@/components/lab/AudioVisualizer";
 import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
+import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
 
 /**
  * Components a lab or work entry can drop into its MDX to embed a live demo
@@ -21,6 +22,8 @@ const components = {
   GenerativeMark,
   AudioVisualizer,
   AsciiWebcam,
+  AutonomyLadder,
+  AutonomyTier,
 };
 
 export function Mdx({ source }: { source: string }) {

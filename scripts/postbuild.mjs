@@ -25,6 +25,14 @@ function baseFiles(dir) {
   return fs.readdirSync(dir).filter((f) => f.endsWith(".mdx") && !LOCALE_SUFFIX.test(f));
 }
 
+/** Turns each <AutonomyTier label="..">body</AutonomyTier> into a numbered line. */
+function renderLadder(inner) {
+  const tiers = [...inner.matchAll(/<AutonomyTier\s+label="([^"]*)">([\s\S]*?)<\/AutonomyTier>/g)].map(
+    ([, label, body]) => ({ label, body: body.trim().replace(/\s+/g, " ") })
+  );
+  return tiers.map((t, i) => `${i + 1}. **${t.label}** — ${t.body}`).join("\n");
+}
+
 /** Turns one <TradeoffOption label="..">body</TradeoffOption> into a bullet. */
 function renderTradeoff(attrs, inner) {
   const chosen = attrs.match(/chosen="([^"]*)"/)?.[1] ?? "";
@@ -62,6 +70,7 @@ function stripComponents(body) {
   }
   out = out.replace(/<Retro>\n?([\s\S]*?)\n?<\/Retro>/g, (_, inner) => inner.trim());
   out = out.replace(/<Tradeoff\s+([\s\S]*?)>([\s\S]*?)<\/Tradeoff>/g, (_, attrs, inner) => renderTradeoff(attrs, inner));
+  out = out.replace(/<AutonomyLadder>\n?([\s\S]*?)\n?<\/AutonomyLadder>/g, (_, inner) => renderLadder(inner));
   return out;
 }
 

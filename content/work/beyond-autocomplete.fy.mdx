@@ -1,0 +1,91 @@
+---
+title: "Foarby autocomplete"
+summary: "In mobile engineeringorganisaasje fan AI as typhelp nei AI as teamgenoat yn produksje — mei echte kaders foar wat it oanroppe en opleverje mei."
+role: "Senior Engineering Manager"
+tags: ["AI-native engineering", "Agents", "Governance", "Developer experience"]
+---
+
+## Kontekst
+
+It mobile platfoarm fan StuDocu omfiemet autentikaasje, monetisaasje en in groeiende searje AI-oandreaune learfunksjes, boud op React Native en Expo. Ik naam de funksje oer midden yn in wiksel fan lieding — prestaasjekalibraasje, loopbaanûntwikkeling en it wurkritme fan it team moasten allegear opnij opboud wurde wylst de roadmap trochrûn.
+
+## AI wie der al, sûnder governance
+
+Yndividueel brûkten ingenieurs al AI-koadeassistinten — net konsekwint, sûnder dielde kontekst, en sûnder dat immen de fraach beändere hie dy't der echt ta die: wat bart der as de assistint ophâldt mei assistearjen en begjint te *hanneljen*? In pull request iepenje. In API oanroppe. Sels ynhâld opleverje.
+
+De organisaasje hie in miening oer autocomplete. Oer in agint hie se der gjin.
+
+## De betingsten
+
+- **Fertrouwen kaam foar ark.** It team siet midden yn in oergong. Nimmen soe in nije manier fan wurkjen akseptearje — lit stean ien mei autonome systemen — fan immen dy't net earst de basis werombrocht hie: dúdlike kalibraasje, echte loopbaanpetearen, in ritme dêr't minsken op rekkenje koene.
+- **Mobile levert trochrinnend op.** Autentikaasje en monetisaasje binne net de dielen fan de app dêr't "de agint like wis fan himsels" in akseptabele latte is.
+- **Kontekst wie fersnippere.** GitHub, Linear en Sentry hiene elk in diel fan it byld. Elke sesje — minsklik of net — bou dat byld hieltyd wer op fan neat.
+
+## De strategy
+
+Trije besluten dienen it measte wurk.
+
+**Los dielde kontekst op foar autonomy.** Repo-kontekstregels ferbûnen GitHub, Linear en Sentry, sadat elk helpmiddel — in nije kollega of in agint — itselde byld seach ynstee fan by neat te begjinnen. Net glamoereus, en de betingst foar alles dernei.
+
+**Behannelje "agint" as in ôfbakene rol, net as in iepen funksje.** LangGraph-aginten waarden boud foar spesifike taken binnen mobile AI-funksjes, en Kestra-pipelines foar it op skaal generearjen fan ynhâld — nea mei in algemien mandaat om te "helpen". In funksjebeskriuwing, gjin feature flag.
+
+**Meitsje fan autonomy in ljedder, gjin skeakelder.** Elk flak dêr't in ark oanroppen wurdt sit op in eksplisyt nivo: allinnich-lêze, foarstelle ûnder review, of automatysk ûnder kontrôle. In kapasiteit in nivo heger sette is in bewuste beslissing, gjin standert wêrmei't it binnenkomt.
+
+<Tradeoff
+  chosen="Dielde kontekstlaach + ark-oanropbelied per team (keazen)"
+  cost="Dit is ynfrastruktuer, gjin feature — it levere op himsels neat op dat in brûker sjen koe. It echte liederskipswurk wie it ferdigenjen fan de tiid dêrfoar, foardat de winst yn ynwurktiid foar wa dan ek bûten it team sichtber wie."
+>
+  <TradeoffOption label="Elke ingenieur syn eigen AI-ark litte konfigurearje">
+    It flugste om mei te begjinnen, en frij fan in sintrale beslissing. Elke ingenieur einiget mei in oare kontekst, oare tastimmingen, en nimmen oars kin noch redenearje oer wat in beskaat ark dwaan mei.
+  </TradeoffOption>
+  <TradeoffOption label="Ien folslein behearre agintplatfoarm ferplichte stelle">
+    Konsekwint troch konstruksje, mar de roadmap fan ien leveransier bepaalt no wat it team wol en net kin — oername wurdt in konformiteitsoefening ynstee fan in engineeringoefening.
+  </TradeoffOption>
+  <TradeoffOption label="Dielde kontekstlaach + ark-oanropbelied per team (keazen)">
+    Ien kontekstlaach dêr't elkenien út put, wêrby't elk team eksplisyt, op skrift, bepaalt op hokker nivo syn eigen ark operearret.
+  </TradeoffOption>
+</Tradeoff>
+
+## Utfiering
+
+- Repo-kontekstregels útrôle oer de hiele mobile organisaasje, sadat GitHub, Linear en Sentry as ien byld lêze ynstee fan trije.
+- LangGraph-aginten oplevere foar spesifike AI-learfunksjes, elk efter in evaluaasjepoarte foardat wat dan ek in brûker berikte.
+- Kestra-pipelines dy't op skaal ynhâld generearje, ûnderwurpen oan deselde nivo-yndieling as al it oare — skaal wie nea in reden om de poarte oer te slaan.
+- Elk flak dêr't in ark oanroppen wurdt krige in nivo tawiisd foardat it live gie, nea efterôf kontrolearre nei in ynsidint.
+
+<AutonomyLadder>
+  <AutonomyTier label="Allinnich-lêze">
+    Sjocht GitHub-, Linear- en Sentry-kontekst. Kin nearne wat skriuwe.
+  </AutonomyTier>
+  <AutonomyTier label="Foarstelle">
+    Stelt pull requests, ynhâld en wizigings op. Neat giet live sûnder dat in minske it earst besjoen hat.
+  </AutonomyTier>
+  <AutonomyTier label="Automatysk ûnder kontrôle">
+    Hannelet binnen troch CI ferifiearre, werombrekbere grinzen, efter in evaluaasjepoarte dy't draait foardat wat dan ek in brûker berikt.
+  </AutonomyTier>
+</AutonomyLadder>
+
+## Lieding jaan hjiroan
+
+It technyske model wie it maklike diel om op te skriuwen. It dreege diel wie dat "kaders" foar in ingenieur klinkt as in beheining en foar it management as soarchfâldichheid — en it moast echt beide wêze, útlein yn de taal fan elk publyk, oars soe de iene kant it stikem omsile wylst de oare it stikem wantrouwe.
+
+Wat it echt yn beweging brocht: earst de saaie kontekstlaach opleverje en ingenieurs sels it ferskil yn ynwurktiid fiele litte, ynstee fan it idee abstrakt te ferkeapjen foardat immen it field hie.
+
+## Resultaten
+
+```txt
+ynwurktiid          moannen → wiken
+API-migraasje       V1 → V2, 6 mission owners, sûnder regressies
+AI-inisjativen      prototype → produksje
+ark-governance      net regele → nei nivo ûntwurpen
+```
+
+It sifer dêr't ik earst nei wize soe stiet net yn dat blok: elk AI-ark dat yn produksje draait hat no in skreaune antwurd op "hokker nivo is dit, en wa hat dat besluten." Dy sin bestie in jier lyn net.
+
+## Wat ik oars dwaan soe
+
+<Retro>
+It nivo-model bestie yn petearen en yn myn holle foardat it op skrift stie, en dat wurke — oant it momint dat twa teams it iens wurde moasten oer wêr't in nije kapasiteit thúshearde, en in net-skreaun model net mear genôch wie.
+
+Ik soe it opskreaun hawwe foardat de earste agint live gie, net nei de twadde. It kostet foarôf in middei, en efterôf in wike oan ûnienichheid tusken teams.
+</Retro>

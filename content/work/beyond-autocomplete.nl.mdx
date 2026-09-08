@@ -1,0 +1,91 @@
+---
+title: "Voorbij autocomplete"
+summary: "Een mobiele engineeringorganisatie van AI als typhulp naar AI als teamgenoot in productie — met echte kaders voor wat het mag aanroepen en opleveren."
+role: "Senior Engineering Manager"
+tags: ["AI-native engineering", "Agents", "Governance", "Developer experience"]
+---
+
+## Context
+
+Het mobiele platform van StuDocu omvat authenticatie, monetisatie en een groeiende reeks AI-gedreven leerfuncties, gebouwd op React Native en Expo. Ik nam de functie over midden in een leiderschapswissel — performancekalibratie, loopbaanontwikkeling en het werkritme van het team moesten allemaal opnieuw worden opgebouwd terwijl de roadmap bleef doorlopen.
+
+## AI was al binnen, zonder governance
+
+Engineers gebruikten individueel al AI-codeassistenten — inconsistent, zonder gedeelde context, en zonder dat iemand de vraag had beantwoord die er echt toe deed: wat gebeurt er als de assistent stopt met assisteren en begint te *handelen*? Een pull request openen. Een API aanroepen. Zelfstandig content opleveren.
+
+De organisatie had een mening over autocomplete. Over een agent had ze er geen.
+
+## De randvoorwaarden
+
+- **Vertrouwen kwam vóór tooling.** Het team zat midden in een overgang. Niemand ging een nieuwe manier van werken accepteren — laat staan een met autonome systemen — van iemand die niet eerst de basis had hersteld: heldere kalibratie, echte loopbaangesprekken, een ritme waarop mensen konden rekenen.
+- **Mobiel levert continu op.** Authenticatie en monetisatie zijn niet de delen van de app waar "de agent leek zeker van zichzelf" een acceptabele lat is.
+- **Context was versnipperd.** GitHub, Linear en Sentry hielden elk een deel van het beeld vast. Elke sessie — menselijk of niet — bouwde dat beeld telkens opnieuw op vanaf nul.
+
+## De strategie
+
+Drie beslissingen deden het meeste werk.
+
+**Los gedeelde context op vóór autonomie.** Repo-contextregels verbonden GitHub, Linear en Sentry, zodat elk hulpmiddel — een nieuwe collega of een agent — hetzelfde beeld zag in plaats van bij nul te beginnen. Onglamoureus, en de voorwaarde voor alles wat erna kwam.
+
+**Behandel "agent" als een afgebakende rol, niet als een open functie.** LangGraph-agents werden gebouwd voor specifieke taken binnen mobiele AI-functies, en Kestra-pipelines voor het op schaal genereren van content — nooit met een algemeen mandaat om te "helpen". Een functieomschrijving, geen feature flag.
+
+**Maak van autonomie een ladder, geen schakelaar.** Elk oppervlak waar een tool wordt aangeroepen zit op een expliciet niveau: alleen-lezen, voorstellen ter review, of automatisch onder controle. Een capaciteit een niveau hoger zetten is een bewuste beslissing, geen standaard waarmee het binnenkomt.
+
+<Tradeoff
+  chosen="Gedeelde contextlaag + tool-aanroepbeleid per team (gekozen)"
+  cost="Dit is infrastructuur, geen feature — het leverde op zichzelf niets op dat een gebruiker kon zien. Het echte leiderschapswerk was het verdedigen van de tijd ervoor, voordat de winst in inwerktijd voor wie dan ook buiten het team zichtbaar was."
+>
+  <TradeoffOption label="Elke engineer zijn eigen AI-tooling laten configureren">
+    Het snelst om mee te beginnen, en vrij van een centrale beslissing. Elke engineer eindigt met een andere context, andere permissies, en niemand anders kan nog redeneren over wat een gegeven tool mag doen.
+  </TradeoffOption>
+  <TradeoffOption label="Eén volledig beheerd agentplatform verplicht stellen">
+    Consistent door constructie, maar de roadmap van één leverancier bepaalt nu wat het team wel en niet kan — adoptie wordt een compliance-oefening in plaats van een engineering-oefening.
+  </TradeoffOption>
+  <TradeoffOption label="Gedeelde contextlaag + tool-aanroepbeleid per team (gekozen)">
+    Eén contextlaag waar iedereen uit put, waarbij elk team expliciet, op schrift, bepaalt op welk niveau zijn eigen tools opereren.
+  </TradeoffOption>
+</Tradeoff>
+
+## Uitvoering
+
+- Repo-contextregels uitgerold over de hele mobiele organisatie, zodat GitHub, Linear en Sentry als één beeld lezen in plaats van drie.
+- LangGraph-agents opgeleverd voor specifieke AI-leerfuncties, elk achter een evaluatiepoort voordat iets een gebruiker bereikte.
+- Kestra-pipelines die op schaal content genereren, onderworpen aan dezelfde niveau-indeling als al het andere — schaal was nooit een reden om de poort over te slaan.
+- Elk oppervlak waar een tool wordt aangeroepen kreeg een niveau toegewezen vóór het live ging, nooit achteraf gecontroleerd na een incident.
+
+<AutonomyLadder>
+  <AutonomyTier label="Alleen-lezen">
+    Ziet GitHub-, Linear- en Sentry-context. Kan nergens iets schrijven.
+  </AutonomyTier>
+  <AutonomyTier label="Voorstellen">
+    Stelt pull requests, content en wijzigingen op. Niets gaat live zonder dat een mens het eerst heeft bekeken.
+  </AutonomyTier>
+  <AutonomyTier label="Automatisch onder controle">
+    Handelt binnen door CI geverifieerde, omkeerbare grenzen, achter een evaluatiepoort die draait voordat iets een gebruiker bereikt.
+  </AutonomyTier>
+</AutonomyLadder>
+
+## Leidinggeven hieraan
+
+Het technische model was het makkelijke deel om op te schrijven. Het moeilijke deel was dat "kaders" voor een engineer klinkt als een beperking en voor het management als zorgvuldigheid — en het moest allebei echt zijn, uitgelegd in de taal van elk publiek, anders zou de ene kant het stilletjes omzeilen terwijl de andere het stilletjes wantrouwde.
+
+Wat het echt in beweging bracht: eerst de saaie contextlaag opleveren en engineers zelf het verschil in inwerktijd laten voelen, in plaats van het idee abstract te verkopen voordat iemand het had ervaren.
+
+## Resultaten
+
+```txt
+inwerktijd          maanden → weken
+API-migratie        V1 → V2, 6 mission owners, zonder regressies
+AI-initiatieven     prototype → productie
+tool-governance     ongereguleerd → naar niveau ontworpen
+```
+
+Het cijfer waar ik het eerst naar zou wijzen staat niet in dat blok: elke AI-tool die in productie draait heeft nu een geschreven antwoord op "welk niveau is dit, en wie heeft dat besloten." Die zin bestond een jaar geleden niet.
+
+## Wat ik anders zou doen
+
+<Retro>
+Het niveau-model bestond in gesprekken en in mijn hoofd voordat het op schrift stond, en dat werkte — tot het moment dat twee teams het eens moesten worden over waar een nieuwe capaciteit thuishoorde, en een ongeschreven model niet meer genoeg was.
+
+Ik zou het hebben opgeschreven voordat de eerste agent live ging, niet na de tweede. Het kost vooraf een middag, en achteraf een week aan onenigheid tussen teams.
+</Retro>

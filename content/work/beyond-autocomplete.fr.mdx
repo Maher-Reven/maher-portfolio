@@ -1,0 +1,91 @@
+---
+title: "Au-delà de l'autocomplétion"
+summary: "Faire passer une organisation d'ingénierie mobile de l'IA comme aide à la frappe à l'IA comme coéquipière en production — avec de vrais garde-fous sur ce qu'elle a le droit d'appeler et de livrer."
+role: "Senior Engineering Manager"
+tags: ["Ingénierie native IA", "Agents", "Gouvernance", "Expérience développeur"]
+---
+
+## Contexte
+
+La plateforme mobile de StuDocu couvre l'authentification, la monétisation et un nombre croissant de fonctionnalités d'apprentissage propulsées par l'IA, construites sur React Native et Expo. J'ai repris la fonction en pleine transition de direction — la calibration des performances, le développement de carrière et le rythme opérationnel de l'équipe devaient tous être reconstruits en même temps que la roadmap continuait d'avancer.
+
+## L'IA était déjà présente, sans gouvernance
+
+Individuellement, les ingénieurs utilisaient déjà des assistants de code IA — de façon inégale, sans contexte partagé, et sans que personne n'ait répondu à la question qui comptait vraiment : que se passe-t-il quand l'assistant cesse d'assister et commence à *agir* ? Ouvrir une pull request. Appeler une API. Livrer du contenu de sa propre initiative.
+
+L'organisation avait un avis sur l'autocomplétion. Elle n'en avait aucun sur un agent.
+
+## Les contraintes
+
+- **La confiance avant l'outillage.** L'équipe était en pleine transition. Personne n'allait accepter une nouvelle façon de travailler — encore moins impliquant des systèmes autonomes — de la part de quelqu'un qui n'avait pas d'abord rétabli les bases : une calibration claire, de vraies conversations de carrière, un rythme sur lequel compter.
+- **Le mobile livre en continu.** L'authentification et la monétisation ne sont pas les parties de l'application où « l'agent semblait confiant » est un critère acceptable.
+- **Le contexte était fragmenté.** GitHub, Linear et Sentry détenaient chacun une partie du tableau. Chaque session — humaine ou non — reconstruisait ce tableau à partir de zéro, à chaque fois.
+
+## La stratégie
+
+Trois décisions ont fait l'essentiel du travail.
+
+**Régler le contexte partagé avant l'autonomie.** Des règles de contexte de dépôt ont relié GitHub, Linear et Sentry, pour que tout outil — une nouvelle recrue ou un agent — voie le même tableau plutôt que de repartir de zéro. Peu glamour, et la condition préalable à tout ce qui a suivi.
+
+**Traiter « agent » comme un rôle cadré, pas comme une fonctionnalité ouverte.** Les agents LangGraph ont été construits pour des tâches précises au sein des fonctionnalités mobiles d'IA, et les pipelines Kestra pour la génération de contenu à grande échelle — jamais avec un mandat général pour « aider ». Une fiche de poste, pas un feature flag.
+
+**Faire de l'autonomie une échelle, pas un interrupteur.** Chaque surface d'appel d'outil se situe à un palier explicite : lecture seule, proposition sous revue, ou automatique sous contrôle. Faire monter une capacité d'un palier est une décision prise sciemment, pas un défaut avec lequel elle arrive.
+
+<Tradeoff
+  chosen="Couche de contexte partagée + politique d'appel d'outils par équipe (choisi)"
+  cost="C'est de l'infrastructure, pas une fonctionnalité — ça n'a rien livré qu'un utilisateur puisse voir par lui-même. Le vrai travail de leadership a été de défendre le temps que ça prenait, avant que les gains sur la montée en compétence soient visibles pour quiconque en dehors de l'équipe."
+>
+  <TradeoffOption label="Laisser chaque ingénieur configurer son propre outillage IA">
+    Le plus rapide à démarrer, et libre de toute décision centrale. Chaque ingénieur finit avec un contexte différent, un jeu de permissions différent, et personne d'autre ne peut raisonner sur ce qu'un outil donné a le droit de faire.
+  </TradeoffOption>
+  <TradeoffOption label="Imposer une seule plateforme d'agents entièrement managée">
+    Cohérent par construction, mais la roadmap d'un seul fournisseur décide désormais de ce que l'équipe peut ou ne peut pas faire — l'adoption devient un exercice de conformité plutôt que d'ingénierie.
+  </TradeoffOption>
+  <TradeoffOption label="Couche de contexte partagée + politique d'appel d'outils par équipe (choisi)">
+    Une seule couche de contexte dans laquelle tout le monde puise, chaque équipe décidant — explicitement, par écrit — à quel palier ses propres outils opèrent.
+  </TradeoffOption>
+</Tradeoff>
+
+## Exécution
+
+- Règles de contexte de dépôt déployées dans toute l'organisation mobile, pour que GitHub, Linear et Sentry se lisent comme un seul tableau plutôt que trois.
+- Agents LangGraph livrés pour des fonctionnalités d'apprentissage IA précises, chacun derrière une porte d'évaluation avant d'atteindre un utilisateur.
+- Pipelines Kestra générant du contenu à grande échelle, soumis au même système de paliers que tout le reste — l'échelle n'a jamais été une raison de sauter la porte.
+- Chaque surface d'appel d'outil s'est vu attribuer un palier avant sa mise en production, jamais audité après coup, à la suite d'un incident.
+
+<AutonomyLadder>
+  <AutonomyTier label="Lecture seule">
+    Voit le contexte GitHub, Linear et Sentry. Ne peut rien écrire, nulle part.
+  </AutonomyTier>
+  <AutonomyTier label="Proposition">
+    Rédige des pull requests, du contenu, des changements. Rien ne part sans qu'un humain ne l'ait d'abord relu.
+  </AutonomyTier>
+  <AutonomyTier label="Automatique sous contrôle">
+    Agit dans des limites vérifiées par la CI et réversibles, derrière une porte d'évaluation qui s'exécute avant que quoi que ce soit n'atteigne un utilisateur.
+  </AutonomyTier>
+</AutonomyLadder>
+
+## Le piloter
+
+Le modèle technique a été la partie facile à coucher sur le papier. La partie difficile, c'est que « garde-fous » sonne comme une contrainte pour un ingénieur et comme de la diligence raisonnable pour la direction — et il fallait que ce soit vraiment les deux, expliqué dans les termes de chaque public, sinon un camp le contournerait discrètement pendant que l'autre s'en méfierait tout aussi discrètement.
+
+Ce qui a fait bouger les choses : livrer d'abord la couche de contexte, ingrate mais nécessaire, et laisser les ingénieurs ressentir eux-mêmes la différence sur la montée en compétence, plutôt que d'essayer de vendre l'idée dans l'abstrait avant que quiconque ne l'ait vécue.
+
+## Résultats
+
+```txt
+montée en compétence    mois → semaines
+migration API           V1 → V2, 6 responsables de mission, zéro régression
+initiatives IA          prototype → production
+gouvernance des outils  sans gouvernance → paliers par conception
+```
+
+Le chiffre que je mettrais en avant en premier n'est pas dans ce bloc : chaque outil IA qui tourne en production a désormais une réponse écrite à « quel est son palier, et qui l'a décidé ». Cette phrase n'existait pas il y a un an.
+
+## Ce que je ferais autrement
+
+<Retro>
+Le modèle de paliers existait dans les conversations et dans ma tête avant d'exister par écrit, et ça a fonctionné — jusqu'au jour où deux équipes ont dû se mettre d'accord sur le palier d'une nouvelle capacité, et où un modèle non écrit a cessé de suffire.
+
+Je l'aurais couché sur le papier avant que le premier agent ne parte en production, pas après le deuxième. Ça coûte un après-midi au début, et ça coûte une semaine de désaccords entre équipes plus tard.
+</Retro>
