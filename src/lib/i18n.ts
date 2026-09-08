@@ -107,6 +107,9 @@ const en = {
   "collapse.repositories": "repositories",
   "collapse.platform": "platform",
 
+  "mark.seed": "Seed",
+  "mark.regenerate": "Regenerate",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -193,6 +196,9 @@ const fr: Record<TKey, string> = {
   "collapse.repositories": "dépôts",
   "collapse.platform": "plateforme",
 
+  "mark.seed": "Graine",
+  "mark.regenerate": "Régénérer",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -276,6 +282,9 @@ const nl: Record<TKey, string> = {
   "collapse.after": "Na",
   "collapse.repositories": "repository's",
   "collapse.platform": "platform",
+
+  "mark.seed": "Seed",
+  "mark.regenerate": "Regenereer",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -361,6 +370,9 @@ const fy: Record<TKey, string> = {
   "collapse.repositories": "repository's",
   "collapse.platform": "platfoarm",
 
+  "mark.seed": "Seed",
+  "mark.regenerate": "Regenerearje",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -444,6 +456,9 @@ const ru: Record<TKey, string> = {
   "collapse.after": "После",
   "collapse.repositories": "репозитории",
   "collapse.platform": "платформа",
+
+  "mark.seed": "Сид",
+  "mark.regenerate": "Пересоздать",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

@@ -1,0 +1,22 @@
+---
+title: "Generative mark"
+summary: "The MK monogram, redrawn from a new seed on every load — deterministic per seed, never the same twice. Regenerate below."
+year: 2026
+tags: ["SVG", "Generative", "Procedural"]
+color: "#22d3ee"
+order: 4
+---
+
+## What it is
+
+A fixed "MK" letterform skeleton — the same one behind the site's handle — jittered by a seeded PRNG into a fresh variation on every load. Same seed, same mark, every time: it's generative, not random. Reproducible, just never predictable in advance.
+
+<GenerativeMark />
+
+## Why straight lines, not curves
+
+Every generative-monogram sketch I tried with smooth curves read as decorative rather than as this site's mark. Faceted, straight-line jitter reads as a signal being redrawn, not a logo being warped — closer to the HUD language the rest of the site already speaks.
+
+## Source
+
+No WebGL context here — this one is inline SVG and CSS, so it costs nothing on top of the page. `src/lib/generative-mark.ts` · `src/components/lab/GenerativeMark.tsx`

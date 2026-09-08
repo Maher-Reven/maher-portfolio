@@ -3,13 +3,14 @@ import { SplineSceneDemo } from "@/components/three/SplineSceneDemo";
 import { SystemsCollapse } from "@/components/three/SystemsCollapse";
 import { Tradeoff, TradeoffOption } from "@/components/ui/Tradeoff";
 import { Retro } from "@/components/ui/Retro";
+import { GenerativeMark } from "@/components/lab/GenerativeMark";
 
 /**
  * Components a lab or work entry can drop into its MDX to embed a live demo
  * rather than only describing one. Client components are fine here — MDXRemote
  * renders on the server and each one becomes its own client boundary.
  */
-const components = { SplineSceneDemo, SystemsCollapse, Tradeoff, TradeoffOption, Retro };
+const components = { SplineSceneDemo, SystemsCollapse, Tradeoff, TradeoffOption, Retro, GenerativeMark };
 
 export function Mdx({ source }: { source: string }) {
   return (

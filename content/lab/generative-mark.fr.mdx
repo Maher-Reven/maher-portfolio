@@ -1,0 +1,19 @@
+---
+title: "Marque générative"
+summary: "Le monogramme MK, redessiné à partir d'une nouvelle graine à chaque chargement — déterministe par graine, jamais deux fois pareil. Régénérez ci-dessous."
+tags: ["SVG", "Génératif", "Procédural"]
+---
+
+## Ce que c'est
+
+Un squelette de lettrage « MK » fixe — le même qui est derrière le pseudo du site — perturbé par un PRNG à graine en une variation nouvelle à chaque chargement. Même graine, même marque, à chaque fois : c'est génératif, pas aléatoire. Reproductible, simplement imprévisible à l'avance.
+
+<GenerativeMark />
+
+## Pourquoi des lignes droites, pas des courbes
+
+Chaque esquisse de monogramme génératif tentée avec des courbes lisses se lisait comme décorative plutôt que comme la marque de ce site. La perturbation à facettes et lignes droites se lit comme un signal qu'on redessine, pas comme un logo qu'on déforme — plus proche du langage HUD que le reste du site parle déjà.
+
+## Source
+
+Aucun contexte WebGL ici — celui-ci est du SVG et du CSS en ligne, donc il ne coûte rien de plus que la page. `src/lib/generative-mark.ts` · `src/components/lab/GenerativeMark.tsx`

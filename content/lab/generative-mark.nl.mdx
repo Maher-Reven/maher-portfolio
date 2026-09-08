@@ -1,0 +1,19 @@
+---
+title: "Generatief merkteken"
+summary: "Het MK-monogram, opnieuw getekend vanuit een nieuwe seed bij elke keer laden — deterministisch per seed, nooit twee keer hetzelfde. Regenereer hieronder."
+tags: ["SVG", "Generatief", "Procedureel"]
+---
+
+## Wat het is
+
+Een vast "MK"-lettervormskelet — hetzelfde dat achter de handle van de site zit — verstoord door een seeded PRNG tot een nieuwe variatie bij elke keer laden. Zelfde seed, zelfde merkteken, elke keer: het is generatief, niet willekeurig. Reproduceerbaar, alleen nooit vooraf te voorspellen.
+
+<GenerativeMark />
+
+## Waarom rechte lijnen, geen curves
+
+Elke generatieve-monogramschets die ik met vloeiende curves probeerde, las als decoratief in plaats van als het merkteken van deze site. Gefacetteerde, rechtlijnige verstoring leest als een signaal dat opnieuw getekend wordt, niet als een logo dat vervormd wordt — dichter bij de HUD-taal die de rest van de site al spreekt.
+
+## Bron
+
+Geen WebGL-context hier — dit is inline SVG en CSS, dus het kost niets bovenop de pagina. `src/lib/generative-mark.ts` · `src/components/lab/GenerativeMark.tsx`
