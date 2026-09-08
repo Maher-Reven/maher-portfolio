@@ -43,11 +43,22 @@ function renderTradeoff(attrs, inner) {
   return lines.join("\n");
 }
 
+// One entry per self-closing interactive component registered in
+// src/components/ui/Mdx.tsx — add a line here whenever a new one is added,
+// or its raw JSX tag leaks unrendered into the markdown twin.
+const SELF_CLOSING_NOTES = {
+  SystemsCollapse: "interactive: systems-collapse diagram — see the live page",
+  SplineSceneDemo: "interactive: 3D scene — see the live page",
+  GenerativeMark: "interactive: generative mark, redrawn each load — see the live page",
+  AudioVisualizer: "interactive: microphone-driven frequency visualizer — see the live page",
+};
+
 /** Replaces the site's interactive MDX components with plain-text prose. */
 function stripComponents(body) {
   let out = body;
-  out = out.replace(/<SystemsCollapse\s*\/>/g, "*[interactive: systems-collapse diagram — see the live page]*");
-  out = out.replace(/<SplineSceneDemo\s*\/>/g, "*[interactive: 3D scene — see the live page]*");
+  for (const [tag, note] of Object.entries(SELF_CLOSING_NOTES)) {
+    out = out.replace(new RegExp(`<${tag}\\s*/>`, "g"), `*[${note}]*`);
+  }
   out = out.replace(/<Retro>\n?([\s\S]*?)\n?<\/Retro>/g, (_, inner) => inner.trim());
   out = out.replace(/<Tradeoff\s+([\s\S]*?)>([\s\S]*?)<\/Tradeoff>/g, (_, attrs, inner) => renderTradeoff(attrs, inner));
   return out;

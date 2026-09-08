@@ -110,6 +110,14 @@ const en = {
   "mark.seed": "Seed",
   "mark.regenerate": "Regenerate",
 
+  "audio.enable": "Enable microphone",
+  "audio.requesting": "Requesting access…",
+  "audio.denied": "Microphone access denied",
+  "audio.unsupported": "Your browser doesn't support this",
+  "audio.stop": "Stop",
+  "audio.peak": "Peak",
+  "audio.privacy": "Analyzed locally in your browser — nothing is recorded or sent anywhere.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -199,6 +207,14 @@ const fr: Record<TKey, string> = {
   "mark.seed": "Graine",
   "mark.regenerate": "Régénérer",
 
+  "audio.enable": "Activer le microphone",
+  "audio.requesting": "Demande d'accès…",
+  "audio.denied": "Accès au microphone refusé",
+  "audio.unsupported": "Votre navigateur ne prend pas ça en charge",
+  "audio.stop": "Arrêter",
+  "audio.peak": "Crête",
+  "audio.privacy": "Analysé localement dans votre navigateur — rien n'est enregistré ni envoyé.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -285,6 +301,14 @@ const nl: Record<TKey, string> = {
 
   "mark.seed": "Seed",
   "mark.regenerate": "Regenereer",
+
+  "audio.enable": "Microfoon inschakelen",
+  "audio.requesting": "Toegang aanvragen…",
+  "audio.denied": "Microfoontoegang geweigerd",
+  "audio.unsupported": "Je browser ondersteunt dit niet",
+  "audio.stop": "Stoppen",
+  "audio.peak": "Piek",
+  "audio.privacy": "Lokaal geanalyseerd in je browser — er wordt niets opgenomen of verzonden.",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -373,6 +397,14 @@ const fy: Record<TKey, string> = {
   "mark.seed": "Seed",
   "mark.regenerate": "Regenerearje",
 
+  "audio.enable": "Mikrofoan ynskeakelje",
+  "audio.requesting": "Tagong oanfreegje…",
+  "audio.denied": "Mikrofoantagong wegere",
+  "audio.unsupported": "Dyn browser stipet dit net",
+  "audio.stop": "Stopje",
+  "audio.peak": "Piik",
+  "audio.privacy": "Lokaal analysearre yn dyn browser — der wurdt neat opnommen of ferstjoerd.",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -459,6 +491,14 @@ const ru: Record<TKey, string> = {
 
   "mark.seed": "Сид",
   "mark.regenerate": "Пересоздать",
+
+  "audio.enable": "Включить микрофон",
+  "audio.requesting": "Запрос доступа…",
+  "audio.denied": "Доступ к микрофону запрещён",
+  "audio.unsupported": "Ваш браузер это не поддерживает",
+  "audio.stop": "Остановить",
+  "audio.peak": "Пик",
+  "audio.privacy": "Анализируется локально в браузере — ничего не записывается и не отправляется.",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

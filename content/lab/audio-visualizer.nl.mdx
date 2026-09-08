@@ -1,0 +1,19 @@
+---
+title: "Audio-reactieve visualizer"
+summary: "Een realtime frequentiebalkendisplay aangestuurd door je microfoon — lokaal geanalyseerd, nooit opgenomen of verzonden. Klik om in te schakelen."
+tags: ["Web Audio API", "Canvas2D", "Realtime"]
+---
+
+## Wat het is
+
+Een `AnalyserNode` leest zo'n 60 keer per seconde het frequentiespectrum van de microfoon; de 128 FFT-bins worden teruggebracht tot 48 balken en direct op een 2D-canvas getekend, elk gedempt richting zijn doelwaarde zodat één harde piek de weergave niet laat trillen.
+
+<AudioVisualizer />
+
+## Waarom de microfoon, en waarom hij eerst vraagt
+
+Hier speelt geen meegeleverd nummer — het luistert naar wat er echt in de ruimte gebeurt, wat interessanter is en een hosting-/rechtenvraag omzeilt die deze site niet nodig heeft. Het vraagt ook nooit microfoontoegang aan bij het laden van de pagina. Een portfolio dat stilletjes om je microfoon vraagt zodra je erlangs scrollt, is precies het soort ding dat dit onderdeel probeert te vermijden.
+
+## Bron
+
+Puur Canvas2D — geen WebGL-context, dus het kost niets tenzij je op inschakelen klikt. `src/components/lab/AudioVisualizer.tsx`

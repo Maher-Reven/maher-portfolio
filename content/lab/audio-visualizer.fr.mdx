@@ -1,0 +1,19 @@
+---
+title: "Visualiseur audio-réactif"
+summary: "Un affichage de barres de fréquence en temps réel piloté par votre micro — analysé localement, jamais enregistré ni envoyé. Cliquez pour activer."
+tags: ["Web Audio API", "Canvas2D", "Temps réel"]
+---
+
+## Ce que c'est
+
+Un `AnalyserNode` lit le spectre de fréquences du micro environ 60 fois par seconde ; les 128 bins FFT sont moyennés en 48 barres et dessinés directement sur un canvas 2D, chacune amortie vers sa cible pour qu'une transitoire forte ne fasse pas trembler l'affichage.
+
+<AudioVisualizer />
+
+## Pourquoi le micro, et pourquoi il demande d'abord
+
+Rien ici ne joue une piste embarquée — ça écoute ce qui se passe réellement dans la pièce, ce qui est plus intéressant et évite une question d'hébergement/de droits dont ce site n'a pas besoin. Ça ne demande non plus jamais l'accès au micro au chargement de la page. Un portfolio qui réclame silencieusement votre micro dès que vous le croisez en scrollant, c'est exactement le genre de chose que cette section est censée éviter d'être.
+
+## Source
+
+Du Canvas2D pur — aucun contexte WebGL, donc ça ne coûte rien tant que vous ne cliquez pas sur activer. `src/components/lab/AudioVisualizer.tsx`

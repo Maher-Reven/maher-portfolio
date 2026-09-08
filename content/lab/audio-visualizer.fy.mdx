@@ -1,0 +1,19 @@
+---
+title: "Audio-reaktive visualizer"
+summary: "In realtime frekwinsjebalkedisplay oanstjoerd troch dyn mikrofoan — lokaal analysearre, nea opnommen of ferstjoerd. Klik om yn te skeakeljen."
+tags: ["Web Audio API", "Canvas2D", "Realtime"]
+---
+
+## Wat it is
+
+In `AnalyserNode` lêst sa'n 60 kear yn de sekonde it frekwinsjespektrum fan de mikrofoan; de 128 FFT-bins wurde gemiddele ta 48 balken en direkt op in 2D-canvas tekene, elk dimme rjochting syn doelwearde, sadat ien lûde piik it byld net trilje lit.
+
+<AudioVisualizer />
+
+## Wêrom de mikrofoan, en wêrom't er earst freget
+
+Hjir spilet gjin meilevere nûmer — it harket nei wat der echt yn de romte bart, wat nijsgjirriger is en in hosting-/rjochtenfraach omsyld dy't dizze side net nedich hat. It freget ek nea om mikrofoantagong by it laden fan de side. In portfolio dat stikem om dyn mikrofoan freget sa gau't do der by scrollest, is krekt it soarte ding dat dit ûnderdiel besiket te foarkommen.
+
+## Boarne
+
+Suver Canvas2D — gjin WebGL-kontekst, dus it kostet neat útsein as do op ynskeakelje klikst. `src/components/lab/AudioVisualizer.tsx`
