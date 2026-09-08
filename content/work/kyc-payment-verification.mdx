@@ -69,6 +69,21 @@ Phase one was the minimum architecture needed to enter the markets safely: dynam
 
 Phase two would be decided by production telemetry once the funnel was actually observable, rather than by imagined problems. Ship a safe foundation, measure reality, then optimise.
 
+<Tradeoff
+  chosen="Phased rollout, edge cases deferred by design (chosen)"
+  cost="Scope for the harder edge cases was deliberately not decided upfront — it was decided later, by real user behaviour. That's a bet that the foundation (the gate, the state machine, the orchestrator) was built correctly enough to extend rather than rework once phase two's real requirements showed up."
+>
+  <TradeoffOption label="Full automated compliance engine upfront">
+    Build the general-purpose global engine before launching anywhere — handles every future market and edge case from day one, but months of work stood between the team and the market window.
+  </TradeoffOption>
+  <TradeoffOption label="Manual review fallback for edge cases">
+    Ship fast by routing anything unusual to a human reviewer. Gets a bare minimum out quickly, but turns compliance risk into a staffing and consistency problem instead of an architecture one.
+  </TradeoffOption>
+  <TradeoffOption label="Phased rollout, edge cases deferred by design (chosen)">
+    Ship the minimum architecture that safely covers the common path for US and Asia, and let production telemetry — not imagined problems — decide what phase two actually needs.
+  </TradeoffOption>
+</Tradeoff>
+
 ## Treating failure as the normal case
 
 Mobile verification does not happen in a clean environment. Apps get killed, networks vanish, users switch away mid-flow, documents come out blurry, provider responses land whenever they land. We treated all of that as ordinary operating states rather than edge cases.
@@ -100,6 +115,8 @@ The business had asked *"how do we add payments in Asia?"* The more useful quest
 
 ## What I'd do differently
 
+<Retro>
 I'd have gone looking for the dependency at roadmap time instead of finding it during breakdown. It was discoverable earlier — the single-region assumptions were already in the code — and finding it a stage sooner would have cost the organisation nothing, where finding it a stage later would have cost a launch.
 
 I'd also have treated observability as a deliverable rather than a by-product. The old onboarding flow was a black box: users could fail verification without anyone being able to say where or why. We only got the telemetry to answer that as a consequence of rebuilding the funnel, and it turned out to be the thing Product and Support wanted most. That was worth scoping deliberately, not inheriting by accident.
+</Retro>

@@ -11,6 +11,8 @@ LOGEX Patient Engagement développe des produits destinés aux patients pour des
 
 Au moment où j'ai repris l'ingénierie, cette promesse avait été payée en structure. Le parc avait atteint environ **45 dépôts** répartis sur plusieurs technologies mobiles, avec une chaîne de build et de release distincte pour pratiquement chaque client.
 
+<SystemsCollapse />
+
 ## Le problème
 
 Chaque variante client était devenue un fork, à tout sauf au nom.
@@ -36,6 +38,21 @@ Trois décisions ont fait l'essentiel du travail.
 **Faire du white-label une affaire d'exécution plutôt que de build.** C'est la décision sur laquelle tout reposait. Tant que la différence entre clients vivait dans du code forké, la consolidation ne faisait que déplacer les forks. Déporter cette variation dans de la configuration et une UI pilotée par le serveur est ce qui a rendu réelle l'idée d'une base de code unique servant de nombreux hôpitaux.
 
 **Migrer de façon incrémentale, jamais d'un bloc.** Les dépôts ont été déplacés en séquence, du plus dupliqué au moins, en gardant le parc livrable à chaque étape. Une migration qui exige un gel pour aboutir est une migration annulée dès le premier engagement client qui bouge.
+
+<Tradeoff
+  chosen="Configuration runtime + UI pilotée par le serveur (choisi)"
+  cost="Le prix payé : une concentration du risque. Un bug dans la logique d'orchestration atteint désormais tous les hôpitaux à la fois, là où un bug forké restait contenu à un seul. C'est pourquoi les contrôles de vérification automatisés sur le code partagé n'étaient pas optionnels — ils sont l'autre moitié de cette décision, pas une commodité ajoutée après coup."
+>
+  <TradeoffOption label="Forker par client (statu quo)">
+    Garder le parc tel quel — un dépôt par hôpital. Le moins cher à laisser en l'état, et le plus rapide pour livrer une demande ponctuelle. Chaque changement partagé reste dupliqué pour toujours.
+  </TradeoffOption>
+  <TradeoffOption label="White-label au moment du build">
+    Une seule base de code, mais les variantes clients sont figées en flavors de build résolues au moment de la release. Réduit la duplication dans le code, pas dans le calendrier de release — les différences d'un hôpital restent liées à quand et comment il livre.
+  </TradeoffOption>
+  <TradeoffOption label="Configuration runtime + UI pilotée par le serveur (choisi)">
+    La variation client vit dans la configuration et une UI pilotée par le serveur, résolue au moment de la requête. La seule approche qui découple entièrement les différences d'un hôpital du train de release.
+  </TradeoffOption>
+</Tradeoff>
 
 ## Exécution
 
@@ -66,6 +83,8 @@ Le chiffre le plus important n'est pas dans ce bloc. Un correctif atteint désor
 
 ## Ce que je ferais autrement
 
+<Retro>
 J'aurais fixé le modèle de propriété avant le déplacement du premier dépôt, au lieu de le laisser émerger deux ou trois migrations plus tard. On y est arrivés, mais pendant un temps le code était consolidé alors que la responsabilité ne l'était pas — et c'est dans cet écart que vivaient l'ambiguïté et les revues les plus lentes.
 
 J'aurais aussi financé le décommissionnement explicitement dès le premier jour. C'est un travail franchement ingrat, sans résultat produit visible, c'est là que se réalise tout l'argumentaire économique, et il perdra tous les arbitrages de priorisation dont on ne le protège pas.
+</Retro>

@@ -6,6 +6,30 @@ import type { Locale } from "@/lib/i18n";
  * whose shape is the same in every language.
  */
 
+// Real build telemetry, not the hero's old hardcoded "v0.1.0" — baked in by
+// next.config.ts at build time, since a static export has no server to ask at
+// request time. NEXT_PUBLIC_* is inlined wherever it's referenced.
+const GIT_SHA = process.env.NEXT_PUBLIC_GIT_SHA ?? "dev";
+const BUILD_TIME = process.env.NEXT_PUBLIC_BUILD_TIME
+  ? `${process.env.NEXT_PUBLIC_BUILD_TIME.replace("T", " ").slice(0, 16)} UTC`
+  : "dev";
+
+const BUILD_ROW_LABELS: Record<Locale, [string, string]> = {
+  en: ["Build", "Built"],
+  fr: ["Build", "Généré"],
+  nl: ["Build", "Gebouwd"],
+  fy: ["Build", "Boud"],
+  ru: ["Сборка", "Собрано"],
+};
+
+function buildRows(locale: Locale): [string, string][] {
+  const [buildLabel, builtLabel] = BUILD_ROW_LABELS[locale];
+  return [
+    [buildLabel, GIT_SHA],
+    [builtLabel, BUILD_TIME],
+  ];
+}
+
 export type Role = {
   period: string;
   title: string;
@@ -110,6 +134,7 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    ...buildRows("en"),
   ],
 };
 
@@ -203,6 +228,7 @@ const fr: PageContent = {
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
     ],
+    ...buildRows("fr"),
   ],
 };
 
@@ -296,6 +322,7 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    ...buildRows("nl"),
   ],
 };
 
@@ -389,6 +416,7 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    ...buildRows("fy"),
   ],
 };
 
@@ -482,6 +510,7 @@ const ru: PageContent = {
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
     ],
+    ...buildRows("ru"),
   ],
 };
 

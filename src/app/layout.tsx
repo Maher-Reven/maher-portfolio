@@ -30,6 +30,17 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
 };
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  url: site.url,
+  email: `mailto:${site.email}`,
+  address: { "@type": "PostalAddress", addressLocality: site.location },
+  sameAs: site.socials.map((s) => s.href),
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   // No `h-full` on <html>: Lenis observes the documentElement to derive its
   // scroll limit, and pinning it to 100% means that box never changes size when
@@ -50,6 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             rendered on the server. */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: LOCALE_INIT_SCRIPT }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <SmoothScroll>
           <Nav />
           <main className="flex-1">{children}</main>

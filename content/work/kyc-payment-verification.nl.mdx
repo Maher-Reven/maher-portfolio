@@ -63,6 +63,21 @@ Fase één was de minimale architectuur om de markten veilig te betreden: dynami
 
 Fase twee zou worden bepaald door productietelemetrie zodra de funnel echt observeerbaar was, in plaats van door bedachte problemen. Lever een veilige basis, meet de werkelijkheid, optimaliseer daarna.
 
+<Tradeoff
+  chosen="Gefaseerde uitrol, randgevallen bewust uitgesteld (gekozen)"
+  cost="De scope voor de lastigste randgevallen werd bewust niet vooraf vastgelegd — die werd later bepaald, door echt gebruikersgedrag. Dat is een weddenschap dat het fundament (de poort, de statemachine, de orchestrator) correct genoeg gebouwd was om uit te breiden in plaats van over te bouwen zodra de echte eisen van fase twee zich aandienden."
+>
+  <TradeoffOption label="Volledig geautomatiseerde compliance-engine vooraf">
+    Bouw de wereldwijde generieke engine voordat er ergens gelanceerd wordt — dekt vanaf dag één elke toekomstige markt en elk randgeval, maar maanden werk stonden tussen het team en het marktvenster.
+  </TradeoffOption>
+  <TradeoffOption label="Terugvaloptie: handmatige review voor randgevallen">
+    Lever snel op door alles wat ongebruikelijk is naar een menselijke reviewer te routeren. Levert snel een minimum op, maar maakt van compliancerisico een bezettings- en consistentieprobleem in plaats van een architectuurprobleem.
+  </TradeoffOption>
+  <TradeoffOption label="Gefaseerde uitrol, randgevallen bewust uitgesteld (gekozen)">
+    Lever de minimale architectuur die het gangbare pad voor de VS en Azië veilig dekt, en laat productietelemetrie — niet bedachte problemen — bepalen wat fase twee echt nodig heeft.
+  </TradeoffOption>
+</Tradeoff>
+
 ## Falen als het normale geval behandelen
 
 Mobiele verificatie gebeurt niet in een schone omgeving. Apps worden afgesloten, netwerken vallen weg, mensen schakelen halverwege over, documenten komen er wazig uit, providerreacties komen wanneer ze komen. We behandelden dat allemaal als gewone bedrijfstoestanden, niet als randgevallen.
@@ -94,6 +109,8 @@ Het bedrijf vroeg *"hoe voegen we betalingen toe in Azië?"*. De nuttiger vraag,
 
 ## Wat ik anders zou doen
 
+<Retro>
 Ik zou de afhankelijkheid al bij het opstellen van de roadmap hebben gezocht in plaats van hem tijdens het uitwerken tegen te komen. Hij was eerder vindbaar — de aannames voor één regio zaten al in de code — en hem een fase eerder vinden had de organisatie niets gekost, terwijl hem een fase later vinden een lancering had gekost.
 
 Ik zou observability ook als opleverproduct hebben behandeld in plaats van als bijvangst. De oude onboardingflow was een black box: gebruikers konden verificatie niet halen zonder dat iemand kon zeggen waar of waarom. We kregen de telemetrie om dat te beantwoorden pas als gevolg van het herbouwen van de funnel, en dat bleek precies wat Product en Support het liefst wilden. Dat verdiende bewuste scope, niet toevallige erfenis.
+</Retro>

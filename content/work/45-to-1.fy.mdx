@@ -11,6 +11,8 @@ LOGEX Patient Engagement bout produkten foar pasjinten fan sikehûzen en klinyke
 
 Tsjin de tiid dat ik de engineering oernaam, wie dy tasizzing betelle yn struktuer. It lânskip wie groeid nei sa'n **45 repository's** oer ferskate mobile technologyen, mei foar hast elke klant in eigen build- en releasepaad.
 
+<SystemsCollapse />
+
 ## It probleem
 
 Elke klantfariant wie yn alles útsein namme in fork wurden.
@@ -36,6 +38,21 @@ Trije besluten dienen it measte wurk.
 **Meitsje white-label in runtime-kwestje ynstee fan in buildkwestje.** Hjirop rêste it gehiel. Sa lang as klantferskillen yn forkte koade libben, ferpleatste konsolidaasje allinnich de forks. Dy fariaasje ferhúzje nei konfiguraasje en troch de server oanstjoerde UI makke ien koadebasis foar in protte sikehûzen pas echt helber.
 
 **Migrearje ynkrementeel, noait yn ien kear.** Repository's ferhuzen op folchoarder, de meast dûbele earst, wêrby't it lânskip by elke stap releasber bleau. In migraasje dy't in freeze nedich hat om te lânjen, is in migraasje dy't sneuvelt sa gau't de earste klantôfspraak ferskoot.
+
+<Tradeoff
+  chosen="Runtime-konfiguraasje + troch de server oanstjoerde UI (keazen)"
+  cost="De priis wie konsintraasje fan risiko: in bug yn de orkestraasjelogika berikt no alle sikehûzen tagelyk, wêr't in forkte bug earder ta ien beheind bleau. Dêrom wiene de automatyske ferifikaasjepoarten op dielde koade net opsjoneel — se binne de oare helte fan dit beslút, gjin lettere geste."
+>
+  <TradeoffOption label="Forkje per klant (status quo)">
+    It lânskip litte sa't it wie — ien repository per sikehûs. It goedkeapste om met rêst te litten, en it flugste foar in ienmalich fersyk. Elke dielde wiziging bliuwt foar altyd dûbeld.
+  </TradeoffOption>
+  <TradeoffOption label="White-label op buildmomint">
+    Ien koadebasis, mar klantfarianten wurde fêstlein as build-flavours dy't by de release bepaald wurde. Fermindert dûbeling yn de koade, net yn de releasekalinder — de ferskillen fan in sikehûs bliuwe keppele oan wannear't en hoe't it opleveret.
+  </TradeoffOption>
+  <TradeoffOption label="Runtime-konfiguraasje + troch de server oanstjoerde UI (keazen)">
+    Klantfariaasje libbet yn konfiguraasje en troch de server oanstjoerde UI, bepaald op it momint fan it fersyk. De ienige oanpak dy't de ferskillen fan in sikehûs folslein losmakket fan de releasetrein.
+  </TradeoffOption>
+</Tradeoff>
 
 ## Utfiering
 
@@ -66,6 +83,8 @@ It wichtichste getal stiet net yn dat blok. In fix berikt no alle sikehûzen tag
 
 ## Wat ik oars dwaan soe
 
+<Retro>
 Ik soe it model fan eigenerskip fêstlein hawwe foardat de earste repository ferhuze, ynstee fan it pas twa of trije migraasjes letter ûntstean te litten. Wy kamen der wol, mar in skoft lang wie de koade konsolidearre wylst de ferantwurdlikheid dat noch net wie — en yn dat gat sieten de ûndúdlikheid en de traachste reviews.
 
 Ik soe it útskeakeljen fan âlde ynfrastruktuer ek fan dei ien ôf eksplisyt finansiere hawwe. It is werklik saai wurk sûnder sichtber produktresultaat, it is dêr't de hiele businesscase te jilde makke wurdt, en it ferliest elk petear oer prioriteiten dêr't je it net tsjin beskermje.
+</Retro>

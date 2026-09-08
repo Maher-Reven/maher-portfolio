@@ -45,7 +45,7 @@ export function Footer() {
               </Link>
             </li>
             <li className="label !text-fg-dim pt-2">
-              v0.1.0 · © {new Date().getFullYear()} {site.name}
+              {process.env.NEXT_PUBLIC_GIT_SHA ?? "dev"} · © {new Date().getFullYear()} {site.name}
             </li>
           </ul>
         </div>

@@ -11,6 +11,8 @@ LOGEX Patient Engagement bouwt producten voor patiënten van ziekenhuizen en kli
 
 Tegen de tijd dat ik de engineering overnam, was die belofte betaald in structuur. Het landschap was gegroeid naar ongeveer **45 repository's** verspreid over meerdere mobiele technologieën, met voor vrijwel elke klant een eigen build- en releasepad.
 
+<SystemsCollapse />
+
 ## Het probleem
 
 Elke klantvariant was in alles behalve naam een fork geworden.
@@ -36,6 +38,21 @@ Drie beslissingen deden het meeste werk.
 **Maak white-label een runtime-kwestie in plaats van een build-kwestie.** Hierop rustte het geheel. Zolang klantverschillen in geforkte code leefden, verplaatste consolidatie de forks alleen maar. Die variatie verhuizen naar configuratie en server-gestuurde UI maakte één codebase voor veel ziekenhuizen pas echt haalbaar.
 
 **Migreer incrementeel, nooit big bang.** Repository's verhuisden op volgorde, de meest gedupliceerde eerst, waarbij het landschap bij elke stap releasebaar bleef. Een migratie die een freeze nodig heeft om te landen, is een migratie die sneuvelt zodra de eerste klantafspraak verschuift.
+
+<Tradeoff
+  chosen="Runtime-configuratie + server-gestuurde UI (gekozen)"
+  cost="De prijs was concentratie van risico: een bug in de orchestratielogica bereikt nu alle ziekenhuizen tegelijk, waar een geforkte bug vroeger tot één beperkt bleef. Daarom waren de geautomatiseerde verificatiepoorten op gedeelde code niet optioneel — ze zijn de andere helft van deze beslissing, geen latere geste."
+>
+  <TradeoffOption label="Forken per klant (status quo)">
+    Het landschap laten zoals het was — een repository per ziekenhuis. Het goedkoopst om met rust te laten, en het snelst voor een eenmalig verzoek. Elke gedeelde wijziging blijft voor altijd gedupliceerd.
+  </TradeoffOption>
+  <TradeoffOption label="White-label op build-moment">
+    Eén codebase, maar klantvarianten worden vastgelegd als build-flavours die bij release worden bepaald. Vermindert duplicatie in de code, niet in de releasekalender — de verschillen van een ziekenhuis blijven gekoppeld aan wanneer en hoe het uitlevert.
+  </TradeoffOption>
+  <TradeoffOption label="Runtime-configuratie + server-gestuurde UI (gekozen)">
+    Klantvariatie leeft in configuratie en server-gestuurde UI, bepaald op het moment van de aanvraag. De enige aanpak die de verschillen van een ziekenhuis volledig loskoppelt van de releasetrein.
+  </TradeoffOption>
+</Tradeoff>
 
 ## Uitvoering
 
@@ -66,6 +83,8 @@ Het belangrijkste getal staat niet in dat blok. Een fix bereikt nu alle ziekenhu
 
 ## Wat ik anders zou doen
 
+<Retro>
 Ik zou het eigenaarschapsmodel hebben vastgelegd vóórdat de eerste repository verhuisde, in plaats van het pas twee of drie migraties later te laten ontstaan. We kwamen er wel, maar een tijdlang was de code geconsolideerd terwijl de verantwoordelijkheid dat nog niet was — en in dat gat zaten de onduidelijkheid en de traagste reviews.
 
 Ik zou decommissioning ook vanaf dag één expliciet hebben gefinancierd. Het is werkelijk saai werk zonder zichtbaar productresultaat, het is waar de hele businesscase wordt verzilverd, en het verliest elk prioriteringsgesprek waartegen je het niet beschermt.
+</Retro>

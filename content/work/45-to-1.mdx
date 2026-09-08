@@ -15,6 +15,8 @@ LOGEX Patient Engagement builds patient-facing products for hospitals and clinic
 
 By the time I took over engineering, that promise had been paid for in structure. The estate had grown to roughly **45 repositories** across several mobile technologies, with a separate build and release path for practically every customer.
 
+<SystemsCollapse />
+
 ## The problem
 
 Every customer variant had become a fork in everything but name.
@@ -40,6 +42,21 @@ Three decisions did most of the work.
 **Make white-label a runtime concern instead of a build-time one.** This is the decision the whole thing rested on. As long as per-customer difference lived in forked code, consolidation just relocated the forks. Moving that variation into configuration and server-driven UI is what made one codebase serving many hospitals a real proposition rather than a naming exercise.
 
 **Migrate incrementally, never big-bang.** Repositories moved in sequence, highest-duplication first, with the estate fully releasable at every step. A migration that requires a freeze to land is a migration that gets cancelled the first time a customer commitment moves.
+
+<Tradeoff
+  chosen="Runtime configuration + server-driven UI (chosen)"
+  cost="The trade was concentration of risk: a bug in the orchestration logic now reaches every hospital simultaneously, where a forked bug used to be contained to one. That's why the automated verification gates on shared code weren't optional — they're the other half of this decision, not a follow-on nicety."
+>
+  <TradeoffOption label="Fork per customer (status quo)">
+    Keep the estate as it was — a repository per hospital. Cheapest to leave alone, and the fastest way to ship a one-off request. Every shared change stays duplicated forever.
+  </TradeoffOption>
+  <TradeoffOption label="Build-time white-label">
+    One codebase, but customer variants are baked in as build flavours resolved at release time. Cuts duplication in the code, not in the release calendar — a hospital's differences are still tied to when and how it ships.
+  </TradeoffOption>
+  <TradeoffOption label="Runtime configuration + server-driven UI (chosen)">
+    Customer variance lives in configuration and server-driven UI, resolved at request time. The only approach that fully decouples a hospital's differences from the release train.
+  </TradeoffOption>
+</Tradeoff>
 
 ## Execution
 
@@ -70,6 +87,8 @@ The number that mattered most isn't in that block. A fix now reaches every hospi
 
 ## What I'd do differently
 
+<Retro>
 I'd have set the ownership model before the first repository moved, instead of letting it emerge two or three migrations in. We got there, but for a stretch the code was consolidated while accountability still wasn't, and that gap is where the ambiguity — and the slowest reviews — lived.
 
 I'd also fund decommissioning explicitly from day one. It is genuinely tedious work with no visible product outcome, it is where the entire cost case is realised, and it will lose every prioritisation conversation it is not protected from.
+</Retro>

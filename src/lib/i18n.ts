@@ -96,6 +96,17 @@ const en = {
   "entry.allWork": "All work",
   "entry.allExperiments": "All experiments",
 
+  "tradeoff.options": "Options considered",
+  "tradeoff.chosen": "Chosen",
+  "tradeoff.cost": "Cost",
+  "retro.kicker": "In hindsight",
+
+  "collapse.systems": "Systems",
+  "collapse.before": "Before",
+  "collapse.after": "After",
+  "collapse.repositories": "repositories",
+  "collapse.platform": "platform",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -171,6 +182,17 @@ const fr: Record<TKey, string> = {
   "entry.allWork": "Tous les projets",
   "entry.allExperiments": "Toutes les expériences",
 
+  "tradeoff.options": "Options considérées",
+  "tradeoff.chosen": "Choisi",
+  "tradeoff.cost": "Coût",
+  "retro.kicker": "Avec le recul",
+
+  "collapse.systems": "Systèmes",
+  "collapse.before": "Avant",
+  "collapse.after": "Après",
+  "collapse.repositories": "dépôts",
+  "collapse.platform": "plateforme",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -243,6 +265,17 @@ const nl: Record<TKey, string> = {
   "entry.tags": "stack / tags",
   "entry.allWork": "Al het werk",
   "entry.allExperiments": "Alle experimenten",
+
+  "tradeoff.options": "Opties overwogen",
+  "tradeoff.chosen": "Gekozen",
+  "tradeoff.cost": "Kosten",
+  "retro.kicker": "Achteraf gezien",
+
+  "collapse.systems": "Systemen",
+  "collapse.before": "Voor",
+  "collapse.after": "Na",
+  "collapse.repositories": "repository's",
+  "collapse.platform": "platform",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -317,6 +350,17 @@ const fy: Record<TKey, string> = {
   "entry.allWork": "Al it wurk",
   "entry.allExperiments": "Alle eksperiminten",
 
+  "tradeoff.options": "Opsjes oerwoegen",
+  "tradeoff.chosen": "Keazen",
+  "tradeoff.cost": "Kosten",
+  "retro.kicker": "Achterôf besjoen",
+
+  "collapse.systems": "Systemen",
+  "collapse.before": "Foar",
+  "collapse.after": "Nei",
+  "collapse.repositories": "repository's",
+  "collapse.platform": "platfoarm",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -389,6 +433,17 @@ const ru: Record<TKey, string> = {
   "entry.tags": "стек / теги",
   "entry.allWork": "Все работы",
   "entry.allExperiments": "Все эксперименты",
+
+  "tradeoff.options": "Рассмотренные варианты",
+  "tradeoff.chosen": "Выбрано",
+  "tradeoff.cost": "Цена",
+  "retro.kicker": "Оглядываясь назад",
+
+  "collapse.systems": "Системы",
+  "collapse.before": "До",
+  "collapse.after": "После",
+  "collapse.repositories": "репозитории",
+  "collapse.platform": "платформа",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

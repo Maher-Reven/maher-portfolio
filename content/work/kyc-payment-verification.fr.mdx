@@ -63,6 +63,21 @@ La phase un, c'était l'architecture minimale nécessaire pour entrer sur les ma
 
 La phase deux serait décidée par la télémétrie de production une fois l'entonnoir réellement observable, plutôt que par des problèmes imaginés. Livrer une base sûre, mesurer la réalité, puis optimiser.
 
+<Tradeoff
+  chosen="Déploiement progressif, cas limites reportés par conception (choisi)"
+  cost="Le périmètre des cas limites les plus difficiles n'a délibérément pas été tranché à l'avance — il l'a été plus tard, par le comportement réel des utilisateurs. C'est un pari : que la base (la porte, la machine à états, l'orchestrateur) soit construite assez correctement pour être étendue plutôt que refaite une fois les vrais besoins de la phase deux apparus."
+>
+  <TradeoffOption label="Moteur de conformité entièrement automatisé, dès le départ">
+    Construire le moteur généraliste mondial avant de lancer où que ce soit — couvre dès le premier jour tous les marchés et cas limites futurs, mais des mois de travail séparaient l'équipe de la fenêtre de marché.
+  </TradeoffOption>
+  <TradeoffOption label="Repli sur la revue manuelle pour les cas limites">
+    Livrer vite en routant tout ce qui est inhabituel vers un réviseur humain. Permet de sortir un minimum rapidement, mais transforme le risque de conformité en un problème d'effectifs et de cohérence plutôt qu'un problème d'architecture.
+  </TradeoffOption>
+  <TradeoffOption label="Déploiement progressif, cas limites reportés par conception (choisi)">
+    Livrer l'architecture minimale qui couvre en sécurité le chemin courant pour les États-Unis et l'Asie, et laisser la télémétrie de production — pas des problèmes imaginés — décider de ce dont la phase deux a réellement besoin.
+  </TradeoffOption>
+</Tradeoff>
+
 ## Traiter l'échec comme le cas normal
 
 La vérification mobile ne se passe pas dans un environnement propre. Les applications sont tuées, le réseau disparaît, les gens changent d'application en cours de route, les documents sortent flous, les réponses du prestataire arrivent quand elles arrivent. Nous avons traité tout cela comme des états de fonctionnement ordinaires, pas comme des cas limites.
@@ -94,6 +109,8 @@ L'entreprise demandait *« comment ajoute-t-on les paiements en Asie ? »*. La q
 
 ## Ce que je ferais autrement
 
+<Retro>
 Je serais allé chercher la dépendance au moment de la roadmap plutôt que de la découvrir pendant le découpage. Elle était détectable plus tôt — les hypothèses mono-région étaient déjà dans le code — et la trouver une étape plus tôt n'aurait rien coûté à l'organisation, là où la trouver une étape plus tard aurait coûté un lancement.
 
 J'aurais aussi traité l'observabilité comme un livrable et non comme un sous-produit. L'ancien parcours d'onboarding était une boîte noire : des utilisateurs pouvaient échouer à la vérification sans que personne puisse dire où ni pourquoi. Nous n'avons obtenu la télémétrie pour y répondre qu'en conséquence de la reconstruction de l'entonnoir, et il s'est avéré que c'était ce que Produit et Support voulaient le plus. Cela méritait d'être cadré délibérément, pas hérité par accident.
+</Retro>

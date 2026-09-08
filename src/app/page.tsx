@@ -24,7 +24,7 @@ export default function Home() {
         {/* HUD corner data */}
         <div className="label pointer-events-none absolute left-[var(--gutter)] top-28 space-y-1">
           <p>{"// "}{site.name}</p>
-          <p className="text-fg-dim">SYS.READY · v0.1.0</p>
+          <p className="text-fg-dim">SYS.READY · {process.env.NEXT_PUBLIC_GIT_SHA ?? "dev"}</p>
         </div>
         <div className="label pointer-events-none absolute right-[var(--gutter)] top-28 hidden text-right sm:block">
           <p>50.85°N 4.35°E</p>
