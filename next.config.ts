@@ -16,6 +16,10 @@ function gitSha(): string {
 
 process.env.NEXT_PUBLIC_GIT_SHA = gitSha();
 process.env.NEXT_PUBLIC_BUILD_TIME = new Date().toISOString();
+// next/link handles basePath automatically; a plain <a href> to a static file
+// in public/ or out/ (like /resume.pdf) does not, so components that need one
+// read this instead.
+process.env.NEXT_PUBLIC_BASE_PATH = isGithubActions ? `/${repoName}` : "";
 
 const nextConfig: NextConfig = {
   output: "export",

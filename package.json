@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/postbuild.mjs",
+    "build": "next build && node scripts/postbuild.mjs && tsx scripts/generate-resume-pdf.ts",
     "start": "next start",
     "lint": "eslint",
-    "perf-budget": "node scripts/perf-budget.mjs"
+    "perf-budget": "node scripts/perf-budget.mjs",
+    "check-i18n": "node scripts/check-i18n-parity.mjs",
+    "generate-resume": "tsx scripts/generate-resume-pdf.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -28,12 +30,15 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pdfkit": "^0.17.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.185.4",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
+    "pdfkit": "^0.20.2",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5",
     "ui-ux-pro-max-cli": "^2.15.0"
   },

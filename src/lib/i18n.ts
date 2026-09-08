@@ -68,6 +68,7 @@ const en = {
   "page.experience.intro":
     "Engineering management across fintech, healthcare and edtech — always staying close to the code, the incidents, and the people shipping both.",
   "page.experience.education": "Education",
+  "page.experience.downloadResume": "Download résumé (PDF)",
 
   "page.lab.label": "lab",
   "page.lab.title": "Experiment log",
@@ -174,6 +175,7 @@ const fr: Record<TKey, string> = {
   "page.experience.intro":
     "Management d'ingénierie dans la fintech, la santé et l'edtech — toujours proche du code, des incidents et des équipes qui livrent les deux.",
   "page.experience.education": "Formation",
+  "page.experience.downloadResume": "Télécharger le CV (PDF)",
 
   "page.lab.label": "labo",
   "page.lab.title": "Journal d'expériences",
@@ -278,6 +280,7 @@ const nl: Record<TKey, string> = {
   "page.experience.intro":
     "Engineering management in fintech, zorg en edtech — altijd dicht bij de code, de incidenten en de mensen die beide opleveren.",
   "page.experience.education": "Opleiding",
+  "page.experience.downloadResume": "Cv downloaden (PDF)",
 
   "page.lab.label": "lab",
   "page.lab.title": "Experimentenlogboek",
@@ -382,6 +385,7 @@ const fy: Record<TKey, string> = {
   "page.experience.intro":
     "Engineering management yn fintech, soarch en edtech — altyd tichtby de koade, de ynsidinten en de minsken dy't beide oplevere.",
   "page.experience.education": "Oplieding",
+  "page.experience.downloadResume": "Cv downloade (PDF)",
 
   "page.lab.label": "lab",
   "page.lab.title": "Logboek fan eksperiminten",
@@ -486,6 +490,7 @@ const ru: Record<TKey, string> = {
   "page.experience.intro":
     "Инженерный менеджмент в финтехе, здравоохранении и edtech — всегда рядом с кодом, инцидентами и людьми, которые их разбирают.",
   "page.experience.education": "Образование",
+  "page.experience.downloadResume": "Скачать резюме (PDF)",
 
   "page.lab.label": "лаборатория",
   "page.lab.title": "Журнал экспериментов",
