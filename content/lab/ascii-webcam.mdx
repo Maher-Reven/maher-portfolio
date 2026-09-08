@@ -1,0 +1,22 @@
+---
+title: "ASCII webcam"
+summary: "Your camera feed, reduced to brightness and redrawn as the site's own block-shading glyphs — analyzed locally, nothing kept or sent. Click to enable."
+year: 2026
+tags: ["Canvas2D", "WebRTC", "ASCII"]
+color: "#22c55e"
+order: 6
+---
+
+## What it is
+
+The camera frame is drawn, mirrored, straight onto a 100-column canvas — the downscale itself does the averaging. Each cell's luminance buckets into `" ░▒▓█"`, the same block-shading glyphs already in the text-decode effect's character set, and the whole grid is written to a single `<pre>` as one string, not drawn glyph-by-glyph.
+
+<AsciiWebcam />
+
+## Why a `<pre>`, not a canvas full of text
+
+A hundred columns is thousands of characters. Calling Canvas2D's `fillText` once per glyph, every frame, is real cost for no benefit — setting one `<pre>`'s `textContent` lets the browser's own text layout do the work instead, the way a terminal actually renders.
+
+## Source
+
+`src/components/lab/AsciiWebcam.tsx`

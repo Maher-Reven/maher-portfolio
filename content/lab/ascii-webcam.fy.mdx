@@ -1,0 +1,19 @@
+---
+title: "ASCII-webcam"
+summary: "Dyn kamerabyld, omset ta helderheid en opnij tekene mei de blokglyphs fan dizze side — lokaal analysearre, neat bewarre of ferstjoerd. Klik om yn te skeakeljen."
+tags: ["Canvas2D", "WebRTC", "ASCII"]
+---
+
+## Wat it is
+
+It kamerabyld wurdt spegele streekrjocht op in canvas fan 100 kolommen tekene — it lytser meitsjen sels docht it middeljen. De helderheid fan elke sel falt yn `" ░▒▓█"`, deselde blokglyphs dy't al yn de tekenset fan it text-decode-effekt sitte, en it hiele roaster wurdt as ien string nei ien `<pre>` skreaun, net glyph foar glyph.
+
+<AsciiWebcam />
+
+## Wêrom in `<pre>`, gjin canvas fol tekst
+
+Hûndert kolommen binne tûzenen tekens. Canvas2D's `fillText` per glyph oanroppe, elk frame, kostet echt wat foar neat — de `textContent` fan ien `<pre>` ynstelle lit de eigen tekstlayout fan de browser it wurk dwaan, sa't in echte terminal dat docht.
+
+## Boarne
+
+`src/components/lab/AsciiWebcam.tsx`

@@ -51,6 +51,7 @@ const SELF_CLOSING_NOTES = {
   SplineSceneDemo: "interactive: 3D scene — see the live page",
   GenerativeMark: "interactive: generative mark, redrawn each load — see the live page",
   AudioVisualizer: "interactive: microphone-driven frequency visualizer — see the live page",
+  AsciiWebcam: "interactive: live camera feed rendered as ASCII — see the live page",
 };
 
 /** Replaces the site's interactive MDX components with plain-text prose. */

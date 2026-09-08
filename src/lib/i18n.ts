@@ -118,6 +118,13 @@ const en = {
   "audio.peak": "Peak",
   "audio.privacy": "Analyzed locally in your browser — nothing is recorded or sent anywhere.",
 
+  "camera.enable": "Enable camera",
+  "camera.requesting": "Requesting access…",
+  "camera.denied": "Camera access denied",
+  "camera.unsupported": "Your browser doesn't support this",
+  "camera.stop": "Stop",
+  "camera.privacy": "Reduced to brightness only, locally, in your browser — no color, no image is kept, nothing is sent anywhere.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -215,6 +222,13 @@ const fr: Record<TKey, string> = {
   "audio.peak": "Crête",
   "audio.privacy": "Analysé localement dans votre navigateur — rien n'est enregistré ni envoyé.",
 
+  "camera.enable": "Activer la caméra",
+  "camera.requesting": "Demande d'accès…",
+  "camera.denied": "Accès à la caméra refusé",
+  "camera.unsupported": "Votre navigateur ne prend pas ça en charge",
+  "camera.stop": "Arrêter",
+  "camera.privacy": "Réduit à la seule luminosité, localement, dans votre navigateur — aucune couleur, aucune image conservée, rien n'est envoyé.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -309,6 +323,13 @@ const nl: Record<TKey, string> = {
   "audio.stop": "Stoppen",
   "audio.peak": "Piek",
   "audio.privacy": "Lokaal geanalyseerd in je browser — er wordt niets opgenomen of verzonden.",
+
+  "camera.enable": "Camera inschakelen",
+  "camera.requesting": "Toegang aanvragen…",
+  "camera.denied": "Cameratoegang geweigerd",
+  "camera.unsupported": "Je browser ondersteunt dit niet",
+  "camera.stop": "Stoppen",
+  "camera.privacy": "Teruggebracht tot alleen helderheid, lokaal, in je browser — geen kleur, geen bewaard beeld, er wordt niets verzonden.",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -405,6 +426,13 @@ const fy: Record<TKey, string> = {
   "audio.peak": "Piik",
   "audio.privacy": "Lokaal analysearre yn dyn browser — der wurdt neat opnommen of ferstjoerd.",
 
+  "camera.enable": "Kamera ynskeakelje",
+  "camera.requesting": "Tagong oanfreegje…",
+  "camera.denied": "Kameratagong wegere",
+  "camera.unsupported": "Dyn browser stipet dit net",
+  "camera.stop": "Stopje",
+  "camera.privacy": "Omset ta allinnich helderheid, lokaal, yn dyn browser — gjin kleur, gjin bewarre byld, der wurdt neat ferstjoerd.",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -499,6 +527,13 @@ const ru: Record<TKey, string> = {
   "audio.stop": "Остановить",
   "audio.peak": "Пик",
   "audio.privacy": "Анализируется локально в браузере — ничего не записывается и не отправляется.",
+
+  "camera.enable": "Включить камеру",
+  "camera.requesting": "Запрос доступа…",
+  "camera.denied": "Доступ к камере запрещён",
+  "camera.unsupported": "Ваш браузер это не поддерживает",
+  "camera.stop": "Остановить",
+  "camera.privacy": "Сведено только к яркости, локально, в браузере — без цвета, без сохранённого изображения, ничего не отправляется.",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

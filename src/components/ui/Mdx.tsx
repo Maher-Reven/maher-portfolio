@@ -5,6 +5,7 @@ import { Tradeoff, TradeoffOption } from "@/components/ui/Tradeoff";
 import { Retro } from "@/components/ui/Retro";
 import { GenerativeMark } from "@/components/lab/GenerativeMark";
 import { AudioVisualizer } from "@/components/lab/AudioVisualizer";
+import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
 
 /**
  * Components a lab or work entry can drop into its MDX to embed a live demo
@@ -19,6 +20,7 @@ const components = {
   Retro,
   GenerativeMark,
   AudioVisualizer,
+  AsciiWebcam,
 };
 
 export function Mdx({ source }: { source: string }) {

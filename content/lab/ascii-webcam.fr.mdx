@@ -1,0 +1,19 @@
+---
+title: "Webcam ASCII"
+summary: "Votre flux caméra, réduit à la luminosité et redessiné avec les glyphes à trames du site — analysé localement, rien n'est conservé ni envoyé. Cliquez pour activer."
+tags: ["Canvas2D", "WebRTC", "ASCII"]
+---
+
+## Ce que c'est
+
+L'image de la caméra est dessinée, en miroir, directement sur un canvas de 100 colonnes — la réduction d'échelle fait elle-même la moyenne. La luminosité de chaque cellule tombe dans `" ░▒▓█"`, les mêmes glyphes à trames déjà utilisés dans le jeu de caractères de l'effet de décodage de texte, et toute la grille est écrite dans un seul `<pre>` comme une seule chaîne, pas glyphe par glyphe.
+
+<AsciiWebcam />
+
+## Pourquoi un `<pre>`, pas un canvas plein de texte
+
+Cent colonnes, ce sont des milliers de caractères. Appeler `fillText` de Canvas2D une fois par glyphe, à chaque image, coûte cher pour rien — définir le `textContent` d'un seul `<pre>` laisse la mise en page texte du navigateur faire le travail, comme un vrai terminal.
+
+## Source
+
+`src/components/lab/AsciiWebcam.tsx`
