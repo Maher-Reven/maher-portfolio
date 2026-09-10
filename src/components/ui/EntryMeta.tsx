@@ -19,7 +19,13 @@ export function EntryHeader({
   const { locale, t } = useLocale();
   const text = entry.text[locale] ?? entry.text.en;
   return (
-    <PageHeader code={code} label={t(labelKey)} title={text.title} intro={text.summary} />
+    <PageHeader
+      code={code}
+      label={t(labelKey)}
+      title={text.title}
+      intro={text.summary}
+      viewTransitionName={`${entry.collection}-${entry.slug}-title`}
+    />
   );
 }
 

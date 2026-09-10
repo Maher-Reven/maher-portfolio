@@ -2,6 +2,7 @@
 
 import { useTheme } from "@/lib/use-theme";
 import { useLocale } from "@/lib/use-locale";
+import { useReducedMotion } from "@/lib/motion";
 
 /**
  * Theme switch, drawn as a HUD readout rather than a pill: the two states sit
@@ -14,12 +15,29 @@ import { useLocale } from "@/lib/use-locale";
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const { t } = useLocale();
+  const reduced = useReducedMotion();
   const isDark = theme === "dark";
+
+  const toggle = (event: React.MouseEvent<HTMLButtonElement>) => {
+    const next = isDark ? "light" : "dark";
+
+    // Raw browser API, not React's <ViewTransition> — this is a same-page CSS
+    // custom-property flip, not a component/route change, so React's
+    // Transition-triggered version doesn't apply here.
+    if (reduced || typeof document === "undefined" || !("startViewTransition" in document)) {
+      setTheme(next);
+      return;
+    }
+
+    document.documentElement.style.setProperty("--vt-x", `${event.clientX}px`);
+    document.documentElement.style.setProperty("--vt-y", `${event.clientY}px`);
+    document.startViewTransition(() => setTheme(next));
+  };
 
   return (
     <button
       type="button"
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={toggle}
       aria-label={t(isDark ? "nav.themeToLight" : "nav.themeToDark")}
       title={t(isDark ? "nav.themeToLight" : "nav.themeToDark")}
       data-cursor-label="Theme"

@@ -172,6 +172,25 @@ body {
   text-shadow: 0 0 24px var(--accent-glow);
 }
 
+/* Theme-toggle circular reveal (ThemeToggle.tsx). The old snapshot just sits
+   there unanimated; the new one grows from the click point, uncovering it —
+   respecting reduced motion happens in JS, by never calling
+   startViewTransition in the first place, so no @media guard is needed here. */
+::view-transition-old(root) {
+  animation: none;
+}
+::view-transition-new(root) {
+  animation: theme-reveal 0.6s var(--ease-hud) forwards;
+}
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0% at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+  to {
+    clip-path: circle(150% at var(--vt-x, 50%) var(--vt-y, 50%));
+  }
+}
+
 /* Spinner for lazily-loaded 3D scenes — ui/splite.tsx renders `.loader` as its
    Suspense fallback, which would otherwise be an invisible empty span. */
 .loader {

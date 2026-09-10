@@ -1,5 +1,8 @@
 "use client";
 
+// See PageHeader.tsx for why this import exists.
+import type {} from "react/canary";
+import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Entry } from "@/lib/content";
 import { useLocale } from "@/lib/use-locale";
@@ -29,7 +32,9 @@ export function LabCard({
           <span>{badge ?? text.tags[0] ?? ""}</span>
           <span className="text-fg-dim">{entry.year}</span>
         </p>
-        <h3 className="mb-2 text-xl">{text.title}</h3>
+        <ViewTransition name={`${entry.collection}-${entry.slug}-title`}>
+          <h3 className="mb-2 text-xl">{text.title}</h3>
+        </ViewTransition>
         <p className="text-sm text-fg-muted">{text.summary}</p>
         {showTags && <p className="label mt-6 text-fg-dim">{text.tags.join(" · ")}</p>}
       </Link>

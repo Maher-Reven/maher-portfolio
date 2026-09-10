@@ -1,5 +1,8 @@
 "use client";
 
+// See PageHeader.tsx for why this import exists.
+import type {} from "react/canary";
+import { ViewTransition } from "react";
 import Link from "next/link";
 import type { Entry } from "@/lib/content";
 import { useLocale } from "@/lib/use-locale";
@@ -27,9 +30,11 @@ export function EntryCard({ entry, index }: { entry: Entry; index: number }) {
           <span className="text-fg-dim">{entry.year}</span>
         </p>
 
-        <h3 className="mb-3 text-3xl tracking-tight transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-2 md:text-4xl">
-          {text.title}
-        </h3>
+        <ViewTransition name={`${entry.collection}-${entry.slug}-title`}>
+          <h3 className="mb-3 text-3xl tracking-tight transition-transform duration-500 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-2 md:text-4xl">
+            {text.title}
+          </h3>
+        </ViewTransition>
         <p className="mb-8 max-w-[48ch] text-fg-muted">{text.summary}</p>
 
         <div className="flex flex-wrap items-center justify-between gap-4">
