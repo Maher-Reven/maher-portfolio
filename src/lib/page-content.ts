@@ -38,6 +38,9 @@ export type Role = {
   points: string[];
 };
 
+export type ReadmeSection = { heading: string; body: string };
+export type TeamType = { type: string; description: string };
+
 export type PageContent = {
   about: { intro: string[]; workHeading: string; work: string; nowHeading: string; now: string };
   aboutMeta: { role: string; interests: string };
@@ -45,6 +48,9 @@ export type PageContent = {
   roles: Role[];
   education: { degree: string; org: string; period: string; place: string; detail: string };
   colophon: [string, string][];
+  readme: ReadmeSection[];
+  teamTopologyIntro: string;
+  teamTopology: TeamType[];
 };
 
 const en: PageContent = {
@@ -135,6 +141,31 @@ const en: PageContent = {
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
     ...buildRows("en"),
+  ],
+  readme: [
+    {
+      heading: "1:1s",
+      body: "Every 1:1 has an agenda before it starts — yours, not mine. I keep a running doc per person so nothing gets lost between sessions, and I bring career conversations up proactively rather than waiting for a review cycle to make them official.",
+    },
+    {
+      heading: "What I escalate",
+      body: "Anything touching legal exposure, security, or a commitment made outside the team's control — immediately, not after trying to fix it quietly first. Everything else, I expect the team to own, and I'll back a decision made in good faith even if I'd have made a different one.",
+    },
+    {
+      heading: "What I won't trade away",
+      body: "Blameless retrospectives, a real ramp-up path for new engineers, and enough context that a decision can survive me being on vacation. Velocity is negotiable. Those aren't.",
+    },
+    {
+      heading: "Feedback",
+      body: "Tell me directly, close to when it happened, and expect the same back. I'd rather have an uncomfortable conversation on a Tuesday than a surprising one at review time.",
+    },
+  ],
+  teamTopologyIntro:
+    "Not a history of any specific org — a general approach, in Team Topologies' own vocabulary.",
+  teamTopology: [
+    { type: "Stream-aligned", description: "Owns a slice of the product end to end, from idea to production, with everything it needs to ship without waiting on another team." },
+    { type: "Platform", description: "Builds the internal capabilities — CI/CD, shared infrastructure, tooling — that let stream-aligned teams move without reinventing the foundation each time." },
+    { type: "Enabling", description: "Brings in specialist knowledge temporarily — security, performance, a new practice — to raise a team's own capability, then steps back out." },
   ],
 };
 
@@ -230,6 +261,31 @@ const fr: PageContent = {
     ],
     ...buildRows("fr"),
   ],
+  readme: [
+    {
+      heading: "Les 1:1",
+      body: "Chaque 1:1 a un ordre du jour avant de commencer — le vôtre, pas le mien. Je tiens un document courant par personne pour que rien ne se perde d'une séance à l'autre, et j'aborde les questions de carrière de façon proactive plutôt que d'attendre un cycle de revue pour les officialiser.",
+    },
+    {
+      heading: "Ce que j'escalade",
+      body: "Tout ce qui touche à une exposition juridique, à la sécurité, ou à un engagement pris en dehors du contrôle de l'équipe — immédiatement, pas après avoir essayé de le régler discrètement. Pour le reste, j'attends que l'équipe se l'approprie, et je défendrai une décision prise de bonne foi même si j'en aurais pris une autre.",
+    },
+    {
+      heading: "Ce que je ne sacrifie pas",
+      body: "Les rétrospectives sans blâme, un vrai parcours d'intégration pour les nouveaux ingénieurs, et assez de contexte pour qu'une décision survive à mon absence en vacances. La vélocité est négociable. Pas ça.",
+    },
+    {
+      heading: "Feedback",
+      body: "Dites-le-moi directement, près du moment où ça s'est produit, et attendez-vous à la même chose en retour. Je préfère une conversation inconfortable un mardi qu'une surprise en revue.",
+    },
+  ],
+  teamTopologyIntro:
+    "Pas l'historique d'une organisation en particulier — une approche générale, dans le vocabulaire propre à Team Topologies.",
+  teamTopology: [
+    { type: "Stream-aligned", description: "Possède une tranche du produit de bout en bout, de l'idée à la production, avec tout ce qu'il faut pour livrer sans attendre une autre équipe." },
+    { type: "Platform", description: "Construit les capacités internes — CI/CD, infrastructure partagée, outillage — qui permettent aux équipes stream-aligned d'avancer sans réinventer les fondations à chaque fois." },
+    { type: "Enabling", description: "Apporte une expertise spécialisée temporairement — sécurité, performance, une nouvelle pratique — pour élever la capacité propre d'une équipe, puis se retire." },
+  ],
 };
 
 const nl: PageContent = {
@@ -323,6 +379,31 @@ const nl: PageContent = {
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
     ...buildRows("nl"),
+  ],
+  readme: [
+    {
+      heading: "1:1's",
+      body: "Elke 1:1 heeft een agenda voordat die begint — die van jou, niet die van mij. Ik houd per persoon een lopend document bij zodat er niets verloren gaat tussen sessies, en ik breng loopbaangesprekken proactief ter sprake in plaats van te wachten op een reviewcyclus om ze officieel te maken.",
+    },
+    {
+      heading: "Wat ik escaleer",
+      body: "Alles wat juridische blootstelling, beveiliging of een verplichting buiten de controle van het team raakt — meteen, niet nadat ik het eerst stilletjes probeer op te lossen. Al het andere verwacht ik dat het team zelf oppakt, en ik verdedig een beslissing die te goeder trouw is genomen, ook als ik zelf anders had gekozen.",
+    },
+    {
+      heading: "Wat ik niet inruil",
+      body: "Blameless retrospectives, een echt inwerkpad voor nieuwe engineers, en genoeg context dat een beslissing mijn vakantie overleeft. Snelheid is onderhandelbaar. Dat niet.",
+    },
+    {
+      heading: "Feedback",
+      body: "Zeg het me direct, dicht bij het moment dat het gebeurde, en verwacht hetzelfde terug. Ik heb liever een ongemakkelijk gesprek op een dinsdag dan een verrassing bij een review.",
+    },
+  ],
+  teamTopologyIntro:
+    "Geen geschiedenis van een specifieke organisatie — een algemene aanpak, in de eigen woordenschat van Team Topologies.",
+  teamTopology: [
+    { type: "Stream-aligned", description: "Bezit een deel van het product van begin tot eind, van idee tot productie, met alles wat nodig is om te leveren zonder op een ander team te wachten." },
+    { type: "Platform", description: "Bouwt de interne mogelijkheden — CI/CD, gedeelde infrastructuur, tooling — waarmee stream-aligned teams verder kunnen zonder telkens het fundament opnieuw uit te vinden." },
+    { type: "Enabling", description: "Brengt tijdelijk gespecialiseerde kennis binnen — security, performance, een nieuwe praktijk — om het eigen vermogen van een team te verhogen, en trekt zich dan weer terug." },
   ],
 };
 
@@ -418,6 +499,31 @@ const fy: PageContent = {
     ],
     ...buildRows("fy"),
   ],
+  readme: [
+    {
+      heading: "1:1's",
+      body: "Elke 1:1 hat in wurkoarder foardat er begjint — dyn, net myn. Ik hâld per persoan in rinnend dokumint by sadat der neat ferlern giet tusken sesjes, en ik bring loopbaanpetearen proaktyf op it aljemint ynstee fan te wachtsjen op in reviewsyklus om se offisjeel te meitsjen.",
+    },
+    {
+      heading: "Wat ik eskalearje",
+      body: "Alles wat juridyske bleatstelling, feiligens of in ferplichting bûten de kontrôle fan it team reitsje — daliks, net neidat ik it earst stikem besykje op te lossen. Al it oare ferwachtsje ik dat it team sels oppakt, en ik ferdigenje in beslút dat te goeder trou naam is, ek as ik sels oars keazen hie.",
+    },
+    {
+      heading: "Wat ik net ynruilje",
+      body: "Blameless retrospektiven, in echt ynwurkpaad foar nije ingenieurs, en genôch kontekst dat in beslút myn fakânsje oerlibbet. Snelheid is ûnderhannelber. Dat net.",
+    },
+    {
+      heading: "Feedback",
+      body: "Sis it my direkt, ticht by it momint dat it barde, en ferwachtsje itselde werom. Ik ha leaver in ûngemaklik petear op in tiisdei as in ferrassing by in review.",
+    },
+  ],
+  teamTopologyIntro:
+    "Gjin skiednis fan in spesifike organisaasje — in algemiene oanpak, yn de eigen wurdskat fan Team Topologies.",
+  teamTopology: [
+    { type: "Stream-aligned", description: "Hat in diel fan it produkt yn eigendom fan begjin oant ein, fan idee oant produksje, mei alles wat nedich is om te leverjen sûnder op in oar team te wachtsjen." },
+    { type: "Platform", description: "Bout de ynterne mooglikheden — CI/CD, dielde ynfrastruktuer, ark — dy't stream-aligned teams fierder helpe sûnder it fûnemint hieltyd opnij út te finen." },
+    { type: "Enabling", description: "Bringt tydlik spesjalisearre kennis yn — feiligens, prestaasje, in nije praktyk — om de eigen kapasiteit fan in team te fergrutsjen, en lûkt him dêrnei wer werom." },
+  ],
 };
 
 const ru: PageContent = {
@@ -511,6 +617,31 @@ const ru: PageContent = {
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
     ],
     ...buildRows("ru"),
+  ],
+  readme: [
+    {
+      heading: "Один на один",
+      body: "У каждой встречи один на один есть повестка до её начала — ваша, не моя. Я веду текущий документ на каждого человека, чтобы ничего не терялось между сессиями, и поднимаю разговоры о карьере проактивно, а не жду цикла ревью, чтобы сделать их официальными.",
+    },
+    {
+      heading: "Что я эскалирую",
+      body: "Всё, что касается юридических рисков, безопасности или обязательства, взятого вне контроля команды — немедленно, а не после попытки тихо всё исправить. Всё остальное я жду, что команда возьмёт на себя, и поддержу решение, принятое добросовестно, даже если сам выбрал бы иначе.",
+    },
+    {
+      heading: "Чем я не жертвую",
+      body: "Безобвинительные ретроспективы, реальный путь адаптации для новых инженеров и достаточно контекста, чтобы решение пережило мой отпуск. Скорость — предмет переговоров. Это — нет.",
+    },
+    {
+      heading: "Обратная связь",
+      body: "Скажите мне прямо, близко к моменту, когда это произошло, и ждите того же в ответ. Я предпочту неловкий разговор во вторник неожиданности на ревью.",
+    },
+  ],
+  teamTopologyIntro:
+    "Не история конкретной организации — общий подход, в терминологии самой Team Topologies.",
+  teamTopology: [
+    { type: "Stream-aligned", description: "Владеет частью продукта от идеи до продакшна целиком, со всем необходимым, чтобы выпускать релизы, не дожидаясь другой команды." },
+    { type: "Platform", description: "Строит внутренние возможности — CI/CD, общую инфраструктуру, инструменты — которые позволяют stream-aligned командам двигаться, не изобретая фундамент заново каждый раз." },
+    { type: "Enabling", description: "Временно привносит специализированную экспертизу — безопасность, производительность, новую практику — чтобы поднять собственные возможности команды, а затем отходит в сторону." },
   ],
 };
 

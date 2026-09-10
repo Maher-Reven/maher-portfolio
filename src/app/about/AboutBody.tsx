@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { useLocale } from "@/lib/use-locale";
 import { pageContent } from "@/lib/page-content";
 import { Tr } from "@/components/i18n/Tr";
+import { TeamTopology } from "@/components/ui/TeamTopology";
 
 export function AboutBody() {
   const { locale } = useLocale();
@@ -17,6 +18,7 @@ export function AboutBody() {
         ))}
         <h2>{c.about.workHeading}</h2>
         <p>{c.about.work}</p>
+        <TeamTopology intro={c.teamTopologyIntro} types={c.teamTopology} />
         <h2>{c.about.nowHeading}</h2>
         <p>{c.about.now}</p>
       </div>

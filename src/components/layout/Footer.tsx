@@ -44,6 +44,16 @@ export function Footer() {
                 {t("footer.colophon")}
               </Link>
             </li>
+            <li>
+              <Link href="/log" className="hover:text-fg transition-colors">
+                {t("page.log.title")}
+              </Link>
+            </li>
+            <li>
+              <Link href="/readme" className="hover:text-fg transition-colors">
+                {t("page.readme.title")}
+              </Link>
+            </li>
             <li className="label !text-fg-dim pt-2">
               {process.env.NEXT_PUBLIC_GIT_SHA ?? "dev"} · © {new Date().getFullYear()} {site.name}
             </li>

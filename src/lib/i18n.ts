@@ -91,6 +91,19 @@ const en = {
   "page.colophon.intro":
     "The engineering behind the motion — every effect, its cost, and why it's there.",
 
+  "page.log.label": "log",
+  "page.log.title": "Decision log",
+  "page.log.intro":
+    "Every case study's tradeoffs, reshaped as a commit history — options considered, what was chosen, what it cost.",
+  "log.chosen": "chosen",
+
+  "page.readme.label": "readme",
+  "page.readme.title": "How to work with me",
+  "page.readme.intro": "The operating manual — how I run 1:1s, what I escalate, what I won't trade away.",
+
+  "topology.collaboration": "Collaboration",
+  "topology.xAsAService": "X-as-a-Service",
+
   "entry.year": "year",
   "entry.role": "role",
   "entry.tags": "stack / tags",
@@ -198,6 +211,19 @@ const fr: Record<TKey, string> = {
   "page.colophon.intro":
     "L'ingénierie derrière le mouvement — chaque effet, son coût, et pourquoi il est là.",
 
+  "page.log.label": "journal",
+  "page.log.title": "Journal des décisions",
+  "page.log.intro":
+    "Les arbitrages de chaque étude de cas, remis en forme comme un historique de commits — options considérées, ce qui a été choisi, ce que ça a coûté.",
+  "log.chosen": "choisi",
+
+  "page.readme.label": "readme",
+  "page.readme.title": "Comment travailler avec moi",
+  "page.readme.intro": "Le manuel d'utilisation — comment je mène les 1:1, ce que j'escalade, ce que je ne sacrifie pas.",
+
+  "topology.collaboration": "Collaboration",
+  "topology.xAsAService": "X-as-a-Service",
+
   "entry.year": "année",
   "entry.role": "rôle",
   "entry.tags": "stack / tags",
@@ -302,6 +328,19 @@ const nl: Record<TKey, string> = {
   "page.colophon.title": "Hoe deze site is gebouwd",
   "page.colophon.intro":
     "De engineering achter de motion — elk effect, wat het kost, en waarom het er is.",
+
+  "page.log.label": "log",
+  "page.log.title": "Beslissingenlogboek",
+  "page.log.intro":
+    "De afwegingen van elke case study, hervormd tot een commit-geschiedenis — overwogen opties, wat gekozen is, wat het kostte.",
+  "log.chosen": "gekozen",
+
+  "page.readme.label": "readme",
+  "page.readme.title": "Hoe met mij te werken",
+  "page.readme.intro": "Het instructieboekje — hoe ik 1:1's doe, wat ik escaleer, wat ik niet inruil.",
+
+  "topology.collaboration": "Samenwerking",
+  "topology.xAsAService": "X-as-a-Service",
 
   "entry.year": "jaar",
   "entry.role": "rol",
@@ -408,6 +447,19 @@ const fy: Record<TKey, string> = {
   "page.colophon.intro":
     "De engineering achter de motion — elk effekt, wat it kostet, en wêrom't it der is.",
 
+  "page.log.label": "log",
+  "page.log.title": "Beslissingslogboek",
+  "page.log.intro":
+    "De ôfwagings fan elke case study, omfoarme ta in commit-skiednis — oerwoegen opsjes, wat keazen is, wat it kostte.",
+  "log.chosen": "keazen",
+
+  "page.readme.label": "readme",
+  "page.readme.title": "Hoe't mei my te wurkjen",
+  "page.readme.intro": "It ynstruksjeboekje — hoe't ik 1:1's doch, wat ik eskalearje, wat ik net ynruilje.",
+
+  "topology.collaboration": "Gearwurking",
+  "topology.xAsAService": "X-as-a-Service",
+
   "entry.year": "jier",
   "entry.role": "rol",
   "entry.tags": "stack / tags",
@@ -512,6 +564,19 @@ const ru: Record<TKey, string> = {
   "page.colophon.title": "Как устроен этот сайт",
   "page.colophon.intro":
     "Инженерия за анимацией — каждый эффект, его цена и зачем он нужен.",
+
+  "page.log.label": "журнал",
+  "page.log.title": "Журнал решений",
+  "page.log.intro":
+    "Компромиссы каждого кейса, переоформленные как история коммитов — рассмотренные варианты, что было выбрано, чего это стоило.",
+  "log.chosen": "выбрано",
+
+  "page.readme.label": "readme",
+  "page.readme.title": "Как работать со мной",
+  "page.readme.intro": "Инструкция по эксплуатации — как я веду 1:1, что я эскалирую, чем не жертвую.",
+
+  "topology.collaboration": "Сотрудничество",
+  "topology.xAsAService": "X-as-a-Service",
 
   "entry.year": "год",
   "entry.role": "роль",
