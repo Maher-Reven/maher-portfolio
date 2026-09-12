@@ -44,6 +44,11 @@ const en = {
   "nav.language": "Language",
   "nav.themeToLight": "Switch to light theme",
   "nav.themeToDark": "Switch to dark theme",
+  "nav.search": "Search",
+
+  "search.placeholder": "Search case studies, decisions, the readme…",
+  "search.noResults": "No results",
+  "search.hint": "↑↓ navigate · ↵ select · esc close",
 
   "hero.line1": "Engineering",
   "hero.line2": "that moves.",
@@ -164,6 +169,11 @@ const fr: Record<TKey, string> = {
   "nav.language": "Langue",
   "nav.themeToLight": "Passer au thème clair",
   "nav.themeToDark": "Passer au thème sombre",
+  "nav.search": "Rechercher",
+
+  "search.placeholder": "Rechercher des études de cas, des décisions, le readme…",
+  "search.noResults": "Aucun résultat",
+  "search.hint": "↑↓ naviguer · ↵ ouvrir · esc fermer",
 
   "hero.line1": "L'ingénierie",
   "hero.line2": "qui bouge.",
@@ -282,6 +292,11 @@ const nl: Record<TKey, string> = {
   "nav.language": "Taal",
   "nav.themeToLight": "Wissel naar licht thema",
   "nav.themeToDark": "Wissel naar donker thema",
+  "nav.search": "Zoeken",
+
+  "search.placeholder": "Doorzoek case studies, beslissingen, de readme…",
+  "search.noResults": "Geen resultaten",
+  "search.hint": "↑↓ navigeren · ↵ openen · esc sluiten",
 
   "hero.line1": "Engineering",
   "hero.line2": "die beweegt.",
@@ -400,6 +415,11 @@ const fy: Record<TKey, string> = {
   "nav.language": "Taal",
   "nav.themeToLight": "Nei it ljochte tema",
   "nav.themeToDark": "Nei it tsjustere tema",
+  "nav.search": "Sykje",
+
+  "search.placeholder": "Trochsykje case studies, beslissings, de readme…",
+  "search.noResults": "Gjin resultaten",
+  "search.hint": "↑↓ navigearje · ↵ iepenje · esc slute",
 
   "hero.line1": "Engineering",
   "hero.line2": "dy't beweecht.",
@@ -518,6 +538,11 @@ const ru: Record<TKey, string> = {
   "nav.language": "Язык",
   "nav.themeToLight": "Переключить на светлую тему",
   "nav.themeToDark": "Переключить на тёмную тему",
+  "nav.search": "Поиск",
+
+  "search.placeholder": "Поиск по кейсам, решениям, readme…",
+  "search.noResults": "Ничего не найдено",
+  "search.hint": "↑↓ навигация · ↵ открыть · esc закрыть",
 
   "hero.line1": "Инженерия",
   "hero.line2": "в движении.",

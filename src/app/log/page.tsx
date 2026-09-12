@@ -17,7 +17,7 @@ export default function LogPage() {
       <PageHeader code="LOG" tk="log" />
       <Reveal className="mx-[var(--gutter)] mb-32 flex flex-col gap-6" stagger={0.1}>
         {decisions.map((d) => (
-          <HudFrame key={d.hash} data-reveal className="p-6 md:p-8">
+          <HudFrame key={d.hash} id={d.hash} data-reveal className="scroll-mt-28 p-6 md:p-8">
             <p className="mono text-xs text-fg-dim">
               commit <span className="text-fg">{d.hash}</span>
             </p>

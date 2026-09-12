@@ -5,6 +5,7 @@ import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { Cursor } from "@/components/motion/Cursor";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { SearchPalette } from "@/components/search/SearchPalette";
 import { site } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { LOCALE_INIT_SCRIPT } from "@/lib/i18n";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Footer />
         </SmoothScroll>
         <Cursor />
+        <SearchPalette />
       </body>
     </html>
   );

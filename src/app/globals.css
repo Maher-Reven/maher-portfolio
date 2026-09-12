@@ -278,6 +278,9 @@ body {
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   letter-spacing: -0.02em;
   margin: 3rem 0 1rem;
+  /* rehype-slug gives every h2 an id — this keeps the fixed nav from covering
+     it when search results (or any #anchor link) jump straight to a section. */
+  scroll-margin-top: 7rem;
 }
 .prose h3 {
   color: var(--fg);

@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypeSlug from "rehype-slug";
 import { SplineSceneDemo } from "@/components/three/SplineSceneDemo";
 import { SystemsCollapse } from "@/components/three/SystemsCollapse";
 import { Tradeoff, TradeoffOption } from "@/components/ui/Tradeoff";
@@ -29,7 +30,11 @@ const components = {
 export function Mdx({ source }: { source: string }) {
   return (
     <div className="prose">
-      <MDXRemote source={source} components={components} />
+      <MDXRemote
+        source={source}
+        components={components}
+        options={{ mdxOptions: { rehypePlugins: [rehypeSlug] } }}
+      />
     </div>
   );
 }

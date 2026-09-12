@@ -8,6 +8,7 @@ import { Magnetic } from "@/components/motion/Magnetic";
 import { Clock } from "@/components/layout/Clock";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { LocaleToggle } from "@/components/layout/LocaleToggle";
+import { SearchButton } from "@/components/layout/SearchButton";
 import { useLocale } from "@/lib/use-locale";
 import type { TKey } from "@/lib/i18n";
 import { NavMenu } from "@/components/layout/NavMenu";
@@ -76,6 +77,7 @@ export function Nav() {
               <Clock />
             </span>
           </div>
+          <SearchButton />
           <ThemeToggle />
           <LocaleToggle />
           <NavMenu />
