@@ -1,0 +1,24 @@
+---
+title: "Anatomie du harnais"
+summary: "Le modèle est la partie ennuyeuse — sans mémoire, sans état. Tout ce qui le rend agentique, c'est le harnais qui l'entoure. Faites-le défiler comme une radiographie."
+year: 2026
+tags: ["SVG", "Systèmes", "IA agentique"]
+color: "#60a5fa"
+order: 7
+---
+
+## Ce que c'est
+
+Un diagramme concentrique, le modèle au centre. Chaque anneau vers l'extérieur est un morceau de harnais de plus autour de lui : la boucle qui le rappelle, les outils qu'il peut demander, le contrôle des permissions par lequel ces demandes passent, le contexte qui décide de ce qu'il voit réellement, les sous-agents qui ne sont que cette même boucle qui se relance, et l'environnement réel — système de fichiers, shell, API — qu'un appel d'outil finit par atteindre.
+
+<HarnessAnatomy />
+
+Faites défiler pour le couper en coupe, de l'Environnement jusqu'au cœur du Modèle — chaque seuil franchi éclaire une couche et ajoute une ligne au journal, comme une requête traverse réellement un système en fonctionnement.
+
+## Pourquoi le harnais, pas le modèle
+
+Il est tentant de dessiner « un agent IA » comme une seule boîte. Cette boîte est la partie la moins intéressante — une fonction sans état qui prédit des tokens et oublie tout dès que la réponse se termine. La boucle, les contrôles de permissions, la gestion du contexte, la capacité à se démultiplier en sous-agents : tout ça, c'est le harnais, et c'est là que vivent presque toutes les vraies décisions d'ingénierie. Le fichier que l'agent de ce site lit avant d'écrire la moindre ligne de code — `AGENTS.md`, à la racine du dépôt — est lui-même un artefact du harnais : des instructions injectées dans le contexte, pas des poids.
+
+## Source
+
+Pas de contexte WebGL ici — SVG inline et une timeline GSAP, même registre que l'[échelle d'autonomie](/work/beyond-autocomplete#execution). `src/components/lab/HarnessAnatomy.tsx`.

@@ -1,0 +1,24 @@
+---
+title: "Harness anatomy"
+summary: "The model is the boring part — stateless, no memory. Everything that makes it agentic is the harness wrapped around it. Scroll through it like an X-ray."
+year: 2026
+tags: ["SVG", "Systems", "Agentic AI"]
+color: "#60a5fa"
+order: 7
+---
+
+## What it is
+
+A concentric diagram, model at the center. Every ring outward is one more piece of harness wrapped around it: the loop that calls it again, the tools it can request, the permission gate those requests pass through, the context that decides what it even sees, the sub-agents that are just this same loop recursing, and the real environment — filesystem, shell, APIs — a tool call ultimately reaches.
+
+<HarnessAnatomy />
+
+Scroll to cross-section it, Environment down to the Model core — each threshold you cross brightens a layer and appends a line to the log, the way one request actually moves through a working system.
+
+## Why the harness, not the model
+
+It's tempting to draw "an AI agent" as one box. That box is the least interesting part — it's a stateless function that predicts tokens and forgets everything the moment the response ends. The loop, the permission checks, the context management, the ability to fan out into sub-agents: that's all harness, and it's where almost every real engineering decision actually lives. The file this site's own agent reads before writing any code — `AGENTS.md`, at the repo root — is itself a harness artifact: instructions injected into context, not weights.
+
+## Source
+
+No WebGL context here — inline SVG and a GSAP timeline, same register as the [autonomy ladder](/work/beyond-autocomplete#execution). `src/components/lab/HarnessAnatomy.tsx`.

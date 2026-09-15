@@ -146,6 +146,23 @@ const en = {
 
   "ladder.escalation": "Anything outside these bounds escalates to a person.",
 
+  "harness.scrollHint": "Scroll to cross-section the loop.",
+  "harness.layer.model.title": "Model",
+  "harness.layer.model.desc":
+    "Predicts the next tokens. No memory, no state — everything else on this page is what wraps it.",
+  "harness.layer.loop.title": "Loop",
+  "harness.layer.loop.desc": "Calls the model again with each tool's result until it stops asking for one.",
+  "harness.layer.tools.title": "Tools",
+  "harness.layer.tools.desc": "Typed functions the model can request — a file read, a shell command, a search.",
+  "harness.layer.permissions.title": "Permissions",
+  "harness.layer.permissions.desc": "Gates what a requested tool call is actually allowed to touch.",
+  "harness.layer.context.title": "Context",
+  "harness.layer.context.desc": "Decides what the model even sees next: system prompt, memory, compaction.",
+  "harness.layer.subagents.title": "Sub-agents",
+  "harness.layer.subagents.desc": "The same loop, spawned again, running in parallel or in isolation.",
+  "harness.layer.environment.title": "Environment",
+  "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -271,6 +288,26 @@ const fr: Record<TKey, string> = {
 
   "ladder.escalation": "Tout ce qui sort de ces limites remonte à une personne.",
 
+  "harness.scrollHint": "Faites défiler pour couper la boucle en coupe.",
+  "harness.layer.model.title": "Modèle",
+  "harness.layer.model.desc":
+    "Prédit les prochains tokens. Aucune mémoire, aucun état — tout le reste ici l'enveloppe.",
+  "harness.layer.loop.title": "Boucle",
+  "harness.layer.loop.desc":
+    "Rappelle le modèle avec le résultat de chaque outil jusqu'à ce qu'il n'en redemande plus.",
+  "harness.layer.tools.title": "Outils",
+  "harness.layer.tools.desc":
+    "Des fonctions typées que le modèle peut demander — lire un fichier, exécuter une commande, chercher.",
+  "harness.layer.permissions.title": "Permissions",
+  "harness.layer.permissions.desc": "Contrôle ce qu'un appel d'outil demandé a réellement le droit de toucher.",
+  "harness.layer.context.title": "Contexte",
+  "harness.layer.context.desc": "Décide de ce que le modèle voit ensuite : prompt système, mémoire, compaction.",
+  "harness.layer.subagents.title": "Sous-agents",
+  "harness.layer.subagents.desc": "La même boucle, relancée, en parallèle ou isolément.",
+  "harness.layer.environment.title": "Environnement",
+  "harness.layer.environment.desc":
+    "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -393,6 +430,25 @@ const nl: Record<TKey, string> = {
   "camera.privacy": "Teruggebracht tot alleen helderheid, lokaal, in je browser — geen kleur, geen bewaard beeld, er wordt niets verzonden.",
 
   "ladder.escalation": "Alles buiten deze grenzen gaat naar een mens.",
+
+  "harness.scrollHint": "Scroll om de lus in dwarsdoorsnede te zien.",
+  "harness.layer.model.title": "Model",
+  "harness.layer.model.desc":
+    "Voorspelt de volgende tokens. Geen geheugen, geen status — al het andere hier omhult het.",
+  "harness.layer.loop.title": "Lus",
+  "harness.layer.loop.desc": "Roept het model opnieuw aan met elk toolresultaat, tot het er geen meer vraagt.",
+  "harness.layer.tools.title": "Tools",
+  "harness.layer.tools.desc":
+    "Getypeerde functies die het model kan aanvragen — een bestand lezen, een shellcommando, een zoekopdracht.",
+  "harness.layer.permissions.title": "Rechten",
+  "harness.layer.permissions.desc": "Bepaalt wat een aangevraagde tool-aanroep werkelijk mag raken.",
+  "harness.layer.context.title": "Context",
+  "harness.layer.context.desc": "Bepaalt wat het model daarna te zien krijgt: systeemprompt, geheugen, compactie.",
+  "harness.layer.subagents.title": "Subagenten",
+  "harness.layer.subagents.desc": "Dezelfde lus, opnieuw gestart, parallel of geïsoleerd.",
+  "harness.layer.environment.title": "Omgeving",
+  "harness.layer.environment.desc":
+    "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
@@ -517,6 +573,24 @@ const fy: Record<TKey, string> = {
 
   "ladder.escalation": "Alles bûten dizze grinzen giet nei in minske.",
 
+  "harness.scrollHint": "Skrôlje om de lus yn trochsneed te sjen.",
+  "harness.layer.model.title": "Model",
+  "harness.layer.model.desc":
+    "Foarspelt de folgjende tokens. Gjin ûnthâld, gjin steat — al it oare hjir omfiemet it.",
+  "harness.layer.loop.title": "Lus",
+  "harness.layer.loop.desc": "Ropt it model opnij oan mei it resultaat fan elk ark, oant it der gjin mear freget.",
+  "harness.layer.tools.title": "Ark",
+  "harness.layer.tools.desc":
+    "Typeare funksjes dy't it model oanfreegje kin — in bestân lêze, in shell-kommando, in sykaksje.",
+  "harness.layer.permissions.title": "Rjochten",
+  "harness.layer.permissions.desc": "Bepaalt wat in oanfrege ark-oanrop wier reitsje mei.",
+  "harness.layer.context.title": "Kontekst",
+  "harness.layer.context.desc": "Bepaalt wat it model dernei sjocht: systeempromt, ûnthâld, kompaksje.",
+  "harness.layer.subagents.title": "Subaginten",
+  "harness.layer.subagents.desc": "Deselde lus, opnij spawn'e, parallel of isolearre.",
+  "harness.layer.environment.title": "Omjouwing",
+  "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
+
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
   "footer.system": "systeem",
@@ -639,6 +713,26 @@ const ru: Record<TKey, string> = {
   "camera.privacy": "Сведено только к яркости, локально, в браузере — без цвета, без сохранённого изображения, ничего не отправляется.",
 
   "ladder.escalation": "Всё, что выходит за эти границы, передаётся человеку.",
+
+  "harness.scrollHint": "Прокрутите, чтобы увидеть цикл в разрезе.",
+  "harness.layer.model.title": "Модель",
+  "harness.layer.model.desc":
+    "Предсказывает следующие токены. Нет памяти, нет состояния — всё остальное здесь её оборачивает.",
+  "harness.layer.loop.title": "Цикл",
+  "harness.layer.loop.desc":
+    "Снова вызывает модель с результатом каждого инструмента, пока она не перестанет их запрашивать.",
+  "harness.layer.tools.title": "Инструменты",
+  "harness.layer.tools.desc":
+    "Типизированные функции, которые модель может запросить — чтение файла, команда shell, поиск.",
+  "harness.layer.permissions.title": "Права доступа",
+  "harness.layer.permissions.desc": "Определяет, к чему запрошенный вызов инструмента действительно может обратиться.",
+  "harness.layer.context.title": "Контекст",
+  "harness.layer.context.desc": "Определяет, что модель увидит дальше: системный промпт, память, сжатие.",
+  "harness.layer.subagents.title": "Подагенты",
+  "harness.layer.subagents.desc": "Тот же цикл, запущенный заново — параллельно или изолированно.",
+  "harness.layer.environment.title": "Окружение",
+  "harness.layer.environment.desc":
+    "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

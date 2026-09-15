@@ -7,6 +7,7 @@ import { Retro } from "@/components/ui/Retro";
 import { GenerativeMark } from "@/components/lab/GenerativeMark";
 import { AudioVisualizer } from "@/components/lab/AudioVisualizer";
 import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
+import { HarnessAnatomy } from "@/components/lab/HarnessAnatomy";
 import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
 
 /**
@@ -23,6 +24,7 @@ const components = {
   GenerativeMark,
   AudioVisualizer,
   AsciiWebcam,
+  HarnessAnatomy,
   AutonomyLadder,
   AutonomyTier,
 };
