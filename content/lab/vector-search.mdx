@@ -1,0 +1,24 @@
+---
+title: "Vector search geometry"
+summary: "Cosine similarity only measures the angle to your query — not how far away a point actually is. Drag to orbit, then flip the ranking and watch the winner change."
+year: 2026
+tags: ["WebGL", "Embeddings", "Vector search"]
+color: "#818cf8"
+order: 8
+---
+
+## What it is
+
+A query vector and five candidates, plotted from the origin. Cosine similarity ranks candidates by the angle between them and the query — it never looks at magnitude. Euclidean distance ranks them by how close their tips actually sit in space. Most of the time these two notions of "close" roughly agree. They don't have to.
+
+<VectorSearch />
+
+Drag to orbit and look for yourself: one candidate sits almost on top of the query's tip and still loses, because it points off at a wider angle. Another is three times farther away and wins anyway, because it points almost exactly the same direction. Flip the ranking toggle and the winner changes — same five points, same query, different answer depending only on which formula you ask.
+
+## Why this trips people up
+
+Most real vector search — RAG pipelines, semantic search, recommendation systems — ranks by cosine similarity, not distance, because embedding magnitude usually encodes something incidental (document length, token count) rather than meaning. That's a reasonable default. But it means "nearest neighbor" in a vector database is not the same claim as "nearest neighbor" in the everyday, spatial sense, and a debugging session that assumes otherwise will misread perfectly correct results as broken ones. The gap between those two claims is exactly the angle this page lets you drag around and look at.
+
+## Source
+
+No new dependency for the orbit control — `OrbitControls` ships inside `three` itself. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

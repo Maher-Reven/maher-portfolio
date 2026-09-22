@@ -1,0 +1,24 @@
+---
+title: "Géométrie de la recherche vectorielle"
+summary: "La similarité cosinus ne mesure que l'angle par rapport à votre requête — pas la distance réelle d'un point. Faites-le pivoter, puis inversez le classement et regardez le gagnant changer."
+year: 2026
+tags: ["WebGL", "Embeddings", "Recherche vectorielle"]
+color: "#818cf8"
+order: 8
+---
+
+## Ce que c'est
+
+Un vecteur de requête et cinq candidats, tracés depuis l'origine. La similarité cosinus classe les candidats selon l'angle qu'ils forment avec la requête — elle ne regarde jamais la magnitude. La distance euclidienne les classe selon la proximité réelle de leurs extrémités dans l'espace. La plupart du temps, ces deux notions de « proximité » concordent à peu près. Elles n'y sont pas obligées.
+
+<VectorSearch />
+
+Faites pivoter la scène et regardez par vous-même : un candidat se trouve presque exactement sur l'extrémité de la requête et perd quand même, parce qu'il pointe selon un angle trop large. Un autre est trois fois plus loin et gagne quand même, parce qu'il pointe presque exactement dans la même direction. Basculez le classement et le gagnant change — les cinq mêmes points, la même requête, une réponse différente selon la seule formule qu'on interroge.
+
+## Pourquoi ça déroute
+
+La plupart des vraies recherches vectorielles — pipelines RAG, recherche sémantique, systèmes de recommandation — classent par similarité cosinus, pas par distance, parce que la magnitude d'un embedding encode généralement quelque chose d'accessoire (longueur du document, nombre de tokens) plutôt que du sens. C'est un choix par défaut raisonnable. Mais cela signifie que le « plus proche voisin » dans une base vectorielle n'est pas la même affirmation que le « plus proche voisin » au sens spatial courant, et une session de débogage qui suppose le contraire lira des résultats parfaitement corrects comme s'ils étaient cassés. L'écart entre ces deux affirmations, c'est exactement l'angle que cette page permet de faire pivoter et d'observer.
+
+## Source
+
+Aucune nouvelle dépendance pour le contrôle orbital — `OrbitControls` est fourni avec `three` lui-même. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

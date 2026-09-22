@@ -3,11 +3,11 @@
 import * as THREE from "three";
 import type { Theme } from "@/lib/theme";
 
-export type SceneColors = { bg: THREE.Color; a: THREE.Color; b: THREE.Color };
+export type SceneColors = { bg: THREE.Color; fg: THREE.Color; a: THREE.Color; b: THREE.Color };
 
 const FALLBACK = {
-  dark: { bg: "#050507", a: "#a855f7", b: "#ec4899" },
-  light: { bg: "#f4f4f7", a: "#7c3aed", b: "#db2777" },
+  dark: { bg: "#050507", fg: "#f5f5f5", a: "#a855f7", b: "#ec4899" },
+  light: { bg: "#f4f4f7", fg: "#111114", a: "#7c3aed", b: "#db2777" },
 } as const;
 
 /**
@@ -18,7 +18,12 @@ const FALLBACK = {
 export function readSceneColors(theme: Theme): SceneColors {
   const fb = FALLBACK[theme];
   if (typeof window === "undefined") {
-    return { bg: new THREE.Color(fb.bg), a: new THREE.Color(fb.a), b: new THREE.Color(fb.b) };
+    return {
+      bg: new THREE.Color(fb.bg),
+      fg: new THREE.Color(fb.fg),
+      a: new THREE.Color(fb.a),
+      b: new THREE.Color(fb.b),
+    };
   }
   const cs = getComputedStyle(document.documentElement);
   const pick = (name: string, fallback: string) => {
@@ -31,6 +36,7 @@ export function readSceneColors(theme: Theme): SceneColors {
   };
   return {
     bg: pick("--bg", fb.bg),
+    fg: pick("--fg", fb.fg),
     a: pick("--accent", fb.a),
     b: pick("--accent-2", fb.b),
   };

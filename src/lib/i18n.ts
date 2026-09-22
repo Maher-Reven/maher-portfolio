@@ -163,6 +163,16 @@ const en = {
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
 
+  "vectorSearch.rankCosine": "Cosine",
+  "vectorSearch.rankDistance": "Distance",
+  "vectorSearch.hint": "Drag to orbit.",
+  "vectorSearch.caption":
+    "Cosine only measures the angle to the query — magnitude doesn't matter. Distance measures actual position. Same five points, a different winner depending on which one you ask.",
+  "vectorSearch.query": "Query",
+  "vectorSearch.picked": "picked",
+  "vectorSearch.cosineLabel": "cos θ",
+  "vectorSearch.distanceLabel": "dist",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -308,6 +318,16 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
 
+  "vectorSearch.rankCosine": "Cosinus",
+  "vectorSearch.rankDistance": "Distance",
+  "vectorSearch.hint": "Faites glisser pour orbiter.",
+  "vectorSearch.caption":
+    "Le cosinus ne mesure que l'angle par rapport à la requête — la magnitude n'a pas d'importance. La distance mesure la position réelle. Les cinq mêmes points, un gagnant différent selon celui qu'on interroge.",
+  "vectorSearch.query": "Requête",
+  "vectorSearch.picked": "retenu",
+  "vectorSearch.cosineLabel": "cos θ",
+  "vectorSearch.distanceLabel": "dist.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -450,6 +470,16 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
+  "vectorSearch.rankCosine": "Cosinus",
+  "vectorSearch.rankDistance": "Afstand",
+  "vectorSearch.hint": "Sleep om te draaien.",
+  "vectorSearch.caption":
+    "Cosinus meet alleen de hoek ten opzichte van de zoekopdracht — grootte maakt niet uit. Afstand meet de werkelijke positie. Dezelfde vijf punten, een andere winnaar afhankelijk van wat je vraagt.",
+  "vectorSearch.query": "Zoekopdracht",
+  "vectorSearch.picked": "gekozen",
+  "vectorSearch.cosineLabel": "cos θ",
+  "vectorSearch.distanceLabel": "afst.",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
   "footer.system": "systeem",
@@ -590,6 +620,16 @@ const fy: Record<TKey, string> = {
   "harness.layer.subagents.desc": "Deselde lus, opnij spawn'e, parallel of isolearre.",
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
+
+  "vectorSearch.rankCosine": "Kosinus",
+  "vectorSearch.rankDistance": "Ofstân",
+  "vectorSearch.hint": "Sleep om te draaien.",
+  "vectorSearch.caption":
+    "Kosinus mjit allinnich de hoeke ta de fraach — grutte docht der net ta. Ofstân mjit de wiere posysje. Deselde fiif punten, in oare winner ôfhinklik fan wat men freget.",
+  "vectorSearch.query": "Fraach",
+  "vectorSearch.picked": "keazen",
+  "vectorSearch.cosineLabel": "cos θ",
+  "vectorSearch.distanceLabel": "ofst.",
 
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
@@ -733,6 +773,16 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.title": "Окружение",
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
+
+  "vectorSearch.rankCosine": "Косинус",
+  "vectorSearch.rankDistance": "Расстояние",
+  "vectorSearch.hint": "Перетащите, чтобы вращать.",
+  "vectorSearch.caption":
+    "Косинус измеряет только угол к запросу — величина не важна. Расстояние измеряет реальное положение. Те же пять точек, разный победитель в зависимости от того, что спрашиваешь.",
+  "vectorSearch.query": "Запрос",
+  "vectorSearch.picked": "выбран",
+  "vectorSearch.cosineLabel": "cos θ",
+  "vectorSearch.distanceLabel": "расст.",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

@@ -1,0 +1,24 @@
+---
+title: "Geometrie van vectorzoeken"
+summary: "Cosinusgelijkenis meet alleen de hoek ten opzichte van je zoekopdracht — niet hoe ver een punt daadwerkelijk weg ligt. Draai eraan, wissel dan de rangschikking om en kijk hoe de winnaar verandert."
+year: 2026
+tags: ["WebGL", "Embeddings", "Vectorzoeken"]
+color: "#818cf8"
+order: 8
+---
+
+## Wat het is
+
+Een zoekvector en vijf kandidaten, uitgezet vanuit de oorsprong. Cosinusgelijkenis rangschikt kandidaten op de hoek tussen hen en de zoekopdracht — grootte speelt geen rol. Euclidische afstand rangschikt ze op hoe dicht hun uiteinden werkelijk bij elkaar liggen in de ruimte. Meestal komen deze twee opvattingen van "dichtbij" ongeveer overeen. Dat hoeft niet.
+
+<VectorSearch />
+
+Sleep om te draaien en kijk zelf: één kandidaat ligt bijna precies op het uiteinde van de zoekopdracht en verliest toch, omdat hij onder een te brede hoek wijst. Een andere ligt drie keer zo ver weg en wint toch, omdat hij bijna precies dezelfde richting op wijst. Wissel de rangschikking om en de winnaar verandert — dezelfde vijf punten, dezelfde zoekopdracht, een ander antwoord afhankelijk van alleen welke formule je vraagt.
+
+## Waarom dit verwarrend is
+
+De meeste echte vectorzoeksystemen — RAG-pipelines, semantisch zoeken, aanbevelingssystemen — rangschikken op cosinusgelijkenis, niet op afstand, omdat de grootte van een embedding meestal iets bijkomstigs codeert (documentlengte, aantal tokens) in plaats van betekenis. Dat is een redelijke standaardkeuze. Maar het betekent dat "dichtstbijzijnde buur" in een vectordatabase niet hetzelfde is als "dichtstbijzijnde buur" in de alledaagse, ruimtelijke zin, en een debug-sessie die het tegenovergestelde aanneemt, leest volkomen correcte resultaten als kapot. Het verschil tussen die twee beweringen is precies de hoek die je op deze pagina kunt ronddraaien en bekijken.
+
+## Bron
+
+Geen nieuwe dependency voor de orbit-besturing — `OrbitControls` zit al in `three` zelf. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

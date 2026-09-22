@@ -1,0 +1,24 @@
+---
+title: "Geometry fan vektorsykjen"
+summary: "Kosinusgelikens mjit allinnich de hoeke ta dyn fraach — net hoe fier in punt wier ôf leit. Draai deroan, wikselje dan de rangskikking om en sjoch hoe't de winner feroaret."
+year: 2026
+tags: ["WebGL", "Embeddings", "Vektorsykjen"]
+color: "#818cf8"
+order: 8
+---
+
+## Wat it is
+
+In fraachvektor en fiif kandidaten, útset fan 'e oarsprong ôf. Kosinusgelikens rangskikket kandidaten op 'e hoeke tusken harren en de fraach — grutte docht der net ta. Euklidyske ôfstân rangskiket se op hoe ticht harren úteinen wier by inoar lizze yn 'e romte. Meastentiids komme dizze twa opfettings fan "tichtby" sawat oerien. Dat hoecht net.
+
+<VectorSearch />
+
+Sleep om te draaien en sjoch sels: ien kandidaat leit hast krekt op it úteinde fan 'e fraach en ferliest dochs, omdat er ûnder in te brede hoeke wiist. In oare leit trije kear sa fier fuort en wint dochs, omdat er hast krekt deselde rjochting op wiist. Wikselje de rangskikking om en de winner feroaret — deselde fiif punten, deselde fraach, in oar antwurd ôfhinklik fan allinnich hokker formule men freget.
+
+## Wêrom dit betiizget
+
+De measte echte vektorsykjen — RAG-pipelines, semantysk sykjen, oanbefellingssystemen — rangskikje op kosinusgelikens, net op ôfstân, omdat de grutte fan in embedding meastentiids wat by-komstichs kodearret (dokumintlingte, tal tokens) ynstee fan betsjutting. Dat is in ridlike standertkar. Mar it betsjut dat de "tichtstbye buorman" yn in vektordatabank net itselde is as de "tichtstbye buorman" yn 'e alledeisse, romtlike sin, en in debugsesje dy't it tsjinoerstelde oannimt, lêst folslein korrekte resultaten as kapot. It ferskil tusken dy twa bewearings is krekt de hoeke dy't men op dizze side omdraaie en besjen kin.
+
+## Boarne
+
+Gjin nije dependency foar de orbit-betsjinning — `OrbitControls` sit al yn `three` sels. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.
