@@ -140,6 +140,10 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    [
+      "Context graph lab",
+      "Context graph explorer — SVG nodes for GitHub, Linear, Sentry, and agent session; toggle connected vs fragmented layer (simulated, client-only)",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -258,6 +262,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Lab graphe de contexte",
+      "Context graph explorer — nœuds SVG GitHub, Linear, Sentry et session agent ; bascule couche connectée vs fragmentée (simulé, client uniquement)",
     ],
     ...buildRows("fr"),
   ],
@@ -378,6 +386,10 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    [
+      "Contextgraph-lab",
+      "Context graph explorer — SVG-knooppunten voor GitHub, Linear, Sentry en agentsessie; schakel verbonden vs gefragmenteerde laag (gesimuleerd, alleen client)",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -497,6 +509,10 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    [
+      "Kontekstgraph-lab",
+      "Context graph explorer — SVG-knooppunten foar GitHub, Linear, Sentry en agintsesje; skeakel ferbûn vs fragmintearre laach (simulearre, allinnich client)",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -615,6 +631,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Лаборатория графа контекста",
+      "Context graph explorer — SVG-узлы GitHub, Linear, Sentry и сессии агента; переключатель связанного и фрагментированного слоя (симуляция, только клиент)",
     ],
     ...buildRows("ru"),
   ],

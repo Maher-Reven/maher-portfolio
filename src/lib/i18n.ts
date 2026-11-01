@@ -163,6 +163,22 @@ const en = {
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
 
+  "leadershipNote.label": "Leadership note",
+
+  "contextGraph.simulated": "Simulated · no live APIs",
+  "contextGraph.toggleConnected": "Context layer: connected",
+  "contextGraph.toggleBroken": "Context layer: broken",
+  "contextGraph.statusConnected": "One picture — GitHub, Linear, and Sentry feed the same hub before the agent session runs.",
+  "contextGraph.statusBroken": "Three silos — every session rebuilds partial context from scratch.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Context layer",
+  "contextGraph.node.agentSession": "Agent session",
+  "contextGraph.hint": "Toggle the layer to see edges connect or fragment.",
+  "contextGraph.ariaSummary":
+    "Diagram of GitHub, Linear, and Sentry connecting through a shared context layer into an agent session.",
+
   "vectorSearch.rankCosine": "Cosine",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Drag to orbit.",
@@ -318,6 +334,23 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
 
+  "leadershipNote.label": "Note leadership",
+
+  "contextGraph.simulated": "Simulé · pas d'API live",
+  "contextGraph.toggleConnected": "Couche contexte : connectée",
+  "contextGraph.toggleBroken": "Couche contexte : cassée",
+  "contextGraph.statusConnected":
+    "Une seule image — GitHub, Linear et Sentry alimentent le même hub avant la session agent.",
+  "contextGraph.statusBroken": "Trois silos — chaque session reconstruit un contexte partiel depuis zéro.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Couche contexte",
+  "contextGraph.node.agentSession": "Session agent",
+  "contextGraph.hint": "Basculez la couche pour voir les liens se connecter ou se fragmenter.",
+  "contextGraph.ariaSummary":
+    "Schéma de GitHub, Linear et Sentry passant par une couche de contexte partagée vers une session agent.",
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Faites glisser pour orbiter.",
@@ -470,6 +503,23 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
+  "leadershipNote.label": "Leadership-notitie",
+
+  "contextGraph.simulated": "Gesimuleerd · geen live API's",
+  "contextGraph.toggleConnected": "Contextlaag: verbonden",
+  "contextGraph.toggleBroken": "Contextlaag: kapot",
+  "contextGraph.statusConnected":
+    "Eén beeld — GitHub, Linear en Sentry voeden dezelfde hub voordat de agentsessie draait.",
+  "contextGraph.statusBroken": "Drie silo's — elke sessie bouwt gedeeltelijke context vanaf nul op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Contextlaag",
+  "contextGraph.node.agentSession": "Agentsessie",
+  "contextGraph.hint": "Schakel de laag om verbindingen of fragmentatie te zien.",
+  "contextGraph.ariaSummary":
+    "Diagram van GitHub, Linear en Sentry via een gedeelde contextlaag naar een agentsessie.",
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Afstand",
   "vectorSearch.hint": "Sleep om te draaien.",
@@ -620,6 +670,23 @@ const fy: Record<TKey, string> = {
   "harness.layer.subagents.desc": "Deselde lus, opnij spawn'e, parallel of isolearre.",
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
+
+  "leadershipNote.label": "Leadership-notysje",
+
+  "contextGraph.simulated": "Simulearre · gjin live API's",
+  "contextGraph.toggleConnected": "Kontekstlaach: ferbûn",
+  "contextGraph.toggleBroken": "Kontekstlaach: stikken",
+  "contextGraph.statusConnected":
+    "Ien byld — GitHub, Linear en Sentry voedzje deselde hub foardat de agintsesje rint.",
+  "contextGraph.statusBroken": "Trije silo's — elke sesje bouwt partiele kontekst opnij op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Kontekstlaach",
+  "contextGraph.node.agentSession": "Agintsesje",
+  "contextGraph.hint": "Skakel de laach om ferbinings of fragmentaasje te sjen.",
+  "contextGraph.ariaSummary":
+    "Diagram fan GitHub, Linear en Sentry fia in dielde kontekstlaach nei in agintsesje.",
 
   "vectorSearch.rankCosine": "Kosinus",
   "vectorSearch.rankDistance": "Ofstân",
@@ -773,6 +840,23 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.title": "Окружение",
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
+
+  "leadershipNote.label": "Заметка для лидерства",
+
+  "contextGraph.simulated": "Симуляция · без живых API",
+  "contextGraph.toggleConnected": "Слой контекста: подключён",
+  "contextGraph.toggleBroken": "Слой контекста: разорван",
+  "contextGraph.statusConnected":
+    "Одна картина — GitHub, Linear и Sentry питают один хаб до запуска сессии агента.",
+  "contextGraph.statusBroken": "Три изолированных источника — каждая сессия заново собирает частичный контекст.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Слой контекста",
+  "contextGraph.node.agentSession": "Сессия агента",
+  "contextGraph.hint": "Переключите слой, чтобы увидеть связи или фрагментацию.",
+  "contextGraph.ariaSummary":
+    "Схема GitHub, Linear и Sentry через общий слой контекста к сессии агента.",
 
   "vectorSearch.rankCosine": "Косинус",
   "vectorSearch.rankDistance": "Расстояние",
