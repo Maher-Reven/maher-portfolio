@@ -140,6 +140,10 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    [
+      "Site Q&A",
+      "Bounded ask-this-site lab — client BM25 over scripts/build-search-index.ts; read-only tier, no web, no tools",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -258,6 +262,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Q&R site",
+      "Labo ask-this-site borné — BM25 côté client sur scripts/build-search-index.ts ; niveau lecture seule, pas de web, pas d'outils",
     ],
     ...buildRows("fr"),
   ],
@@ -378,6 +386,10 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    [
+      "Site Q&A",
+      "Begrensde ask-this-site lab — client-side BM25 over scripts/build-search-index.ts; alleen-lezen tier, geen web, geen tools",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -497,6 +509,10 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    [
+      "Site Q&A",
+      "Beheinde ask-this-site lab — client-side BM25 oer scripts/build-search-index.ts; allinnich-lêze tier, gjin web, gjin ark",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -615,6 +631,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Q&A сайта",
+      "Ограниченный ask-this-site lab — BM25 на клиенте по scripts/build-search-index.ts; tier только чтение, без web и инструментов",
     ],
     ...buildRows("ru"),
   ],

@@ -60,6 +60,9 @@ const SELF_CLOSING_NOTES = {
   GenerativeMark: "interactive: generative mark, redrawn each load — see the live page",
   AudioVisualizer: "interactive: microphone-driven frequency visualizer — see the live page",
   AsciiWebcam: "interactive: live camera feed rendered as ASCII — see the live page",
+  HarnessAnatomy: "interactive: harness anatomy scroll X-ray — see the live page",
+  AskSite: "interactive: bounded ask-this-site Q&A over the static index — see the live page",
+  VectorSearch: "interactive: vector search geometry — see the live page",
 };
 
 /** Replaces the site's interactive MDX components with plain-text prose. */
@@ -71,6 +74,10 @@ function stripComponents(body) {
   out = out.replace(/<Retro>\n?([\s\S]*?)\n?<\/Retro>/g, (_, inner) => inner.trim());
   out = out.replace(/<Tradeoff\s+([\s\S]*?)>([\s\S]*?)<\/Tradeoff>/g, (_, attrs, inner) => renderTradeoff(attrs, inner));
   out = out.replace(/<AutonomyLadder>\n?([\s\S]*?)\n?<\/AutonomyLadder>/g, (_, inner) => renderLadder(inner));
+  out = out.replace(/<LeadershipNote>\n?([\s\S]*?)\n?<\/LeadershipNote>/g, (_, inner) => {
+    const body = inner.trim().replace(/\s+/g, " ");
+    return body ? `**Leadership note:** ${body}\n` : "";
+  });
   return out;
 }
 

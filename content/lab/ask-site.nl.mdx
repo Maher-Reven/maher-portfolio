@@ -1,0 +1,30 @@
+---
+title: "Vraag deze site"
+summary: "Alleen-lezen Q&A over dezelfde statische index als zoeken — alleen citaties, geen web, geen tools. Het autonomieniveau is bewust zichtbaar in de UI."
+year: 2026
+tags: ["Retrieval", "Governance", "Agentic AI"]
+color: "#34d399"
+order: 9
+---
+
+## Wat het is
+
+Een begrensde assistent die alleen leest wat deze site al publiceerde — case studies, lab-items, de readme en het beslissingslog. Stel een vraag in gewone taal; het antwoord is opgebouwd uit BM25-gerankte fragmenten, elk met een link naar de bron-URL. Geen browsen, geen toolcalls, geen writes.
+
+<AskSite />
+
+De governance-strip bovenaan is geen decor. **Autonomieniveau: alleen-lezen** is het contract: als de UI ooit meer capability claimde dan de harness werkelijk had, debug je vertrouwen in plaats van retrieval.
+
+<LeadershipNote>
+
+Een « chat met mijn portfolio »-feature shippen zonder de permission boundary in de interface te tekenen, is hoe teams gebruikers trainen een zoekvak te behandelen als een alwetende agent. Tier, webtoegang en tools expliciet maken — zelfs als alles uit staat — is hoe ik verwacht dat een EM een interne copilot reviewt voordat die productiedata raakt.
+
+</LeadershipNote>
+
+## Waarom geen modelcall
+
+Bij deze corpusgrootte is een hand-rolled BM25-index (`src/lib/search.ts`, gevoed door `scripts/build-search-index.ts`) sneller, goedkoper en makkelijker te citeren dan een LLM-summarizer die verbindende tekst kan verzinnen. Het [vector search](/lab/vector-search)-lab laat zien wanneer embeddings de ranking veranderen; deze pagina laat zien wanneer je ze **niet** nodig hebt.
+
+## Bron
+
+`src/components/lab/AskSite.tsx` · `src/lib/ask-site.ts` · dezelfde `public/search-index.<locale>.json` als Cmd+K-zoeken.
