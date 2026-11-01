@@ -140,6 +140,10 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    [
+      "Incident simulation",
+      "Synthetic war room — merge / escalate / rollback on a fictional checkout incident (client state only)",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -258,6 +262,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Simulation d'incident",
+      "Synthetic war room — fusionner / escalader / rollback sur un incident checkout fictif (état client uniquement)",
     ],
     ...buildRows("fr"),
   ],
@@ -378,6 +386,10 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    [
+      "Incidentsimulatie",
+      "Synthetic war room — merge / escaleren / rollback bij een fictief checkout-incident (alleen client state)",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -497,6 +509,10 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    [
+      "Ynsidintsimulaasje",
+      "Synthetic war room — merge / eskalearje / rollback by in fiktive checkout-ynsidint (allinnich client state)",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -615,6 +631,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Симуляция инцидента",
+      "Synthetic war room — merge / escalate / rollback на вымышленном checkout-инциденте (только client state)",
     ],
     ...buildRows("ru"),
   ],
