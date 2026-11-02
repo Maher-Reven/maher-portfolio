@@ -144,6 +144,14 @@ const en: PageContent = {
       "Context graph lab",
       "Context graph explorer — SVG nodes for GitHub, Linear, Sentry, and agent session; toggle connected vs fragmented layer (simulated, client-only)",
     ],
+    [
+      "Agent harness labs",
+      "Harness anatomy (scroll X-ray) · Harness builder (simulated tool + tier scenarios) — client state only",
+    ],
+    [
+      "Incident simulation",
+      "Synthetic war room — merge / escalate / rollback on a fictional checkout incident (client state only)",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -266,6 +274,14 @@ const fr: PageContent = {
     [
       "Lab graphe de contexte",
       "Context graph explorer — nœuds SVG GitHub, Linear, Sentry et session agent ; bascule couche connectée vs fragmentée (simulé, client uniquement)",
+    ],
+    [
+      "Labos harnais agent",
+      "Anatomie du harnais (radiographie au scroll) · Constructeur de harnais (scénarios outils + niveau simulés) — état client uniquement",
+    ],
+    [
+      "Simulation d'incident",
+      "Synthetic war room — fusionner / escalader / rollback sur un incident checkout fictif (état client uniquement)",
     ],
     ...buildRows("fr"),
   ],
@@ -390,6 +406,14 @@ const nl: PageContent = {
       "Contextgraph-lab",
       "Context graph explorer — SVG-knooppunten voor GitHub, Linear, Sentry en agentsessie; schakel verbonden vs gefragmenteerde laag (gesimuleerd, alleen client)",
     ],
+    [
+      "Agent-harness labs",
+      "Harness-anatomie (scroll-röntgen) · Harness-bouwer (gesimuleerde tool- + nivo-scenario's) — alleen client state",
+    ],
+    [
+      "Incidentsimulatie",
+      "Synthetic war room — merge / escaleren / rollback bij een fictief checkout-incident (alleen client state)",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -513,6 +537,14 @@ const fy: PageContent = {
       "Kontekstgraph-lab",
       "Context graph explorer — SVG-knooppunten foar GitHub, Linear, Sentry en agintsesje; skeakel ferbûn vs fragmintearre laach (simulearre, allinnich client)",
     ],
+    [
+      "Agent-harness labs",
+      "Harness-anatomy (scroll-röntgen) · Harness-bouwer (simulearre ark- + nivo-senario's) — allinnich client state",
+    ],
+    [
+      "Ynsidintsimulaasje",
+      "Synthetic war room — merge / eskalearje / rollback by in fiktive checkout-ynsidint (allinnich client state)",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -635,6 +667,14 @@ const ru: PageContent = {
     [
       "Лаборатория графа контекста",
       "Context graph explorer — SVG-узлы GitHub, Linear, Sentry и сессии агента; переключатель связанного и фрагментированного слоя (симуляция, только клиент)",
+    ],
+    [
+      "Лаборатории agent harness",
+      "Анатомия harness (scroll-рентген) · Конструктор harness (симуляция инструментов и уровней) — только client state",
+    ],
+    [
+      "Симуляция инцидента",
+      "Synthetic war room — merge / escalate / rollback на вымышленном checkout-инциденте (только client state)",
     ],
     ...buildRows("ru"),
   ],
