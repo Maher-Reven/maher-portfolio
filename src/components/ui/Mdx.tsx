@@ -8,6 +8,8 @@ import { GenerativeMark } from "@/components/lab/GenerativeMark";
 import { AudioVisualizer } from "@/components/lab/AudioVisualizer";
 import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
 import { HarnessAnatomy } from "@/components/lab/HarnessAnatomy";
+import { HarnessBuilder } from "@/components/lab/HarnessBuilder";
+import { SyntheticWarRoom } from "@/components/lab/SyntheticWarRoom";
 import { ContextGraphExplorer } from "@/components/lab/ContextGraphExplorer";
 import { VectorSearch } from "@/components/three/VectorSearch";
 import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
@@ -28,6 +30,8 @@ const components = {
   AudioVisualizer,
   AsciiWebcam,
   HarnessAnatomy,
+  HarnessBuilder,
+  SyntheticWarRoom,
   ContextGraphExplorer,
   VectorSearch,
   AutonomyLadder,

@@ -15,6 +15,8 @@ A concentric diagram, model at the center. Every ring outward is one more piece 
 
 Scroll to cross-section it, Environment down to the Model core — each threshold you cross brightens a layer and appends a line to the log, the way one request actually moves through a working system.
 
+Want to configure tools and tiers yourself? Continue to **[Harness builder](/lab/harness-builder)** — three scripted scenarios, same layers, simulated log output.
+
 ## Why the harness, not the model
 
 It's tempting to draw "an AI agent" as one box. That box is the least interesting part — it's a stateless function that predicts tokens and forgets everything the moment the response ends. The loop, the permission checks, the context management, the ability to fan out into sub-agents: that's all harness, and it's where almost every real engineering decision actually lives. The file this site's own agent reads before writing any code — `AGENTS.md`, at the repo root — is itself a harness artifact: instructions injected into context, not weights.
