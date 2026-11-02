@@ -1,0 +1,20 @@
+---
+title: "Decision replay"
+summary: "Loop het Beyond autocomplete governance-tradeoff door — drie paden, één geschreven beleid, links naar de case study en het commit-achtige decision log."
+year: 2026
+tags: ["Systemen", "Governance", "Interactief"]
+color: "#3b82f6"
+order: 9
+---
+
+## Wat het is
+
+Een walkthrough in vier stappen, geen quiz. Je start in dezelfde situatie als de case study — midden in een overgang, AI-assistenten al in gebruik, geen gedeeld beeld van wat een agent mag aanroepen of shippen — en kiest één van de drie opties uit het originele `<Tradeoff>`-blok om een ingekorte « zes maanden later »-gevolg te zien.
+
+<DecisionReplay />
+
+Verkeerde paden zijn de bedoeling: je kunt terug en een andere fork proberen. Het pad dat overeenkomt met wat er shipte toont de gedocumenteerde kosten vóór de leadership-sluiting.
+
+## Bron
+
+Client state machine in `src/components/lab/DecisionReplay.tsx` — HudFrame-chrome, `Tr`-strings, GSAP-stapovergangen uit onder `prefers-reduced-motion`. De canonieke tekst staat in [Beyond autocomplete](/work/beyond-autocomplete); de gehashte entry staat op [/log](/log#a1495e7).

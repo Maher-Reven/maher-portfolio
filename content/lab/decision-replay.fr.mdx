@@ -1,0 +1,20 @@
+---
+title: "Rejeu de décision"
+summary: "Parcourez le tradeoff de gouvernance Beyond autocomplete — trois chemins, une politique écrite, liens vers l'étude de cas et le journal de décisions façon commit."
+year: 2026
+tags: ["Systèmes", "Gouvernance", "Interactif"]
+color: "#3b82f6"
+order: 9
+---
+
+## Ce que c'est
+
+Un parcours en quatre étapes, pas un quiz. Vous commencez dans la même situation que l'étude de cas — transition en cours, assistants IA déjà utilisés, aucune image partagée de ce qu'un agent peut appeler ou livrer — puis vous choisissez l'une des trois options du bloc `<Tradeoff>` d'origine et voyez une conséquence « six mois plus tard » compressée.
+
+<DecisionReplay />
+
+Les mauvais chemins sont voulus : vous pouvez revenir en arrière et essayer une autre branche. Le chemin qui correspond à ce qui a été livré affiche le coût documenté avant la note de leadership finale.
+
+## Source
+
+Machine à états côté client dans `src/components/lab/DecisionReplay.tsx` — chrome HudFrame, chaînes `Tr`, transitions GSAP désactivées sous `prefers-reduced-motion`. Le texte canonique est dans [Beyond autocomplete](/work/beyond-autocomplete) ; l'entrée hashée est sur [/log](/log#a1495e7).
