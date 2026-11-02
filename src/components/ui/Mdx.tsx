@@ -10,6 +10,7 @@ import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
 import { HarnessAnatomy } from "@/components/lab/HarnessAnatomy";
 import { VectorSearch } from "@/components/three/VectorSearch";
 import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
+import { LeadershipNote } from "@/components/ui/LeadershipNote";
 
 /**
  * Components a lab or work entry can drop into its MDX to embed a live demo
@@ -29,6 +30,7 @@ const components = {
   VectorSearch,
   AutonomyLadder,
   AutonomyTier,
+  LeadershipNote,
 };
 
 export function Mdx({ source }: { source: string }) {

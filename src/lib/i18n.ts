@@ -163,6 +163,8 @@ const en = {
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
 
+  "leadershipNote.label": "Leadership note",
+
   "vectorSearch.rankCosine": "Cosine",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Drag to orbit.",
@@ -318,6 +320,8 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
 
+  "leadershipNote.label": "Note leadership",
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Faites glisser pour orbiter.",
@@ -470,6 +474,8 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
+  "leadershipNote.label": "Leadership-notitie",
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Afstand",
   "vectorSearch.hint": "Sleep om te draaien.",
@@ -620,6 +626,8 @@ const fy: Record<TKey, string> = {
   "harness.layer.subagents.desc": "Deselde lus, opnij spawn'e, parallel of isolearre.",
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
+
+  "leadershipNote.label": "Leadership-notysje",
 
   "vectorSearch.rankCosine": "Kosinus",
   "vectorSearch.rankDistance": "Ofstân",
@@ -773,6 +781,8 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.title": "Окружение",
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
+
+  "leadershipNote.label": "Заметка для лидерства",
 
   "vectorSearch.rankCosine": "Косинус",
   "vectorSearch.rankDistance": "Расстояние",

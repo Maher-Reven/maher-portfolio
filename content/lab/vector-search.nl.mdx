@@ -19,6 +19,10 @@ Sleep om te draaien en kijk zelf: één kandidaat ligt bijna precies op het uite
 
 De meeste echte vectorzoeksystemen — RAG-pipelines, semantisch zoeken, aanbevelingssystemen — rangschikken op cosinusgelijkenis, niet op afstand, omdat de grootte van een embedding meestal iets bijkomstigs codeert (documentlengte, aantal tokens) in plaats van betekenis. Dat is een redelijke standaardkeuze. Maar het betekent dat "dichtstbijzijnde buur" in een vectordatabase niet hetzelfde is als "dichtstbijzijnde buur" in de alledaagse, ruimtelijke zin, en een debug-sessie die het tegenovergestelde aanneemt, leest volkomen correcte resultaten als kapot. Het verschil tussen die twee beweringen is precies de hoek die je op deze pagina kunt ronddraaien en bekijken.
 
+<LeadershipNote>
+  "Nearest neighbor" betekent drie verschillende dingen voor search, ML en product — cosinus versus afstand is een klein lab, maar de alignment-tax komt terug in elke RAG-postmortem. EM-werk hier is woordenschat, geen extra dimensies.
+</LeadershipNote>
+
 ## Bron
 
 Geen nieuwe dependency voor de orbit-besturing — `OrbitControls` zit al in `three` zelf. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

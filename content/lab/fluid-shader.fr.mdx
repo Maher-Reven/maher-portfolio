@@ -12,6 +12,10 @@ Quatre octaves de bruit simplex, déformées deux fois (`fbm(p + fbm(p + fbm(p))
 
 Un seul quad plein écran, DPR plafonné à 1,5, aucun post-traitement. Tourne confortablement à 60 fps sur GPU intégré ; les personnes ayant activé la réduction des animations obtiennent un dégradé radial statique.
 
+<LeadershipNote>
+  Un shader hero, c'est une négociation perf avec l'appareil le plus lent, pas une vitrine. Livrer un repli reduced-motion en parallèle du chemin « wow », c'est apprendre à l'org que l'accessibilité est un critère de release, pas un ticket de finition.
+</LeadershipNote>
+
 ## Source
 
 `src/components/three/FluidShader.tsx`

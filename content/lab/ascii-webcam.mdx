@@ -17,6 +17,10 @@ The camera frame is drawn, mirrored, straight onto a 100-column canvas — the d
 
 A hundred columns is thousands of characters. Calling Canvas2D's `fillText` once per glyph, every frame, is real cost for no benefit — setting one `<pre>`'s `textContent` lets the browser's own text layout do the work instead, the way a terminal actually renders.
 
+<LeadershipNote>
+  Default-deny for camera access is boring product policy and excellent engineering culture — the team that ships "click to enable" without debate is the same one that won't auto-call payment APIs. Peers reviewing agent harnesses should ask who owns the consent moment, not just the codec.
+</LeadershipNote>
+
 ## Source
 
 `src/components/lab/AsciiWebcam.tsx`

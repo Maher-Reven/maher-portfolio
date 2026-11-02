@@ -14,6 +14,10 @@ L'image de la caméra est dessinée, en miroir, directement sur un canvas de 100
 
 Cent colonnes, ce sont des milliers de caractères. Appeler `fillText` de Canvas2D une fois par glyphe, à chaque image, coûte cher pour rien — définir le `textContent` d'un seul `<pre>` laisse la mise en page texte du navigateur faire le travail, comme un vrai terminal.
 
+<LeadershipNote>
+  Refuser la caméra par défaut, c'est une politique produit ennuyeuse et une excellente culture d'ingénierie — l'équipe qui livre « cliquer pour activer » sans débat est la même qui n'appellera pas automatiquement les API de paiement. En revue de harnais agentique, demandez qui porte le moment de consentement, pas seulement le codec.
+</LeadershipNote>
+
 ## Source
 
 `src/components/lab/AsciiWebcam.tsx`

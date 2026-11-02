@@ -14,6 +14,10 @@ Het camerabeeld wordt gespiegeld rechtstreeks op een canvas van 100 kolommen get
 
 Honderd kolommen zijn duizenden tekens. Canvas2D's `fillText` per glyph aanroepen, elk frame, kost echt iets voor niets — de `textContent` van één `<pre>` instellen laat de eigen tekstlayout van de browser het werk doen, zoals een echte terminal dat doet.
 
+<LeadershipNote>
+  Camera standaard weigeren is saai productbeleid en een sterke engineeringcultuur — het team dat "klik om te activeren" zonder discussie uitrolt, is hetzelfde dat geen betaal-API's automatisch aanroept. Peers die agent-harnassen reviewen, moeten vragen wie het consent-moment bezit, niet alleen de codec.
+</LeadershipNote>
+
 ## Bron
 
 `src/components/lab/AsciiWebcam.tsx`

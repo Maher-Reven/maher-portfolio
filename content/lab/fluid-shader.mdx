@@ -15,6 +15,10 @@ Four octaves of simplex noise, warped twice (`fbm(p + fbm(p + fbm(p)))`) to get 
 
 Single full-screen quad, DPR capped at 1.5, no post-processing. Renders comfortably at 60fps on integrated GPUs; reduced-motion users get a static radial gradient instead.
 
+<LeadershipNote>
+  Hero shaders are a performance negotiation with your slowest device, not a flex. Shipping reduced-motion fallbacks alongside the fancy path is how you teach the org that accessibility is a release criterion, not a polish ticket.
+</LeadershipNote>
+
 ## Source
 
 `src/components/three/FluidShader.tsx`
