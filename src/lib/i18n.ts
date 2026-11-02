@@ -146,6 +146,42 @@ const en = {
 
   "ladder.escalation": "Anything outside these bounds escalates to a person.",
 
+  "leadershipNote.label": "Leadership note",
+
+  "warRoom.simulatedBadge": "Simulated incident — no live systems, no agents, client state only.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout webhooks",
+  "warRoom.incident.summary":
+    "Error rate on payment webhook handler jumped 14× after deploy ac9f2. Carts complete but settlement events stall. No data loss reported yet.",
+  "warRoom.prompt": "Three responders disagree. Your call.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Double HPA max for webhook workers and drain the stuck partition — throughput first, root cause later.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 now — null guard on idempotency key is wrong under retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Ship a hybrid: revert the guard, re-deploy behind a 5% shadow validator, keep traffic otherwise.",
+  "warRoom.action.merge": "Merge proposals",
+  "warRoom.action.escalate": "Escalate to humans",
+  "warRoom.action.rollback": "Rollback deploy",
+  "warRoom.outcome.merge.title": "Outcome · blended mitigations",
+  "warRoom.outcome.merge.body":
+    "Shadow validator catches duplicate keys on 5% traffic while revert removes the bad guard. Error rate falls in fifteen minutes; full postmortem still pending.",
+  "warRoom.outcome.merge.leadership":
+    "When automation disagrees, synthesis beats picking a favorite — but only if you name who owns the residual risk until the postmortem lands.",
+  "warRoom.outcome.escalate.title": "Outcome · automation paused",
+  "warRoom.outcome.escalate.body":
+    "Agents frozen at proposal stage. Incident commander joins bridge; on-call keeps manual settlement queue draining. No deploy or scale change until humans align.",
+  "warRoom.outcome.escalate.leadership":
+    "Escalation is not failure — it's the guardrail that keeps velocity from outrunning judgment when the blast radius is still fuzzy.",
+  "warRoom.outcome.rollback.title": "Outcome · deploy reversed",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 rolled back in four minutes. Webhooks green; retry backlog clears overnight. Forward fix rescheduled behind proper staging coverage.",
+  "warRoom.outcome.rollback.leadership":
+    "Reversible moves are leadership infrastructure — rollback first when certainty is low and every minute of ambiguity compounds customer trust.",
+  "warRoom.replay": "Run again",
+
   "harness.scrollHint": "Scroll to cross-section the loop.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -162,8 +198,6 @@ const en = {
   "harness.layer.subagents.desc": "The same loop, spawned again, running in parallel or in isolation.",
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
-
-  "leadershipNote.label": "Leadership note",
 
   "builder.simulatedBadge": "Simulated run — no network, no live APIs.",
   "builder.toolsHeading": "Tools enabled",
@@ -347,6 +381,43 @@ const fr: Record<TKey, string> = {
 
   "ladder.escalation": "Tout ce qui sort de ces limites remonte à une personne.",
 
+  "leadershipNote.label": "Note leadership",
+
+  "warRoom.simulatedBadge": "Incident simulé — aucun système live, aucun agent, état client uniquement.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · webhooks checkout",
+  "warRoom.incident.summary":
+    "Le taux d'erreur du handler webhook paiement a été multiplié par 14 après le déploiement ac9f2. Les paniers se finalisent mais les règlements restent bloqués. Aucune perte de données signalée.",
+  "warRoom.prompt": "Trois répondeurs ne sont pas d'accord. À vous de trancher.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Doubler le max HPA des workers webhook et vider la partition bloquée — débit d'abord, cause racine ensuite.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix":
+    "Rollback ac9f2 maintenant — le garde null sur la clé d'idempotence est faux sous retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride : revert du garde, redéploiement derrière un validateur shadow à 5 %, trafic inchangé sinon.",
+  "warRoom.action.merge": "Fusionner les propositions",
+  "warRoom.action.escalate": "Escalader vers des humains",
+  "warRoom.action.rollback": "Rollback du déploiement",
+  "warRoom.outcome.merge.title": "Résultat · atténuations combinées",
+  "warRoom.outcome.merge.body":
+    "Le validateur shadow détecte les clés dupliquées sur 5 % du trafic pendant que le revert supprime le mauvais garde. Le taux d'erreur baisse en quinze minutes ; postmortem complet en attente.",
+  "warRoom.outcome.merge.leadership":
+    "Quand l'automatisation diverge, la synthèse bat le favori — à condition de nommer qui porte le risque résiduel jusqu'au postmortem.",
+  "warRoom.outcome.escalate.title": "Résultat · automatisation en pause",
+  "warRoom.outcome.escalate.body":
+    "Agents figés au stade proposition. Le commandant d'incident rejoint le bridge ; l'astreinte vide la file de règlement manuellement. Aucun déploiement ni scale tant que les humains ne sont pas alignés.",
+  "warRoom.outcome.escalate.leadership":
+    "Escalader n'est pas un échec — c'est le garde-fou qui empêche la vélocité de dépasser le jugement quand le rayon d'impact reste flou.",
+  "warRoom.outcome.rollback.title": "Résultat · déploiement annulé",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 rollback en quatre minutes. Webhooks au vert ; backlog de retries vidé dans la nuit. Correctif reprogrammé avec une couverture staging sérieuse.",
+  "warRoom.outcome.rollback.leadership":
+    "Les mouvements réversibles sont une infrastructure de leadership — rollback d'abord quand la certitude est basse et que chaque minute d'ambiguïté érode la confiance client.",
+  "warRoom.replay": "Rejouer",
+
   "harness.scrollHint": "Faites défiler pour couper la boucle en coupe.",
   "harness.layer.model.title": "Modèle",
   "harness.layer.model.desc":
@@ -366,8 +437,6 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.title": "Environnement",
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
-
-  "leadershipNote.label": "Note leadership",
 
   "builder.simulatedBadge": "Exécution simulée — pas de réseau, pas d'API réelle.",
   "builder.toolsHeading": "Outils activés",
@@ -549,6 +618,42 @@ const nl: Record<TKey, string> = {
 
   "ladder.escalation": "Alles buiten deze grenzen gaat naar een mens.",
 
+  "leadershipNote.label": "Leadership-notitie",
+
+  "warRoom.simulatedBadge": "Gesimuleerd incident — geen live systemen, geen agents, alleen client state.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout-webhooks",
+  "warRoom.incident.summary":
+    "Foutpercentage op payment-webhook-handler steeg 14× na deploy ac9f2. Winkelwagens ronden af maar settlement-events blijven hangen. Nog geen dataverlies gemeld.",
+  "warRoom.prompt": "Drie responders zijn het oneens. Jouw beslissing.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Verdubbel HPA-max voor webhook-workers en leeg de vastzittende partition — throughput eerst, root cause later.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 nu — null-guard op idempotency key klopt niet bij retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride: guard terugdraaien, opnieuw deployen achter 5% shadow-validator, verder normaal verkeer.",
+  "warRoom.action.merge": "Voorstellen samenvoegen",
+  "warRoom.action.escalate": "Escaleren naar mensen",
+  "warRoom.action.rollback": "Deploy rollback",
+  "warRoom.outcome.merge.title": "Uitkomst · gecombineerde mitigaties",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator vangt dubbele keys op 5% verkeer terwijl revert de foute guard verwijdert. Foutpercentage daalt in vijftien minuten; volledige postmortem volgt.",
+  "warRoom.outcome.merge.leadership":
+    "Als automatisering het oneens is, wint synthese boven een favoriet — mits je benoemt wie het resterende risico draagt tot de postmortem.",
+  "warRoom.outcome.escalate.title": "Uitkomst · automatisering gepauzeerd",
+  "warRoom.outcome.escalate.body":
+    "Agents bevroren bij voorstelstadium. Incident commander op bridge; on-call leegt settlement-queue handmatig. Geen deploy of scale tot mensen aligned zijn.",
+  "warRoom.outcome.escalate.leadership":
+    "Escaleren is geen falen — het is de guardrail die voorkomt dat snelheid het oordeel voorbij rent als de blast radius nog vaag is.",
+  "warRoom.outcome.rollback.title": "Uitkomst · deploy teruggedraaid",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 in vier minuten teruggedraaid. Webhooks groen; retry-backlog 's nachts weg. Forward fix opnieuw gepland met echte staging-dekking.",
+  "warRoom.outcome.rollback.leadership":
+    "Omkeerbare zetten zijn leadership-infrastructuur — eerst rollback als zekerheid laag is en elke minuut ambiguïteit klantvertrouwen kost.",
+  "warRoom.replay": "Opnieuw",
+
   "harness.scrollHint": "Scroll om de lus in dwarsdoorsnede te zien.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -567,8 +672,6 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.title": "Omgeving",
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
-
-  "leadershipNote.label": "Leadership-notitie",
 
   "builder.simulatedBadge": "Gesimuleerde run — geen netwerk, geen live API's.",
   "builder.toolsHeading": "Tools ingeschakeld",
@@ -750,6 +853,42 @@ const fy: Record<TKey, string> = {
 
   "ladder.escalation": "Alles bûten dizze grinzen giet nei in minske.",
 
+  "leadershipNote.label": "Leadership-notysje",
+
+  "warRoom.simulatedBadge": "Simulearre ynsidint — gjin live systemen, gjin agents, allinnich client state.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout-webhooks",
+  "warRoom.incident.summary":
+    "Flaterpercentaach op payment-webhook-handler stie 14× nei deploy ac9f2. Winkelweinen rûne ôf mar settlement-events bliuwe hangjen. Noch gjin dataferlies meld.",
+  "warRoom.prompt": "Trije responders binne it net iens. Dyn beslissing.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Ferdubbelje HPA-max foar webhook-workers en leegje de fêstsitten partition — throughput earst, root cause letter.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 no — null-guard op idempotency key kloppet net by retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride: guard weromdraaie, opnij deploye efter 5% shadow-validator, oars normaal ferkear.",
+  "warRoom.action.merge": "Foarstellen gearfoegje",
+  "warRoom.action.escalate": "Eskalearje nei minsken",
+  "warRoom.action.rollback": "Deploy rollback",
+  "warRoom.outcome.merge.title": "Resultaat · kombinearre mitigaasjes",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator fangt dûbele keys op 5% ferkear wylst revert de ferkearde guard fuorthellet. Flaterpercentaach saket yn fyftjin minuten; folsleine postmortem folget.",
+  "warRoom.outcome.merge.leadership":
+    "As automatisearring it net iens is, wint synthese boppe in favorite — mits jo neame wa't it resterende risiko draacht oant de postmortem.",
+  "warRoom.outcome.escalate.title": "Resultaat · automatisearring pause",
+  "warRoom.outcome.escalate.body":
+    "Agents bevroren by foarstelfaze. Incident commander op bridge; on-call leecht settlement-queue mei de hân. Gjin deploy of scale oant minsken aligned binne.",
+  "warRoom.outcome.escalate.leadership":
+    "Eskalearje is gjin mislearring — it is de guardrail dy't foarkomt dat snelheid it oardiel foarby rint as de blast radius noch vaach is.",
+  "warRoom.outcome.rollback.title": "Resultaat · deploy weromdraaid",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 yn fjouwer minuten weromdraaid. Webhooks grien; retry-backlog 's nachts fuort. Forward fix opnij pland mei echte staging-dekking.",
+  "warRoom.outcome.rollback.leadership":
+    "Omkeerbere setten binne leadership-yngripen — earst rollback as wisheid leech is en elke minút ambiguïteit klantfertrouwen kostet.",
+  "warRoom.replay": "Op 'e nij",
+
   "harness.scrollHint": "Skrôlje om de lus yn trochsneed te sjen.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -767,8 +906,6 @@ const fy: Record<TKey, string> = {
   "harness.layer.subagents.desc": "Deselde lus, opnij spawn'e, parallel of isolearre.",
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
-
-  "leadershipNote.label": "Leadership-notysje",
 
   "builder.simulatedBadge": "Simulearre run — gjin netwurk, gjin live API's.",
   "builder.toolsHeading": "Arken ynskeakele",
@@ -950,6 +1087,42 @@ const ru: Record<TKey, string> = {
 
   "ladder.escalation": "Всё, что выходит за эти границы, передаётся человеку.",
 
+  "leadershipNote.label": "Заметка для лидерства",
+
+  "warRoom.simulatedBadge": "Симулированный инцидент — без live-систем, без агентов, только состояние клиента.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout webhooks",
+  "warRoom.incident.summary":
+    "Частота ошибок обработчика payment webhook выросла в 14 раз после деплоя ac9f2. Корзины завершаются, но события settlement зависают. Потери данных пока не зафиксированы.",
+  "warRoom.prompt": "Три ответчика не согласны. Решение за вами.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Удвоить max HPA для webhook workers и осушить застрявшую partition — сначала пропускная способность, root cause потом.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 сейчас — null guard на idempotency key неверен при retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Гибрид: откат guard, redeploy за shadow-validator на 5% трафика, остальной трафик без изменений.",
+  "warRoom.action.merge": "Объединить предложения",
+  "warRoom.action.escalate": "Эскалировать людям",
+  "warRoom.action.rollback": "Откатить деплой",
+  "warRoom.outcome.merge.title": "Исход · комбинированные меры",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator ловит дубликаты ключей на 5% трафика, пока revert убирает плохой guard. Ошибки падают за пятнадцать минут; полный postmortem позже.",
+  "warRoom.outcome.merge.leadership":
+    "Когда автоматизация спорит, синтез лучше любимчика — если назначить, кто несёт остаточный риск до postmortem.",
+  "warRoom.outcome.escalate.title": "Исход · автоматизация на паузе",
+  "warRoom.outcome.escalate.body":
+    "Агенты заморожены на стадии предложений. Incident commander на bridge; on-call вручную разгребает очередь settlement. Ни deploy, ни scale, пока люди не согласуются.",
+  "warRoom.outcome.escalate.leadership":
+    "Эскалация — не провал, а предохранитель, когда радиус поражения ещё размыт и скорость обгоняет суждение.",
+  "warRoom.outcome.rollback.title": "Исход · деплой откатан",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 откатан за четыре минуты. Webhooks зелёные; backlog retries сходит за ночь. Forward fix перенесён с нормальным staging.",
+  "warRoom.outcome.rollback.leadership":
+    "Обратимые шаги — инфраструктура лидерства: сначала rollback, когда уверенность низкая, а каждая минута неясности бьёт по доверию клиентов.",
+  "warRoom.replay": "Снова",
+
   "harness.scrollHint": "Прокрутите, чтобы увидеть цикл в разрезе.",
   "harness.layer.model.title": "Модель",
   "harness.layer.model.desc":
@@ -969,8 +1142,6 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.title": "Окружение",
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
-
-  "leadershipNote.label": "Заметка для лидерства",
 
   "builder.simulatedBadge": "Симуляция — без сети и живых API.",
   "builder.toolsHeading": "Включённые инструменты",

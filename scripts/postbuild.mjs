@@ -62,6 +62,7 @@ const SELF_CLOSING_NOTES = {
   AsciiWebcam: "interactive: live camera feed rendered as ASCII — see the live page",
   HarnessAnatomy: "interactive: harness anatomy scroll X-ray — see the live page",
   HarnessBuilder: "interactive: simulated harness builder — see the live page",
+  SyntheticWarRoom: "interactive: synthetic incident war room — see the live page",
   VectorSearch: "interactive: vector search geometry — see the live page",
 };
 
@@ -72,6 +73,7 @@ function stripComponents(body) {
     out = out.replace(new RegExp(`<${tag}\\s*/>`, "g"), `*[${note}]*`);
   }
   out = out.replace(/<Retro>\n?([\s\S]*?)\n?<\/Retro>/g, (_, inner) => inner.trim());
+  out = out.replace(/<LeadershipNote>\n?([\s\S]*?)\n?<\/LeadershipNote>/g, (_, inner) => `**Leadership note:** ${inner.trim()}`);
   out = out.replace(/<Tradeoff\s+([\s\S]*?)>([\s\S]*?)<\/Tradeoff>/g, (_, attrs, inner) => renderTradeoff(attrs, inner));
   out = out.replace(/<AutonomyLadder>\n?([\s\S]*?)\n?<\/AutonomyLadder>/g, (_, inner) => renderLadder(inner));
   return out;
