@@ -12,6 +12,7 @@ import { HarnessBuilder } from "@/components/lab/HarnessBuilder";
 import { SyntheticWarRoom } from "@/components/lab/SyntheticWarRoom";
 import { ContextGraphExplorer } from "@/components/lab/ContextGraphExplorer";
 import { AskSite } from "@/components/lab/AskSite";
+import { DecisionReplay } from "@/components/lab/DecisionReplay";
 import { VectorSearch } from "@/components/three/VectorSearch";
 import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
 import { LeadershipNote } from "@/components/ui/LeadershipNote";
@@ -35,6 +36,7 @@ const components = {
   SyntheticWarRoom,
   ContextGraphExplorer,
   AskSite,
+  DecisionReplay,
   VectorSearch,
   AutonomyLadder,
   AutonomyTier,

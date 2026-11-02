@@ -156,6 +156,10 @@ const en: PageContent = {
       "Site Q&A",
       "Bounded ask-this-site lab — client BM25 over scripts/build-search-index.ts; read-only tier, no web, no tools",
     ],
+    [
+      "Decision replay",
+      "Branching Beyond autocomplete tradeoff walkthrough — simulated, client-only",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -290,6 +294,10 @@ const fr: PageContent = {
     [
       "Q&R site",
       "Labo ask-this-site borné — BM25 côté client sur scripts/build-search-index.ts ; niveau lecture seule, pas de web, pas d'outils",
+    ],
+    [
+      "Rejeu de décision",
+      "Parcours branché du tradeoff Beyond autocomplete — simulé, client uniquement",
     ],
     ...buildRows("fr"),
   ],
@@ -426,6 +434,10 @@ const nl: PageContent = {
       "Site Q&A",
       "Begrensde ask-this-site lab — client-side BM25 over scripts/build-search-index.ts; alleen-lezen tier, geen web, geen tools",
     ],
+    [
+      "Decision replay",
+      "Vertakkende Beyond autocomplete-tradeoff-walkthrough — gesimuleerd, alleen client",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -561,6 +573,10 @@ const fy: PageContent = {
       "Site Q&A",
       "Beheinde ask-this-site lab — client-side BM25 oer scripts/build-search-index.ts; allinnich-lêze tier, gjin web, gjin ark",
     ],
+    [
+      "Decision replay",
+      "Takke Beyond autocomplete-tradeoff-walkthrough — simulearre, allinnich client",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -695,6 +711,10 @@ const ru: PageContent = {
     [
       "Q&A сайта",
       "Ограниченный ask-this-site lab — BM25 на клиенте по scripts/build-search-index.ts; tier только чтение, без web и инструментов",
+    ],
+    [
+      "Decision replay",
+      "Ветвящийся walkthrough tradeoff Beyond autocomplete — симуляция, только клиент",
     ],
     ...buildRows("ru"),
   ],

@@ -65,6 +65,7 @@ const SELF_CLOSING_NOTES = {
   SyntheticWarRoom: "interactive: synthetic incident war room — see the live page",
   ContextGraphExplorer: "interactive: simulated context graph — see the live page",
   AskSite: "interactive: bounded ask-this-site Q&A over the static index — see the live page",
+  DecisionReplay: "interactive: decision replay brancher — see the live page",
   VectorSearch: "interactive: vector search geometry — see the live page",
 };
 
