@@ -1,0 +1,24 @@
+---
+title: "Harness-bouwer"
+summary: "Meitsje fan it anatomiediagram in bedieningspaniel — kies ark, stel in autonomynivo yn en ryn trije scripte senario's. Elke logline is client-side simulearre."
+year: 2026
+tags: ["Systemen", "Agentyske AI", "Governance"]
+color: "#38bdf8"
+order: 9
+---
+
+## Wat it is
+
+De scroll-röntgenfoto op [Harness-anatomy](/lab/harness-anatomy) lit sjen hoe in oanfraach troch lagen giet. Dit paniel lit dy de harness konfigurearje — hokker ark oansluten binne, hokker autonomynivo aktyf is — en trije fêste senario's draaie om te sjen wêr't de lus stopet of eskalearret.
+
+<HarnessBuilder />
+
+Probearje **Issue #142 lêze** op allinnich-lêze mei de issue-lêzer oan: dat moat slagje. Gean nei **Pull request iepenje** op deselde nivo en sjoch hoe rjochten skriuwen blokkearje. Skeakel **Betellings-API** yn en ferlyk **Foarstelle** mei **Automatysk ûnder kontrôle** — allinnich it heechste nivo iepenet de poort yn dizze fiksje.
+
+<LeadershipNote title="Leadership-notysje">
+  It ynteressante EM-wurk is net it model kieze — it is ôfsprekke op hokker nivo elke capability live giet foardat it earste ynsidint komt. Dit speelpaniel start it petear: «Hoe soe ús log derút sjen as betelling noch op foarstellen stie?»
+</LeadershipNote>
+
+## Boarne
+
+Suver React-state — `src/components/lab/HarnessBuilder.tsx`. Nivolabels slute oan op de [autonomyljedder](/work/beyond-autocomplete#execution). Gjin fetch, gjin WebSocket, gjin agent SDK yn de lus.

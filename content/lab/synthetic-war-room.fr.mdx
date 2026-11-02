@@ -1,0 +1,26 @@
+---
+title: "War room synthétique"
+summary: "Trois agents fictifs proposent des correctifs contradictoires sur un incident webhook checkout. Choisissez fusionner, escalader ou rollback — puis lisez la ligne leadership qui suit."
+year: 2026
+tags: ["Systèmes", "Réponse incident", "Leadership"]
+color: "#f472b6"
+order: 10
+---
+
+## Ce que c'est
+
+Un bridge d'incident façon HUD avec trois panneaux agent — scale, revert, blend — tous plausibles, aucun évident. L'interactif est pure fiction : aucun modèle ne tourne, aucun webhook ne part, chaque issue est scriptée côté client.
+
+<SyntheticWarRoom />
+
+<LeadershipNote>
+Quand trois répondeurs automatisés divergent, le travail n'est pas de choisir le patch le plus malin — c'est de décider qui porte la surface de risque jusqu'à ce que les humains voient clair. Ce labo rend ce choix lisible en une trentaine de secondes.
+</LeadershipNote>
+
+## Pourquoi simuler la salle
+
+Les vraies war rooms compressent le jugement sous le bruit : télémétrie partielle, bots confiants, horloge qui tourne. Le travail EM apparaît dans la **façon** de cadrer la décision — fusionner des mitigations partielles, escalader tôt, ou rollback vers un état connu — pas en prétendant avoir eu une information parfaite à la minute zéro. Le [journal de décisions](/log) sur ce site est la version archive ; cette page est la répétition.
+
+## Source
+
+`src/components/lab/SyntheticWarRoom.tsx` — panneaux HudFrame, `Tr` pour le chrome, boutons natifs uniquement.
