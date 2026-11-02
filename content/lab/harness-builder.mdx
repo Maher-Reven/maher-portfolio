@@ -1,0 +1,24 @@
+---
+title: "Harness builder"
+summary: "Turn the anatomy diagram into a control panel — pick tools, set an autonomy tier, and run three scripted scenarios. Every line in the log is simulated client-side."
+year: 2026
+tags: ["Systems", "Agentic AI", "Governance"]
+color: "#38bdf8"
+order: 9
+---
+
+## What it is
+
+The scroll X-ray on [Harness anatomy](/lab/harness-anatomy) shows how a request moves through layers. This panel lets you configure the harness — which tools are wired in, which autonomy tier is active — and run three fixed scenarios to see where the loop stops or escalates.
+
+<HarnessBuilder />
+
+Try **Read issue** on read-only with the issue reader enabled: it should complete. Flip to **Open pull request** on the same tier and watch permissions block the write. Enable **Payment API** and compare **Propose** versus **Gated automatic** — only the top tier clears the gate in this fiction.
+
+<LeadershipNote>
+  The interesting EM work is not picking the model — it is agreeing which tier each capability ships at before someone files the first incident. This toy panel is the conversation starter: "What would our log look like if payment were still on propose?"
+</LeadershipNote>
+
+## Source
+
+Pure React state — `src/components/lab/HarnessBuilder.tsx`. Tier labels match the [autonomy ladder](/work/beyond-autocomplete#execution). No fetch, no WebSocket, no agent SDK in the loop.

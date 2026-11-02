@@ -15,6 +15,8 @@ Un diagramme concentrique, le modèle au centre. Chaque anneau vers l'extérieur
 
 Faites défiler pour le couper en coupe, de l'Environnement jusqu'au cœur du Modèle — chaque seuil franchi éclaire une couche et ajoute une ligne au journal, comme une requête traverse réellement un système en fonctionnement.
 
+Vous voulez configurer outils et niveaux vous-même ? Poursuivez avec **[Constructeur de harnais](/lab/harness-builder)** — trois scénarios scriptés, mêmes couches, journal simulé.
+
 ## Pourquoi le harnais, pas le modèle
 
 Il est tentant de dessiner « un agent IA » comme une seule boîte. Cette boîte est la partie la moins intéressante — une fonction sans état qui prédit des tokens et oublie tout dès que la réponse se termine. La boucle, les contrôles de permissions, la gestion du contexte, la capacité à se démultiplier en sous-agents : tout ça, c'est le harnais, et c'est là que vivent presque toutes les vraies décisions d'ingénierie. Le fichier que l'agent de ce site lit avant d'écrire la moindre ligne de code — `AGENTS.md`, à la racine du dépôt — est lui-même un artefact du harnais : des instructions injectées dans le contexte, pas des poids.

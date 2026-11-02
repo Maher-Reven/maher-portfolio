@@ -1,0 +1,30 @@
+---
+title: "Freegje dizze site"
+summary: "Allinnich-lêzen Q&A oer deselde statyske yndeks as sykjen — allinnich sitaten, gjin web, gjin ark. It autonomienivo is bewust sichtber yn de UI."
+year: 2026
+tags: ["Retrieval", "Governance", "Agentic AI"]
+color: "#34d399"
+order: 9
+---
+
+## Wat it is
+
+In beheinde assistent dy't allinnich lêst wat dizze site al publisearre hat — case studies, lab-items, de readme en it beslissingslog. Stel in fraach yn gewone taal; it antwurd is opboud út BM25-rangsortearre fragmenten, elk mei in link nei de boarne-URL. Gjin browsen, gjin tool-oanropen, gjin writes.
+
+<AskSite />
+
+De governance-stripe boppe is gjin dekor. **Autonomienivo: allinnich lêze** is it kontrakt: as de UI ea mear capability claimde as de harness werklik hie, debugge jo fertrouwen ynstee fan retrieval.
+
+<LeadershipNote>
+
+In « chat mei myn portfolio »-feature ferstjoere sûnder de permission boundary yn 'e interface te tekenjen, is hoe teams brûkers traine in sykfjild te behanneljen as in alwitende agent. Tier, webtagong en ark eksplisyt meitsje — sels as alles út stiet — is hoe ik ferwachtsje dat in EM in ynterne copilot beoardielje sil foardat dy produksjedata rekket.
+
+</LeadershipNote>
+
+## Wêrom gjin model-oanrop
+
+By dizze corpusgrutte is in hand-rolled BM25-yndeks (`src/lib/search.ts`, feed troch `scripts/build-search-index.ts`) flugger, goedkeaper en makliker te sitearjen as in LLM-summarizer dy't ferbinende tekst ferzinnen kin. It [vector search](/lab/vector-search)-lab lit sjen wannear embeddings de ranking feroarje; dizze side lit sjen wannear't jo se **net** nedich hawwe.
+
+## Boarne
+
+`src/components/lab/AskSite.tsx` · `src/lib/ask-site.ts` · deselde `public/search-index.<locale>.json` as Cmd+K-sykjen.

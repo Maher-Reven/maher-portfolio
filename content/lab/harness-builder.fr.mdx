@@ -1,0 +1,24 @@
+---
+title: "Constructeur de harnais"
+summary: "Transformez le diagramme d'anatomie en panneau de contrôle — choisissez les outils, fixez un niveau d'autonomie, lancez trois scénarios scriptés. Chaque ligne du journal est simulée côté client."
+year: 2026
+tags: ["Systèmes", "IA agentique", "Gouvernance"]
+color: "#38bdf8"
+order: 9
+---
+
+## Ce que c'est
+
+La radiographie au défilement sur [Anatomie du harnais](/lab/harness-anatomy) montre comment une requête traverse les couches. Ce panneau permet de configurer le harnais — quels outils sont branchés, quel niveau d'autonomie est actif — et de lancer trois scénarios fixes pour voir où la boucle s'arrête ou remonte.
+
+<HarnessBuilder />
+
+Essayez **Lire l'issue #142** en lecture seule avec le lecteur activé : ça doit réussir. Passez à **Ouvrir une pull request** au même niveau et regardez les permissions bloquer l'écriture. Activez l'**API paiement** et comparez **Proposition** et **Automatique sous contrôle** — seul le niveau le plus haut ouvre la porte dans cette fiction.
+
+<LeadershipNote title="Note leadership">
+  Le travail EM intéressant n'est pas de choisir le modèle — c'est d'accorder le niveau de chaque capacité avant le premier incident. Ce panneau jouet lance la conversation : « À quoi ressemblerait notre journal si le paiement était encore en proposition ? »
+</LeadershipNote>
+
+## Source
+
+État React pur — `src/components/lab/HarnessBuilder.tsx`. Les libellés de niveau reprennent l'[échelle d'autonomie](/work/beyond-autocomplete#execution). Pas de fetch, pas de WebSocket, pas d'agent SDK dans la boucle.

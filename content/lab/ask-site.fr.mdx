@@ -1,0 +1,30 @@
+---
+title: "Demander à ce site"
+summary: "Q&R en lecture seule sur le même index statique que la recherche — citations uniquement, pas de web, pas d'outils. Le niveau d'autonomie est visible dans l'UI exprès."
+year: 2026
+tags: ["Retrieval", "Gouvernance", "IA agentique"]
+color: "#34d399"
+order: 9
+---
+
+## Ce que c'est
+
+Un assistant borné qui ne lit que ce que ce site a déjà publié — études de cas, entrées labo, readme et journal de décisions. Posez une question en langage naturel ; la réponse est assemblée à partir d'extraits classés par BM25, chacun renvoyant à une URL source. Pas de navigation, pas d'appels d'outils, pas d'écriture.
+
+<AskSite />
+
+La bande de gouvernance en haut n'est pas décorative. **Niveau d'autonomie : lecture seule** est le contrat : si l'UI prétendait plus de capacités que le harness n'en a réellement, vous débogueriez la confiance au lieu de la retrieval.
+
+<LeadershipNote>
+
+Livrer un « chat avec mon portfolio » sans tracer la frontière des permissions dans l'interface, c'est ainsi que les équipes entraînent les utilisateurs à traiter une barre de recherche comme un agent omniscient. Rendre tier, accès web et outils explicites — même quand tout est désactivé — reflète comment j'attendrais qu'un EM revoie un copilote interne avant qu'il touche des données de production.
+
+</LeadershipNote>
+
+## Pourquoi pas un appel modèle
+
+À cette taille de corpus, un index BM25 maison (`src/lib/search.ts`, alimenté par `scripts/build-search-index.ts`) est plus rapide, moins cher et plus facile à citer qu'un résumeur LLM qui pourrait inventer du texte de liaison. Le labo [recherche vectorielle](/lab/vector-search) montre quand les embeddings changent le classement ; cette page montre quand **ne pas** y recourir.
+
+## Source
+
+`src/components/lab/AskSite.tsx` · `src/lib/ask-site.ts` · même `public/search-index.<locale>.json` que la recherche Cmd+K.
