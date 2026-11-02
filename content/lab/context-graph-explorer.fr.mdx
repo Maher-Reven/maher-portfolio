@@ -1,0 +1,24 @@
+---
+title: "Explorateur de graphe de contexte"
+summary: "GitHub, Linear et Sentry détiennent chacun une partie du tableau — basculez pour voir si une couche de contexte partagée les relie avant qu'une session agent ne démarre. SVG simulé, pas d'API live."
+year: 2026
+tags: ["SVG", "Systèmes", "IA agentique"]
+color: "#818cf8"
+order: 10
+---
+
+## Ce que c'est
+
+La contrainte de [Beyond autocomplete](/work/beyond-autocomplete) en un diagramme : trois signaux, une session agent, et un hub optionnel qui les fusionne en une seule image au lieu de forcer chaque exécution à reconstruire le contexte depuis zéro.
+
+<ContextGraphExplorer />
+
+Désactivez **Couche contexte : connectée** et regardez les liens du hub s'estomper tandis que des raccourcis faibles apparaissent de chaque silo vers l'agent — la même réalité fragmentée que l'étude de cas décrit avant l'arrivée de la couche partagée.
+
+<LeadershipNote>
+  Une infrastructure qui fusionne GitHub, Linear et Sentry ressemble à de la surcharge jusqu'à ce que l'on mesure l'onboarding et le temps d'incident avec la couche coupée. Cet explorateur est la diapositive que j'utilise pour défendre le travail de fusion ingrat avant qu'on demande plus d'autonomie aux agents.
+</LeadershipNote>
+
+## Source
+
+SVG inline et animation GSAP sur les traits — `src/components/lab/ContextGraphExplorer.tsx`. Les labs de tiers et de harnais sont ailleurs ; celui-ci ne parle que du **contexte**, pas des permissions ni des outils.
