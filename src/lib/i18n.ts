@@ -101,6 +101,10 @@ const en = {
   "page.log.intro":
     "Every case study's tradeoffs, reshaped as a commit history — options considered, what was chosen, what it cost.",
   "log.chosen": "chosen",
+  "log.from": "From:",
+  "log.viewCaseStudy": "View case study",
+  "log.copyHash": "copy",
+  "log.copied": "copied",
 
   "page.readme.label": "readme",
   "page.readme.title": "How to work with me",
@@ -351,6 +355,10 @@ const fr: Record<TKey, string> = {
   "page.log.intro":
     "Les arbitrages de chaque étude de cas, remis en forme comme un historique de commits — options considérées, ce qui a été choisi, ce que ça a coûté.",
   "log.chosen": "choisi",
+  "log.from": "Projet :",
+  "log.viewCaseStudy": "Voir l'étude de cas",
+  "log.copyHash": "copier",
+  "log.copied": "copié",
 
   "page.readme.label": "readme",
   "page.readme.title": "Comment travailler avec moi",
@@ -604,6 +612,10 @@ const nl: Record<TKey, string> = {
   "page.log.intro":
     "De afwegingen van elke case study, hervormd tot een commit-geschiedenis — overwogen opties, wat gekozen is, wat het kostte.",
   "log.chosen": "gekozen",
+  "log.from": "Uit:",
+  "log.viewCaseStudy": "Case study bekijken",
+  "log.copyHash": "kopiëren",
+  "log.copied": "gekopieerd",
 
   "page.readme.label": "readme",
   "page.readme.title": "Hoe met mij te werken",
@@ -855,6 +867,10 @@ const fy: Record<TKey, string> = {
   "page.log.intro":
     "De ôfwagings fan elke case study, omfoarme ta in commit-skiednis — oerwoegen opsjes, wat keazen is, wat it kostte.",
   "log.chosen": "keazen",
+  "log.from": "Ut:",
+  "log.viewCaseStudy": "Case study besjen",
+  "log.copyHash": "kopiearje",
+  "log.copied": "kopiearre",
 
   "page.readme.label": "readme",
   "page.readme.title": "Hoe't mei my te wurkjen",
@@ -1105,6 +1121,10 @@ const ru: Record<TKey, string> = {
   "page.log.intro":
     "Компромиссы каждого кейса, переоформленные как история коммитов — рассмотренные варианты, что было выбрано, чего это стоило.",
   "log.chosen": "выбрано",
+  "log.from": "Из:",
+  "log.viewCaseStudy": "Открыть кейс",
+  "log.copyHash": "копировать",
+  "log.copied": "скопировано",
 
   "page.readme.label": "readme",
   "page.readme.title": "Как работать со мной",
