@@ -173,6 +173,44 @@ const en = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist",
 
+  "leadershipNote.kicker": "Leadership note",
+
+  "replay.simulated": "Simulated walkthrough",
+  "replay.step": "Step",
+  "replay.continue": "Continue",
+  "replay.back": "Back to options",
+  "replay.restart": "Start over",
+  "replay.intro.title": "The room you're in",
+  "replay.intro.body":
+    "Mid leadership-transition on a mobile platform that ships continuously. Engineers already use AI assistants — without shared context, without a written answer to what an agent is allowed to call or ship.",
+  "replay.fork.title": "How do you govern AI tooling?",
+  "replay.fork.hint": "Same fork as the Beyond autocomplete case study — pick a path to see the consequence.",
+  "replay.option.perEngineer.label": "Let every engineer configure their own AI tooling",
+  "replay.option.perEngineer.desc":
+    "Fastest to start. Every engineer ends up with different context, permissions, and no shared way to reason about risk.",
+  "replay.option.mandated.label": "Mandate one fully-managed agent platform",
+  "replay.option.mandated.desc":
+    "Consistent by construction — but a vendor roadmap now caps what the team can adopt.",
+  "replay.option.shared.label": "Shared context layer + per-team tool-calling policy",
+  "replay.option.shared.desc":
+    "One context picture from GitHub, Linear and Sentry; each team writes which autonomy tier its tools use.",
+  "replay.outcome.perEngineer.title": "Six months later: invisible drift",
+  "replay.outcome.perEngineer.body":
+    "Two teams ship agent features the same week. One tool can open pull requests; another can only read. Incidents get harder to replay because nobody shares the same harness. Leadership sees adoption; you see ungoverned surface area.",
+  "replay.outcome.mandated.title": "Six months later: compliance without leverage",
+  "replay.outcome.mandated.body":
+    "Permissions are consistent — and so is frustration. Engineers route around the platform for edge cases mobile needs. You spend reviews arguing with a vendor roadmap instead of tuning tiers for your own risk model.",
+  "replay.outcome.shared.title": "Six months later: boring infrastructure, visible ramp-up",
+  "replay.outcome.shared.body":
+    "Nothing user-facing ships from the context layer alone. Engineers feel faster onboarding anyway — same picture in every session. Tier decisions move to written policy per team instead of hallway debate after an incident.",
+  "replay.outcome.shared.cost":
+    "Cost: defending infrastructure time before ramp-up gains were visible outside the team — the same cost logged in the case study.",
+  "replay.end.title": "What actually shipped",
+  "replay.leadership.body":
+    "The replay compresses one tradeoff; the hard part was sequencing trust before autonomy and explaining guardrails in both engineering and leadership language. Writing tiers down early would have saved a week of cross-team negotiation — the case study says so explicitly.",
+  "replay.link.caseStudy": "Full case study",
+  "replay.link.log": "Decision log entry",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -328,6 +366,44 @@ const fr: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist.",
 
+  "leadershipNote.kicker": "Note de leadership",
+
+  "replay.simulated": "Parcours simulé",
+  "replay.step": "Étape",
+  "replay.continue": "Continuer",
+  "replay.back": "Revenir aux options",
+  "replay.restart": "Recommencer",
+  "replay.intro.title": "La situation",
+  "replay.intro.body":
+    "Transition de leadership en cours sur une plateforme mobile qui livre en continu. Les ingénieurs utilisent déjà des assistants IA — sans contexte partagé, sans réponse écrite sur ce qu'un agent a le droit d'appeler ou de livrer.",
+  "replay.fork.title": "Comment gouverner les outils IA ?",
+  "replay.fork.hint": "Le même embranchement que l'étude de cas Beyond autocomplete — choisissez une voie pour voir la conséquence.",
+  "replay.option.perEngineer.label": "Laisser chaque ingénieur configurer ses propres outils IA",
+  "replay.option.perEngineer.desc":
+    "Le plus rapide au départ. Chacun finit avec un contexte, des permissions et une lecture du risque différents.",
+  "replay.option.mandated.label": "Imposer une plateforme d'agents entièrement managée",
+  "replay.option.mandated.desc":
+    "Cohérent par construction — mais la roadmap d'un fournisseur plafonne désormais ce que l'équipe peut adopter.",
+  "replay.option.shared.label": "Couche de contexte partagée + politique d'appels d'outils par équipe",
+  "replay.option.shared.desc":
+    "Une même image depuis GitHub, Linear et Sentry ; chaque équipe écrit le tier d'autonomie de ses outils.",
+  "replay.outcome.perEngineer.title": "Six mois plus tard : dérive invisible",
+  "replay.outcome.perEngineer.body":
+    "Deux équipes livrent des fonctions agent la même semaine. Un outil peut ouvrir des PR, l'autre seulement lire. Les incidents se rejouent mal — personne ne partage le même harnais. Le leadership voit l'adoption ; vous voyez une surface non gouvernée.",
+  "replay.outcome.mandated.title": "Six mois plus tard : conformité sans levier",
+  "replay.outcome.mandated.body":
+    "Les permissions sont cohérentes — tout comme la frustration. Les ingénieurs contournent la plateforme pour les cas limites du mobile. Vous passez les revues à discuter avec une roadmap fournisseur au lieu d'ajuster les tiers pour votre propre modèle de risque.",
+  "replay.outcome.shared.title": "Six mois plus tard : infra ennuyeuse, montée en charge visible",
+  "replay.outcome.shared.body":
+    "Rien d'utilisateur ne sort de la couche de contexte seule. Les ingénieurs sentent quand même l'onboarding accélérer — la même image à chaque session. Les tiers deviennent une politique écrite par équipe au lieu d'un débat dans le couloir après un incident.",
+  "replay.outcome.shared.cost":
+    "Coût : défendre du temps infra avant que les gains de montée en charge soient visibles hors équipe — le même coût consigné dans l'étude de cas.",
+  "replay.end.title": "Ce qui a réellement été livré",
+  "replay.leadership.body":
+    "Le parcours compresse un tradeoff ; la partie dure était de séquencer la confiance avant l'autonomie et d'expliquer les garde-fous dans le langage ingénierie et leadership. Écrire les tiers tôt aurait évité une semaine de négociation inter-équipes — l'étude de cas le dit explicitement.",
+  "replay.link.caseStudy": "Étude de cas complète",
+  "replay.link.log": "Entrée du journal de décisions",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -480,6 +556,44 @@ const nl: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "afst.",
 
+  "leadershipNote.kicker": "Leadership-notitie",
+
+  "replay.simulated": "Gesimuleerde walkthrough",
+  "replay.step": "Stap",
+  "replay.continue": "Doorgaan",
+  "replay.back": "Terug naar opties",
+  "replay.restart": "Opnieuw beginnen",
+  "replay.intro.title": "De situatie",
+  "replay.intro.body":
+    "Midden in een leadership-overgang op een mobile platform dat continu shipt. Engineers gebruiken al AI-assistenten — zonder gedeelde context, zonder schriftelijk antwoord op wat een agent mag aanroepen of shippen.",
+  "replay.fork.title": "Hoe beheer je AI-tooling?",
+  "replay.fork.hint": "Dezelfde splitsing als in de Beyond autocomplete case study — kies een pad om het gevolg te zien.",
+  "replay.option.perEngineer.label": "Laat elke engineer eigen AI-tooling configureren",
+  "replay.option.perEngineer.desc":
+    "Snelst van start. Iedereen eindigt met andere context, rechten en geen gedeelde manier om over risico te redeneren.",
+  "replay.option.mandated.label": "Verplicht één volledig beheerd agentplatform",
+  "replay.option.mandated.desc":
+    "Consistent by design — maar een vendor-roadmap bepaalt nu wat het team kan adopteren.",
+  "replay.option.shared.label": "Gedeelde contextlaag + tool-callingbeleid per team",
+  "replay.option.shared.desc":
+    "Eén beeld uit GitHub, Linear en Sentry; elk team schrijft op welke autonomietier zijn tools gebruiken.",
+  "replay.outcome.perEngineer.title": "Zes maanden later: onzichtbare drift",
+  "replay.outcome.perEngineer.body":
+    "Twee teams shippen agentfeatures in dezelfde week. Eén tool mag PR's openen, de andere alleen lezen. Incidenten zijn moeilijker te herhalen — niemand deelt hetzelfde harnais. Leadership ziet adoptie; jij ziet onbeheerd oppervlak.",
+  "replay.outcome.mandated.title": "Zes maanden later: compliance zonder hefboom",
+  "replay.outcome.mandated.body":
+    "Rechten zijn consistent — en frustratie ook. Engineers omzeilen het platform voor mobile edge cases. Je besteedt reviews aan een vendor-roadmap in plaats van tiers voor jullie eigen risicomodel.",
+  "replay.outcome.shared.title": "Zes maanden later: saaie infra, zichtbare ramp-up",
+  "replay.outcome.shared.body":
+    "Er shipt niets user-facing alleen van de contextlaag. Engineers voelen toch snellere onboarding — hetzelfde beeld in elke sessie. Tier-beslissingen worden geschreven beleid per team in plaats of gangdebat na een incident.",
+  "replay.outcome.shared.cost":
+    "Kosten: tijd voor infra verdedigen voordat ramp-up winst buiten het team zichtbaar was — dezelfde kosten als in de case study.",
+  "replay.end.title": "Wat er echt shipte",
+  "replay.leadership.body":
+    "De replay comprimeert één tradeoff; het moeilijke was vertrouwen vóór autonomie sequencen en guardrails uitleggen in engineering- én leadership-taal. Tiers vroeg opschrijven had een week cross-team onderhandeling bespaard — de case study zegt het expliciet.",
+  "replay.link.caseStudy": "Volledige case study",
+  "replay.link.log": "Decision log-entry",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
   "footer.system": "systeem",
@@ -630,6 +744,44 @@ const fy: Record<TKey, string> = {
   "vectorSearch.picked": "keazen",
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "ofst.",
+
+  "leadershipNote.kicker": "Leiderskip-notysje",
+
+  "replay.simulated": "Simulearre trochgean",
+  "replay.step": "Stap",
+  "replay.continue": "Trochgean",
+  "replay.back": "Wer nei opsjes",
+  "replay.restart": "Op 'e nij begjinne",
+  "replay.intro.title": "De situaasje",
+  "replay.intro.body":
+    "Midden yn in leadership-oergong op in mobile platfoarm dat trochgeand shipped. Engineers brûke al AI-assistinten — sûnder dielde kontekst, sûnder skriftlik antwurd op wat in agent oproppen of shippen mei.",
+  "replay.fork.title": "Hoe bestjoerst AI-tooling?",
+  "replay.fork.hint": "Deselfde split as yn de Beyond autocomplete case study — kies in paad om it gefolch te sjen.",
+  "replay.option.perEngineer.label": "Lit elke engineer eigen AI-tooling ynstelle",
+  "replay.option.perEngineer.desc":
+    "Fluchst fan start. Elkenien einiget mei oare kontekst, rjochten en gjin dielde manier om oer risiko te redenearjen.",
+  "replay.option.mandated.label": "Ferplicht ien folslein behearre agentplatfoarm",
+  "replay.option.mandated.desc":
+    "Konsistent by design — mar in vendor-roadmap bepaalt no wat it team adoptearje kin.",
+  "replay.option.shared.label": "Dielde kontekstlaach + tool-callingbelied per team",
+  "replay.option.shared.desc":
+    "Ien byld út GitHub, Linear en Sentry; elk team skriuwt op hokker autonomytier syn tools brûke.",
+  "replay.outcome.perEngineer.title": "Seks moannen letter: ûnsichtbere drift",
+  "replay.outcome.perEngineer.body":
+    "Twa teams shippen agentfeatures yn deselfde wike. Ien tool mei PR's iepenje, de oare allinnich lêze. Ynsidinten binne minder te replayen — nimmen dielt deselfde harnais. Leadership sjocht adoptie; do sjochst ûnbehearre oppervlak.",
+  "replay.outcome.mandated.title": "Seks moannen letter: compliance sûnder hefboom",
+  "replay.outcome.mandated.body":
+    "Rjochten binne konsistent — en frustraasje ek. Engineers omgean it platfoarm foar mobile edge cases. Do besteegst reviews oan in vendor-roadmap yn stee fan tiers foar jullie eigen risikomodel.",
+  "replay.outcome.shared.title": "Seks moannen letter: saaie infra, sichtbere ramp-up",
+  "replay.outcome.shared.body":
+    "Der shipped neat user-facing allinnich fan de kontekstlaach. Engineers fiele dochs fluggere onboarding — deselfde byld yn elke sesje. Tier-beslissingen wurde skreaun belied per team yn stee fan keitdebat nei in ynsidint.",
+  "replay.outcome.shared.cost":
+    "Kosten: tiid foar infra ferdigigje foardat ramp-up winst bûten it team sichtber wie — deselfde kosten as yn de case study.",
+  "replay.end.title": "Wat der echt shipte",
+  "replay.leadership.body":
+    "De replay komprimearret ien tradeoff; it drege wie fertrouwen foar autonomie sequencen en guardrails útlizze yn engineering- en leadership-taal. Tiers betiid opskriuwe hie in wike cross-team ûnderhanneling bespaard — de case study seit it eksplisyt.",
+  "replay.link.caseStudy": "Folsleine case study",
+  "replay.link.log": "Decision log-yngong",
 
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
@@ -783,6 +935,44 @@ const ru: Record<TKey, string> = {
   "vectorSearch.picked": "выбран",
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "расст.",
+
+  "leadershipNote.kicker": "Заметка о лидерстве",
+
+  "replay.simulated": "Симулированный сценарий",
+  "replay.step": "Шаг",
+  "replay.continue": "Далее",
+  "replay.back": "Назад к вариантам",
+  "replay.restart": "Сначала",
+  "replay.intro.title": "Ситуация",
+  "replay.intro.body":
+    "Смена лидерства посреди непрерывных релизов мобильной платформы. Инженеры уже пользуются AI-ассистентами — без общего контекста и без письменного ответа, что агенту можно вызывать и выкатывать.",
+  "replay.fork.title": "Как управлять AI-инструментами?",
+  "replay.fork.hint": "Тот же развилка, что в кейсе Beyond autocomplete — выберите путь и посмотрите последствие.",
+  "replay.option.perEngineer.label": "Пусть каждый инженер настраивает AI сам",
+  "replay.option.perEngineer.desc":
+    "Быстрый старт. У каждого свой контекст, права и нет общего языка риска.",
+  "replay.option.mandated.label": "Обязать одну полностью управляемую платформу агентов",
+  "replay.option.mandated.desc":
+    "Единообразие по умолчанию — но roadmap вендора теперь ограничивает, что команда может внедрить.",
+  "replay.option.shared.label": "Общий слой контекста + политика tool-calling по командам",
+  "replay.option.shared.desc":
+    "Одна картина из GitHub, Linear и Sentry; каждая команда фиксирует tier автономии своих инструментов.",
+  "replay.outcome.perEngineer.title": "Через полгода: невидимый дрейф",
+  "replay.outcome.perEngineer.body":
+    "Две команды выкатывают agent-фичи на одной неделе. Один инструмент может открывать PR, другой — только читать. Инциденты сложнее воспроизвести — у всех разный harness. Руководство видит adoption; вы — неуправляемую поверхность.",
+  "replay.outcome.mandated.title": "Через полгода: compliance без рычага",
+  "replay.outcome.mandated.body":
+    "Права согласованы — как и раздражение. Инженеры обходят платформу под edge cases мобилки. Ревью уходит на споры с roadmap вендора вместо настройки tiers под вашу модель риска.",
+  "replay.outcome.shared.title": "Через полгода: скучная инфра, заметный ramp-up",
+  "replay.outcome.shared.body":
+    "От слоя контекста alone ничего user-facing не вышло. Инженеры всё равно чувствуют более быстрый onboarding — та же картина в каждой сессии. Tiers становятся письменной политикой команды, а не спором в коридоре после инцидента.",
+  "replay.outcome.shared.cost":
+    "Цена: отстаивать время на инфраструктуру, пока выигрыш ramp-up не был виден вне команды — та же цена в кейсе.",
+  "replay.end.title": "Что реально выкатили",
+  "replay.leadership.body":
+    "Replay сжимает один tradeoff; сложнее было выстроить доверие до автономии и объяснить guardrails на языке и инженерии, и leadership. Записать tiers раньше сэкономило бы неделю межкомандных переговоров — в кейсе это сказано прямо.",
+  "replay.link.caseStudy": "Полный кейс",
+  "replay.link.log": "Запись в decision log",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

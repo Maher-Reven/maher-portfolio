@@ -140,6 +140,7 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    ["Lab interactives", "Harness anatomy scroll X-ray · vector search orbit · decision replay brancher"],
     ...buildRows("en"),
   ],
   readme: [
@@ -258,6 +259,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Interactifs labo",
+      "Anatomie du harnais · recherche vectorielle · rejeu de décision",
     ],
     ...buildRows("fr"),
   ],
@@ -378,6 +383,10 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    [
+      "Lab-interactives",
+      "Harness anatomy · vector search · decision replay",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -497,6 +506,10 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    [
+      "Lab-interactives",
+      "Harness anatomy · vector search · decision replay",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -615,6 +628,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Интерактивы lab",
+      "Anatomy harness · vector search · decision replay",
     ],
     ...buildRows("ru"),
   ],
