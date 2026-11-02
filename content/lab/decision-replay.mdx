@@ -1,0 +1,20 @@
+---
+title: "Decision replay"
+summary: "Branch through the Beyond autocomplete governance tradeoff — three paths, one written policy, links back to the case study and the commit-style decision log."
+year: 2026
+tags: ["Systems", "Governance", "Interactive"]
+color: "#3b82f6"
+order: 9
+---
+
+## What it is
+
+A four-step walkthrough, not a quiz. You start in the same room as the case study — mid transition, AI assistants already in use, no shared picture of what an agent may call or ship — then pick one of the three options from the original `<Tradeoff>` block and see a compressed "six months later" consequence.
+
+<DecisionReplay />
+
+Wrong paths are intentional: you can step back and try another fork. The path that matches what shipped surfaces the documented cost before the leadership close.
+
+## Source
+
+Client state machine in `src/components/lab/DecisionReplay.tsx` — HudFrame chrome, `Tr` strings, GSAP step transitions disabled under `prefers-reduced-motion`. The canonical prose lives in [Beyond autocomplete](/work/beyond-autocomplete); the hashed entry is on [/log](/log#a1495e7).

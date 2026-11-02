@@ -1,0 +1,24 @@
+---
+title: "Context graph explorer"
+summary: "GitHub, Linear, and Sentry each hold part of the picture — toggle whether a shared context layer connects them before an agent session runs. Simulated SVG, no live APIs."
+year: 2026
+tags: ["SVG", "Systems", "Agentic AI"]
+color: "#818cf8"
+order: 10
+---
+
+## What it is
+
+The constraint from [Beyond autocomplete](/work/beyond-autocomplete) in one diagram: three signals, one agent session, and an optional hub that fuses them into a single picture instead of forcing every run to reconstruct context from scratch.
+
+<ContextGraphExplorer />
+
+Flip **Context layer: connected** off and watch the hub edges fade while faint shortcuts appear from each silo straight to the agent — the same fragmented reality the case study describes before the shared layer shipped.
+
+<LeadershipNote>
+  Infrastructure that merges GitHub, Linear, and Sentry reads like overhead until you measure ramp-up and incident time with the layer off. This explorer is the slide I use to justify the boring merge work before anyone asks for more agent autonomy.
+</LeadershipNote>
+
+## Source
+
+Inline SVG and GSAP stroke animation on the edges — `src/components/lab/ContextGraphExplorer.tsx`. Tier and harness labs live elsewhere; this one is only about **context**, not permissions or tools.
