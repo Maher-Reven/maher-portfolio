@@ -141,6 +141,10 @@ const en: PageContent = {
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
     [
+      "Agent harness labs",
+      "Harness anatomy (scroll X-ray) · Harness builder (simulated tool + tier scenarios) — client state only",
+    ],
+    [
       "Incident simulation",
       "Synthetic war room — merge / escalate / rollback on a fictional checkout incident (client state only)",
     ],
@@ -262,6 +266,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Labos harnais agent",
+      "Anatomie du harnais (radiographie au scroll) · Constructeur de harnais (scénarios outils + niveau simulés) — état client uniquement",
     ],
     [
       "Simulation d'incident",
@@ -387,6 +395,10 @@ const nl: PageContent = {
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
     [
+      "Agent-harness labs",
+      "Harness-anatomie (scroll-röntgen) · Harness-bouwer (gesimuleerde tool- + nivo-scenario's) — alleen client state",
+    ],
+    [
       "Incidentsimulatie",
       "Synthetic war room — merge / escaleren / rollback bij een fictief checkout-incident (alleen client state)",
     ],
@@ -510,6 +522,10 @@ const fy: PageContent = {
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
     [
+      "Agent-harness labs",
+      "Harness-anatomy (scroll-röntgen) · Harness-bouwer (simulearre ark- + nivo-senario's) — allinnich client state",
+    ],
+    [
       "Ynsidintsimulaasje",
       "Synthetic war room — merge / eskalearje / rollback by in fiktive checkout-ynsidint (allinnich client state)",
     ],
@@ -631,6 +647,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Лаборатории agent harness",
+      "Анатомия harness (scroll-рентген) · Конструктор harness (симуляция инструментов и уровней) — только client state",
     ],
     [
       "Симуляция инцидента",

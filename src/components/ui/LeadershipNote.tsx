@@ -13,7 +13,9 @@ export function LeadershipNote({ title, children }: { title?: string; children: 
     <HudFrame className="my-8 not-prose">
       <details className="group">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-3 px-5 py-4 marker:content-none [&::-webkit-details-marker]:hidden">
-          <span className="label text-accent">{title ?? <Tr k="leadershipNote.label" />}</span>
+          <span className="label text-accent">
+            {title ?? <Tr k="leadershipNote.label" />}
+          </span>
           <span
             className="mono text-xs text-fg-dim transition-transform duration-200 group-open:rotate-180"
             aria-hidden
