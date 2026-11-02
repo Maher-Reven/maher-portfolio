@@ -152,6 +152,10 @@ const en: PageContent = {
       "Context graph lab",
       "Context graph explorer — SVG nodes for GitHub, Linear, Sentry, and agent session; toggle connected vs fragmented layer (simulated, client-only)",
     ],
+    [
+      "Site Q&A",
+      "Bounded ask-this-site lab — client BM25 over scripts/build-search-index.ts; read-only tier, no web, no tools",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -282,6 +286,10 @@ const fr: PageContent = {
     [
       "Lab graphe de contexte",
       "Context graph explorer — nœuds SVG GitHub, Linear, Sentry et session agent ; bascule couche connectée vs fragmentée (simulé, client uniquement)",
+    ],
+    [
+      "Q&R site",
+      "Labo ask-this-site borné — BM25 côté client sur scripts/build-search-index.ts ; niveau lecture seule, pas de web, pas d'outils",
     ],
     ...buildRows("fr"),
   ],
@@ -414,6 +422,10 @@ const nl: PageContent = {
       "Contextgraph-lab",
       "Context graph explorer — SVG-knooppunten voor GitHub, Linear, Sentry en agentsessie; schakel verbonden vs gefragmenteerde laag (gesimuleerd, alleen client)",
     ],
+    [
+      "Site Q&A",
+      "Begrensde ask-this-site lab — client-side BM25 over scripts/build-search-index.ts; alleen-lezen tier, geen web, geen tools",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -545,6 +557,10 @@ const fy: PageContent = {
       "Kontekstgraph-lab",
       "Context graph explorer — SVG-knooppunten foar GitHub, Linear, Sentry en agintsesje; skeakel ferbûn vs fragmintearre laach (simulearre, allinnich client)",
     ],
+    [
+      "Site Q&A",
+      "Beheinde ask-this-site lab — client-side BM25 oer scripts/build-search-index.ts; allinnich-lêze tier, gjin web, gjin ark",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -675,6 +691,10 @@ const ru: PageContent = {
     [
       "Лаборатория графа контекста",
       "Context graph explorer — SVG-узлы GitHub, Linear, Sentry и сессии агента; переключатель связанного и фрагментированного слоя (симуляция, только клиент)",
+    ],
+    [
+      "Q&A сайта",
+      "Ограниченный ask-this-site lab — BM25 на клиенте по scripts/build-search-index.ts; tier только чтение, без web и инструментов",
     ],
     ...buildRows("ru"),
   ],

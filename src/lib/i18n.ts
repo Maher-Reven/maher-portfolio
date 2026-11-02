@@ -275,6 +275,27 @@ const en = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist",
 
+  "leadershipNote.title": "Leadership note",
+
+  "askSite.governanceTitle": "Governance (visible by design)",
+  "askSite.tierBadge": "Autonomy tier: read-only",
+  "askSite.webBadge": "Web: off",
+  "askSite.toolsBadge": "Tools: none",
+  "askSite.governanceBody":
+    "This assistant only reads the prebuilt site index — work, lab, readme, and decision log. It cannot browse, call APIs, or change anything. The tier badge is the product contract, not fine print.",
+  "askSite.placeholder": "Ask about a case study, harness, or decision on this site…",
+  "askSite.ask": "Ask",
+  "askSite.loading": "Searching the index…",
+  "askSite.noResults": "Nothing in the index matched — try different words or open Search (⌘K).",
+  "askSite.answerLabel": "Answer (extractive, from citations)",
+  "askSite.retrievalNote":
+    "No LLM in the default path — BM25 over the same static index as site search. Optional embedding APIs are not required for production.",
+  "askSite.promptHint": "Try a sample question above, or type your own. Every sentence should trace to a citation below.",
+  "askSite.citations": "Citations",
+  "askSite.example1": "What is the harness in agentic systems?",
+  "askSite.example2": "How does cosine similarity differ from distance?",
+  "askSite.example3": "What decisions were logged for beyond autocomplete?",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elsewhere",
   "footer.system": "system",
@@ -534,6 +555,27 @@ const fr: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist.",
 
+  "leadershipNote.title": "Note leadership",
+
+  "askSite.governanceTitle": "Gouvernance (visible par design)",
+  "askSite.tierBadge": "Niveau d'autonomie : lecture seule",
+  "askSite.webBadge": "Web : désactivé",
+  "askSite.toolsBadge": "Outils : aucun",
+  "askSite.governanceBody":
+    "Cet assistant ne lit que l'index statique du site — projets, labo, readme et journal de décisions. Il ne peut ni naviguer, ni appeler des API, ni rien modifier. Le badge de niveau est le contrat produit, pas la fine print.",
+  "askSite.placeholder": "Posez une question sur un case study, un harness ou une décision de ce site…",
+  "askSite.ask": "Demander",
+  "askSite.loading": "Recherche dans l'index…",
+  "askSite.noResults": "Rien dans l'index ne correspond — essayez d'autres mots ou ouvrez Rechercher (⌘K).",
+  "askSite.answerLabel": "Réponse (extractive, depuis les citations)",
+  "askSite.retrievalNote":
+    "Pas de LLM dans le chemin par défaut — BM25 sur le même index statique que la recherche du site. Aucune API d'embedding requise en production.",
+  "askSite.promptHint": "Essayez une question exemple ci-dessus, ou saisissez la vôtre. Chaque phrase doit remonter à une citation ci-dessous.",
+  "askSite.citations": "Citations",
+  "askSite.example1": "Qu'est-ce que le harness dans les systèmes agentiques ?",
+  "askSite.example2": "En quoi la similarité cosinus diffère-t-elle de la distance ?",
+  "askSite.example3": "Quelles décisions ont été consignées pour beyond autocomplete ?",
+
   "footer.contact": "contact",
   "footer.elsewhere": "ailleurs",
   "footer.system": "système",
@@ -789,6 +831,27 @@ const nl: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "afst.",
 
+  "leadershipNote.title": "Leadership-notitie",
+
+  "askSite.governanceTitle": "Governance (bewust zichtbaar)",
+  "askSite.tierBadge": "Autonomieniveau: alleen-lezen",
+  "askSite.webBadge": "Web: uit",
+  "askSite.toolsBadge": "Tools: geen",
+  "askSite.governanceBody":
+    "Deze assistent leest alleen de voorgebouwde site-index — work, lab, readme en beslissingslog. Geen browsen, geen API's, geen wijzigingen. Het tier-badge is het productcontract, geen kleine lettertjes.",
+  "askSite.placeholder": "Vraag over een case study, harness of beslissing op deze site…",
+  "askSite.ask": "Vraag",
+  "askSite.loading": "Index doorzoeken…",
+  "askSite.noResults": "Niets in de index komt overeen — probeer andere woorden of open Zoeken (⌘K).",
+  "askSite.answerLabel": "Antwoord (extractief, uit citaties)",
+  "askSite.retrievalNote":
+    "Geen LLM in het standaardpad — BM25 over dezelfde statische index als site search. Embedding-API's zijn niet vereist in productie.",
+  "askSite.promptHint": "Probeer een voorbeeldvraag hierboven, of typ je eigen vraag. Elke zin moet terug te leiden zijn naar een citatie hieronder.",
+  "askSite.citations": "Citaties",
+  "askSite.example1": "Wat is de harness in agentische systemen?",
+  "askSite.example2": "Hoe verschilt cosinusgelijkheid van afstand?",
+  "askSite.example3": "Welke beslissingen staan gelogd voor beyond autocomplete?",
+
   "footer.contact": "contact",
   "footer.elsewhere": "elders",
   "footer.system": "systeem",
@@ -1042,6 +1105,27 @@ const fy: Record<TKey, string> = {
   "vectorSearch.picked": "keazen",
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "ofst.",
+
+  "leadershipNote.title": "Leadership-notysje",
+
+  "askSite.governanceTitle": "Governance (bewust sichtber)",
+  "askSite.tierBadge": "Autonomienivo: allinnich lêze",
+  "askSite.webBadge": "Web: út",
+  "askSite.toolsBadge": "Ark: gjin",
+  "askSite.governanceBody":
+    "Dizze assistent lêst allinnich de foarôfboude site-yndeks — work, lab, readme en beslissingslog. Gjin browsen, gjin API's, gjin feroarings. It tier-badge is it produktkontrakt, gjin lytse print.",
+  "askSite.placeholder": "Freegje oer in case study, harness of beslissing op dizze site…",
+  "askSite.ask": "Freegje",
+  "askSite.loading": "Yndeks trochsykje…",
+  "askSite.noResults": "Neat yn de yndeks komt oerien — probearje oare wurden of iepenje Sykje (⌘K).",
+  "askSite.answerLabel": "Antwurd (extractyf, út sitaten)",
+  "askSite.retrievalNote":
+    "Gjin LLM yn it standertpaad — BM25 oer deselde statyske yndeks as site search. Embedding-API's binne net fereaske yn produksje.",
+  "askSite.promptHint": "Probean in foarbyldfreechje hjirboppe, of typ dyn eigen. Elke sin moat werom te lêzen wêze nei in sitaat hjirûnder.",
+  "askSite.citations": "Sitaten",
+  "askSite.example1": "Wat is de harness yn agentyske systemen?",
+  "askSite.example2": "Hoe ferskilt cosinus-oerienkomst fan ôfstân?",
+  "askSite.example3": "Hokker beslissingen binne logge foar beyond autocomplete?",
 
   "footer.contact": "kontakt",
   "footer.elsewhere": "earne oars",
@@ -1298,6 +1382,27 @@ const ru: Record<TKey, string> = {
   "vectorSearch.picked": "выбран",
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "расст.",
+
+  "leadershipNote.title": "Заметка о лидерстве",
+
+  "askSite.governanceTitle": "Управление (намеренно на виду)",
+  "askSite.tierBadge": "Уровень автономии: только чтение",
+  "askSite.webBadge": "Web: выкл.",
+  "askSite.toolsBadge": "Инструменты: нет",
+  "askSite.governanceBody":
+    "Этот помощник читает только заранее собранный индекс сайта — work, lab, readme и журнал решений. Не может ходить в сеть, вызывать API или что-то менять. Бейдж уровня — это продуктовый контракт, а не мелкий шрифт.",
+  "askSite.placeholder": "Спросите о кейсе, harness или решении на этом сайте…",
+  "askSite.ask": "Спросить",
+  "askSite.loading": "Поиск по индексу…",
+  "askSite.noResults": "В индексе нет совпадений — попробуйте другие слова или откройте Поиск (⌘K).",
+  "askSite.answerLabel": "Ответ (экстрактивный, из цитат)",
+  "askSite.retrievalNote":
+    "Без LLM в пути по умолчанию — BM25 по тому же статическому индексу, что и поиск сайта. Embedding API для продакшена не требуются.",
+  "askSite.promptHint": "Попробуйте пример выше или введите свой вопрос. Каждое предложение должно вести к цитате ниже.",
+  "askSite.citations": "Цитаты",
+  "askSite.example1": "Что такое harness в агентных системах?",
+  "askSite.example2": "Чем косинусное сходство отличается от расстояния?",
+  "askSite.example3": "Какие решения залогированы для beyond autocomplete?",
 
   "footer.contact": "контакты",
   "footer.elsewhere": "ссылки",

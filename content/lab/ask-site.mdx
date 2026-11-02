@@ -1,0 +1,30 @@
+---
+title: "Ask this site"
+summary: "Read-only Q&A over the same static index as search — citations only, no web, no tools. The autonomy tier is visible in the UI on purpose."
+year: 2026
+tags: ["Retrieval", "Governance", "Agentic AI"]
+color: "#34d399"
+order: 9
+---
+
+## What it is
+
+A bounded assistant that only reads what this site already published — case studies, lab entries, the readme, and the decision log. Ask in plain language; the answer is stitched from BM25-ranked excerpts, each linked back to a source URL. No browsing, no tool calls, no writes.
+
+<AskSite />
+
+The governance strip at the top is not decoration. **Autonomy tier: read-only** is the contract: if the UI ever claimed more capability than the harness actually had, you'd be debugging trust instead of retrieval.
+
+<LeadershipNote>
+
+Shipping a “chat with my portfolio” feature without drawing the permission boundary in the interface is how teams accidentally train users to treat a search box like an omniscient agent. Making tier, web access, and tools explicit — even when they're all off — mirrors how I'd expect an EM to review an internal copilot before it touches production data.
+
+</LeadershipNote>
+
+## Why not a model call
+
+At this corpus size, a hand-rolled BM25 index (`src/lib/search.ts`, fed by `scripts/build-search-index.ts`) is faster, cheaper, and easier to cite than an LLM summarizer that might invent connective tissue. The [vector search](/lab/vector-search) lab shows when embeddings change the ranking; this page shows when **not** to reach for them at all.
+
+## Source
+
+`src/components/lab/AskSite.tsx` · `src/lib/ask-site.ts` · same `public/search-index.<locale>.json` as Cmd+K search.
