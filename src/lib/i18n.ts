@@ -199,6 +199,20 @@ const en = {
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
 
+  "contextGraph.simulated": "Simulated · no live APIs",
+  "contextGraph.toggleConnected": "Context layer: connected",
+  "contextGraph.toggleBroken": "Context layer: broken",
+  "contextGraph.statusConnected": "One picture — GitHub, Linear, and Sentry feed the same hub before the agent session runs.",
+  "contextGraph.statusBroken": "Three silos — every session rebuilds partial context from scratch.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Context layer",
+  "contextGraph.node.agentSession": "Agent session",
+  "contextGraph.hint": "Toggle the layer to see edges connect or fragment.",
+  "contextGraph.ariaSummary":
+    "Diagram of GitHub, Linear, and Sentry connecting through a shared context layer into an agent session.",
+
   "builder.simulatedBadge": "Simulated run — no network, no live APIs.",
   "builder.toolsHeading": "Tools enabled",
   "builder.tool.issueReader": "Issue reader",
@@ -245,6 +259,7 @@ const en = {
   "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (idempotent key)",
   "builder.log.auditLogged": "audit: charge intent logged, reversible window 15m",
   "builder.log.donePayment": "result: payment simulated — no funds moved",
+
 
   "vectorSearch.rankCosine": "Cosine",
   "vectorSearch.rankDistance": "Distance",
@@ -438,6 +453,21 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
 
+  "contextGraph.simulated": "Simulé · pas d'API live",
+  "contextGraph.toggleConnected": "Couche contexte : connectée",
+  "contextGraph.toggleBroken": "Couche contexte : cassée",
+  "contextGraph.statusConnected":
+    "Une seule image — GitHub, Linear et Sentry alimentent le même hub avant la session agent.",
+  "contextGraph.statusBroken": "Trois silos — chaque session reconstruit un contexte partiel depuis zéro.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Couche contexte",
+  "contextGraph.node.agentSession": "Session agent",
+  "contextGraph.hint": "Basculez la couche pour voir les liens se connecter ou se fragmenter.",
+  "contextGraph.ariaSummary":
+    "Schéma de GitHub, Linear et Sentry passant par une couche de contexte partagée vers une session agent.",
+
   "builder.simulatedBadge": "Exécution simulée — pas de réseau, pas d'API réelle.",
   "builder.toolsHeading": "Outils activés",
   "builder.tool.issueReader": "Lecteur d'issues",
@@ -484,6 +514,7 @@ const fr: Record<TKey, string> = {
   "builder.log.toolPaymentCall": "outils : payment_api → POST /charges (clé idempotente)",
   "builder.log.auditLogged": "audit : intention de charge journalisée, fenêtre réversible 15 min",
   "builder.log.donePayment": "résultat : paiement simulé — aucun fonds déplacé",
+
 
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Distance",
@@ -673,6 +704,21 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
+  "contextGraph.simulated": "Gesimuleerd · geen live API's",
+  "contextGraph.toggleConnected": "Contextlaag: verbonden",
+  "contextGraph.toggleBroken": "Contextlaag: kapot",
+  "contextGraph.statusConnected":
+    "Eén beeld — GitHub, Linear en Sentry voeden dezelfde hub voordat de agentsessie draait.",
+  "contextGraph.statusBroken": "Drie silo's — elke sessie bouwt gedeeltelijke context vanaf nul op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Contextlaag",
+  "contextGraph.node.agentSession": "Agentsessie",
+  "contextGraph.hint": "Schakel de laag om verbindingen of fragmentatie te zien.",
+  "contextGraph.ariaSummary":
+    "Diagram van GitHub, Linear en Sentry via een gedeelde contextlaag naar een agentsessie.",
+
   "builder.simulatedBadge": "Gesimuleerde run — geen netwerk, geen live API's.",
   "builder.toolsHeading": "Tools ingeschakeld",
   "builder.tool.issueReader": "Issue-lezer",
@@ -719,6 +765,7 @@ const nl: Record<TKey, string> = {
   "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (idempotente sleutel)",
   "builder.log.auditLogged": "audit: charge-intent gelogd, omkeerbaar venster 15 min",
   "builder.log.donePayment": "resultaat: betaling gesimuleerd — geen geld verplaatst",
+
 
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Afstand",
@@ -907,6 +954,21 @@ const fy: Record<TKey, string> = {
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
 
+  "contextGraph.simulated": "Simulearre · gjin live API's",
+  "contextGraph.toggleConnected": "Kontekstlaach: ferbûn",
+  "contextGraph.toggleBroken": "Kontekstlaach: stikken",
+  "contextGraph.statusConnected":
+    "Ien byld — GitHub, Linear en Sentry voedzje deselde hub foardat de agintsesje rint.",
+  "contextGraph.statusBroken": "Trije silo's — elke sesje bouwt partiele kontekst opnij op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Kontekstlaach",
+  "contextGraph.node.agentSession": "Agintsesje",
+  "contextGraph.hint": "Skakel de laach om ferbinings of fragmentaasje te sjen.",
+  "contextGraph.ariaSummary":
+    "Diagram fan GitHub, Linear en Sentry fia in dielde kontekstlaach nei in agintsesje.",
+
   "builder.simulatedBadge": "Simulearre run — gjin netwurk, gjin live API's.",
   "builder.toolsHeading": "Arken ynskeakele",
   "builder.tool.issueReader": "Issue-lêzer",
@@ -953,6 +1015,7 @@ const fy: Record<TKey, string> = {
   "builder.log.toolPaymentCall": "ark: payment_api → POST /charges (idempotente kaai)",
   "builder.log.auditLogged": "audit: charge-intent logge, omkearber finster 15 min",
   "builder.log.donePayment": "resultaat: betelling simulearre — gjin jild ferpleatst",
+
 
   "vectorSearch.rankCosine": "Kosinus",
   "vectorSearch.rankDistance": "Ofstân",
@@ -1143,6 +1206,21 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
 
+  "contextGraph.simulated": "Симуляция · без живых API",
+  "contextGraph.toggleConnected": "Слой контекста: подключён",
+  "contextGraph.toggleBroken": "Слой контекста: разорван",
+  "contextGraph.statusConnected":
+    "Одна картина — GitHub, Linear и Sentry питают один хаб до запуска сессии агента.",
+  "contextGraph.statusBroken": "Три изолированных источника — каждая сессия заново собирает частичный контекст.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Слой контекста",
+  "contextGraph.node.agentSession": "Сессия агента",
+  "contextGraph.hint": "Переключите слой, чтобы увидеть связи или фрагментацию.",
+  "contextGraph.ariaSummary":
+    "Схема GitHub, Linear и Sentry через общий слой контекста к сессии агента.",
+
   "builder.simulatedBadge": "Симуляция — без сети и живых API.",
   "builder.toolsHeading": "Включённые инструменты",
   "builder.tool.issueReader": "Чтение issue",
@@ -1189,6 +1267,7 @@ const ru: Record<TKey, string> = {
   "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (идемпотентный ключ)",
   "builder.log.auditLogged": "audit: намерение списания залогировано, окно отмены 15 мин",
   "builder.log.donePayment": "result: платёж симулирован — средства не двигались",
+
 
   "vectorSearch.rankCosine": "Косинус",
   "vectorSearch.rankDistance": "Расстояние",

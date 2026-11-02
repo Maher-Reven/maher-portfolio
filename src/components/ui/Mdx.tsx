@@ -10,6 +10,7 @@ import { AsciiWebcam } from "@/components/lab/AsciiWebcam";
 import { HarnessAnatomy } from "@/components/lab/HarnessAnatomy";
 import { HarnessBuilder } from "@/components/lab/HarnessBuilder";
 import { SyntheticWarRoom } from "@/components/lab/SyntheticWarRoom";
+import { ContextGraphExplorer } from "@/components/lab/ContextGraphExplorer";
 import { VectorSearch } from "@/components/three/VectorSearch";
 import { AutonomyLadder, AutonomyTier } from "@/components/work/AutonomyLadder";
 import { LeadershipNote } from "@/components/ui/LeadershipNote";
@@ -31,6 +32,7 @@ const components = {
   HarnessAnatomy,
   HarnessBuilder,
   SyntheticWarRoom,
+  ContextGraphExplorer,
   VectorSearch,
   AutonomyLadder,
   AutonomyTier,

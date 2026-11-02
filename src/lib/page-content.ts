@@ -148,6 +148,10 @@ const en: PageContent = {
       "Incident simulation",
       "Synthetic war room — merge / escalate / rollback on a fictional checkout incident (client state only)",
     ],
+    [
+      "Context graph lab",
+      "Context graph explorer — SVG nodes for GitHub, Linear, Sentry, and agent session; toggle connected vs fragmented layer (simulated, client-only)",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -274,6 +278,10 @@ const fr: PageContent = {
     [
       "Simulation d'incident",
       "Synthetic war room — fusionner / escalader / rollback sur un incident checkout fictif (état client uniquement)",
+    ],
+    [
+      "Lab graphe de contexte",
+      "Context graph explorer — nœuds SVG GitHub, Linear, Sentry et session agent ; bascule couche connectée vs fragmentée (simulé, client uniquement)",
     ],
     ...buildRows("fr"),
   ],
@@ -402,6 +410,10 @@ const nl: PageContent = {
       "Incidentsimulatie",
       "Synthetic war room — merge / escaleren / rollback bij een fictief checkout-incident (alleen client state)",
     ],
+    [
+      "Contextgraph-lab",
+      "Context graph explorer — SVG-knooppunten voor GitHub, Linear, Sentry en agentsessie; schakel verbonden vs gefragmenteerde laag (gesimuleerd, alleen client)",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -529,6 +541,10 @@ const fy: PageContent = {
       "Ynsidintsimulaasje",
       "Synthetic war room — merge / eskalearje / rollback by in fiktive checkout-ynsidint (allinnich client state)",
     ],
+    [
+      "Kontekstgraph-lab",
+      "Context graph explorer — SVG-knooppunten foar GitHub, Linear, Sentry en agintsesje; skeakel ferbûn vs fragmintearre laach (simulearre, allinnich client)",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -655,6 +671,10 @@ const ru: PageContent = {
     [
       "Симуляция инцидента",
       "Synthetic war room — merge / escalate / rollback на вымышленном checkout-инциденте (только client state)",
+    ],
+    [
+      "Лаборатория графа контекста",
+      "Context graph explorer — SVG-узлы GitHub, Linear, Sentry и сессии агента; переключатель связанного и фрагментированного слоя (симуляция, только клиент)",
     ],
     ...buildRows("ru"),
   ],
