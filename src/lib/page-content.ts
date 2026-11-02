@@ -140,6 +140,10 @@ const en: PageContent = {
     ],
     ["Type", "Space Grotesk (display) · JetBrains Mono (HUD labels)"],
     ["A11y", "prefers-reduced-motion disables shader, smooth scroll, cursor and reveals"],
+    [
+      "Agent harness labs",
+      "Harness anatomy (scroll X-ray) · Harness builder (simulated tool + tier scenarios) — client state only",
+    ],
     ...buildRows("en"),
   ],
   readme: [
@@ -258,6 +262,10 @@ const fr: PageContent = {
     [
       "Accessibilité",
       "prefers-reduced-motion désactive le shader, le défilement lissé, le curseur et les révélations",
+    ],
+    [
+      "Labos harnais agent",
+      "Anatomie du harnais (radiographie au scroll) · Constructeur de harnais (scénarios outils + niveau simulés) — état client uniquement",
     ],
     ...buildRows("fr"),
   ],
@@ -378,6 +386,10 @@ const nl: PageContent = {
       "Toegankelijkheid",
       "prefers-reduced-motion schakelt shader, smooth scroll, cursor en reveals uit",
     ],
+    [
+      "Agent-harness labs",
+      "Harness-anatomie (scroll-röntgen) · Harness-bouwer (gesimuleerde tool- + nivo-scenario's) — alleen client state",
+    ],
     ...buildRows("nl"),
   ],
   readme: [
@@ -497,6 +509,10 @@ const fy: PageContent = {
       "Tagonklikheid",
       "prefers-reduced-motion skeakelt shader, smooth scroll, cursor en reveals út",
     ],
+    [
+      "Agent-harness labs",
+      "Harness-anatomy (scroll-röntgen) · Harness-bouwer (simulearre ark- + nivo-senario's) — allinnich client state",
+    ],
     ...buildRows("fy"),
   ],
   readme: [
@@ -615,6 +631,10 @@ const ru: PageContent = {
     [
       "Доступность",
       "prefers-reduced-motion отключает шейдер, плавный скролл, курсор и появления",
+    ],
+    [
+      "Лаборатории agent harness",
+      "Анатомия harness (scroll-рентген) · Конструктор harness (симуляция инструментов и уровней) — только client state",
     ],
     ...buildRows("ru"),
   ],

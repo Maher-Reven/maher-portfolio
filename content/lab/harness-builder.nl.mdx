@@ -1,0 +1,24 @@
+---
+title: "Harness-bouwer"
+summary: "Maak van het anatomiediagram een bedienpaneel — kies tools, stel een autonomieniveau in en voer drie gescripte scenario's uit. Elke logregel is client-side gesimuleerd."
+year: 2026
+tags: ["Systemen", "Agentische AI", "Governance"]
+color: "#38bdf8"
+order: 9
+---
+
+## Wat het is
+
+De scroll-röntgenfoto op [Harness-anatomie](/lab/harness-anatomy) laat zien hoe een verzoek door lagen gaat. Dit paneel laat je de harness configureren — welke tools zijn aangesloten, welk autonomieniveau actief is — en drie vaste scenario's draaien om te zien waar de loop stopt of escaleert.
+
+<HarnessBuilder />
+
+Probeer **Issue #142 lezen** op alleen-lezen met de issue-lezer aan: dat zou moeten slagen. Schakel naar **Pull request openen** op hetzelfde niveau en zie permissions schrijven blokkeren. Schakel **Betaal-API** in en vergelijk **Voorstellen** met **Automatisch onder controle** — alleen het hoogste niveau opent de poort in deze fictie.
+
+<LeadershipNote title="Leadership-notitie">
+  Het interessante EM-werk is niet het model kiezen — het is afspreken op welk niveau elke capability live gaat vóór het eerste incident. Dit speelpaneel start het gesprek: «Hoe zou onze log eruitzien als betaling nog op voorstellen stond?»
+</LeadershipNote>
+
+## Bron
+
+Pure React-state — `src/components/lab/HarnessBuilder.tsx`. Niveaulabels sluiten aan op de [autonomieladder](/work/beyond-autocomplete#execution). Geen fetch, geen WebSocket, geen agent SDK in de loop.

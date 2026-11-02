@@ -60,6 +60,9 @@ const SELF_CLOSING_NOTES = {
   GenerativeMark: "interactive: generative mark, redrawn each load — see the live page",
   AudioVisualizer: "interactive: microphone-driven frequency visualizer — see the live page",
   AsciiWebcam: "interactive: live camera feed rendered as ASCII — see the live page",
+  HarnessAnatomy: "interactive: harness anatomy scroll X-ray — see the live page",
+  HarnessBuilder: "interactive: simulated harness builder — see the live page",
+  VectorSearch: "interactive: vector search geometry — see the live page",
 };
 
 /** Replaces the site's interactive MDX components with plain-text prose. */
