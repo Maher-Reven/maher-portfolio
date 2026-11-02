@@ -101,6 +101,10 @@ const en = {
   "page.log.intro":
     "Every case study's tradeoffs, reshaped as a commit history — options considered, what was chosen, what it cost.",
   "log.chosen": "chosen",
+  "log.from": "From:",
+  "log.viewCaseStudy": "View case study",
+  "log.copyHash": "copy",
+  "log.copied": "copied",
 
   "page.readme.label": "readme",
   "page.readme.title": "How to work with me",
@@ -146,6 +150,42 @@ const en = {
 
   "ladder.escalation": "Anything outside these bounds escalates to a person.",
 
+  "leadershipNote.label": "Leadership note",
+
+  "warRoom.simulatedBadge": "Simulated incident — no live systems, no agents, client state only.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout webhooks",
+  "warRoom.incident.summary":
+    "Error rate on payment webhook handler jumped 14× after deploy ac9f2. Carts complete but settlement events stall. No data loss reported yet.",
+  "warRoom.prompt": "Three responders disagree. Your call.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Double HPA max for webhook workers and drain the stuck partition — throughput first, root cause later.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 now — null guard on idempotency key is wrong under retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Ship a hybrid: revert the guard, re-deploy behind a 5% shadow validator, keep traffic otherwise.",
+  "warRoom.action.merge": "Merge proposals",
+  "warRoom.action.escalate": "Escalate to humans",
+  "warRoom.action.rollback": "Rollback deploy",
+  "warRoom.outcome.merge.title": "Outcome · blended mitigations",
+  "warRoom.outcome.merge.body":
+    "Shadow validator catches duplicate keys on 5% traffic while revert removes the bad guard. Error rate falls in fifteen minutes; full postmortem still pending.",
+  "warRoom.outcome.merge.leadership":
+    "When automation disagrees, synthesis beats picking a favorite — but only if you name who owns the residual risk until the postmortem lands.",
+  "warRoom.outcome.escalate.title": "Outcome · automation paused",
+  "warRoom.outcome.escalate.body":
+    "Agents frozen at proposal stage. Incident commander joins bridge; on-call keeps manual settlement queue draining. No deploy or scale change until humans align.",
+  "warRoom.outcome.escalate.leadership":
+    "Escalation is not failure — it's the guardrail that keeps velocity from outrunning judgment when the blast radius is still fuzzy.",
+  "warRoom.outcome.rollback.title": "Outcome · deploy reversed",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 rolled back in four minutes. Webhooks green; retry backlog clears overnight. Forward fix rescheduled behind proper staging coverage.",
+  "warRoom.outcome.rollback.leadership":
+    "Reversible moves are leadership infrastructure — rollback first when certainty is low and every minute of ambiguity compounds customer trust.",
+  "warRoom.replay": "Run again",
+
   "harness.scrollHint": "Scroll to cross-section the loop.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -163,6 +203,68 @@ const en = {
   "harness.layer.environment.title": "Environment",
   "harness.layer.environment.desc": "The real filesystem, shell and APIs a tool call actually reaches.",
 
+  "contextGraph.simulated": "Simulated · no live APIs",
+  "contextGraph.toggleConnected": "Context layer: connected",
+  "contextGraph.toggleBroken": "Context layer: broken",
+  "contextGraph.statusConnected": "One picture — GitHub, Linear, and Sentry feed the same hub before the agent session runs.",
+  "contextGraph.statusBroken": "Three silos — every session rebuilds partial context from scratch.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Context layer",
+  "contextGraph.node.agentSession": "Agent session",
+  "contextGraph.hint": "Toggle the layer to see edges connect or fragment.",
+  "contextGraph.ariaSummary":
+    "Diagram of GitHub, Linear, and Sentry connecting through a shared context layer into an agent session.",
+
+  "builder.simulatedBadge": "Simulated run — no network, no live APIs.",
+  "builder.toolsHeading": "Tools enabled",
+  "builder.tool.issueReader": "Issue reader",
+  "builder.tool.prOpener": "PR opener",
+  "builder.tool.paymentApi": "Payment API",
+  "builder.tierHeading": "Autonomy tier",
+  "builder.tier.readOnly": "Read-only",
+  "builder.tier.propose": "Propose",
+  "builder.tier.gatedAutomatic": "Gated automatic",
+  "builder.scenarioHeading": "Scenario",
+  "builder.scenario.readIssue": "Read issue #142",
+  "builder.scenario.openPr": "Open pull request",
+  "builder.scenario.paymentApi": "Call payment API",
+  "builder.run": "Run scenario",
+  "builder.logHeading": "Harness log",
+  "builder.logEmpty": "Pick tools, tier, and scenario — then run.",
+  "builder.outcome.success": "SUCCESS",
+  "builder.outcome.blocked": "BLOCKED",
+  "builder.outcome.awaiting": "AWAITING HUMAN",
+  "builder.log.harnessStart": "harness: scenario accepted (simulated)",
+  "builder.log.contextLoaded": "context: GitHub + Linear snapshot hydrated",
+  "builder.log.toolIssueReaderMissing": "tools: issue reader disabled — cannot satisfy request",
+  "builder.log.toolPrOpenerMissing": "tools: PR opener disabled — cannot satisfy request",
+  "builder.log.toolPaymentMissing": "tools: payment API disabled — cannot satisfy request",
+  "builder.log.haltTools": "loop: halted at tools layer",
+  "builder.log.tierAllowsRead": "permissions: tier allows read-only fetch",
+  "builder.log.permIssueReadPass": "permissions: issue #142 read approved",
+  "builder.log.toolIssueReaderCall": "tools: issue_reader → GET /issues/142",
+  "builder.log.loopIdle": "loop: model stop — no further tool calls",
+  "builder.log.doneReadIssue": "result: issue body returned to context",
+  "builder.log.tierReadOnlyWrite": "permissions: tier read-only — write tools rejected",
+  "builder.log.permPrDenied": "permissions: pr_opener denied (write)",
+  "builder.log.haltPermissions": "loop: halted at permissions gate",
+  "builder.log.tierProposeWrite": "permissions: tier propose — draft writes allowed",
+  "builder.log.permPrDraftOnly": "permissions: pr_opener limited to draft + label",
+  "builder.log.toolPrOpenerCall": "tools: pr_opener → POST /pulls (draft=true)",
+  "builder.log.prDraftCreated": "environment: draft PR #891 opened on branch cursor/fix-142",
+  "builder.log.awaitingHuman": "harness: awaiting human review before merge",
+  "builder.log.tierPaymentInsufficient": "permissions: tier lacks gated-automatic for payment",
+  "builder.log.permPaymentDenied": "permissions: payment_api denied — escalate to person",
+  "builder.log.tierGatedPayment": "permissions: tier gated-automatic — payment namespace open",
+  "builder.log.permPaymentPass": "permissions: payment_api allowed within CI bounds",
+  "builder.log.evalGatePass": "eval: regression gate passed (fixture replay)",
+  "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (idempotent key)",
+  "builder.log.auditLogged": "audit: charge intent logged, reversible window 15m",
+  "builder.log.donePayment": "result: payment simulated — no funds moved",
+
+
   "vectorSearch.rankCosine": "Cosine",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Drag to orbit.",
@@ -173,7 +275,6 @@ const en = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist",
 
-  "leadershipNote.title": "Leadership note",
 
   "askSite.governanceTitle": "Governance (visible by design)",
   "askSite.tierBadge": "Autonomy tier: read-only",
@@ -274,6 +375,10 @@ const fr: Record<TKey, string> = {
   "page.log.intro":
     "Les arbitrages de chaque étude de cas, remis en forme comme un historique de commits — options considérées, ce qui a été choisi, ce que ça a coûté.",
   "log.chosen": "choisi",
+  "log.from": "Projet :",
+  "log.viewCaseStudy": "Voir l'étude de cas",
+  "log.copyHash": "copier",
+  "log.copied": "copié",
 
   "page.readme.label": "readme",
   "page.readme.title": "Comment travailler avec moi",
@@ -319,6 +424,43 @@ const fr: Record<TKey, string> = {
 
   "ladder.escalation": "Tout ce qui sort de ces limites remonte à une personne.",
 
+  "leadershipNote.label": "Note leadership",
+
+  "warRoom.simulatedBadge": "Incident simulé — aucun système live, aucun agent, état client uniquement.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · webhooks checkout",
+  "warRoom.incident.summary":
+    "Le taux d'erreur du handler webhook paiement a été multiplié par 14 après le déploiement ac9f2. Les paniers se finalisent mais les règlements restent bloqués. Aucune perte de données signalée.",
+  "warRoom.prompt": "Trois répondeurs ne sont pas d'accord. À vous de trancher.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Doubler le max HPA des workers webhook et vider la partition bloquée — débit d'abord, cause racine ensuite.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix":
+    "Rollback ac9f2 maintenant — le garde null sur la clé d'idempotence est faux sous retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride : revert du garde, redéploiement derrière un validateur shadow à 5 %, trafic inchangé sinon.",
+  "warRoom.action.merge": "Fusionner les propositions",
+  "warRoom.action.escalate": "Escalader vers des humains",
+  "warRoom.action.rollback": "Rollback du déploiement",
+  "warRoom.outcome.merge.title": "Résultat · atténuations combinées",
+  "warRoom.outcome.merge.body":
+    "Le validateur shadow détecte les clés dupliquées sur 5 % du trafic pendant que le revert supprime le mauvais garde. Le taux d'erreur baisse en quinze minutes ; postmortem complet en attente.",
+  "warRoom.outcome.merge.leadership":
+    "Quand l'automatisation diverge, la synthèse bat le favori — à condition de nommer qui porte le risque résiduel jusqu'au postmortem.",
+  "warRoom.outcome.escalate.title": "Résultat · automatisation en pause",
+  "warRoom.outcome.escalate.body":
+    "Agents figés au stade proposition. Le commandant d'incident rejoint le bridge ; l'astreinte vide la file de règlement manuellement. Aucun déploiement ni scale tant que les humains ne sont pas alignés.",
+  "warRoom.outcome.escalate.leadership":
+    "Escalader n'est pas un échec — c'est le garde-fou qui empêche la vélocité de dépasser le jugement quand le rayon d'impact reste flou.",
+  "warRoom.outcome.rollback.title": "Résultat · déploiement annulé",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 rollback en quatre minutes. Webhooks au vert ; backlog de retries vidé dans la nuit. Correctif reprogrammé avec une couverture staging sérieuse.",
+  "warRoom.outcome.rollback.leadership":
+    "Les mouvements réversibles sont une infrastructure de leadership — rollback d'abord quand la certitude est basse et que chaque minute d'ambiguïté érode la confiance client.",
+  "warRoom.replay": "Rejouer",
+
   "harness.scrollHint": "Faites défiler pour couper la boucle en coupe.",
   "harness.layer.model.title": "Modèle",
   "harness.layer.model.desc":
@@ -339,6 +481,69 @@ const fr: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Le vrai système de fichiers, shell et API qu'un appel d'outil atteint réellement.",
 
+  "contextGraph.simulated": "Simulé · pas d'API live",
+  "contextGraph.toggleConnected": "Couche contexte : connectée",
+  "contextGraph.toggleBroken": "Couche contexte : cassée",
+  "contextGraph.statusConnected":
+    "Une seule image — GitHub, Linear et Sentry alimentent le même hub avant la session agent.",
+  "contextGraph.statusBroken": "Trois silos — chaque session reconstruit un contexte partiel depuis zéro.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Couche contexte",
+  "contextGraph.node.agentSession": "Session agent",
+  "contextGraph.hint": "Basculez la couche pour voir les liens se connecter ou se fragmenter.",
+  "contextGraph.ariaSummary":
+    "Schéma de GitHub, Linear et Sentry passant par une couche de contexte partagée vers une session agent.",
+
+  "builder.simulatedBadge": "Exécution simulée — pas de réseau, pas d'API réelle.",
+  "builder.toolsHeading": "Outils activés",
+  "builder.tool.issueReader": "Lecteur d'issues",
+  "builder.tool.prOpener": "Ouverture de PR",
+  "builder.tool.paymentApi": "API paiement",
+  "builder.tierHeading": "Niveau d'autonomie",
+  "builder.tier.readOnly": "Lecture seule",
+  "builder.tier.propose": "Proposition",
+  "builder.tier.gatedAutomatic": "Automatique sous contrôle",
+  "builder.scenarioHeading": "Scénario",
+  "builder.scenario.readIssue": "Lire l'issue #142",
+  "builder.scenario.openPr": "Ouvrir une pull request",
+  "builder.scenario.paymentApi": "Appeler l'API paiement",
+  "builder.run": "Lancer le scénario",
+  "builder.logHeading": "Journal du harnais",
+  "builder.logEmpty": "Choisissez outils, niveau et scénario — puis lancez.",
+  "builder.outcome.success": "SUCCÈS",
+  "builder.outcome.blocked": "BLOQUÉ",
+  "builder.outcome.awaiting": "EN ATTENTE HUMAINE",
+  "builder.log.harnessStart": "harnais : scénario accepté (simulé)",
+  "builder.log.contextLoaded": "contexte : instantané GitHub + Linear chargé",
+  "builder.log.toolIssueReaderMissing": "outils : lecteur d'issues désactivé — requête impossible",
+  "builder.log.toolPrOpenerMissing": "outils : ouverture PR désactivée — requête impossible",
+  "builder.log.toolPaymentMissing": "outils : API paiement désactivée — requête impossible",
+  "builder.log.haltTools": "boucle : arrêt à la couche outils",
+  "builder.log.tierAllowsRead": "permissions : niveau autorise la lecture seule",
+  "builder.log.permIssueReadPass": "permissions : lecture issue #142 approuvée",
+  "builder.log.toolIssueReaderCall": "outils : issue_reader → GET /issues/142",
+  "builder.log.loopIdle": "boucle : modèle arrêté — plus d'appels d'outils",
+  "builder.log.doneReadIssue": "résultat : corps de l'issue renvoyé au contexte",
+  "builder.log.tierReadOnlyWrite": "permissions : niveau lecture seule — écritures refusées",
+  "builder.log.permPrDenied": "permissions : pr_opener refusé (écriture)",
+  "builder.log.haltPermissions": "boucle : arrêt au contrôle des permissions",
+  "builder.log.tierProposeWrite": "permissions : niveau proposition — brouillons autorisés",
+  "builder.log.permPrDraftOnly": "permissions : pr_opener limité au brouillon + label",
+  "builder.log.toolPrOpenerCall": "outils : pr_opener → POST /pulls (draft=true)",
+  "builder.log.prDraftCreated": "environnement : brouillon PR #891 sur branche cursor/fix-142",
+  "builder.log.awaitingHuman": "harnais : en attente de revue humaine avant merge",
+  "builder.log.tierPaymentInsufficient": "permissions : niveau insuffisant pour paiement automatique",
+  "builder.log.permPaymentDenied": "permissions : payment_api refusé — escalade humaine",
+  "builder.log.tierGatedPayment": "permissions : niveau automatique sous contrôle — paiement ouvert",
+  "builder.log.permPaymentPass": "permissions : payment_api autorisé dans les bornes CI",
+  "builder.log.evalGatePass": "eval : porte de régression passée (replay fixture)",
+  "builder.log.toolPaymentCall": "outils : payment_api → POST /charges (clé idempotente)",
+  "builder.log.auditLogged": "audit : intention de charge journalisée, fenêtre réversible 15 min",
+  "builder.log.donePayment": "résultat : paiement simulé — aucun fonds déplacé",
+
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Distance",
   "vectorSearch.hint": "Faites glisser pour orbiter.",
@@ -349,7 +554,6 @@ const fr: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "dist.",
 
-  "leadershipNote.title": "Note leadership",
 
   "askSite.governanceTitle": "Gouvernance (visible par design)",
   "askSite.tierBadge": "Niveau d'autonomie : lecture seule",
@@ -448,6 +652,10 @@ const nl: Record<TKey, string> = {
   "page.log.intro":
     "De afwegingen van elke case study, hervormd tot een commit-geschiedenis — overwogen opties, wat gekozen is, wat het kostte.",
   "log.chosen": "gekozen",
+  "log.from": "Uit:",
+  "log.viewCaseStudy": "Case study bekijken",
+  "log.copyHash": "kopiëren",
+  "log.copied": "gekopieerd",
 
   "page.readme.label": "readme",
   "page.readme.title": "Hoe met mij te werken",
@@ -493,6 +701,42 @@ const nl: Record<TKey, string> = {
 
   "ladder.escalation": "Alles buiten deze grenzen gaat naar een mens.",
 
+  "leadershipNote.label": "Leadership-notitie",
+
+  "warRoom.simulatedBadge": "Gesimuleerd incident — geen live systemen, geen agents, alleen client state.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout-webhooks",
+  "warRoom.incident.summary":
+    "Foutpercentage op payment-webhook-handler steeg 14× na deploy ac9f2. Winkelwagens ronden af maar settlement-events blijven hangen. Nog geen dataverlies gemeld.",
+  "warRoom.prompt": "Drie responders zijn het oneens. Jouw beslissing.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Verdubbel HPA-max voor webhook-workers en leeg de vastzittende partition — throughput eerst, root cause later.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 nu — null-guard op idempotency key klopt niet bij retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride: guard terugdraaien, opnieuw deployen achter 5% shadow-validator, verder normaal verkeer.",
+  "warRoom.action.merge": "Voorstellen samenvoegen",
+  "warRoom.action.escalate": "Escaleren naar mensen",
+  "warRoom.action.rollback": "Deploy rollback",
+  "warRoom.outcome.merge.title": "Uitkomst · gecombineerde mitigaties",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator vangt dubbele keys op 5% verkeer terwijl revert de foute guard verwijdert. Foutpercentage daalt in vijftien minuten; volledige postmortem volgt.",
+  "warRoom.outcome.merge.leadership":
+    "Als automatisering het oneens is, wint synthese boven een favoriet — mits je benoemt wie het resterende risico draagt tot de postmortem.",
+  "warRoom.outcome.escalate.title": "Uitkomst · automatisering gepauzeerd",
+  "warRoom.outcome.escalate.body":
+    "Agents bevroren bij voorstelstadium. Incident commander op bridge; on-call leegt settlement-queue handmatig. Geen deploy of scale tot mensen aligned zijn.",
+  "warRoom.outcome.escalate.leadership":
+    "Escaleren is geen falen — het is de guardrail die voorkomt dat snelheid het oordeel voorbij rent als de blast radius nog vaag is.",
+  "warRoom.outcome.rollback.title": "Uitkomst · deploy teruggedraaid",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 in vier minuten teruggedraaid. Webhooks groen; retry-backlog 's nachts weg. Forward fix opnieuw gepland met echte staging-dekking.",
+  "warRoom.outcome.rollback.leadership":
+    "Omkeerbare zetten zijn leadership-infrastructuur — eerst rollback als zekerheid laag is en elke minuut ambiguïteit klantvertrouwen kost.",
+  "warRoom.replay": "Opnieuw",
+
   "harness.scrollHint": "Scroll om de lus in dwarsdoorsnede te zien.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -512,6 +756,69 @@ const nl: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Het echte bestandssysteem, de shell en de API's die een tool-aanroep werkelijk bereikt.",
 
+  "contextGraph.simulated": "Gesimuleerd · geen live API's",
+  "contextGraph.toggleConnected": "Contextlaag: verbonden",
+  "contextGraph.toggleBroken": "Contextlaag: kapot",
+  "contextGraph.statusConnected":
+    "Eén beeld — GitHub, Linear en Sentry voeden dezelfde hub voordat de agentsessie draait.",
+  "contextGraph.statusBroken": "Drie silo's — elke sessie bouwt gedeeltelijke context vanaf nul op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Contextlaag",
+  "contextGraph.node.agentSession": "Agentsessie",
+  "contextGraph.hint": "Schakel de laag om verbindingen of fragmentatie te zien.",
+  "contextGraph.ariaSummary":
+    "Diagram van GitHub, Linear en Sentry via een gedeelde contextlaag naar een agentsessie.",
+
+  "builder.simulatedBadge": "Gesimuleerde run — geen netwerk, geen live API's.",
+  "builder.toolsHeading": "Tools ingeschakeld",
+  "builder.tool.issueReader": "Issue-lezer",
+  "builder.tool.prOpener": "PR-opener",
+  "builder.tool.paymentApi": "Betaal-API",
+  "builder.tierHeading": "Autonomieniveau",
+  "builder.tier.readOnly": "Alleen-lezen",
+  "builder.tier.propose": "Voorstellen",
+  "builder.tier.gatedAutomatic": "Automatisch onder controle",
+  "builder.scenarioHeading": "Scenario",
+  "builder.scenario.readIssue": "Issue #142 lezen",
+  "builder.scenario.openPr": "Pull request openen",
+  "builder.scenario.paymentApi": "Betaal-API aanroepen",
+  "builder.run": "Scenario uitvoeren",
+  "builder.logHeading": "Harness-log",
+  "builder.logEmpty": "Kies tools, niveau en scenario — voer daarna uit.",
+  "builder.outcome.success": "GELUKT",
+  "builder.outcome.blocked": "GEBLOKKEERD",
+  "builder.outcome.awaiting": "WACHT OP MENS",
+  "builder.log.harnessStart": "harness: scenario geaccepteerd (gesimuleerd)",
+  "builder.log.contextLoaded": "context: GitHub + Linear snapshot geladen",
+  "builder.log.toolIssueReaderMissing": "tools: issue-lezer uit — verzoek niet mogelijk",
+  "builder.log.toolPrOpenerMissing": "tools: PR-opener uit — verzoek niet mogelijk",
+  "builder.log.toolPaymentMissing": "tools: betaal-API uit — verzoek niet mogelijk",
+  "builder.log.haltTools": "loop: gestopt bij tool-laag",
+  "builder.log.tierAllowsRead": "permissions: niveau staat alleen-lezen toe",
+  "builder.log.permIssueReadPass": "permissions: issue #142 lezen goedgekeurd",
+  "builder.log.toolIssueReaderCall": "tools: issue_reader → GET /issues/142",
+  "builder.log.loopIdle": "loop: model stopt — geen verdere toolcalls",
+  "builder.log.doneReadIssue": "resultaat: issue-body terug in context",
+  "builder.log.tierReadOnlyWrite": "permissions: alleen-lezen — schrijftools geweigerd",
+  "builder.log.permPrDenied": "permissions: pr_opener geweigerd (schrijven)",
+  "builder.log.haltPermissions": "loop: gestopt bij permission-gate",
+  "builder.log.tierProposeWrite": "permissions: voorstelniveau — concepten toegestaan",
+  "builder.log.permPrDraftOnly": "permissions: pr_opener beperkt tot concept + label",
+  "builder.log.toolPrOpenerCall": "tools: pr_opener → POST /pulls (draft=true)",
+  "builder.log.prDraftCreated": "environment: concept-PR #891 op branch cursor/fix-142",
+  "builder.log.awaitingHuman": "harness: wacht op menselijke review vóór merge",
+  "builder.log.tierPaymentInsufficient": "permissions: niveau onvoldoend voor automatische betaling",
+  "builder.log.permPaymentDenied": "permissions: payment_api geweigerd — escaleer naar mens",
+  "builder.log.tierGatedPayment": "permissions: automatisch onder controle — betaling open",
+  "builder.log.permPaymentPass": "permissions: payment_api toegestaan binnen CI-grenzen",
+  "builder.log.evalGatePass": "eval: regressiepoort geslaagd (fixture replay)",
+  "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (idempotente sleutel)",
+  "builder.log.auditLogged": "audit: charge-intent gelogd, omkeerbaar venster 15 min",
+  "builder.log.donePayment": "resultaat: betaling gesimuleerd — geen geld verplaatst",
+
+
   "vectorSearch.rankCosine": "Cosinus",
   "vectorSearch.rankDistance": "Afstand",
   "vectorSearch.hint": "Sleep om te draaien.",
@@ -522,7 +829,6 @@ const nl: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "afst.",
 
-  "leadershipNote.title": "Leadership-notitie",
 
   "askSite.governanceTitle": "Governance (bewust zichtbaar)",
   "askSite.tierBadge": "Autonomieniveau: alleen-lezen",
@@ -621,6 +927,10 @@ const fy: Record<TKey, string> = {
   "page.log.intro":
     "De ôfwagings fan elke case study, omfoarme ta in commit-skiednis — oerwoegen opsjes, wat keazen is, wat it kostte.",
   "log.chosen": "keazen",
+  "log.from": "Ut:",
+  "log.viewCaseStudy": "Case study besjen",
+  "log.copyHash": "kopiearje",
+  "log.copied": "kopiearre",
 
   "page.readme.label": "readme",
   "page.readme.title": "Hoe't mei my te wurkjen",
@@ -666,6 +976,42 @@ const fy: Record<TKey, string> = {
 
   "ladder.escalation": "Alles bûten dizze grinzen giet nei in minske.",
 
+  "leadershipNote.label": "Leadership-notysje",
+
+  "warRoom.simulatedBadge": "Simulearre ynsidint — gjin live systemen, gjin agents, allinnich client state.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout-webhooks",
+  "warRoom.incident.summary":
+    "Flaterpercentaach op payment-webhook-handler stie 14× nei deploy ac9f2. Winkelweinen rûne ôf mar settlement-events bliuwe hangjen. Noch gjin dataferlies meld.",
+  "warRoom.prompt": "Trije responders binne it net iens. Dyn beslissing.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Ferdubbelje HPA-max foar webhook-workers en leegje de fêstsitten partition — throughput earst, root cause letter.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 no — null-guard op idempotency key kloppet net by retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Hybride: guard weromdraaie, opnij deploye efter 5% shadow-validator, oars normaal ferkear.",
+  "warRoom.action.merge": "Foarstellen gearfoegje",
+  "warRoom.action.escalate": "Eskalearje nei minsken",
+  "warRoom.action.rollback": "Deploy rollback",
+  "warRoom.outcome.merge.title": "Resultaat · kombinearre mitigaasjes",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator fangt dûbele keys op 5% ferkear wylst revert de ferkearde guard fuorthellet. Flaterpercentaach saket yn fyftjin minuten; folsleine postmortem folget.",
+  "warRoom.outcome.merge.leadership":
+    "As automatisearring it net iens is, wint synthese boppe in favorite — mits jo neame wa't it resterende risiko draacht oant de postmortem.",
+  "warRoom.outcome.escalate.title": "Resultaat · automatisearring pause",
+  "warRoom.outcome.escalate.body":
+    "Agents bevroren by foarstelfaze. Incident commander op bridge; on-call leecht settlement-queue mei de hân. Gjin deploy of scale oant minsken aligned binne.",
+  "warRoom.outcome.escalate.leadership":
+    "Eskalearje is gjin mislearring — it is de guardrail dy't foarkomt dat snelheid it oardiel foarby rint as de blast radius noch vaach is.",
+  "warRoom.outcome.rollback.title": "Resultaat · deploy weromdraaid",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 yn fjouwer minuten weromdraaid. Webhooks grien; retry-backlog 's nachts fuort. Forward fix opnij pland mei echte staging-dekking.",
+  "warRoom.outcome.rollback.leadership":
+    "Omkeerbere setten binne leadership-yngripen — earst rollback as wisheid leech is en elke minút ambiguïteit klantfertrouwen kostet.",
+  "warRoom.replay": "Op 'e nij",
+
   "harness.scrollHint": "Skrôlje om de lus yn trochsneed te sjen.",
   "harness.layer.model.title": "Model",
   "harness.layer.model.desc":
@@ -684,6 +1030,69 @@ const fy: Record<TKey, string> = {
   "harness.layer.environment.title": "Omjouwing",
   "harness.layer.environment.desc": "It echte bestânssysteem, de shell en de API's dy't in ark-oanrop wier berikt.",
 
+  "contextGraph.simulated": "Simulearre · gjin live API's",
+  "contextGraph.toggleConnected": "Kontekstlaach: ferbûn",
+  "contextGraph.toggleBroken": "Kontekstlaach: stikken",
+  "contextGraph.statusConnected":
+    "Ien byld — GitHub, Linear en Sentry voedzje deselde hub foardat de agintsesje rint.",
+  "contextGraph.statusBroken": "Trije silo's — elke sesje bouwt partiele kontekst opnij op.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Kontekstlaach",
+  "contextGraph.node.agentSession": "Agintsesje",
+  "contextGraph.hint": "Skakel de laach om ferbinings of fragmentaasje te sjen.",
+  "contextGraph.ariaSummary":
+    "Diagram fan GitHub, Linear en Sentry fia in dielde kontekstlaach nei in agintsesje.",
+
+  "builder.simulatedBadge": "Simulearre run — gjin netwurk, gjin live API's.",
+  "builder.toolsHeading": "Arken ynskeakele",
+  "builder.tool.issueReader": "Issue-lêzer",
+  "builder.tool.prOpener": "PR-opener",
+  "builder.tool.paymentApi": "Betellings-API",
+  "builder.tierHeading": "Autonomynivo",
+  "builder.tier.readOnly": "Allinnich-lêze",
+  "builder.tier.propose": "Foarstelle",
+  "builder.tier.gatedAutomatic": "Automatysk ûnder kontrôle",
+  "builder.scenarioHeading": "Senario",
+  "builder.scenario.readIssue": "Issue #142 lêze",
+  "builder.scenario.openPr": "Pull request iepenje",
+  "builder.scenario.paymentApi": "Betellings-API oproppe",
+  "builder.run": "Senario útfiere",
+  "builder.logHeading": "Harness-log",
+  "builder.logEmpty": "Kies ark, nivo en senario — run dêrnei.",
+  "builder.outcome.success": "SLAGGE",
+  "builder.outcome.blocked": "BLOCKEARRE",
+  "builder.outcome.awaiting": "WACHT OP MINSKE",
+  "builder.log.harnessStart": "harness: senario akseptearre (simulearre)",
+  "builder.log.contextLoaded": "kontekst: GitHub + Linear snapshot laden",
+  "builder.log.toolIssueReaderMissing": "ark: issue-lêzer út — oanfraach net mooglik",
+  "builder.log.toolPrOpenerMissing": "ark: PR-opener út — oanfraach net mooglik",
+  "builder.log.toolPaymentMissing": "ark: betellings-API út — oanfraach net mooglik",
+  "builder.log.haltTools": "lus: stoppe by ark-laach",
+  "builder.log.tierAllowsRead": "rjochten: nivo stiet allinnich-lêze ta",
+  "builder.log.permIssueReadPass": "rjochten: issue #142 lêze goedkard",
+  "builder.log.toolIssueReaderCall": "ark: issue_reader → GET /issues/142",
+  "builder.log.loopIdle": "lus: model stop — gjin mear ark-oanropen",
+  "builder.log.doneReadIssue": "resultaat: issue-body wer yn kontekst",
+  "builder.log.tierReadOnlyWrite": "rjochten: allinnich-lêze — skriftools wegere",
+  "builder.log.permPrDenied": "rjochten: pr_opener wegere (skriuwe)",
+  "builder.log.haltPermissions": "lus: stoppe by rjochtenpoort",
+  "builder.log.tierProposeWrite": "rjochten: foarstelnivo — koncepten tastien",
+  "builder.log.permPrDraftOnly": "rjochten: pr_opener beperke ta koncept + label",
+  "builder.log.toolPrOpenerCall": "ark: pr_opener → POST /pulls (draft=true)",
+  "builder.log.prDraftCreated": "omjouwing: koncept-PR #891 op branch cursor/fix-142",
+  "builder.log.awaitingHuman": "harness: wacht op minsklike review foardat merge",
+  "builder.log.tierPaymentInsufficient": "rjochten: nivo te leech foar automatyske betelling",
+  "builder.log.permPaymentDenied": "rjochten: payment_api wegere — eskalearje nei minske",
+  "builder.log.tierGatedPayment": "rjochten: automatysk ûnder kontrôle — betelling iepen",
+  "builder.log.permPaymentPass": "rjochten: payment_api tastien binnen CI-grinzen",
+  "builder.log.evalGatePass": "eval: regressypoort slagge (fixture replay)",
+  "builder.log.toolPaymentCall": "ark: payment_api → POST /charges (idempotente kaai)",
+  "builder.log.auditLogged": "audit: charge-intent logge, omkearber finster 15 min",
+  "builder.log.donePayment": "resultaat: betelling simulearre — gjin jild ferpleatst",
+
+
   "vectorSearch.rankCosine": "Kosinus",
   "vectorSearch.rankDistance": "Ofstân",
   "vectorSearch.hint": "Sleep om te draaien.",
@@ -694,7 +1103,6 @@ const fy: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "ofst.",
 
-  "leadershipNote.title": "Leadership-notysje",
 
   "askSite.governanceTitle": "Governance (bewust sichtber)",
   "askSite.tierBadge": "Autonomienivo: allinnich lêze",
@@ -793,6 +1201,10 @@ const ru: Record<TKey, string> = {
   "page.log.intro":
     "Компромиссы каждого кейса, переоформленные как история коммитов — рассмотренные варианты, что было выбрано, чего это стоило.",
   "log.chosen": "выбрано",
+  "log.from": "Из:",
+  "log.viewCaseStudy": "Открыть кейс",
+  "log.copyHash": "копировать",
+  "log.copied": "скопировано",
 
   "page.readme.label": "readme",
   "page.readme.title": "Как работать со мной",
@@ -838,6 +1250,42 @@ const ru: Record<TKey, string> = {
 
   "ladder.escalation": "Всё, что выходит за эти границы, передаётся человеку.",
 
+  "leadershipNote.label": "Заметка для лидерства",
+
+  "warRoom.simulatedBadge": "Симулированный инцидент — без live-систем, без агентов, только состояние клиента.",
+  "warRoom.incident.id": "INC-2847",
+  "warRoom.incident.severity": "SEV-2 · checkout webhooks",
+  "warRoom.incident.summary":
+    "Частота ошибок обработчика payment webhook выросла в 14 раз после деплоя ac9f2. Корзины завершаются, но события settlement зависают. Потери данных пока не зафиксированы.",
+  "warRoom.prompt": "Три ответчика не согласны. Решение за вами.",
+  "warRoom.agent.alpha.name": "Agent α · scale",
+  "warRoom.agent.alpha.fix":
+    "Удвоить max HPA для webhook workers и осушить застрявшую partition — сначала пропускная способность, root cause потом.",
+  "warRoom.agent.beta.name": "Agent β · revert",
+  "warRoom.agent.beta.fix": "Rollback ac9f2 сейчас — null guard на idempotency key неверен при retries.",
+  "warRoom.agent.gamma.name": "Agent γ · blend",
+  "warRoom.agent.gamma.fix":
+    "Гибрид: откат guard, redeploy за shadow-validator на 5% трафика, остальной трафик без изменений.",
+  "warRoom.action.merge": "Объединить предложения",
+  "warRoom.action.escalate": "Эскалировать людям",
+  "warRoom.action.rollback": "Откатить деплой",
+  "warRoom.outcome.merge.title": "Исход · комбинированные меры",
+  "warRoom.outcome.merge.body":
+    "Shadow-validator ловит дубликаты ключей на 5% трафика, пока revert убирает плохой guard. Ошибки падают за пятнадцать минут; полный postmortem позже.",
+  "warRoom.outcome.merge.leadership":
+    "Когда автоматизация спорит, синтез лучше любимчика — если назначить, кто несёт остаточный риск до postmortem.",
+  "warRoom.outcome.escalate.title": "Исход · автоматизация на паузе",
+  "warRoom.outcome.escalate.body":
+    "Агенты заморожены на стадии предложений. Incident commander на bridge; on-call вручную разгребает очередь settlement. Ни deploy, ни scale, пока люди не согласуются.",
+  "warRoom.outcome.escalate.leadership":
+    "Эскалация — не провал, а предохранитель, когда радиус поражения ещё размыт и скорость обгоняет суждение.",
+  "warRoom.outcome.rollback.title": "Исход · деплой откатан",
+  "warRoom.outcome.rollback.body":
+    "ac9f2 откатан за четыре минуты. Webhooks зелёные; backlog retries сходит за ночь. Forward fix перенесён с нормальным staging.",
+  "warRoom.outcome.rollback.leadership":
+    "Обратимые шаги — инфраструктура лидерства: сначала rollback, когда уверенность низкая, а каждая минута неясности бьёт по доверию клиентов.",
+  "warRoom.replay": "Снова",
+
   "harness.scrollHint": "Прокрутите, чтобы увидеть цикл в разрезе.",
   "harness.layer.model.title": "Модель",
   "harness.layer.model.desc":
@@ -858,6 +1306,69 @@ const ru: Record<TKey, string> = {
   "harness.layer.environment.desc":
     "Настоящая файловая система, shell и API, которых реально достигает вызов инструмента.",
 
+  "contextGraph.simulated": "Симуляция · без живых API",
+  "contextGraph.toggleConnected": "Слой контекста: подключён",
+  "contextGraph.toggleBroken": "Слой контекста: разорван",
+  "contextGraph.statusConnected":
+    "Одна картина — GitHub, Linear и Sentry питают один хаб до запуска сессии агента.",
+  "contextGraph.statusBroken": "Три изолированных источника — каждая сессия заново собирает частичный контекст.",
+  "contextGraph.node.github": "GitHub",
+  "contextGraph.node.linear": "Linear",
+  "contextGraph.node.sentry": "Sentry",
+  "contextGraph.node.contextLayer": "Слой контекста",
+  "contextGraph.node.agentSession": "Сессия агента",
+  "contextGraph.hint": "Переключите слой, чтобы увидеть связи или фрагментацию.",
+  "contextGraph.ariaSummary":
+    "Схема GitHub, Linear и Sentry через общий слой контекста к сессии агента.",
+
+  "builder.simulatedBadge": "Симуляция — без сети и живых API.",
+  "builder.toolsHeading": "Включённые инструменты",
+  "builder.tool.issueReader": "Чтение issue",
+  "builder.tool.prOpener": "Открытие PR",
+  "builder.tool.paymentApi": "Платёжный API",
+  "builder.tierHeading": "Уровень автономии",
+  "builder.tier.readOnly": "Только чтение",
+  "builder.tier.propose": "Предложение",
+  "builder.tier.gatedAutomatic": "Автоматика под контролем",
+  "builder.scenarioHeading": "Сценарий",
+  "builder.scenario.readIssue": "Прочитать issue #142",
+  "builder.scenario.openPr": "Открыть pull request",
+  "builder.scenario.paymentApi": "Вызвать платёжный API",
+  "builder.run": "Запустить сценарий",
+  "builder.logHeading": "Журнал harness",
+  "builder.logEmpty": "Выберите инструменты, уровень и сценарий — затем запустите.",
+  "builder.outcome.success": "УСПЕХ",
+  "builder.outcome.blocked": "ЗАБЛОКИРОВАНО",
+  "builder.outcome.awaiting": "ОЖИДАНИЕ ЧЕЛОВЕКА",
+  "builder.log.harnessStart": "harness: сценарий принят (симуляция)",
+  "builder.log.contextLoaded": "context: снимок GitHub + Linear загружен",
+  "builder.log.toolIssueReaderMissing": "tools: чтение issue выключено — запрос невозможен",
+  "builder.log.toolPrOpenerMissing": "tools: открытие PR выключено — запрос невозможен",
+  "builder.log.toolPaymentMissing": "tools: платёжный API выключен — запрос невозможен",
+  "builder.log.haltTools": "loop: остановка на слое tools",
+  "builder.log.tierAllowsRead": "permissions: уровень разрешает только чтение",
+  "builder.log.permIssueReadPass": "permissions: чтение issue #142 одобрено",
+  "builder.log.toolIssueReaderCall": "tools: issue_reader → GET /issues/142",
+  "builder.log.loopIdle": "loop: модель остановилась — больше вызовов инструментов нет",
+  "builder.log.doneReadIssue": "result: тело issue возвращено в context",
+  "builder.log.tierReadOnlyWrite": "permissions: только чтение — запись запрещена",
+  "builder.log.permPrDenied": "permissions: pr_opener отклонён (запись)",
+  "builder.log.haltPermissions": "loop: остановка на gate permissions",
+  "builder.log.tierProposeWrite": "permissions: уровень propose — черновики разрешены",
+  "builder.log.permPrDraftOnly": "permissions: pr_opener ограничен черновиком + label",
+  "builder.log.toolPrOpenerCall": "tools: pr_opener → POST /pulls (draft=true)",
+  "builder.log.prDraftCreated": "environment: черновик PR #891 на ветке cursor/fix-142",
+  "builder.log.awaitingHuman": "harness: ожидание человеческого review перед merge",
+  "builder.log.tierPaymentInsufficient": "permissions: уровень недостаточен для автоматического платежа",
+  "builder.log.permPaymentDenied": "permissions: payment_api отклонён — эскалация человеку",
+  "builder.log.tierGatedPayment": "permissions: автоматика под контролем — платёжный namespace открыт",
+  "builder.log.permPaymentPass": "permissions: payment_api разрешён в пределах CI",
+  "builder.log.evalGatePass": "eval: регрессионный gate пройден (fixture replay)",
+  "builder.log.toolPaymentCall": "tools: payment_api → POST /charges (идемпотентный ключ)",
+  "builder.log.auditLogged": "audit: намерение списания залогировано, окно отмены 15 мин",
+  "builder.log.donePayment": "result: платёж симулирован — средства не двигались",
+
+
   "vectorSearch.rankCosine": "Косинус",
   "vectorSearch.rankDistance": "Расстояние",
   "vectorSearch.hint": "Перетащите, чтобы вращать.",
@@ -868,7 +1379,6 @@ const ru: Record<TKey, string> = {
   "vectorSearch.cosineLabel": "cos θ",
   "vectorSearch.distanceLabel": "расст.",
 
-  "leadershipNote.title": "Заметка о лидерстве",
 
   "askSite.governanceTitle": "Управление (намеренно на виду)",
   "askSite.tierBadge": "Уровень автономии: только чтение",

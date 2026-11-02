@@ -143,6 +143,13 @@ const en: PageContent = {
     [
       "Site Q&A",
       "Bounded ask-this-site lab — client BM25 over scripts/build-search-index.ts; read-only tier, no web, no tools",
+      "Agent harness labs",
+      "Harness anatomy (scroll X-ray) · Harness builder (simulated tool + tier scenarios) — client state only",
+      "Incident simulation",
+      "Synthetic war room — merge / escalate / rollback on a fictional checkout incident (client state only)",
+      "Context graph lab",
+      "Context graph explorer — SVG nodes for GitHub, Linear, Sentry, and agent session; toggle connected vs fragmented layer (simulated, client-only)",
+
     ],
     ...buildRows("en"),
   ],
@@ -266,6 +273,13 @@ const fr: PageContent = {
     [
       "Q&R site",
       "Labo ask-this-site borné — BM25 côté client sur scripts/build-search-index.ts ; niveau lecture seule, pas de web, pas d'outils",
+      "Labos harnais agent",
+      "Anatomie du harnais (radiographie au scroll) · Constructeur de harnais (scénarios outils + niveau simulés) — état client uniquement",
+      "Simulation d'incident",
+      "Synthetic war room — fusionner / escalader / rollback sur un incident checkout fictif (état client uniquement)",
+      "Lab graphe de contexte",
+      "Context graph explorer — nœuds SVG GitHub, Linear, Sentry et session agent ; bascule couche connectée vs fragmentée (simulé, client uniquement)",
+
     ],
     ...buildRows("fr"),
   ],
@@ -389,6 +403,13 @@ const nl: PageContent = {
     [
       "Site Q&A",
       "Begrensde ask-this-site lab — client-side BM25 over scripts/build-search-index.ts; alleen-lezen tier, geen web, geen tools",
+      "Agent-harness labs",
+      "Harness-anatomie (scroll-röntgen) · Harness-bouwer (gesimuleerde tool- + nivo-scenario's) — alleen client state",
+      "Incidentsimulatie",
+      "Synthetic war room — merge / escaleren / rollback bij een fictief checkout-incident (alleen client state)",
+      "Contextgraph-lab",
+      "Context graph explorer — SVG-knooppunten voor GitHub, Linear, Sentry en agentsessie; schakel verbonden vs gefragmenteerde laag (gesimuleerd, alleen client)",
+
     ],
     ...buildRows("nl"),
   ],
@@ -512,6 +533,13 @@ const fy: PageContent = {
     [
       "Site Q&A",
       "Beheinde ask-this-site lab — client-side BM25 oer scripts/build-search-index.ts; allinnich-lêze tier, gjin web, gjin ark",
+      "Agent-harness labs",
+      "Harness-anatomy (scroll-röntgen) · Harness-bouwer (simulearre ark- + nivo-senario's) — allinnich client state",
+      "Ynsidintsimulaasje",
+      "Synthetic war room — merge / eskalearje / rollback by in fiktive checkout-ynsidint (allinnich client state)",
+      "Kontekstgraph-lab",
+      "Context graph explorer — SVG-knooppunten foar GitHub, Linear, Sentry en agintsesje; skeakel ferbûn vs fragmintearre laach (simulearre, allinnich client)",
+
     ],
     ...buildRows("fy"),
   ],
@@ -635,6 +663,13 @@ const ru: PageContent = {
     [
       "Q&A сайта",
       "Ограниченный ask-this-site lab — BM25 на клиенте по scripts/build-search-index.ts; tier только чтение, без web и инструментов",
+      "Лаборатории agent harness",
+      "Анатомия harness (scroll-рентген) · Конструктор harness (симуляция инструментов и уровней) — только client state",
+      "Симуляция инцидента",
+      "Synthetic war room — merge / escalate / rollback на вымышленном checkout-инциденте (только client state)",
+      "Лаборатория графа контекста",
+      "Context graph explorer — SVG-узлы GitHub, Linear, Sentry и сессии агента; переключатель связанного и фрагментированного слоя (симуляция, только клиент)",
+
     ],
     ...buildRows("ru"),
   ],
