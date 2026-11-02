@@ -19,6 +19,10 @@ Drag to orbit and look for yourself: one candidate sits almost on top of the que
 
 Most real vector search — RAG pipelines, semantic search, recommendation systems — ranks by cosine similarity, not distance, because embedding magnitude usually encodes something incidental (document length, token count) rather than meaning. That's a reasonable default. But it means "nearest neighbor" in a vector database is not the same claim as "nearest neighbor" in the everyday, spatial sense, and a debugging session that assumes otherwise will misread perfectly correct results as broken ones. The gap between those two claims is exactly the angle this page lets you drag around and look at.
 
+<LeadershipNote>
+  "Nearest neighbor" means three different things to search, ML, and product — cosine versus distance is a tiny lab, but the alignment tax shows up in every RAG postmortem. EM work here is vocabulary, not more dimensions.
+</LeadershipNote>
+
 ## Source
 
 No new dependency for the orbit control — `OrbitControls` ships inside `three` itself. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

@@ -33,6 +33,10 @@ It measures its own parent on mount and pins `position: relative` and `overflow:
 
 The stage stays dark in both themes. The spotlight is white and the headline is a light gradient, and both need a dark ground — against the light theme's paper they'd disappear entirely. Reading it as a viewport rather than a page surface makes that deliberate.
 
+<LeadershipNote>
+  The Spline integration story is the honest vendor trade: ship the experiment on a CDN embed, keep the hero on code you own. EM leverage is naming which dependencies are fine for lab pages versus which need an exit plan before they hit production SLAs.
+</LeadershipNote>
+
 ## Source
 
 `src/components/three/SplineSceneDemo.tsx` · `src/components/ui/splite.tsx` · `src/components/ui/spotlight.tsx`

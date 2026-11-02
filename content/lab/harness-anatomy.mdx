@@ -21,6 +21,10 @@ Want to configure tools and tiers yourself? Continue to **[Harness builder](/lab
 
 It's tempting to draw "an AI agent" as one box. That box is the least interesting part — it's a stateless function that predicts tokens and forgets everything the moment the response ends. The loop, the permission checks, the context management, the ability to fan out into sub-agents: that's all harness, and it's where almost every real engineering decision actually lives. The file this site's own agent reads before writing any code — `AGENTS.md`, at the repo root — is itself a harness artifact: instructions injected into context, not weights.
 
+<LeadershipNote>
+  This diagram is the onboarding slide I wish more agent pitches started with — the model is commodity, the harness is org-specific IP. Staff+ conversations stall when everyone says "agent" but half the room means weights and half means permissions.
+</LeadershipNote>
+
 ## Source
 
 No WebGL context here — inline SVG and a GSAP timeline, same register as the [autonomy ladder](/work/beyond-autocomplete#execution). `src/components/lab/HarnessAnatomy.tsx`.

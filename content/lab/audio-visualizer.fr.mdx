@@ -14,6 +14,10 @@ Un `AnalyserNode` lit le spectre de fréquences du micro environ 60 fois par sec
 
 Rien ici ne joue une piste embarquée — ça écoute ce qui se passe réellement dans la pièce, ce qui est plus intéressant et évite une question d'hébergement/de droits dont ce site n'a pas besoin. Ça ne demande non plus jamais l'accès au micro au chargement de la page. Un portfolio qui réclame silencieusement votre micro dès que vous le croisez en scrollant, c'est exactement le genre de chose que cette section est censée éviter d'être.
 
+<LeadershipNote>
+  De l'audio en temps réel sur un site vitrine, c'est un contrat de confiance : analyse locale, opt-in explicite, pas d'enregistrement. Quand les EM valident des fonctions « à l'écoute », la barre n'est pas la maîtrise de Web Audio — c'est de savoir si on défendrait le texte vie privée lors d'un post-mortem.
+</LeadershipNote>
+
 ## Source
 
 Du Canvas2D pur — aucun contexte WebGL, donc ça ne coûte rien tant que vous ne cliquez pas sur activer. `src/components/lab/AudioVisualizer.tsx`

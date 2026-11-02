@@ -19,6 +19,10 @@ Faites pivoter la scène et regardez par vous-même : un candidat se trouve pres
 
 La plupart des vraies recherches vectorielles — pipelines RAG, recherche sémantique, systèmes de recommandation — classent par similarité cosinus, pas par distance, parce que la magnitude d'un embedding encode généralement quelque chose d'accessoire (longueur du document, nombre de tokens) plutôt que du sens. C'est un choix par défaut raisonnable. Mais cela signifie que le « plus proche voisin » dans une base vectorielle n'est pas la même affirmation que le « plus proche voisin » au sens spatial courant, et une session de débogage qui suppose le contraire lira des résultats parfaitement corrects comme s'ils étaient cassés. L'écart entre ces deux affirmations, c'est exactement l'angle que cette page permet de faire pivoter et d'observer.
 
+<LeadershipNote>
+  « Plus proche voisin » veut dire trois choses selon search, ML et produit — cosinus versus distance est un petit labo, mais la taxe d'alignement revient dans chaque post-mortem RAG. Le travail EM ici, c'est le vocabulaire, pas plus de dimensions.
+</LeadershipNote>
+
 ## Source
 
 Aucune nouvelle dépendance pour le contrôle orbital — `OrbitControls` est fourni avec `three` lui-même. `src/components/three/` — `VectorSearch.tsx`, `VectorSearchScene.tsx`.

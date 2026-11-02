@@ -14,6 +14,10 @@ Een `AnalyserNode` leest zo'n 60 keer per seconde het frequentiespectrum van de 
 
 Hier speelt geen meegeleverd nummer — het luistert naar wat er echt in de ruimte gebeurt, wat interessanter is en een hosting-/rechtenvraag omzeilt die deze site niet nodig heeft. Het vraagt ook nooit microfoontoegang aan bij het laden van de pagina. Een portfolio dat stilletjes om je microfoon vraagt zodra je erlangs scrollt, is precies het soort ding dat dit onderdeel probeert te vermijden.
 
+<LeadershipNote>
+  Real-time audio op een portfoliosite is een vertrouwenscontract: lokaal analyseren, expliciete opt-in, geen opname. Als EMs "luister"-features goedkeuren, gaat het niet om Web Audio-kennis — maar of we de privacytekst in een incident review zouden verdedigen.
+</LeadershipNote>
+
 ## Bron
 
 Puur Canvas2D — geen WebGL-context, dus het kost niets tenzij je op inschakelen klikt. `src/components/lab/AudioVisualizer.tsx`
